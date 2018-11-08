@@ -1,0 +1,424 @@
+<div class="app-content content container-fluid">
+	<div class="content-wrapper">
+		<div class="content-header row">
+            <div class="content-header-left col-md-8 col-xs-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-xs-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="plano">Financeiro</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="faturas">Meu Plano</a>
+                        </ol>
+                    </div>
+                </div>
+                <h3 class="content-header-title mb-2">Meu Plano</h3>
+            </div>
+        </div>
+
+		<div class="row">        
+			<section id="resumo-plano">
+				<div class="row row-resumo-plano">
+					<div class="col-md-12">
+						<div class="card" style="height: 100%;">
+							<div class="card-header bg-success bg-lighten-1">
+								<h1 class="card-title"><strong> Informaçoes do plano</strong></h1>
+							</div>
+							<div class="card-body collapse in">
+								<div class="card-block text-xs-left">
+									<div class="table-responsive">
+										<ul class="list-group">
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Plano: <strong class="pull-right" id="nomePlano"></strong></li>
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Valor do plano: <strong class="pull-right" id="valor">R$ 999,90</strong></li>
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Seu plano expira em: <strong class="pull-right" id="expiracao">30/12/2099</strong></li>
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Número de impressões de vitrines: <strong class="pull-right" id="views">65.479.624</strong></li>
+									    </ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>                
+		</div>
+
+		<!-- FUNCIONALIDADES -->
+		<div class="row" style="display: none;">
+			<section id="decks">
+			<div class="row">
+				<div class="col-xs-12 mt-3 mb-1">
+					<h4 class="text-uppercase"><i class="icon-layers"></i> Funcionalidades Incríveis</h4>
+					<p>Veja abaixo todas as funcionalidades que vem com seu plano.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Não Vá Embora!</h4>
+								<p class="card-text">Um bloco sobreposto em sua loja que aparece quando o usuário tenta sair do site, exibindo produtos similares ao que ele navegou.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/exemplos_blocos/oferta_limitada.jpg" alt="Exemplo Oferta Limitada">
+							<div class="card-block">
+								<h4 class="card-title">Oferta Limitada</h4>
+								<p class="card-text">Recomendação sobreposta em sua loja, fixada na barra lateral, que oferta um produto baseado na navegação do cliente, ou algum produto específico cadastrado manualmente.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/exemplos_blocos/footer.jpg" alt="Exemplo do bloco funcionando">
+							<div class="card-block">
+								<h4 class="card-title">Rodapé Produtos Similares</h4>
+								<p class="card-text">Uma vitrine que aparece após rolar 70% da sua página de produto, exibindo produtos similares ao que está sendo visualizado.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Os Mais Desejados</h4>
+								<p class="card-text">Os produtos mais clicados da sua loja em uma só vitrine!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">						
+                            <h4 class="card-title">Os Lançamentos!</h4>
+								<p class="card-text">Um bloco que exibe os últimos produtos adicionados à sua loja!</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Remarketing On-Site</h4>
+								<p class="card-text">Uma inteligência de recomendação que traz produtos que o usuário já visitou em sua loja.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Produtos Similares</h4>
+								<p class="card-text">Uma inteligência de recomendação que traz produtos similares ao produto que o usuário está visualizando. Exclusivo para página de produto.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Vitrines</h4>
+								<p class="card-text">Monte uma vitrine personalizada com as mais variadas inteligências.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Melhores Avaliados da Trustvox</h4>
+								<p class="card-text">Os produtos com as notas mais altas e as melhores avaliações na TrustVox. Essa inteligência é exclusiva para clientes Trustvox e Roi Hero.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Quem comprou, também comprou!</h4>
+								<p class="card-text">Uma inteligência que recomenda produtos que também foram comprados com ao que o seu cliente está visitando.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/exemplos_blocos/footer.jpg" alt="Exemplo do bloco funcionando">
+							<div class="card-block">
+								<h4 class="card-title">Rodapé Remarketing Categoria</h4>
+								<p class="card-text">Uma vitrine que aparece após navegar 80% da página de categoria, e exibe os últimos produtos navegados pelo cliente.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Loja Lateral</h4>						
+								<p class="card-text">Uma vitrine que aparece na lateral do site exibindo produtos semelhantes ao que o seu cliente navegou por último. É exibida quando o cliente tenta sair do site.</p>
+								<p class="card-text">.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Collection</h4>	
+								<p class="card-text">Usa a inteligência em prateleiras que mostram ao seu cliente, produtos de marcas pré-cadastradas por você. Recomendado para vender em coleções da mesma linha ou marcas de produtos.</p>
+								<p class="card-text">.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Carrinho Complementar</h4>
+								<p class="card-text">Uma inteligência que recomenda produtos que também foram adicionados ao carrinho de acordo com o que o cliente tem no adicionado no carrinho. Exclusivo para página de carrinho.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Power Step</h4>
+                                <p class="card-text">Uma página extra para o seu site, como um passo intermediário entre adicionar o produto ao carrinho, e a própria página de carrinho. Essa página conta com 4 inteligências mescladas da Roi Hero e trás mais oferta para o seu site e uma alta conversão.</p>
+								<p class="card-text">.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Compre Junto</h4>
+								<p class="card-text">Um bloco que recomenda produtos para serem comprados junto com outros. Os produtos a serem recomendados são cadastrados manualmente.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Similares melhores avaliados + Trustvox</h4>			
+                                <p class="card-text">Um bloco que recomenda produtos similares e melhores avaliados ao que o cliente está visitando. Essa inteligência é exclusiva para clientes Trustvox e Roi Hero.</p>
+								<p class="card-text">.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Oferta Limitada top 03 sellers com carrosel pra categoria</h4>
+                                <p class="card-text">Um bloco que recomenda produtos similares e melhores avaliados ao que o cliente está visitando. Essa inteligência é exclusiva para clientes Trustvox e Roi Hero.</p>
+								<p class="card-text">.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Oferta Limitada top 03 sellers com carrosel pra categoria</h4>
+                                <p class="card-text">Um bloco similar ao Oferta Limitada, mas recomenda até 3 produtos mais vendidos da categoria. Exclusivo para página de categoria.</p>
+								<p class="card-text">.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Mais Vendidos da Categoria</h4>
+								<p class="card-text">Uma inteligência que exibe os produtos mais vendidos daquela categoria. Exclusivo para página de categoria.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Recém Avaliados Trustvox</h4>
+								<p class="card-text">Uma inteligência que exibe os produtos que foram avaliados recentementes na Trustvox. Exclusivo para clientes da Trustvox.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Vitrine Geolocalização</h4>
+								<p class="card-text">É uma vitrine que recomenda os produtos mais desejados pelos seus clientes de determinado estado. Cada cliente através do Brasil verá uma vitrine específica para o seu estado de acordo com o que você mais vende.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-sm-6 col-md-3">
+					<div class="card card-funcionalidade">
+						<div class="card-body">
+							<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+							<div class="card-block">
+								<h4 class="card-title">Top Trends - Google e Facebook</h4>
+								<p class="card-text">É uma inteligência que recomenda os produtos mais desejados pelos seus clientes que vêm do Google ou do Facebook.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+					
+			</div>
+		</section>
+
+		</div>
+	</div>
+</div>
+
+<div class="modal fade text-xs-center in" id="modalUpgrade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-success white text-xs-left">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title"><i class="icon-diamond" aria-hidden="true"></i> Escolha Um Plano</h4>
+			</div>
+			<div class="modal-body" style="display:inline-block;width: 100%;">
+				<!-- PRICING-TABLE CONTAINER -->
+				<div class="pricing-table group">               
+					<!-- PERSONAL -->
+					<div class="block personal fl">
+						<h2 class="title">PLANO 1</h2>
+						<!-- CONTENT -->
+						<div class="plan-price">
+							<p class="price">
+								<sup>R$</sup>
+								<span>29</span>
+								<small>,90</small>
+								<sub>/mês</sub>
+							</p>
+							<p class="hint">Suporte 24hrs</p>
+						</div>
+						<!-- /CONTENT -->
+						<!-- FEATURES -->
+						<ul class="features">
+							<li><span class="fontawesome-cog"></span>300 MIL IMPRESSÕES</li>
+						</ul>
+						<!-- /FEATURES -->
+						<button class="btn btn-success mb-1">contratar <i class="icon-heart" area-hidden="true"></i></button>
+						<!-- PT-FOOTER -->
+						<div class="pt-footer">
+							<br>
+						</div>
+						<!-- /PT-FOOTER -->
+					</div>
+					<!-- /PERSONAL -->
+					<!-- PROFESSIONAL -->
+					<div class="block professional fl">
+						<h2 class="title">PLANO 2</h2>
+						<!-- CONTENT -->
+						<div class="plan-price">
+							<p class="price">
+								<sup>R$</sup>
+								<span>99</span>
+								<small>,90</small>
+								<sub>/mês</sub>
+							</p>
+							<p class="hint">Suporte 24hrs</p>
+						</div>
+						<!-- /CONTENT -->
+						<!-- FEATURES -->
+						<ul class="features">
+							<li><span class="fontawesome-cog"></span>600 MIL IMPRESSÕES</li>
+						</ul>
+						<!-- /FEATURES -->
+						<button class="btn btn-success mb-1">contratar <i class="icon-heart" area-hidden="true"></i></button>
+						<!-- PT-FOOTER -->
+						<div class="pt-footer">
+							<br>
+						</div>
+						<!-- /PT-FOOTER -->
+					</div>
+					<!-- /PROFESSIONAL -->
+				</div>
+				<!-- /PRICING-TABLE -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Fechar <i class="ft-x" aria-hidden="true"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<script type="text/javascript" src="assets/js/pages/plano/plano.js"></script>

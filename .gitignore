@@ -1,0 +1,12 @@
+JSON/**/*
+bd/**/*
+blog/**/*
+*.txt
+widget/css/**/* 
+widget/templates/**/* 
+searchbar/templates/**/* 
+error_log
+.buildpath
+.project
+.settings/**/* 
+lite/**/* 

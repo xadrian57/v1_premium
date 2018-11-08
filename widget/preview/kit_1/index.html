@@ -1,0 +1,2664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1"/>
+	<title>Document</title>
+
+	<!-- kit_test slider -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/styles.css" class="changeUrl"/>
+	<!-- <link rel="stylesheet" href="css/touchNiced_v001.css" class="changeUrl"/> -->
+	<!-- /kit_test slider -->
+</head>
+<body>
+
+	<!--
+		[ T E M P L A T E S C R E A T E ]
+
+		KIT NAME [default class for templates by this KIT]
+		"rh_tpl_kit_test"
+
+		TEMPLATE NAME [unique class by template]
+		"rh_tpl_kit_test_slider"
+
+		::::::::::::::::::::::::::::::
+		HTML [important]
+
+		DIV class "KIT NAME"
+			SECTION class "TEMPLATE NAME"
+				your content
+			/SECTION
+		/DIV
+
+		///
+		<div class="rh_tpl_kit_test">
+			<section class="rh_tpl_kit_test_slider">
+				your content here please
+			</section>
+		</div>
+
+		onde a class "rh_tpl_kit_test" esta relacionada ao KIT
+		todos os templates dentro desse kit deverá conter essa classe mãe
+
+		onde a class "rh_tpl_kit_test_slider" esta relacionado ao TEMPLATE
+		cada template terá a sua classe unica
+		::::::::::::::::::::::::::::::
+
+	-->
+
+	<!-- CHANGE STYLE -->
+	<!-- <div class="rh_tpl_info_box rh_tpl_changes">
+		<label>
+			Change COLOR
+			<i>
+				featured text and buy button
+			</i>
+		</label>
+		<input type="color" class="changeColor">
+		<br/>
+		<label>
+			Change BACKGROUND
+			<i>
+				block
+			</i>
+		</label>
+		<input type="color" class="changeBackground">
+		<br/>
+	</div>
+
+	<script>
+		var Wapp = Wapp || {};
+
+		Wapp.Changes = {};
+
+		(function(win, doc, vars) {
+			'use strict';
+
+			Wapp.Changes.Init = function() {
+				//console.log('GO!');
+
+				Wapp.Changes.Listen();
+			};
+
+			Wapp.Changes.Listen = function() {
+				doc.getElementsByClassName('changeColor')[0] .addEventListener('change', Wapp.Changes.Event, true);
+				doc.getElementsByClassName('changeBackground')[0] .addEventListener('change', Wapp.Changes.Event, true);
+			};
+
+			Wapp.Changes.Event = function(e) {
+				//document.addEventListener('change', )
+				console.log('changed', e.target.value)
+
+				var
+					target = e.target,
+					css = '',
+					head  = doc.getElementsByTagName('head')[0],
+					style = doc.createElement('style'),
+					styleCls = doc.getElementsByClassName('rh_style_tplmk')[0];
+
+				if (target.classList.contains('changeColor')) {
+					// CHANGE COLOR
+					css += '.rh_tpl_kit_30 .rh_tpl_value span strong{';
+						css += 'color:' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_buy{';
+						css += 'background:' + target.value + ';';
+						css += 'border:1px solid ' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_buy:hover{';
+						css += 'color:' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_block.rh_tpl_text_buytogether strong{';
+						css += 'color:' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_kit_overlay_exit h4.rh_tpl_title{';
+						css += 'background:' + target.value + ';';
+					css += '}';
+
+				} else {
+					// CHANGE BACKGROUND
+					css += '.rh_tpl_kit_30 .rh_tpl_block{';
+						css += 'background:' + target.value + ';';
+					css += '}';
+				}
+
+				if (styleCls) {
+					styleCls.appendChild(doc.createTextNode(css));
+
+				} else {
+					style.type = 'text/css';
+					style.classList.add('rh_style_tplmk');
+
+					head.appendChild(style);
+
+					styleCls = doc.getElementsByClassName('rh_style_tplmk')[0];
+					styleCls.appendChild(doc.createTextNode(css));
+				}
+			};
+
+			doc.addEventListener("DOMContentLoaded", Wapp.Changes.Init, true);
+
+		}(window, document, 'Private'));
+
+		//rh_tpl_changes
+	</script> -->
+
+	<!-- INFO -->
+	<div class="rh_tpl_info_box">
+		KIT:
+		<strong>
+			K I T - 0 1
+		</strong>
+		<br/>
+		TPL :
+		<span>
+			C A R R O S S E L
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- S L I D E R-->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_carrossel">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Lançamentos
+					</strong>
+				</h3>
+		        <div class="touchNiced" data-view="4" data-responsa='{"550":3, "480":2, "340":1}' data-init="true" data-margin="7" data-grid=".rh_tpl_grid" data-nav="true" data-delay="2500" data-transition="1" data-left="fa fa-chevron-circle-left" data-right="fa fa-chevron-circle-right">
+		            <div class="contentNiced">
+		                <div class="blockNiced">
+		                    <div class="loaderNiced">
+		                        <span></span>
+		                    </div>
+							<ul>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 119,00
+												</b>
+											</span>
+											<span>
+												em 10x de
+												<b>
+													R$ 11,90
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 99,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Chromecast 2 Google CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 315,84
+												</b>
+											</span>
+											<span>
+												em 3x de
+												<b>
+													R$ 89,67
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 258,24
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Mouse sem fio preto 1850 U7Z00008 Microsoft CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 69,90
+												</b>
+											</span>
+											<span>
+												em 5x de
+												<b>
+													R$ 9,98
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 49,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Roteador + Repetidor wireless 4 portas Dual Band AC 750Mbps DIR-809 D Link CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 146,90
+												</b>
+											</span>
+											<span>
+												em 3x de
+												<b>
+													R$ 41,63
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 124,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													No-break Station II 800va 6 tomadas 115v 27391 SMS CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 427,00
+												</b>
+											</span>
+											<span>
+												em 3x de
+												<b>
+													R$ 142,00
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 399,00
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Monitor LED 23" IPS widescreen 23MP55HQ Lg CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 679,00
+												</b>
+											</span>
+											<span>
+												em 5x de
+												<b>
+													R$ 135,80
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 599,99
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Projetor multimídia Powerlite S27 Epson CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 1.709,10
+												</b>
+											</span>
+											<span>
+												em 10x de
+												<b>
+													R$ 179,01
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 1.619,10
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Mouse S/ Fio - Logitech
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 49,90
+												</b>
+											</span>
+											<span>
+												em 10x de
+												<b>
+													R$ 4,90
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 44,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!-- /C A R R O S S E L -->
+	<!-- /K I T - 0 1 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			P R A T E L E I R A
+			<b>
+				[4 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- B L O C O - S I M P L E S -->
+	<!-- [4 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_simple_block rh_tpl_kit_simple_block_4">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Ofertas especiais
+					</strong>
+				</h3>
+				<ul>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 119,00
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 11,90
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 99,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Chromecast 2 Google CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 315,84
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 89,67
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 258,24
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Mouse sem fio preto 1850 U7Z00008 Microsoft CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 69,90
+									</b>
+								</span>
+								<span>
+									em 5x de
+									<b>
+										R$ 9,98
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 49,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Roteador + Repetidor wireless 4 portas Dual Band AC 750Mbps DIR-809 D Link CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 146,90
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 41,63
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 124,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- [4 produtos] -->
+	<!-- /B L O C O - S I M P L E S -->
+	<!-- /K I T - 0 1 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			P R A T E L E I R A - D U P L A
+			<b>
+				[8 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- P R A T E L E I R A - D U P L A -->
+	<!-- [8 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_simple_block">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Ofertas especiais
+					</strong>
+				</h3>
+				<ul>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 119,00
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 11,90
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 99,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Chromecast 2 Google CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 315,84
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 89,67
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 258,24
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Mouse sem fio preto 1850 U7Z00008 Microsoft CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 69,90
+									</b>
+								</span>
+								<span>
+									em 5x de
+									<b>
+										R$ 9,98
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 49,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Roteador + Repetidor wireless 4 portas Dual Band AC 750Mbps DIR-809 D Link CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 146,90
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 41,63
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 124,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										No-break Station II 800va 6 tomadas 115v 27391 SMS CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 427,00
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 142,00
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 399,00
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Monitor LED 23" IPS widescreen 23MP55HQ Lg CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 679,00
+									</b>
+								</span>
+								<span>
+									em 5x de
+									<b>
+										R$ 135,80
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 599,00
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Projetor multimídia Powerlite S27 Epson CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 1.709,10
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 179,01
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 1.619,10
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Mouse S/ Fio - Logitech
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 49,90
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 4,90
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 44,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- [8 produtos] -->
+	<!-- /P R A T E L E I R A - D U P L A -->
+	<!-- /K I T - 0 1 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			C O M P R E - J U N T O
+			<b>
+				[3 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- C O M P R E - J U N T O -->
+	<!-- [3 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_buytogether">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Compre junto
+					</strong>
+				</h3>
+				<ul>
+					<li class="rh_tpl_block rh_tpl_after_more">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 119,00
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 11,90
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 99,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li class="rh_tpl_block rh_tpl_after_more">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Chromecast 2 Google CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 315,84
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 89,67
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 258,24
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+						</div>
+						<i class="fas fa-plus">
+						</i>
+					</li>
+					<li class="rh_tpl_block rh_tpl_after_equal">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Mouse sem fio preto 1850 U7Z00008 Microsoft CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 69,90
+									</b>
+								</span>
+								<span>
+									em 5x de
+									<b>
+										R$ 9,98
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 49,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+						</div>
+						<i class="fas fa-plus">
+						</i>
+					</li>
+					<li class="rh_tpl_block rh_tpl_text_buytogether">
+						<p class="rh_tpl_text">
+							<strong>
+								Compre junto
+							</strong>
+							<ul>
+								<li>
+									Nome do produto
+								</li>
+								<li>
+									Nome do produto
+								</li>
+								<li>
+									Nome do produto
+								</li>
+							</ul>
+							<strong>
+								Ganhe 0% de desconto
+							</strong>
+						</p>
+						<p class="rh_tpl_value">
+							<span>
+								Por:
+								<b>
+									R$ 00,00
+								</b>
+							</span>
+							<span>
+								em 0x de
+								<b>
+									R$ 00,00
+								</b>
+								no cartão
+							</span>
+							<span>
+								ou à vista por
+								<strong>
+									R$ 00,00
+								</strong>
+								<em>
+									no boleto
+								</em>
+							</span>
+						</p>
+						<a href="#" class="rh_tpl_buy">
+							Comprar
+						</a>
+						<i class="fas fa-equal">
+						</i>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- /[3 produtos] -->
+	<!-- /C O M P R E - J U N T O -->
+	<!-- /K I T - 0 1 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			C O M P R E - J U N T O
+			<b>
+				[2 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- C O M P R E - J U N T O -->
+	<!-- [2 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_buytogether">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Compre junto
+					</strong>
+				</h3>
+				<ul class="rh_tpl_block_3">
+					<li class="rh_tpl_block rh_tpl_after_more">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 119,00
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 11,90
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 99,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li class="rh_tpl_block rh_tpl_after_equal">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Chromecast 2 Google CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 315,84
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 89,67
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 258,24
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+						</div>
+						<i class="fas fa-plus">
+						</i>
+					</li>
+					<li class="rh_tpl_block rh_tpl_text_buytogether">
+						<p class="rh_tpl_text">
+							<strong>
+								Compre junto
+							</strong>
+							<ul>
+								<li>
+									Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+								</li>
+								<li>
+									Chromecast 2 Google CX 1 UN
+								</li>
+							</ul>
+							<strong>
+								Ganhe 10% de desconto
+							</strong>
+						</p>
+						<p class="rh_tpl_value">
+							<span>
+								Por:
+								<b>
+									R$ 404,90
+								</b>
+							</span>
+							<span>
+								em 10x de
+								<b>
+									R$ 40,49
+								</b>
+								no cartão
+							</span>
+							<span>
+								ou à vista por
+								<strong>
+									R$ 39,99
+								</strong>
+								<em>
+									no boleto
+								</em>
+							</span>
+						</p>
+						<a href="#" class="rh_tpl_buy">
+							Comprar
+						</a>
+						<i class="fas fa-equal">
+						</i>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- /[2 produtos] -->
+	<!-- /C O M P R E - J U N T O -->
+	<!-- /K I T - 0 1 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			O F E R T A - L I M I T A D A
+			<b>
+				[1 product]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- O F E R T A - L I M I T A D A -->
+	<!-- [1 product] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid rh_tpl_offers">
+			<a href="#" class="rh_tpl_kit_offerslimited_open">
+				<i class="fa fa-bell-o"></i>
+				Oferta da hora
+			</a>
+			<section class="rh_tpl_kit_offerslimited">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Oferta limitada
+					</strong>
+				</h3>
+				<a href="#" class="rh_tpl_kit_offerslimited_close">
+					Fechar
+					<b>
+						x
+					</b>
+				</a>
+				<ul>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 119,00
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 99,90
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 99,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- [1 product] -->
+	<!-- O F E R T A - L I M I T A D A -->
+	<!-- /K I T - 0 1 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			T O T E M
+			<b>
+				[1 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- O F E R T A - L I M I T A D A -->
+	<!-- [3 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_offerslimited fix rh_tpl_relative">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Ofertas limitadas
+					</strong>
+				</h3>
+				<ul class="rh_tpl_kit_show_three">
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 119,00
+									</b>
+								</span>
+								<span>
+									em 10x de
+									<b>
+										R$ 11,90
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 99,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Chromecast 2 Google CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 315,84
+									</b>
+								</span>
+								<span>
+									em 3x de
+									<b>
+										R$ 89,67
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 258,24
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Mouse sem fio preto 1850 U7Z00008 Microsoft CX 1 UN
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									Por:
+									<b>
+										R$ 69,90
+									</b>
+								</span>
+								<span>
+									em 5x de
+									<b>
+										R$ 9,98
+									</b>
+									no cartão
+								</span>
+								<span>
+									ou à vista por
+									<strong>
+										R$ 49,90
+									</strong>
+									<em>
+										no boleto
+									</em>
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy">
+								Comprar
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- [3 produtos] -->
+	<!-- O F E R T A - L I M I T A D A -->
+	<!-- /K I T - 0 1 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			N Ã O - V Á - E M B O R A
+		</span>
+	</div>
+
+	<!-- K I T - 0 1 -->
+	<!-- O V E R L A Y - D E - S A Í D A -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid rh_tpl_offers gridOverlay">
+			<section class="rh_tpl_kit_overlay_exit active">
+				<h4 class="rh_tpl_title">
+					<strong>
+						Não vá embora agora!
+					</strong>
+					Ofertas com descontos que você não pode perder
+					<a href="#" class="rh_tpl_close">
+						<i class="fa fa-times"></i>
+					</a>
+				</h4>
+				<h3 class="rh_tpl_title">
+					<strong>
+						Lançamentos
+					</strong>
+				</h3>
+				<div class="touchNiced rh_tpl_kit_overlay" data-view="4" data-responsa='{"640":3, "480":2, "340":1}' data-init="true" data-margin="7" data-grid=".rh_tpl_kit_overlay" data-nav="true" data-delay="2500" data-transition="1" data-left="fa fa-chevron-circle-left" data-right="fa fa-chevron-circle-right">
+		            <div class="contentNiced">
+		                <div class="blockNiced">
+		                    <div class="loaderNiced">
+		                        <span></span>
+		                    </div>
+							<ul>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 119,00
+												</b>
+											</span>
+											<span>
+												em 10x de
+												<b>
+													R$ 11,90
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 99,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Chromecast 2 Google CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 315,84
+												</b>
+											</span>
+											<span>
+												em 3x de
+												<b>
+													R$ 89,67
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 258,24
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Mouse sem fio preto 1850 U7Z00008 Microsoft CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 69,90
+												</b>
+											</span>
+											<span>
+												em 5x de
+												<b>
+													R$ 9,98
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 49,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Roteador + Repetidor wireless 4 portas Dual Band AC 750Mbps DIR-809 D Link CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 146,90
+												</b>
+											</span>
+											<span>
+												em 3x de
+												<b>
+													R$ 41,63
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 124,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													No-break Station II 800va 6 tomadas 115v 27391 SMS CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 427,00
+												</b>
+											</span>
+											<span>
+												em 3x de
+												<b>
+													R$ 142,00
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 399,00
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Monitor LED 23" IPS widescreen 23MP55HQ Lg CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 679,00
+												</b>
+											</span>
+											<span>
+												em 5x de
+												<b>
+													R$ 135,80
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 599,99
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Projetor multimídia Powerlite S27 Epson CX 1 UN
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 1.709,10
+												</b>
+											</span>
+											<span>
+												em 10x de
+												<b>
+													R$ 179,01
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 1.619,00
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Mouse S/ Fio - Logitech
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												Por:
+												<b>
+													R$ 49,90
+												</b>
+											</span>
+											<span>
+												em 10x de
+												<b>
+													R$ 4,90
+												</b>
+												no cartão
+											</span>
+											<span>
+												ou à vista por
+												<strong>
+													R$ 44,90
+												</strong>
+												<em>
+													no boleto
+												</em>
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											Comprar
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!-- /O V E R L A Y - D E - S A Í D A -->
+	<!-- /K I T - 0 1 -->
+	
+	<!-- K I T - 3 0 -->
+	<!-- O V E R L A Y - D E - S A Í D A -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid rh_tpl_offers gridOverlay">
+			<section class="rh_tpl_kit_overlay_exit active">
+				<h4 class="rh_tpl_title">
+					<strong>
+						Não vá embora agora!
+					</strong>
+					Ofertas com descontos que você não pode perder
+					<a href="#" class="rh_tpl_close">
+						<i class="fa fa-times"></i>
+					</a>
+				</h4>
+				<h3 class="rh_tpl_title">
+					<strong>
+						Lançamentos
+					</strong>
+				</h3>
+				<div class="touchNiced rh_tpl_kit_overlay" data-view="4" data-responsa='{"640":3, "480":2, "340":1}' data-init="true" data-margin="7" data-grid=".rh_tpl_kit_overlay" data-nav="true" data-delay="2500" data-transition="1" data-left="fa fa-chevron-circle-left" data-right="fa fa-chevron-circle-right">
+		            <div class="contentNiced">
+		                <div class="blockNiced">
+		                    <div class="loaderNiced">
+		                        <span></span>
+		                    </div>
+							<ul>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+												CREATINA HARDCORE RELOAD - INTEGRALMÉDICA
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 29,90
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 24,90
+												</strong>
+											</span>
+											<span>
+												em 1x de
+												<b>
+													R$ 24,90
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													100% WHEY GOLD STANDARD - OPTIMUM NUTRITION
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 219,00
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 179,00
+												</strong>
+											</span>
+											<span>
+												em 10x de
+												<b>
+													R$ 17,90
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													BCAPS LEVE 3 PAGUE 2 - GO NUTRITION
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 179,70
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 46,60
+												</strong>
+											</span>
+											<span>
+												em 3x de
+												<b>
+													R$ 17,26
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													BCAA 3:1:1 - 3VS
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 89,90
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 59,31
+												</strong>
+											</span>
+											<span>
+												em 4x de
+												<b>
+													R$ 16,48
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													WHEY ISOLATE + CONCENTRATE ULTRA PREMIUM - GO NUTRITION
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 159,90
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 89,10
+												</strong>
+											</span>
+											<span>
+												em 6x de
+												<b>
+													R$ 16,50
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													SNACK PROTEIN - MAX TITANIUM
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 9,90
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 8,91
+												</strong>
+											</span>
+											<span>
+												em 1x de
+												<b>
+													R$ 8,91
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													PRÉ TREINO T-REX - VITAFOR
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 96,30
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 86,67
+												</strong>
+											</span>
+											<span>
+												em 6x de
+												<b>
+													R$ 16,05
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													ÓLEO DE COCO SPRAY - SS NATURAL
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												de
+												<b>
+													R$ 34,90
+												</b>
+											</span>
+											<span>
+												por
+												<strong>
+													R$ 31,41
+												</strong>
+											</span>
+											<span>
+												em 2x de
+												<b>
+													R$ 17,45
+												</b>
+												no cartão
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy">
+											comprar
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!-- /O V E R L A Y - D E - S A Í D A -->
+	<!-- /K I T - 3 0 -->
+	
+	<!-- K I T - 3 0 -->
+	<!-- F I X E R F O O T E R-->
+	<!-- [C A R R O S S E L] -->
+	
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			R O D A P É - D E - P R O D U T O S
+		</span>
+	</div>
+	
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+				<div class="rh_tpl_grid rh_tpl_fixed_footer" style="display: block; opacity: 1; box-shadow: 0 0 10px rgba(0, 0, 0, .5;">		
+					<section class="rh_tpl_kit_fixed-footer">
+						<span class="rh_tpl_title">
+							<strong> </strong><center><strong>
+								Lançamentos
+							</strong></center>
+							<span class="btn_close"></span>
+						</span>
+				        <div class="touchNiced showNiced" data-view="4" data-responsa='{"550":3, "480":2, "340":1}' data-init="true" data-margin="7" data-grid=".rh_tpl_grid" data-nav="true" data-delay="2500" data-transition="1" data-left="fa fa-chevron-circle-left" data-right="fa fa-chevron-circle-right">
+				            <div class="contentNiced" style="
+		width: calc(100% - 60px);">
+				                <div class="blockNiced" style="width: 9198px; margin-left: -255.5px; transition: none;">
+				                    <div class="loaderNiced">
+				                        <span></span>
+				                    </div>
+									<ul>
+				
+										<li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Kit wireless (teclado/mouse) MK220 Logitech CX 1 UN
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 24,90
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+		height: 30px;
+		    line-height: 30px;
+		    width: calc(90% - 2px);
+		    font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Chromecast 2 Google CX 1 UN
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 179,00
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+		height: 30px;
+		    line-height: 30px;
+		    width: calc(90% - 2px);
+		    font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+														Mouse sem fio preto 1850 U7Z00008 Microsoft CX 1 UN
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 46,60
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+		height: 30px;
+		    line-height: 30px;
+		    width: calc(90% - 2px);
+		    font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+	height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+	background-color: #fff;">
+														<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+	height: 125px;
+	    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+	color: rgb(85, 85, 85);">
+															Roteador + Repetidor wireless 4 portas Dual Band AC 750Mbps DIR-809 D Link CX 1 UN
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 59,31
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+	height: 30px;
+	line-height: 30px;
+	width: calc(90% - 2px);
+	font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+														No-break Station II 800va 6 tomadas 115v 27391 SMS CX 1 UN
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 89,10
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+		height: 30px;
+		    line-height: 30px;
+		    width: calc(90% - 2px);
+		    font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Monitor LED 23" IPS widescreen 23MP55HQ Lg CX 1 UN
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 8,91
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+		height: 30px;
+		    line-height: 30px;
+		    width: calc(90% - 2px);
+		    font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Projetor multimídia Powerlite S27 Epson CX 1 UN
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 86,67
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+													height: 30px;
+													    line-height: 30px;
+													    width: calc(90% - 2px);
+													    font-size: 15px;">
+																								comprar
+																							</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+														Mouse S/ Fio - Logitech
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 31,41
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+		height: 30px;
+		    line-height: 30px;
+		    width: calc(90% - 2px);
+		    font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl" style="
+		height: 125px;
+		    width: 125px;">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Teclado s/ fio - Microsoft 87UT
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span>
+														
+														<b>
+															
+														</b>
+													</span>
+													<span>
+														Por:
+														<strong>
+															R$ 24,90
+														</strong>
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy" style="
+		height: 30px;
+		    line-height: 30px;
+		    width: calc(90% - 2px);
+		    font-size: 15px;">
+													comprar
+												</a>
+											</div>
+										</li>
+								
+								
+									</ul>
+								</div>
+							</div>
+						<div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div><div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left" style="
+		"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div><div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div><div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div></div>
+					</section>
+				</div>
+			</div>
+
+	<script src="js/funcoes_widgets.js"></script>
+	<script src="js/touchNiced_v002.js"></script>
+	<script src="js/tplFnc.js"></script>
+
+</body>
+</html>

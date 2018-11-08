@@ -1,0 +1,37 @@
+#overviewPage .card-produto {
+	height: auto;
+	padding: 0;
+}
+
+#overviewPage .card-produto img {
+	width: 100%;
+	display: block;
+}
+
+#overviewPage .card-produto .card-text {
+	height: 60px;
+	overflow: hidden;
+}
+
+#overviewPage .card-produto .card-title {
+	margin: auto;
+}
+
+#overviewPage .card-produto .card-title small {
+	font-weight: bold;
+	display: block;
+	margin: auto auto 10px auto;
+	font-size: 20px;
+}
+
+#overviewPage .card-produto .card-title .gold {
+	color: gold;
+}
+
+#overviewPage .card-produto .card-title .silver {
+	color: lightgrey;
+}
+
+#overviewPage .card-produto .card-title .bronze {
+	color: brown;
+}

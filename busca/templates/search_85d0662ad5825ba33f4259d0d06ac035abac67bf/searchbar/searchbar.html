@@ -1,0 +1,353 @@
+<?php 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+?>
+
+<input type="hidden" class="__rh-sb-config__"
+	data-page-results="/"
+
+	data-product='
+		<li class="rh-sb-product" data-rh-sku="{sku}">
+			<div class="rh-sb-product-img" alt="{name}">
+				<a href="{link}">
+					<img src="{image}"/>
+				</a>
+			</div>
+			
+			<div class="rh-sb-product-info">
+				<a href="{link}">
+					<span class="rh-sb-product-name">
+						{name}
+					</span>
+					<div class="rh-sb-product-price">
+						{check_price}
+							{case_true}
+								<div class="rh-sb-old-price">
+									de {old_price} por
+								</div>
+								<div class="rh-sb-new-price">
+									{new_price}
+								</div>
+							{case_true}
+
+							{case_false}
+								<div class="rh-sb-new-price">
+									{new_price}
+								</div>
+							{case_false}
+						{check_price}
+					</div>
+					<div class="rh-sb-valor-cooperado"></div>
+					<div class="rh-sb-product-installment">
+						{check_installment}
+							{case_true}
+								{installment_times}x de {installment_price}
+							{case_true}
+
+							{case_false}
+							{case_false}
+						{check_installment}
+					</div>
+				</a>
+
+				<!-- adicionar ao carrinho -->
+				<div class="rh-sb-product-add-to-cart">
+					<div class="rh-sb-add-controls">
+						<span class="rh-sb-decrease"> - </span>
+						<input type="text" class="rh-sb-input-qtt" value="1">
+						<span class="rh-sb-increase"> + </span>
+						<span class="rh-sb-add-button"></span>
+					</div>
+				</div>
+			</div>
+			
+		</li>
+	'
+	data-product-result = '
+		<li class="rh-sb-result-item" data-rh-sku="{sku}">
+			<div class="rh-sb-product-img" alt="{name}">
+				<a href="{link}">
+					<img src="{image}"/>
+				</a>
+			</div>			
+			<div class="rh-sb-product-info">
+				<a href="{link}">
+					<span class="rh-sb-product-name">
+						{name}
+					</span>
+					<div class="rh-sb-product-price">
+						{check_price}
+							{case_true}
+								<div class="rh-sb-old-price">
+									de {old_price} por
+								</div>
+								<div class="rh-sb-new-price">
+									{new_price}
+								</div>
+							{case_true}
+
+							{case_false}
+								<div class="rh-sb-new-price">
+									{new_price}
+								</div>
+							{case_false}
+						{check_price}
+					</div>
+					<div class="rh-sb-valor-cooperado"></div>
+					<div class="rh-sb-product-installment">
+						{check_installment}
+							{case_true}
+								{installment-times}x de {installment-price}
+							{case_true}
+
+							{case_false}
+							{case_false}
+						{check_installment}
+					</div>
+				</a>
+
+				<!-- adicionar ao carrinho -->
+				<div class="rh-sb-product-add-to-cart">
+					<div class="rh-sb-add-controls">
+						<span class="rh-sb-decrease"> - </span>
+						<input type="text" class="rh-sb-input-qtt" value="1">
+						<span class="rh-sb-increase"> + </span>
+						<span class="rh-sb-add-button"></span>
+					</div>
+				</div>
+			</div>			
+		</li>
+	'
+	data-ignore = '["quero comprar","quero","comprar"]'
+
+	data-currency = 'R$'
+
+	data-focus-background = '#000,0.7'
+
+	data-delay='500'
+
+	data-paginate='true'
+
+	data-aditional-js='https://www.roihero.com.br/busca/templates/search_85d0662ad5825ba33f4259d0d06ac035abac67bf/searchbar/aditional_js/rh_coop.min.js'
+
+	data-rh-fixed-links=' [ { "title" : "Nossas Lojas", "link" : "https://www.portalcoop.com.br/nossas-lojas" }, { "title" : "Drogarias", "link" : "https://www.portalcoop.com.br/institucional/drogaria-coop" }, { "title" : "Ajuda e Suporte", "link" : "https://www.portalcoop.com.br/ajuda-suporte" }, { "title" : "Trabalhe Conosco", "link" : "https://www.portalcoop.com.br/institucional/trabalhe-conosco/" } ] '
+
+	data-rh-fixed-categories='[{"title":"Ofertas","link":"https://www.portalcoop.com.br/busca/?fq=H:139"},{"title":"Mercearia","link":"https://www.portalcoop.com.br/mercearia"},{"title":"Bebidas","link":"https://www.portalcoop.com.br/bebidas"},{"title":"Açougue","link":"https://www.portalcoop.com.br/acougue"}]'
+
+	data-rh-custom-results='[
+		{
+			"terms" : [
+				"SANTO ANDRE",
+				"SAO BERNARDO DO CAMPO",
+				"SAO JOSE DOS CAMPOS",
+				"SAO CAETANO DO SUL",
+				"RIBEIRAO PIRES",
+				"MAUA","DIADEMA",
+				"SOROCABA",
+				"PIRACICABA",
+				"TATUI",
+				"LOJAS",
+				"NOSSAS LOJAS",
+				"ENDEREÇO",
+				"ENDERESSO",
+				"ENDERESO",
+				"BAIRROS",
+				"CENTRO",
+				"PQ.NACOES",
+				"SANTANA",
+				"VILA BARCELONA",
+				"CAMPESTRE",
+				"VL.BOCAINA",
+				"PQ.ERASMO ASSUNCAO",
+				"VILA LUZITA",
+				"VILA LINDA",
+				"JARDIM MORUMBI",
+				"PINHEIRINHO",
+				"RUDGE RAMOS",
+				"VALINHO",
+				"BAIRRO DOS CASAS",
+				"VILA CONCEICAO",
+				"ITAVUVU",
+				"ARVORE GRANDE",
+				"MORUMBI",
+				"BAETA NEVES",
+				"JARDIM MILENA",
+				"VILA PALMARES",
+				"UTINGA",
+				"NOVO HORIZONTE",
+				"BOCAINA",
+				"VILA AMERICA",
+				"ASSUNCAO",
+				"HOMERO THON",
+				"DEMARCHI",
+				"JARDIM DO ESTADIO",
+				"CIDADE SÃO JORGE",
+				"PARQUE INDUSTRIARIO",
+				"PARQUE SÃO LUCAS",
+				"ALVES DIAS",
+				"VILA VALPARAISO",
+				"PQ DOS EUCALIPTOS",
+				"ALTO SANDRO ANRE",
+				"OSVALDO CRUZ",
+				"BAIRRO JARDIM",
+				"PQ.NAÇÕES",
+				"VILA LUZITA",
+				"VILA LINDA",
+				"VILA FALCHI",
+				"QUEIROS",
+				"PARQUE DAS NACOES",
+				"JOAQUIM NABUCO",
+				"SANTANA",
+				"JOANA ANGELICA",
+				"INDUSTRIAL",
+				"PERIMETRAL",
+				"CAPUAVA",
+				"VILA LUZITA",
+				"CARIJOS",
+				"BARAO DE MAUA",
+				"MORUMBI",
+				"PEREIRA",
+				"BARRETO",
+				"RUDGE RAMOS",
+				"ONZE DE AGOSTO",
+				"CAFE FILHO",
+				"DIADEMA",
+				"ITAVUVU",
+				"ARVORE GRANDE",
+				"VOLLET SACHS",
+				"VIANAS",
+				"JARDIM MILENA",
+				"PALMARES",
+				"UTINGA",
+				"ITAPARK",
+				"DOM PEDRO",
+				"CEL SEABRA",
+				"RIBEIRAO CENTRO",
+				"HUMBERTO ALENCAR",
+				"GIOVANNI PIRELLI",
+				"ECOMMERCE ID",
+				"DROG. DJALMA DUTRA",
+				"DROG. DEMARCHI",
+				"DROG. GETULIO VARGAS",
+				"DROG. HORTENCIAS",
+				"DROG. SAO PAULO",
+				"DROG. QUEIROS FILHO",
+				"DROG. REGENTE FEIJO",
+				"DROG.ORATORIO",
+				"DROG.CASTELO BRANCO",
+				"DROG.ATLANTICA",
+				"DROG.P ALMEIDA",
+				"DROG. EUGENIO SALERNO",
+				"DROG. 15 NOVEMBRO",
+				"DROG SEN FLAQUER",
+				"DROG M FRANCISCO",
+				"DROG INHAUMA",
+				"DROG VISCONDEDROG BANDEIRAS",
+				"QUEIROS",
+				"PARQUE DAS NACOES",
+				"JOAQUIM NABUCO",
+				"SANTANA",
+				"JOANA ANGELICA",
+				"INDUSTRIAL",
+				"RIBEIRAO PIRES",
+				"PERIMETRAL",
+				"CAPUAVA",
+				"VILA LUZITA",
+				"CARIJOS",
+				"BARAO DE MAUA",
+				"MORUMBI",
+				"PEREIRA BARRETO",
+				"RUDGE RAMOS",
+				"ONZE DE AGOSTO",
+				"CAFE FILHO",
+				"DIADEMA",
+				"ITAVUVU",
+				"ARVORE GRANDE",
+				"VOLLET SACHS",
+				"VIANAS",
+				"JARDIM MILENA",
+				"PALMARES",
+				"UTINGA",
+				"ITAPARK",
+				"POSTO SANTANA",
+				"POSTO ONZE DE AGOSTO",
+				"PANIFICACAO"
+			],
+			"link" : "https://www.portalcoop.com.br/nossas-lojas",
+			"title" : "Clique aqui para ver as nossas lojas"
+		}
+	]'
+>
+<!-- limite máximo do dropdown é 24 -->
+<div class="__rh-sb-main__ rh-sb-main-container">
+	<!-- input -->
+	<div class="rh-sb-input-container">
+		<input class="__rh-sb-input__ rh-sb-input" type="text" autocomplete="false" data-rh-searchbar="{searchbar-number}" placeholder="O que você está procurando?"><!-- js -->
+		<span class="__rh-sb-search__ rh-sb-button" data-rh-searchbar="{searchbar-number}">Pesquisar</span><!-- js -->
+		<div class="__rh-sb-dropdown__"></div>
+		<span class="rh-sb-close-dropdown" data-rh-role="dropdown[close]"></span>
+	</div>
+
+	<!-- Overlay -->
+	<div class="__rh-sb-overlay__ rh-sb-overlay" data-rh-searchbar="{searchbar-number}"><!-- js -->
+		<div class="rh-sb-overlay-dialog">
+			<span class="__rh-sb-closeOverlay__ rh-sb-overlay-close"></span><!-- js -->
+			<div class="rh-sb-overlay-header">
+				<div class="rh-sb-overlay-logo"></div>
+				<div class="rh-sb-order-by">
+					<span></span>
+					<ul id="__rh-sb-orderBy__" class="rh-sb-overlay-order-by">
+						<li class="rh-sb-order-by-option" data-rh-role="overlay[orderByTopSellers]">Mais vendidos</li>
+						<li class="rh-sb-order-by-option" data-rh-role="overlay[orderByLowestPrice]">Menor preço</li>
+						<li class="rh-sb-order-by-option" data-rh-role="overlay[orderByHighestPrice]">Maior preço</li>
+					</ul>
+				</div>
+			</div>
+
+			<span class="rh-sb-search-word">Resultado aproximado para: <span data-rh-bind="overlay[search-word]"></span></span><!-- js -->
+
+			<div class="rh-sb-overlay-shelf">
+				<!-- slider -->
+				<div class="rh-sb-slider" 
+				data-rh-role="roi-hero-searchbar-slider" 
+				data-view="4" 
+				data-transition="0.45" 
+				data-edge-padding="0" 
+				data-responsive=
+				'{		
+					"0": {
+						"items": 1,
+						"controls": true
+					},
+
+					"540": {
+						"items": 2,
+						"controls": true
+					},	
+
+					"768": {
+						"items": 3,
+						"controls": true
+					},
+					
+					"1000": {
+						"items": 4,
+						"controls": true
+					}
+				}'
+				>
+					<div class="rh-sb-slider-container">
+						<ul class="__rh-sb-shelfResults__ rh-sb-slider-content" data-rh-role="searchbar-slider-slide"></ul>
+					</div>
+				</div>
+				<!-- slider -->
+			</div>
+			<div class="rh-sb-related-searchs">
+				<span>Pesquisas Relacionadas:</span>
+				<ul class="rh-sb-related-list" data-rh-role="overlay[relatedSearchs]">
+				</ul>
+			</div>
+			<span class="rh-sb-goto-results" data-rh-role="overlay[gotoResultsPage]">VEJA TODOS OS PRODUTOS</span>
+		</div>
+	</div>
+</div>

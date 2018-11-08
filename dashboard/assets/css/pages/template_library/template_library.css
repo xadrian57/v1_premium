@@ -1,0 +1,71 @@
+#templateLibraryPage .template-list {
+	text-align: center;
+}
+
+#templateLibraryPage .template-list .template-card {
+	display: inline-block;
+	padding: 15px;
+	margin: auto 0.5% 30px 0.5%;
+	border: 1px solid lightgrey;
+	min-width: 230px;
+	width: 23%;
+	transition: 0.3s;
+}
+
+#templateLibraryPage .template-list .template-card.active,
+#templateLibraryPage .template-list .template-card:hover {
+    box-shadow: 1px 3px 9px 0px;
+}
+
+#templateLibraryPage .template-list .template-card figure {
+	position: relative;
+    min-height: 275px;
+    display: flex;
+    align-items: center;
+}
+
+#templateLibraryPage .template-list .template-card figure img {
+	width: 100%;
+	filter: blur(1px);
+}
+
+#templateLibraryPage .template-list .template-card figure figcaption {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    padding: 10px 0;
+    line-height: 100%;
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffffff;
+    border-radius: 0 90px;
+    background: #5acfd1;
+    text-shadow: 1px 1px 5px black;
+    box-shadow: 2px 2px 2px #368082;
+    transform: rotate(-40deg);
+}
+
+#templateLibraryPage .template-list .template-card .btn {
+	width: 100%;
+	margin: 15px auto auto auto;
+}
+
+#templateLibraryPage .preview {
+	text-align: center;
+}
+
+#templateLibraryPage .preview iframe {
+	width: 100%;
+	min-height: 600px;
+	overflow-x: hidden;
+}
+
+#templateLibraryPage .preview .goTop {
+	margin: 30px auto auto auto;
+}

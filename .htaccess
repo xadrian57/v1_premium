@@ -1,0 +1,19 @@
+RewriteOptions inherit
+
+RewriteEngine On
+
+RewriteRule ^inicio$ index.html [QSA,L,NC]
+RewriteRule ^login$ login.php [QSA,L,NC]
+RewriteRule ^cadastro$ cadastro.html [QSA,L,NC]
+RewriteRule ^recuperar$ recuperar_senha.html [QSA,L,NC]
+RewriteRule ^confirmacao$ confirmacao.html [QSA,L,NC]
+
+Addtype application/x-httpd-php .inc 
+Options -Indexes
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Defina o pacote “ea-php56” como a linguagem padrão de programação “PHP”.
+<IfModule mime_module>
+  AddType application/x-httpd-ea-php56 .php .php5 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit

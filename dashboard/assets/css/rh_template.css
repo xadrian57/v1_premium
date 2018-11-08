@@ -1,0 +1,111 @@
+/* reset */
+
+.rh_template * {
+	border:0;
+	margin:0;
+	padding:0;
+	text-decoration:none;
+}
+
+/* content */
+
+.rh_template{
+	border: 1px solid #363636;
+	text-transform: uppercase;
+}
+
+.clearAfter:after{
+	content:'';
+	clear:both;
+	display:block;
+}
+
+.rh_template .rh_title{
+	width:100%;
+	font-size: 23px;
+	color:#363636;
+	display:block;
+	font-weight: 400;
+	padding: 10px 15px 20px;
+	float:left;
+}
+
+.rh_template .rh_tplProduct{
+	width: 50%;
+	font-size:20px;
+	color:#363636;
+	display:block;
+	clear: both;
+	text-align:  center;
+	margin: 0 auto 20px;
+	border: 1px solid #363636;
+}
+
+.rh_template .rh_tplProduct figure{
+	width: 90%;
+	display: block;
+	margin: 20px auto;
+	position:  relative;
+	border: 1px solid #363636;
+}
+
+.rh_template .rh_tplProduct figure img{
+	width: 100%;
+	display:block;
+}
+
+.rh_template .rh_tplProduct figure figcaption{
+	font-size: 13px;
+	color: #FFFFFF;
+	background: #363636;
+	display:block;
+	position: absolute;
+	left: 0;
+	padding: 6px 10px;
+	top: 0;
+}
+
+.rh_template .rh_tplProduct .rh_tplProductName{
+	width:100%;
+	font-size: 20px;
+	color:#363636;
+	display:block;
+	float: left;
+	font-weight:  400;
+	margin: 0 0 10px;
+}
+
+.rh_template .rh_tplProduct .rh_tplValue{
+	width:100%;
+	font-size: 17px;
+	color:#363636;
+	display:block;
+	float:left;
+}
+
+.rh_template .rh_tplProduct .rh_tplValue:first-of-type:before{
+	content:'De ';
+	display:inline-block;
+}
+
+.rh_template .rh_tplProduct .rh_tplValue:last-of-type:before{
+	content:'Por ';
+	display:inline-block;
+}
+
+.rh_template .rh_tplProduct .rh_tplBuy{
+	font-size:20px;
+	color: #ffffff;
+	display: inline-block;
+	clear: left;
+	background: #363636;
+	padding: 10px 20px;
+	border: 1px solid #363636;
+	text-decoration: none;
+	transition:background 0.4s;
+	margin: 10px 0;
+}
+
+.rh_template .rh_tplProduct .rh_tplBuy:hover{
+	opacity:0.8;
+}

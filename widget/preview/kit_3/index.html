@@ -1,0 +1,2407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1"/>
+	<title>Document</title>
+
+	<!-- kit_test slider -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="css/styles.css" class="changeUrl"/>
+	<!-- <link rel="stylesheet" href="css/touchNiced_v001.css" class="changeUrl"/> -->
+	<!-- /kit_test slider -->
+	<script src="js/funcoes_widgets.js"></script>
+	<script src="js/touchNiced_v002.js"></script>
+</head>
+<body>
+
+	<!--
+		[ T E M P L A T E S C R E A T E ]
+
+		KIT NAME [default class for templates by this KIT]
+		"rh_tpl_kit_test"
+
+		TEMPLATE NAME [unique class by template]
+		"rh_tpl_kit_test_slider"
+
+		::::::::::::::::::::::::::::::
+		HTML [important]
+
+		DIV class "KIT NAME"
+			SECTION class "TEMPLATE NAME"
+				your content
+			/SECTION
+		/DIV
+
+		///
+		<div class="rh_tpl_kit_test">
+			<section class="rh_tpl_kit_test_slider">
+				your content here please
+			</section>
+		</div>
+
+		onde a class "rh_tpl_kit_test" esta relacionada ao KIT
+		todos os templates dentro desse kit deverá conter essa classe mãe
+
+		onde a class "rh_tpl_kit_test_slider" esta relacionado ao TEMPLATE
+		cada template terá a sua classe unica
+		::::::::::::::::::::::::::::::
+
+	-->
+
+	<!-- CHANGE STYLE -->
+	<!-- <div class="rh_tpl_info_box rh_tpl_changes">
+		<label>
+			Change COLOR
+			<i>
+				featured text and buy button
+			</i>
+		</label>
+		<input type="color" class="changeColor">
+		<br/>
+		<label>
+			Change BACKGROUND
+			<i>
+				block
+			</i>
+		</label>
+		<input type="color" class="changeBackground">
+		<br/>
+	</div>
+
+	<script>
+		var Wapp = Wapp || {};
+
+		Wapp.Changes = {};
+
+		(function(win, doc, vars) {
+			'use strict';
+
+			Wapp.Changes.Init = function() {
+				//console.log('GO!');
+
+				Wapp.Changes.Listen();
+			};
+
+			Wapp.Changes.Listen = function() {
+				doc.getElementsByClassName('changeColor')[0] .addEventListener('change', Wapp.Changes.Event, true);
+				doc.getElementsByClassName('changeBackground')[0] .addEventListener('change', Wapp.Changes.Event, true);
+			};
+
+			Wapp.Changes.Event = function(e) {
+				//document.addEventListener('change', )
+				console.log('changed', e.target.value)
+
+				var
+					target = e.target,
+					css = '',
+					head  = doc.getElementsByTagName('head')[0],
+					style = doc.createElement('style'),
+					styleCls = doc.getElementsByClassName('rh_style_tplmk')[0];
+
+				if (target.classList.contains('changeColor')) {
+					// CHANGE COLOR
+					css += '.rh_tpl_kit_30 .rh_tpl_value span strong{';
+						css += 'color:' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_buy{';
+						css += 'background:' + target.value + ';';
+						css += 'border:1px solid ' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_buy:hover{';
+						css += 'color:' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_block.rh_tpl_text_buytogether strong{';
+						css += 'color:' + target.value + ';';
+					css += '}';
+					css += '.rh_tpl_kit_30 .rh_tpl_kit_overlay_exit h4.rh_tpl_title{';
+						css += 'background:' + target.value + ';';
+					css += '}';
+
+				} else {
+					// CHANGE BACKGROUND
+					css += '.rh_tpl_kit_30 .rh_tpl_block{';
+						css += 'background:' + target.value + ';';
+					css += '}';
+				}
+
+				if (styleCls) {
+					styleCls.appendChild(doc.createTextNode(css));
+
+				} else {
+					style.type = 'text/css';
+					style.classList.add('rh_style_tplmk');
+
+					head.appendChild(style);
+
+					styleCls = doc.getElementsByClassName('rh_style_tplmk')[0];
+					styleCls.appendChild(doc.createTextNode(css));
+				}
+			};
+
+			doc.addEventListener("DOMContentLoaded", Wapp.Changes.Init, true);
+
+		}(window, document, 'Private'));
+
+		//rh_tpl_changes
+	</script> -->
+
+	<!-- INFO -->
+	<div class="rh_tpl_info_box">
+		KIT:
+		<strong>
+			K I T - 0 3
+		</strong>
+		<br/>
+		TPL :
+		<span>
+			C A R R O S S E L
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- C A R R O S S E L -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_carrossel">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Lançamentos
+					</strong>
+				</h3>
+		        <div class="touchNiced" data-view="4" data-responsa='{"550":3, "480":2, "340":1}' data-init="true" data-margin="7" data-grid=".rh_tpl_grid" data-nav="true" data-delay="2500" data-transition="1" data-left="fa fa-chevron-circle-left" data-right="fa fa-chevron-circle-right">
+		            <div class="contentNiced">
+		                <div class="blockNiced">
+		                    <div class="loaderNiced">
+		                        <span></span>
+		                    </div>
+							<ul>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 12.999,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 9.999,99
+												</strong>
+											</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 999,00
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 2.499,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 2.299,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 229,99
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 4.210,00
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 3.999,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 421,00
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													iPhone 8 Cinza Espacial 64GB Tela 4.7" IOS 11 4G Wi-Fi Câmera 12MP - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 3.599,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 3.399,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 339,99
+												</b>
+												sem juros
+										
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Macbook Pro MPTR2BZ/A com Intel Core i7 Quad Core 16GB 256GB SSD Tela 15.4" Cinza - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 15.599,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 13.999,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 3.999,99
+												</b>
+												sem juros
+										
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Notebook Dell Inspiron i15-7560-A30S Intel Core i7 16GB ((GeForce 940MX de 4GB)) 1TB 128GB SSD Tela Full HD 15,6" Windows 10 - Prata
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 4.499,00
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 4.099,00
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 409,90
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Smartphone Motorola Moto G5S Plus Dual Chip Android 7.1.1 Nougat Tela 5.5" Snapdragon 625 32GB 4G 13MP Câmera Dupla - Platinum
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 1.799,00
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 1.399,99
+												</strong>
+												</span>
+												<span>
+												ou até 0x de
+												<b>
+													R$ 00,00
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Game - God of War III Remasterizado - PS4
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 69,90
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 64,90
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 6,49
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!-- /C A R R O S S E L -->
+	<!-- /K I T - 3 0 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			P R A T E L E I R A
+			<b>
+				[4 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- B L O C O - S I M P L E S -->
+	<!-- [4 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_simple_block rh_tpl_kit_simple_block_4">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Ofertas especiais
+					</strong>
+				</h3>
+				<ul>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 12.999,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 9.999,99
+									</strong>
+								</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 999,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 2.499,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 2.299,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 229,99
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 4.210,00
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 3.999,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 421,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										iPhone 8 Cinza Espacial 64GB Tela 4.7" IOS 11 4G Wi-Fi Câmera 12MP - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 3.599,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 3.399,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 339,99
+									</b>
+									sem juros
+							
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- [4 produtos] -->
+	<!-- /B L O C O - S I M P L E S -->
+	<!-- /K I T - 3 0 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			P R A T E L E I R A - D U P L A
+			<b>
+				[8 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- B L O C O - S I M P L E S -->
+	<!-- [8 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_simple_block">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Ofertas especiais
+					</strong>
+				</h3>
+				<ul>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 12.999,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 9.999,99
+									</strong>
+								</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 999,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 2.499,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 2.299,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 229,99
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 4.210,00
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 3.999,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 421,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										iPhone 8 Cinza Espacial 64GB Tela 4.7" IOS 11 4G Wi-Fi Câmera 12MP - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 3.599,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 3.399,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 339,99
+									</b>
+									sem juros
+							
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Macbook Pro MPTR2BZ/A com Intel Core i7 Quad Core 16GB 256GB SSD Tela 15.4" Cinza - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 15.599,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 13.999,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 3.999,99
+									</b>
+									sem juros
+							
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Notebook Dell Inspiron i15-7560-A30S Intel Core i7 16GB ((GeForce 940MX de 4GB)) 1TB 128GB SSD Tela Full HD 15,6" Windows 10 - Prata
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 4.499,00
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 4.099,00
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 409,90
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Smartphone Motorola Moto G5S Plus Dual Chip Android 7.1.1 Nougat Tela 5.5" Snapdragon 625 32GB 4G 13MP Câmera Dupla - Platinum
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 1.799,00
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 1.399,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 139,99
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+									Game - God of War III Remasterizado - PS4
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 69,90
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 64,90
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 6,49
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- [8 produtos] -->
+	<!-- /B L O C O - S I M P L E S -->
+	<!-- /K I T - 3 0 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			C O M P R E - J U N T O
+			<b>
+				[3 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- B U Y T O G E T H E R -->
+	<!-- [3 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_buytogether">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Compre junto
+					</strong>
+				</h3>
+				<ul>
+					<li class="rh_tpl_block rh_tpl_after_more" style="height: 450px;">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 12.999,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 9.999,99
+									</strong>
+								</span>
+									<span style="display:none;">
+									ou até 10x de
+									<b>
+										R$ 999,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+						</div>
+						
+					</li>
+					<li class="rh_tpl_block rh_tpl_after_more" style="height: 450px;">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 2.499,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 2.299,99
+									</strong>
+									</span>
+									<span style="display:none;">
+									ou até 10x de
+									<b>
+										R$ 229,99
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+						</div>
+						<i class="fas fa-plus">
+						</i>
+					</li>
+					<li class="rh_tpl_block rh_tpl_after_equal" style="height: 450px;">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 4.210,00
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 3.999,99
+									</strong>
+									</span>
+									<span style="display:none;">
+									ou até 10x de
+									<b>
+										R$ 421,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+						</div>
+						<i class="fas fa-plus">
+						</i>
+					</li>
+					<li class="rh_tpl_block rh_tpl_text_buytogether">
+						<p class="rh_tpl_text">
+							<strong>
+								Você está levando esses 3 produtos
+							</strong>
+							<ul>
+								<li>
+									IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+								</li><br>
+								<li>
+									Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+								</li><br>
+								<li>
+									MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+								</li><br>
+							</ul>
+						</p>
+						<p class="rh_tpl_value">
+							<span>
+								De
+								<b>
+									R$ 16.499,97
+								</b>
+								Por:
+							</span>
+							<span>
+								
+								<strong>
+									R$ 15.999,99
+								</strong>
+								</span>
+								<span>
+								ou até 10x de
+								<b>
+									R$ 1.599,99
+								</b>
+								sem juros
+							
+							</span>
+						</p>
+						<a href="#" class="rh_tpl_buy_2">
+							<i class="fas fa-shopping-basket"></i>
+						</a>
+						<a href="#" class="rh_tpl_buy">
+							Compre agora!
+						</a>
+						<i class="fas fa-equal">
+						</i>
+					</li>
+					
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- /[3 produtos] -->
+	<!-- /B U Y T O E T H E R -->
+	<!-- /K I T - 3 0 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			 C O M P R E - J U N T O
+			<b>
+				[2 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- B U Y T O G E T H E R -->
+	<!-- [2 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_buytogether">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Compre junto
+					</strong>
+				</h3>
+				<ul class="rh_tpl_block_3">
+					<li class="rh_tpl_block rh_tpl_after_more">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 12.999,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 9.999,99
+									</strong>
+								</span>
+									<span style="display:none;">
+									ou até 10x de
+									<b>
+										R$ 999,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+						</div>
+					</li>
+					<li class="rh_tpl_block rh_tpl_after_equal">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 2.499,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 2.299,99
+									</strong>
+									</span>
+									<span style="display:none;">
+									ou até 10x de
+									<b>
+										R$ 229,99
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+						</div>
+						<i class="fas fa-plus">
+						</i>
+					</li>
+					<li class="rh_tpl_block rh_tpl_text_buytogether">
+						<p class="rh_tpl_text">
+							<strong>
+								Você está levando esses 2 produtos
+							</strong>
+							<ul>
+								<li>
+									IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+								</li><br>
+								<li>
+									Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+								</li><br>
+							</ul>
+						</p>
+						<p class="rh_tpl_value">
+							<span>
+								De
+								<b>
+									R$ 12.499,98
+								</b>
+								Por:
+							</span>
+							<span>
+								
+								<strong>
+									R$ 11.999,99
+								</strong>
+								</span>
+								<span>
+								ou até 10x de
+								<b>
+									R$ 1.199,99
+								</b>
+								sem juros
+							
+							</span>
+						</p>
+						<a href="#" class="rh_tpl_buy_2">
+							<i class="fas fa-shopping-basket"></i>
+						</a>
+						<a href="#" class="rh_tpl_buy">
+							Compre agora!
+						</a>
+						<i class="fas fa-equal">
+						</i>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- /[2 produtos] -->
+	<!-- /B U Y T O E T H E R -->
+	<!-- /K I T - 3 0 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			O F E R T A - L I M I T A D A
+			<b>
+				[1 product]
+			</b>
+		</span>
+	</div>
+	<br><br>
+
+	<!-- K I T - 3 0 -->
+	<!-- O F F E R S L I M I T E D -->
+	<!-- [1 product] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid rh_tpl_offers">
+			<a href="#" class="rh_tpl_kit_offerslimited_open">
+				<i class="fa fa-bell-o"></i>
+				Oferta da hora
+			</a>
+			<section class="rh_tpl_kit_offerslimited">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Oferta limitada
+					</strong>
+				</h3>
+				<a href="#" class="rh_tpl_kit_offerslimited_close">
+					Fechar
+					<b>
+						x
+					</b>
+				</a>
+				<ul>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span>
+									De
+									<b>
+										R$ 12.999,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 9.999,99
+									</strong>
+								</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 999,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<a href="#" class="rh_tpl_buy_2">
+								<i class="fas fa-shopping-basket"></i>
+							</a>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	
+	<!-- [1 product] -->
+	<!-- O F F E R S L I M I T E D -->
+	<!-- /K I T - 3 0 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			T O T E M
+			<b>
+				[1 produtos]
+			</b>
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- O F F E R S L I M I T E D -->
+	<!-- [3 produtos] -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid">
+			<section class="rh_tpl_kit_offerslimited fix rh_tpl_relative">
+				<h3 class="rh_tpl_title">
+					<strong>
+						Ofertas limitadas
+					</strong>
+				</h3>
+				<ul class="rh_tpl_kit_show_three">
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+						<p class="rh_tpl_value">
+							<span style="display:none;">
+								De
+								<b>
+									R$ 12.999,99
+								</b>
+								Por:
+							</span>
+							<span>
+								
+								<strong>
+									R$ 9.999,99
+								</strong>
+							</span>
+								<span>
+								ou até 10x de
+								<b>
+									R$ 999,00
+								</b>
+								sem juros
+							
+							</span>
+						</p>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span style="display:none;">
+									De
+									<b>
+										R$ 2.499,99
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 2.299,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 229,99
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+						</div>
+					</li>
+					<li class="rh_tpl_block">
+						<div>
+							<a href="#" title="Nome do produto descrição marca">
+								<figure>
+									<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+									<figcaption class="rh_tpl_prod_name">
+										MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+									</figcaption>
+								</figure>
+							</a>
+							<p class="rh_tpl_value">
+								<span style="display:none;">
+									De
+									<b>
+										R$ 4.210,00
+									</b>
+									Por:
+								</span>
+								<span>
+									
+									<strong>
+										R$ 3.999,99
+									</strong>
+									</span>
+									<span>
+									ou até 10x de
+									<b>
+										R$ 421,00
+									</b>
+									sem juros
+								
+								</span>
+							</p>
+							<i class="fas fa-shopping-basket"></i>
+							<a href="#" class="rh_tpl_buy">
+								Compre agora!
+							</a>
+						</div>
+					</li>
+				</ul>
+			</section>
+		</div>
+	</div>
+	<!-- [3 produtos] -->
+	<!-- O F F E R S L I M I T E D -->
+	<!-- /K I T - 3 0 -->
+
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			N Ã O - V Á - E M B O R A
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- O V E R L A Y - D E - S A Í D A -->
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+		<div class="rh_tpl_grid rh_tpl_offers gridOverlay">
+			<section class="rh_tpl_kit_overlay_exit active">
+				<h4 class="rh_tpl_title">
+					<strong>
+						Não vá embora!
+					</strong>
+					Ofertas exclusivas e por tempo limitado não perca
+					<a href="#" class="rh_tpl_close">
+						<i class="fa fa-times"></i>
+					</a>
+				</h4>
+				<h3 class="rh_tpl_title" style="display:none;">
+					<strong>
+						Lançamentos
+					</strong>
+				</h3>
+				<div class="touchNiced rh_tpl_kit_overlay" data-view="4" data-responsa='{"640":3, "480":2, "340":1}' data-init="true" data-margin="7" data-grid=".rh_tpl_kit_overlay" data-nav="true" data-delay="2500" data-transition="1" data-left="fa fa-chevron-circle-left" data-right="fa fa-chevron-circle-right">
+		            <div class="contentNiced">
+		                <div class="blockNiced">
+		                    <div class="loaderNiced">
+		                        <span></span>
+		                    </div>
+							<ul>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 12.999,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 9.999,99
+												</strong>
+											</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 999,00
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 2.499,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 2.299,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 229,99
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 4.210,00
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 3.999,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 421,00
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													iPhone 8 Cinza Espacial 64GB Tela 4.7" IOS 11 4G Wi-Fi Câmera 12MP - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 3.599,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 3.399,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 339,99
+												</b>
+												sem juros
+										
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Macbook Pro MPTR2BZ/A com Intel Core i7 Quad Core 16GB 256GB SSD Tela 15.4" Cinza - Apple
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 15.599,99
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 13.999,99
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 3.999,99
+												</b>
+												sem juros
+										
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Notebook Dell Inspiron i15-7560-A30S Intel Core i7 16GB ((GeForce 940MX de 4GB)) 1TB 128GB SSD Tela Full HD 15,6" Windows 10 - Prata
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 4.499,00
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 4.099,00
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 409,90
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Smartphone Motorola Moto G5S Plus Dual Chip Android 7.1.1 Nougat Tela 5.5" Snapdragon 625 32GB 4G 13MP Câmera Dupla - Platinum
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 1.799,00
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 1.399,99
+												</strong>
+												</span>
+												<span>
+												ou até 0x de
+												<b>
+													R$ 00,00
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+								<li class="rh_tpl_block">
+									<div>
+										<a href="#" title="Nome do produto descrição marca">
+											<figure>
+												<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl"/>
+												<figcaption class="rh_tpl_prod_name">
+													Game - God of War III Remasterizado - PS4
+												</figcaption>
+											</figure>
+										</a>
+										<p class="rh_tpl_value">
+											<span>
+												De
+												<b>
+													R$ 69,90
+												</b>
+												Por:
+											</span>
+											<span>
+												
+												<strong>
+													R$ 64,90
+												</strong>
+												</span>
+												<span>
+												ou até 10x de
+												<b>
+													R$ 6,49
+												</b>
+												sem juros
+											
+											</span>
+										</p>
+										<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+										<a href="#" class="rh_tpl_buy">
+											Compre agora!
+										</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+	<!-- /O V E R L A Y E X I T -->
+	<!-- /K I T - 3 0 -->
+	
+	<!-- INFO -->
+	<hr class="rh_tpl_info_box_line"/>
+	<div class="rh_tpl_info_box">
+		TPL :
+		<span>
+			R O D A P É - D E - P R O D U T O S
+		</span>
+	</div>
+
+	<!-- K I T - 3 0 -->
+	<!-- F I X E R F O O T E R-->
+	<!-- [C A R R O S S E L] -->
+	
+	<div class="rh_tpl_kit_30 rh_tpl_reset">
+				<div class="rh_tpl_grid rh_tpl_fixed_footer" style="display: block; opacity: 1;">		
+					<section class="rh_tpl_kit_fixed-footer">
+						<span class="rh_tpl_title">
+							<strong> </strong><center><strong>
+								FIXED FOOTER
+							</strong></center>
+							<span class="btn_close"></span>
+						</span>
+				        <div class="touchNiced showNiced" data-view="4" data-responsa='{"550":3, "480":2, "340":1}' data-init="true" data-margin="7" data-grid=".rh_tpl_grid" data-nav="true" data-delay="2500" data-transition="1" data-left="fa fa-chevron-circle-left" data-right="fa fa-chevron-circle-right">
+				            <div class="contentNiced" style="
+		width: calc(100% - 60px);">
+				                <div class="blockNiced" style="width: 9198px; margin-left: -255.5px; transition: none;">
+				                    <div class="loaderNiced">
+				                        <span></span>
+				                    </div>
+									<ul>
+				
+										<li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 9.999,99
+														</strong>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 999,99
+														</b>
+														sem juros
+										
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_2.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Ipad 32GB Wi-Fi Tela 9,7" Câmera 8MP Dourado Bra- Apple
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 2.299,99
+														</strong>
+													</span>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 229,99
+														</b>
+														sem juros
+										
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+											<i class="fas fa-shopping-basket"></i>
+										</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_3.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+														MacBook Air MQD32BZ/A com Intel Core i5 Dual Core 8GB 128GB SSD Tela 13" Prata - Apple
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													
+													
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 3.999,99
+														</strong>
+													</span>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 399,99
+														</b>
+														sem juros
+										
+													</span>
+													
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+	height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+	background-color: #fff;">
+														<img src="img/product_4.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+	color: rgb(85, 85, 85);">
+															iPhone 8 Cinza Espacial 64GB Tela 4.7" IOS 11 4G Wi-Fi Câmera 12MP - Apple
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 3.399,99
+														</strong>
+													</span>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 339,99
+														</b>
+														sem juros
+										
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_5.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Macbook Pro MPTR2BZ/A com Intel Core i7 Quad Core 16GB 256GB SSD Tela 15.4" Cinza - Apple
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 13.999,99
+														</strong>
+													</span>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 1.399,99
+														</b>
+														sem juros
+										
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_6.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Notebook Dell Inspiron i15-7560-A30S Intel Core i7 16GB ((GeForce 940MX de 4GB)) 1TB 128GB SSD Tela Full HD 15,6" Windows 10 - Prata
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 4.099,00
+														</strong>
+													</span>
+												</span>
+													<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+													ou até 10x de
+													<b>
+														R$ 409,00
+													</b>
+													sem juros
+									
+												</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_7.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Smartphone Motorola Moto G5S Plus Dual Chip Android 7.1.1 Nougat Tela 5.5" Snapdragon 625 32GB 4G 13MP Câmera Dupla - Platinum
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 1.499,99
+														</strong>
+													</span>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 149,99
+														</b>
+														sem juros
+										
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+																								Compre agora!
+																							</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_1.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															IMac Retina 5K MNEA2BZ/A com Intel Core i5 Quad Core 8GB 1TB 27'' Prata - Apple
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 9.999,99
+														</strong>
+													</span>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 999,99
+														</b>
+														sem juros
+										
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li><li class="rh_tpl_block" style="width: 241.5px; margin-left: 7px; margin-right: 7px;">
+											<div style="
+		height: 200px;">
+												<a href="#" title="Nome do produto descrição marca">
+													<figure style="
+		background-color: #fff;">
+														<img src="img/product_8.jpg" alt="Nome do produto descrição marca" class="changeUrl">
+														<figcaption class="rh_tpl_prod_name" style="
+		color: rgb(85, 85, 85);">
+															Game - God of War III Remasterizado - PS4
+														</figcaption>
+													</figure>
+												</a>
+												<p class="rh_tpl_value">
+													<span style="height: 20px;">
+														
+														<strong style="height: 20px;
+color: rgb(0, 174, 239); font-size: 20px !important; line-height: 100%; display: block; text-align: center;">
+															R$ 64,90
+														</strong>
+													</span>
+													</span>
+														<span style="color: black; text-align: center; width: 200px; margin-left: auto; margin-right: auto; height: 25px; font-size: 12px !important; padding: 10px 0px; line-height: 20px; padding-top: 0px; padding-bottom: 7px; margin-bottom: 0px;">
+														ou até 10x de
+														<b>
+															R$ 6,49
+														</b>
+														sem juros
+										
+													</span>
+												</p>
+												<a href="#" class="rh_tpl_buy_2">
+													<i class="fas fa-shopping-basket"></i>
+												</a>
+												<a href="#" class="rh_tpl_buy">
+													Compre agora!
+												</a>
+											</div>
+										</li>
+								
+								
+									</ul>
+								</div>
+							</div>
+						<div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div><div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left" style="
+		"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div><div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div><div class="navigatorNiced"><i data-event="prev" class="fa fa-chevron-circle-left"></i><i data-event="next" class="fa fa-chevron-circle-right"></i></div></div>
+					</section>
+				</div>
+			</div>
+
+	
+
+</body>
+</html>

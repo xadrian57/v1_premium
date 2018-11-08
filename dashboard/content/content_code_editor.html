@@ -1,0 +1,172 @@
+<?php if ($_SESSION["idPlan"] != 42): ?>
+
+	<script>
+		window.location.href = '/dashboard';
+	</script>
+	
+<?php endif ?>
+
+<link rel="stylesheet" type="text/css" href="assets/css/extensions/codemirror/codemirror.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/extensions/codemirror/ambiance.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/extensions/codemirror/seti.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/pages/code_editor/code_editor.css"/>
+
+
+<div id="codeEditorPage" class="app-content content container-fluid">
+	<div class="content-wrapper">
+		<div class="content-header row">
+			<div class="content-header-left col-md-8 col-xs-12 mb-2">
+				<div class="row breadcrumbs-top">
+					<div class="breadcrumb-wrapper col-xs-12">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="widget_maker">Recomendações</a>
+							</li>
+							<li class="breadcrumb-item"><a href="configuracoes">Editor HTML</a>
+							</ol>
+						</div>
+					</div>
+					<h3 class="content-header-title mb-0">Editor HTML</h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<style type="text/css">
+					.card-header .btn-group{
+						float: right;
+					}
+
+				</style>
+				<div class="col-md-12">
+					<div class="card" style="display: inline-block;width: 100%;">
+						<div class="card-header">
+							<div class="col-md-4">
+								<div class="row">									
+									<h4 class="card-title" style="float:left;">
+										Editar Templates
+									</h4>				
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="row">	
+									<select name="template" class="form-control pull-right">
+										<option value="">Selecione o Template</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-2">
+								<div class="row">
+									<a href="#" class="btn btn-outline-primary pull-right">
+										Documentação
+									</a>
+								</div>
+							</div>
+						</div>
+						<div class="card-block">
+							<div id="codeEditor"></div>
+						</div>
+						<div class="card-footer">
+							<div class="col-xl-12 col-md-12">
+								<div class="row">									
+									<button id="btnSalvaConfig" type="submit" class="btn btn-success btn-outline-primary pull-right" data-toggle="modal" data-target="#saveModal">Salvar</button>
+									<button id="btnCancelConfig" type="submit" class="btn btn-danger btn-outline-primary pull-right" data-toggle="modal" data-target="#cancelModal">Cancelar</button>
+									<button id="btnResetConfig" type="submit" class="btn btn-warning btn-outline-primary pull-right" data-toggle="modal" data-target="#resetModal">Resetar</button>					
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</div>
+
+<!-- Modal - Reset -->
+<div class="modal fade code-editor" id="resetModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">
+					Confirmar Ação
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Você tem certeza que deseja cancelar?<br/>
+				Esta ação ira exluir o layout personalizado para esta prateleira e a mesma passara a utilizar o layout padrão Roi Hero.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					Não
+				</button>
+				<button id="resetConfirmation" type="button" class="btn btn-primary" data-dismiss="modal">
+					Sim
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal - Cancel -->
+<div class="modal fade code-editor" id="cancelModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">
+					Confirmar Ação
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Você tem certeza que deseja cancelar?<br/>
+				Todas as modificações que você efetuou serão descartadas.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					Não
+				</button>
+				<button id="cancelConfirmation" type="button" class="btn btn-primary" data-dismiss="modal">
+					Sim
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal - Save -->
+<div class="modal fade code-editor" id="saveModal" tabindex="-1">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title">
+					Confirmar Ação
+				</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				Você tem certeza que deseja salvar?<br/>
+				Após salvar, este será o novo HTML do layout para esta prateleira.
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					Não
+				</button>
+				<button id="saveConfirmation" type="button" class="btn btn-primary" data-dismiss="modal">
+					Sim
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="assets/js/extensions/codemirror/codemirror.js"></script>
+<script type="text/javascript" src="assets/js/extensions/codemirror/css.js"></script>
+<script type="text/javascript" src="assets/js/extensions/codemirror/javascript.js"></script>
+<script type="text/javascript" src="assets/js/extensions/codemirror/xml.js"></script>
+<script type="text/javascript" src="assets/js/extensions/codemirror/htmlmixed.js"></script>
+<script type="text/javascript" src="assets/js/pages/code_editor/code_editor.js"></script>

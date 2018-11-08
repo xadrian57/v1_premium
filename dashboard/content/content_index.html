@@ -1,0 +1,427 @@
+<link rel="stylesheet" type="text/css" href="assets/css/pages/overview/overview.css"/>
+
+<div id="overviewPage" class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-8 col-xs-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-xs-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="overview">Home</a></li>
+                            <li class="breadcrumb-item"><a href="#">Overview</a></li>
+
+                        </ol>
+                    </div>
+                </div>
+                <h3 class="content-header-title mb-0">Overview</h3>
+            </div>
+
+            <div class="content-header-right col-md-4 col-xs-12">
+                <!-- Bootstrap DateRange Picker start -->
+                <section id="daterange">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input id="dateRangeDados" type="text" class="form-control daterange">
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar"></span>
+                            </span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+
+        <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+
+        <div class="content-body">        
+            <!--Alguns dados rapidos sobre a ROI HERO -->         
+
+            <div class="row">
+                <div class="col-xs-12 mt-1 mb-2">
+                    <h4 class="text-uppercase"></h4>
+                    <p>Bem vindo, abaixo estão os dados que mostram o impacto da Roi Hero em sua loja hoje. Você pode selecionar um intervalo de datas para visualizar as informações referentes a outros períodos.</p>
+                </div>
+
+
+                <div class="col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5 precisa-integracao">
+                                    <div class="p-1 text-xs-center">                                    
+                                        <abbr title="Esses números representam o valor em reais do que foi vendido na sua loja graças à Roi Hero." class="info-abbr">
+                                            <i class="icon-info"></i>
+                                        </abbr>
+                                        <div class="mb-4">
+                                            <h3 class="display-4 text-faturamento" id="faturadoRH">R$ 00,00</h3>
+                                            <span class="blue-grey darken-1">Vendido</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-inline clearfix lista-dados-index">
+                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2">
+                                                    <h1 class="text-faturamento text-bold-400" id="faturadoPart">0%</h1>
+                                                    <span class="blue-grey darken-1" title="Esta é a porcentagem de participação da Roi Hero no faturamento total."><i class="icon-like"></i> Participação</span>
+                                                </li>
+                                                <li class="pl-2">
+                                                    <h1 class="text-faturamento text-bold-400" id="aumentoFaturado">0%</h1>
+                                                    <span class="blue-grey darken-1" title="Esta é a porcentagem de aumento que a Roi Hero causou no faturamento de seu site."><i class="icon-like"></i> Aumento</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5 precisa-integracao">
+                                    <div class="p-1 text-xs-center">                                    
+                                        <abbr title="Esses números representam a taxa de conversão da sua loja com a Roi Hero." class="info-abbr">
+                                            <i class="icon-info"></i>
+                                        </abbr>
+                                        <div class="mb-4">
+                                            <h3 class="display-4 text-conversao" id="conversaoRH">0%</h3>
+                                            <span class="blue-grey darken-1">Taxa de Conversão</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <!-- SEGUNDO GRÁFICO -->
+                                            <ul class="list-inline clearfix lista-dados-index">
+                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2">
+                                                    <h1 class="text-conversao text-bold-400" id="qtsXmelhor">0%</h1>
+                                                    <span class="blue-grey darken-1" title="O quanto a taxa de conversão da Roi Hero é melhor do que a da sua loja."><i class="icon-like"></i> Melhor</span>
+                                                </li>
+                                                <li class="pl-2">
+                                                    <h1 class="text-conversao text-bold-400" id="aumentoConversao">0%</h1>
+                                                    <span class="blue-grey darken-1" title="O quanto a taxa de conversão da sua loja aumentou com a taxa de conversão da Roi Hero"><i class="icon-like"></i> Aumento</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-12 col-sm-12 border-right-blue-grey border-right-lighten-5 precisa-integracao">
+                                    <div class="p-1 text-xs-center">
+                                        <abbr title="Esses números representam a quantidade de transações da sua loja com a Roi Hero" class="info-abbr"style="right: 18px !important;">
+                                            <i class="icon-info"></i>
+                                        </abbr>
+                                        <div class="mb-4">
+                                            <h3 class="display-4 primary darken-1" id="transacoesRH">0%</h3>
+                                            <span class="blue-grey darken-1">Transações</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-inline clearfix lista-dados-index">
+                                                <li class="border-right-blue-grey border-right-lighten-2 pr-2">
+                                                    <h1 class="primary text-bold-400" id="participacaoTrans">0%</h1>
+                                                    <span class="blue-grey darken-1" title="O quanto as transações feitas pela Roi Hero representam no total de transações da sua loja."><i class="icon-like"></i> Participação</span>
+                                                </li>
+                                                <li class="pl-2">
+                                                    <h1 class="primary text-bold-400" id="aumentoTransacao" title="Aumento percentual das transações feitas na sua loja com a Roi Hero.">0%</h1>
+                                                    <span class="blue-grey darken-1"><i class="icon-like"></i> Aumento</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Alguns dados rapidos sobre a ROI HERO -->    
+            <div class="row">
+                <div class="col-xl-3 col-lg-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <abbr title="Esses números representam a quantidade de vezes que os nosso widgets foram impressos em sua loja." class="info-abbr">
+                                    <i class="icon-info"></i>
+                                </abbr>
+                                <div class="media">
+                                    <div class="media-body text-xs-left">
+                                        <h3 class="primary"><b id="impressoesRH">0</b></h3>
+                                        <span>Impressões dos blocos da ROI HERO</span>
+                                    </div>
+                                    <div class="media-right media-middle">
+                                        <i class="icon-eye primary font-large-2 float-xs-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <abbr title="Esses números representam a quantidade de vezes que usuários clicaram nos nossos blocos de recomendação." class="info-abbr">
+                                    <i class="icon-info"></i>
+                                </abbr>
+                                <div class="media">
+                                    <div class="media-body text-xs-left">
+                                        <h3 class="info"><b id="cliquesRH">0</b></h3>
+                                        <span>Cliques nos blocos da ROI HERO</span>
+                                    </div>
+                                    <div class="media-right media-middle">
+                                        <i class="icon-cursor info font-large-2 float-xs-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-6 col-xs-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-block">
+                                <abbr title="Esses números representam a porcentagem de cliques sobre os blocos da Roi Hero que foram impressos em sua loja." class="info-abbr">
+                                    <i class="icon-info"></i>
+                                </abbr>
+                                <div class="media">
+                                    <div class="media-body text-xs-left">
+                                        <h3 class="pink"><b id="taxaClique">0%</b></h3>
+                                        <span>Taxa de cliques nos blocos da ROI HERO</span>
+                                    </div>
+                                    <div class="media-right media-middle">                                    
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#E91E63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-crosshair"><circle cx="12" cy="12" r="10"></circle><line x1="22" y1="12" x2="18" y2="12"></line><line x1="6" y1="12" x2="2" y2="12"></line><line x1="12" y1="6" x2="12" y2="2"></line><line x1="12" y1="22" x2="12" y2="18"></line></svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-xl-3 col-lg-6 col-xs-12 precisa-integracao">
+                    <div class="card">
+                        <div class="card-body">
+                            <abbr title="Esses números representam o ticket médio da sua loja com a Roi Hero instalada." class="info-abbr">
+                                <i class="icon-info"></i>
+                            </abbr>
+                            <div class="card-block">
+                                <div class="media">
+                                    <div class="media-body text-xs-left">
+                                        <h3 class="text-ticket"><b id="ticketMedioRH">R$ 00,00</b></h3>
+                                        <span>Ticket Médio da loja com a ROI HERO</span>
+                                    </div>
+                                    <div class="media-right media-middle">
+                                        <i class="icon-credit-card text-ticket font-large-2 float-xs-right"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+            </div>
+            <div class="row">
+            </div>
+            <!-- funnel & gauges charts section start -->
+
+
+            <div class="row">
+                <div class="col-xs-12 mt-3 mb-1">
+                    <h4 class="text-uppercase">Funil &amp; Conversão</h4>
+                    <p>Faça a análise em funil, das exibições até a conversão em vendas através das recomendações da Roi Hero em sua loja. Você também pode observar abaixo um gráfico que compara as taxas de conversão da sua loja sem a Roi Hero, com a Roi Hero, e como é a taxa de conversão só da Roi Hero e notar a diferença!</p>
+                </div>
+            </div>
+
+            <section id="graficos-funil-velocimetro precisa-integracao">  
+                <div class="row">
+                    <!-- Right Align Funnel Chart -->
+                    <div class="col-md-6 col-sm-12">
+                        <div class="card" style="height: 520px;">
+                            <div class="card-header">
+                                <h4 class="card-title">Funil de Conversão ROI HERO</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block">
+                                    <div class="col-md-12 text-center">
+                                        <!-- GRÁFICO FUNIL -->
+                                        <ul class="eliabe-funnel">
+                                            <li id="funilImpressoesRH">0</li>
+                                            <li id="funilCliquesRH">0</li>
+                                            <li id="funilCarrinhosRH">0</li>
+                                            <li id="funilTransacoesRH"><span>0</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="legenda-funil">
+                                            <div class="legenda-quadrado" style="background: #1976D2;"></div>
+                                            Impressões
+                                        </div>
+                                        <div class="legenda-funil">
+                                            <div class="legenda-quadrado" style="background: #536DFE;"></div>
+                                            Cliques
+                                        </div>
+                                        <div class="legenda-funil">
+                                            <div class="legenda-quadrado" style="background: #2196F3;"></div>
+                                            Carrinhos
+                                        </div>
+                                        <div class="legenda-funil">
+                                            <div class="legenda-quadrado" style="background: #BBDEFB;"></div>
+                                            Transações
+                                        </div>                                
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Angular Gauge Chart -->
+                    <div class="col-md-6 col-sm-12 precisa-integracao">
+                        <div class="card" style="height: 520px;">
+                            <div class="card-header">
+                                <h4 class="card-title">Conversão ROI HERO</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis-v font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                        <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block">
+                                    <div id="graficoLinhaConversao" class="height-400 echart-container"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>     
+                </div>
+            </section>
+
+            <!-- TOP 03 mais vendidos -->   
+            <section id="top-sellers" style="display: none"> 
+                <div class="row">
+                    <div class="col-xs-12 mt-3 mb-1">
+                        <h4 class="text-uppercase">MAIS VENDIDOS DA LOJA</h4>
+                        <p>Dê uma olhada nos 3 produtos mais vendidos da sua loja, quanto cada um faturou sozinho e mais informações detalhadas sobre eles!</p>
+                    </div>
+                </div> 
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card card-inverse bg-blue text-xs-center card-produto">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <h4 class="card-title">
+                                        <small class="gold">
+                                            1°
+                                            <i class="fa fa-trophy"></i>
+                                        </small>
+                                        <span id="faturado1">
+                                            
+                                        </span>
+                                    </h4>
+                                    <img id="fotoProd1" src="" alt="element 03" class="mb-2 mt-2"/>
+                                    <p id="nomeProd1" class="card-text">
+                                        
+                                    </p>
+                                    <button class="btn btn-danger btn-darken-3 btn-show-statistics mt-1" data-pos="0">
+                                        Detalhes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card card-inverse bg-blue text-xs-center card-produto">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <h4 class="card-title">
+                                        <small class="silver">
+                                            2°
+                                            <i class="fa fa-trophy"></i>
+                                        </small>
+                                        <span id="faturado2">
+                                            
+                                        </span>
+                                    </h4>
+                                    <img id="fotoProd2" src="" alt="element 03" class="mb-2 mt-2"/>
+                                    <p id="nomeProd2" class="card-text">
+                                        
+                                    </p>
+                                    <button class="btn btn-danger btn-darken-3 btn-show-statistics mt-1" data-pos="1">
+                                        Detalhes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-12">
+                        <div class="card card-inverse bg-blue text-xs-center card-produto">
+                            <div class="card-body">
+                                <div class="card-block">
+                                    <h4 class="card-title">
+                                        <small class="bronze">
+                                            3°
+                                            <i class="fa fa-trophy"></i>
+                                        </small>
+                                        <span id="faturado3">
+                                            
+                                        </span>
+                                    </h4>
+                                    <img id="fotoProd3" src="" alt="element 03" class="mb-2 mt-2" />
+                                    <p id="nomeProd3" class="card-text">
+                                        
+                                    </p>
+                                    <button class="btn btn-danger btn-darken-3 btn-show-statistics mt-1" data-pos="2">
+                                        Detalhes
+                                    </button>
+                                </div>
+                            </div>
+                        </div>    
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div id="modalEstatisticasProduto" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Estatísticas gerais do produto</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-12 col-xs-12">
+                        <h4 class="primary">Nome</h4>
+                        <p id="eNome"></p>
+                        <h4 class="primary">Categoria</h4>
+                        <p id="eCategoria"></p>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-xs-12">
+                        <h4 class="primary">Total Faturado</h4>
+                        <p id="eFaturado"></p>
+                        <h4 class="primary">Cliques</h4>
+                        <p id="eCliques">98</p>
+                    </div>
+                    <div class="col-xl-6 col-lg-12 col-xs-12">
+                        <h4 class="primary">Vendas</h4>
+                        <p id="eVendas"></p>
+                        <h4 class="primary">Taxa de conversão</h4>
+                        <p id="eConversao"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="assets/js/pages/overview/overview.js"></script>

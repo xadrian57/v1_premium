@@ -1,0 +1,81 @@
+<div class="app-content content container-fluid">
+	<div class="content-wrapper">
+		<div class="content-header row">
+			<div class="content-header-left col-md-6 col-xs-12 mb-2">
+				<div class="row breadcrumbs-top">
+					<div class="breadcrumb-wrapper col-xs-12">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="overview">Home</a>
+							</li>
+							<li class="breadcrumb-item"><a href="editar_perfil">Perfil</a>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<h3 class="content-header-title mb-0">Informações do Perfil</h3>
+			</div>
+		</div>
+		<div class="content-body">
+			<div class="row match-height">
+				<div class="col-lg-12 col-md-12">
+					<div class="card">
+						<div class="card-header">
+							<div class="media">
+								<div class="media-left media-middle">
+									<span class="avatar avatar-large">
+							          <img src="assets/images/portrait/small/avatar-s-2.png" alt="avatar"><i></i>
+							       </span>
+							       <div class="col-md-6 pull-right ml-2">
+								       <h4 class="card-title" style="width: 120%;">nome usuario</h4>
+								       <p class="card-text">Financeiro</p>
+								   </div>
+							    </div>
+							</div>
+						</div>
+						<div class="card-body collapse in">
+							<div class="card-block">
+								<h4 class="card-title">Editar</h4>
+								<form class="form">
+									<div class="form-body">
+										<h4 class="form-section"><i class="icon-user"></i> Informações de usuário</h4>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="userinput1">Nome</label>
+													<input type="text" id="userinput1" class="form-control border-primary" placeholder="Name" name="name">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="userinput3">Loja</label>
+													<input type="text" id="userinput3" class="form-control border-primary" placeholder="Username" name="username">
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label for="userinput5">Email</label>
+													<input class="form-control border-primary" type="email" placeholder="email" id="userinput5">
+												</div>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-actions right">
+										<button type="button" class="btn btn-warning mr-1">
+											<i class="ft-x"></i> Cancelar
+										</button>
+										<button type="submit" class="btn btn-primary">
+											<i class="fa fa-check-square-o"></i> Salvar
+										</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

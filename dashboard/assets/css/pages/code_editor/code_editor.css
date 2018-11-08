@@ -1,0 +1,11 @@
+#codeEditorPage .card-footer button {
+	margin: auto auto auto 15px;	
+}
+
+#codeEditorPage .card-header {
+	border-bottom: 1px solid #EEE;
+}
+
+.modal.code-editor .modal-title {
+	display: inline-block;
+}

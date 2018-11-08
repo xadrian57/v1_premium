@@ -1,0 +1,122 @@
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-8 col-xs-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-xs-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="plano">Financeiro</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="faturas">Faturas</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <h3 class="content-header-title mb-0">Faturas</h3>
+            </div>
+        </div>
+
+
+        <!-- ////////////////////////////////////////////////////////////////////////////-->
+
+        <!-- Card do TOPO do dashboard -->
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="card">                
+                    <div class="card-header">
+                        <h4 class="card-title pull-left">Retorno do Investimento</h4>
+                        <div class="heading-elements">
+                            <ul class="list-inline mb-0">
+                                <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-body collapse in">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                    <div class="media p-2">
+                                        <div class="media-left media-middle">
+                                            <i class="icon-wallet font-large-1 blue-grey"></i>
+                                        </div>
+                                        <div class="media-body text-xs-right">
+                                            <span id="investimento" class="font-large-2 text-bold-300 danger">R$ 00,00</span>
+                                        </div>
+                                        <span class="text-muted text-xs-right">Investimento</span>
+                                        <progress class="progress progress-sm progress-danger mt-1 mb-0" value="100" max="100"></progress>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                    <div class="media p-2">
+                                        <div class="media-left media-middle">
+                                            <i class="fa fa-money font-large-1 blue-grey"></i>
+                                        </div>
+                                        <div class="media-body text-xs-right">
+                                            <span id="retorno" class="font-large-2 text-bold-300 success">R$ 00,00</span>
+                                        </div>
+                                        <span class="text-muted text-xs-right">Retorno</span>
+                                        <progress class="progress progress-sm progress-success mt-1 mb-0" value="100" max="100"></progress>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                    <div class="media p-2">
+                                        <div class="media-left media-middle">
+                                            <i class="icon-bulb font-large-1 blue-grey"></i>
+                                        </div>
+                                        <div class="media-body text-xs-right">
+                                            <span id="roi" class="font-large-2 text-bold-300 primary">0</span>
+                                        </div>
+                                        <span class="text-muted text-xs-right">ROI</span>
+                                        <progress class="progress progress-sm progress-primary mt-1 mb-0" value="100" max="100"></progress>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+
+
+            <!-- Faturas a Pagar-->
+            <div class="row match-height">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="reload"><i class="ft-rotate-cw"></i></a></li>
+                                    <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-block">
+                                <p><span class="float-xs-right"><a href="plano" target="_blank">Meu Plano<i class="ft-arrow-right"></i></a></span></p>
+                            </div>
+                            <div class="table-responsive">
+                                <table id="recent-orders" class="table table-hover mb-0 ps-container ps-theme-default">
+                                    <thead>
+                                        <tr>
+                                            <th>Valor</th>
+                                            <th>Vencimento</th>
+                                            <th>Status</th>
+                                            <th>Ação</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="historicoFaturas">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="assets/js/pages/faturas/faturas.js"></script>

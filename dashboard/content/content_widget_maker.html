@@ -1,0 +1,1206 @@
+<div class="app-content content container-fluid">    
+<div class="content-wrapper">
+
+<div class="content-header row">
+    <div class="content-header-left col-md-8 col-xs-12 mb-2">
+        <div class="row breadcrumbs-top">
+          <div class="breadcrumb-wrapper col-xs-12">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a>
+                    </li>
+                    <li class="breadcrumb-item"><a href="#">Recomendações</a>
+                    </li>
+                    <li class="breadcrumb-item active">Criar Recomendação
+                    </li>
+                </ol>
+            </div>
+        </div>
+  <h3 class="content-header-title mb-0">Widget Maker</h3>
+    </div>
+</div>
+<div class="col-xl-12 col-lg-12">
+     <div class="card widget_maker_content">             
+        <div class="card-body">        
+           <div class="card-block">
+                <!-- STEPS -->
+                <div class="stepwizard">
+                    <ul class="stepwizard-row">
+                        <li class="stepwizard-step">
+                            <span class="btn btn-maker btn-circle active">1</span>
+                            <p><i class="fa fa-play"></i> Página: <strong class="primary text-bold text-uppercase page-info"> <span id="crumbPagina"></span></strong></p>
+                        </li>
+                        <li class="stepwizard-step">
+                            <span class="btn btn-maker btn-circle">2</span>
+                            <p><i class="fa fa-cog"></i> Inteligência: <strong class="primary text-bold text-uppercase page-info"> <span id="crumbInteligencia"></span></strong></p>
+                        </li>
+                        <li class="stepwizard-step">
+                            <span class="btn btn-maker btn-circle">3</span>
+                            <p><i class="fa fa-cog"></i> Formato: <strong class="primary text-bold text-uppercase page-info"> <span id="crumbFormato"></span></strong></p>
+                        </li> 
+                        <li class="stepwizard-step">
+                            <span class="btn btn-maker btn-circle">4</span>
+                            <p><i class="fa fa-cog"></i> Configurações <strong class="primary text-bold text-uppercase page-info"> <span id="crumbConfiguracoes"></span></strong></p>
+                        </li> 
+                    </ul>
+                </div>
+                <a class="btnVoltaPasso">
+                    <i class="ft-arrow-left"></i>
+                    Voltar um passo
+                </a>
+                <!-- WIDGET TABS -->                
+                <FORM ID="FORMWIDGET" novalidate class="error" onsubmit="return false">
+                    <div class="tab-content px-1 pt-1">
+                        <!-- PASSO1: EM QUAL PÁGINA COLOCAR O WIDGET -->
+                            <div role="tabpanel" class="tab-pane active" id="tabPage" aria-expanded="true" aria-labelledby="baseIcon-tab1">
+                                <section id="decks">
+                                    <div class="row">
+                                        <div class="col-xs-12 mb-1">
+                                            <h4 class="text-uppercase">Onde você deseja colocar a ROI HERO?</h4>
+                                            <p>Selecione a página abaixo.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="card-deck-wrapper">
+                                                <div class="card-deck">
+                                                    <div class="card card-maker">
+                                                        <div class="card-body">
+                                                            <div class="figure">          
+                                                                <img class="card-img-top img-fluid" src="assets/images/carousel/maker_home.png" alt="icone home">
+                                                                <div class="container-button-maker animated"><input type="button" id="makerHome" class="btn btn-success btn-lg" value="Selecionar"></div>
+                                                            </div>
+                                                            <div class="card-block">
+                                                                <h4 class="card-title">Home</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card card-maker">
+                                                        <div class="card-body">
+                                                            <div class="figure"> 
+                                                                <img class="card-img-top img-fluid" src="assets/images/carousel/maker_prod.png" alt="Card image cap">
+                                                                <div class="container-button-maker animated"><input type="button" id="btnMakerProduto" class="btn btn-success btn-lg" value="Selecionar"></div>
+                                                            </div>
+                                                            <div class="card-block">
+                                                                <h4 class="card-title">Página de Produto</h4>
+                                                            </div>                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="card card-maker">
+                                                        <div class="card-body">
+                                                            <div class="figure"> 
+                                                                <img class="card-img-top img-fluid" src="assets/images/carousel/maker_cat.png" alt="Card image cap">
+                                                                <div class="container-button-maker animated"><input type="button" id="makerCategoria" class="btn btn-success btn-lg" value="Selecionar"></div>
+                                                            </div>
+                                                            <div class="card-block">
+                                                                <h4 class="card-title">Página de Categoria</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card card-maker">
+                                                        <div class="card-body">
+                                                            <div class="figure"> 
+                                                                <img class="card-img-top img-fluid" src="assets/images/carousel/maker_busca.png" alt="Card image cap">
+                                                                <div class="container-button-maker animated"><input type="button" id="makerBuscaVazia" class="btn btn-success btn-lg" value="Selecionar"></div>
+                                                            </div>
+                                                            <div class="card-block">
+                                                                <h4 class="card-title">Busca Vazia</h4>
+                                                            </div>                 
+                                                        </div>
+                                                    </div>
+                                                    <div class="card card-maker">
+                                                        <div class="card-body">
+                                                            <div class="figure"> 
+                                                                <img class="card-img-top img-fluid" src="assets/images/carousel/maker_cart.png" alt="Card image cap">
+                                                                <div class="container-button-maker animated"><input type="button" id="makerCarrinho" class="btn btn-success btn-lg" value="Selecionar"></div>
+                                                            </div>
+                                                            <div class="card-block">
+                                                                <h4 class="card-title">Carrinho</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </div>
+                        <!-- FIM PASSO1 -->
+
+                        <!-- PASSO 2: INTELIGÊNCIA DO WIDGET -->
+                            <!-- INTELIGENCIAS HOME -->
+                            <div class="tab-pane" id="tabInteligenciasHome">
+                                <div class="row">
+                                    <div class="col-xs-12 mb-1">
+                                        <h4 class="text-uppercase">Selecione uma inteligência</h4>
+                                        <p>Nós temos várias inteligências de recomendação, selecione uma.</p>
+                                    </div>
+
+                                    <div class="card-deck-wrapper">
+                                        <div class="card-deck">
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_smart home.jpg" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="smartHome">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Smart Home</h4>
+                                                        <p class="card-text">Recomendamos produtos de acordo com a navegação do cliente, mostrando itens relevantes de acordo com os últimos produtos navegados.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_remarketing.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaHome" value="remarketing">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Remarketing On-site</h4>
+                                                        <p class="card-text">Os últimos produtos que o cliente navegou em um bloco para que ele os encontre facilmente.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_avaliados.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="recemAvaliados" onclick="return false">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Recem Avaliados</h4>
+                                                        <p class="card-text">A ROI HERO identifica dinamicamente os produtos que foram avaliados recentemente no seu site.</p>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_maisvendidos.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="maisVendidosDaCategoriaManual">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Mais Vendidos da Categoria Manual</h4>
+                                                        <p class="card-text">Exiba os produtos mais vendidos de uma determinada categoria.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_geo.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="melhoresAvaliados">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Melhor Avaliados</h4>
+                                                        <p class="card-text">A ROI HERO identifica dinamicamente os melhores avaliados do seu site.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_bosschoice.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaHome" value="bossChoice">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Boss Choice</h4>
+                                                        <p class="card-text">Escolha manualmente de 3 a 12 produtos para serem exibidos em sua loja nesse bloco.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_toptrends.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaHome" value="topTrends">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Top Trends</h4>
+                                                        <p class="card-text">Os produtos que as pessoas mais gostam da sua loja.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_novidades.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaHome" value="novidades">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Novidades</h4>
+                                                        <p class="card-text">Os últimos produtos adicionados a sua loja.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_chave.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="palavraChave">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Palavra chave</h4>
+                                                        <p class="card-text">Exiba produtos com base em uma palavra chave que você cadastre. A ROI HERO selecionará de forma dinâmica pra você.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_toptrends.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="maisVendidos">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Mais Vendidos</h4>
+                                                        <p class="card-text">Exiba os produtos mais vendidos de seu site em uma única vitrine.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_liquidacao.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="liquidacao">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Liquidação</h4>
+                                                        <p class="card-text">Exiba os produtos da sua loja que tem os maiores descontos.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_navegcomp.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="remarketingNavegacao">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Remarketing Navegação</h4>
+                                                        <p class="card-text">Mostramos em um bloco produtos que o cliente pode gostar, por ter navegado em um produto.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_baixou.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="baixouDePreço">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Baixou de preço</h4>
+                                                        <p class="card-text">Mostramos em um bloco os produtos que abaixaram de preço em sua loja.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_geo.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaHome" value="geolocalizacao">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Geolocalização</h4>
+                                                        <p class="card-text">A ROI HERO identifica dinamicamente de onde o visitante é, e mostra produtos que outras pessoas da região também compraram.</p>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- INTELIGENCIAS PAGINA DE PRODUTOS -->
+                            <div class="tab-pane" id="tabInteligenciasProduto">
+                                <div class="row">
+                                    <div class="col-xs-12 mb-1">
+                                        <h4 class="text-uppercase">Selecione uma inteligência</h4>
+                                        <p>Nós temos várias inteligências de recomendação, selecione uma.</p>
+                                    </div>
+
+                                    <div class="card-deck-wrapper">
+                                        <div class="card-deck">
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/produtos_relacionados.jpg" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="produtosRelacionados">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Produtos Relacionados</h4>
+                                                        <p class="card-text">Uma recomendação onde é possível cadastrar pares de termos e recomendar produtos relacionados. Por exemplo, cadastrando o par "tênis-meia" serão recomendadas as meias mais vendidas toda vez que um tênis for visitado.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_remarketing.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="remarketing">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Remarketing On-site</h4>
+                                                        <p class="card-text">Os últimos produtos que o cliente navegou em um bloco para que ele os encontre facilmente.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_maisvendidos.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="maisVendidosDaCategoriaManual">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Mais Vendidos da Categoria Manual</h4>
+                                                        <p class="card-text">Exiba os produtos mais vendidos de uma determinada categoria.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_complementar.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="itensComplementares">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Itens Complementares</h4>
+                                                        <p class="card-text">Recomenda os produtos que também foram comprados quando compraram o que está sendo visualizado. Quem comprou... também comprou.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_avaliados.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="recemAvaliados" onclick="return false">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Recem Avaliados</h4>
+                                                        <p class="card-text">A ROI HERO identifica dinamicamente os produtos que foram avaliados recentemente no seu site.</p>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_similares.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="similares">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Similares ao Produto</h4>
+                                                        <p class="card-text">Recomenda produtos similares ao que o usuário está visualizando</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_comprejunto.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="compreJunto">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Compre Junto</h4>
+                                                        <p class="card-text">Um compre junto que parece mágica. Selecione produtos ou palavras chaves para montar um compre junto dinâmico.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_chave.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="collection">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Collection</h4>
+                                                        <p class="card-text">Exiba produtos com base em uma palavra chave que você cadastre. A ROI HERO selecionará de forma dinâmica pra você.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_navegcomp.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaProdutos" value="remarketingNavegacao">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Remarketing Navegação</h4>
+                                                        <p class="card-text">Mostramos em um bloco produtos que o cliente pode gostar, por ter navegado em um produto.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- INTELIGENCIAS PAGINA DE CATEGORIA -->
+                            <div class="tab-pane" id="tabInteligenciasCategoria">
+                                <div class="row">
+                                    <div class="col-xs-12 mb-1">
+                                        <h4 class="text-uppercase">Selecione uma inteligência</h4>
+                                        <p>Nós temos várias inteligências de recomendação, selecione uma.</p>
+                                    </div>
+                                    <div class="card-deck-wrapper">
+                                        <div class="card-deck">
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_maisvendidos.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaCategoria" value="maisVendidosMesmaCategoria">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Mais Vendidos de Mesma Categoria</h4>
+                                                        <p class="card-text">Exiba os produtos mais vendidos que tenham a mesma categoria que o produto exibido.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_maisvendidos.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaCategoria" value="maisVendidosDaCategoriaManual">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Mais Vendidos da Categoria Manual</h4>
+                                                        <p class="card-text">Exiba os produtos mais vendidos de uma determinada categoria.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- INTELIGENCIAS BUSCA VAZIA -->
+                            <div class="tab-pane" id="tabInteligenciasBuscaVazia">
+                                <div class="row">
+                                    <div class="col-xs-12 mb-1">
+                                        <h4 class="text-uppercase">Selecione uma inteligência</h4>
+                                        <p>Nós temos várias inteligências de recomendação, selecione uma.</p>
+                                    </div>
+                                    
+                                    <div class="card-deck-wrapper">
+                                        <div class="card-deck">
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_busca.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="vitrineBusca">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Vitrine de Busca</h4>
+                                                        <p class="card-text">Utiliza a busca da ROI HERO? você pode adicionar este bloco que mostra itens com base no que o cliente buscou.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_remarketing.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaBusca" value="remarketing">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Remarketing On-site</h4>
+                                                        <p class="card-text">Os últimos produtos que o cliente navegou em um bloco para que ele os encontre facilmente.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_bosschoice.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaBusca" value="bossChoice">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Boss Choice</h4>
+                                                        <p class="card-text">Escolha manualmente de 3 a 12 produtos para serem exibidos em sua loja nesse bloco.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_toptrends.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaBusca" value="topTrends">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Top Trends</h4>
+                                                        <p class="card-text">Os produtos que as pessoas mais gostam da sua loja.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_novidades.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaBusca" value="novidades">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Novidades</h4>
+                                                        <p class="card-text">Os últimos produtos adicionados a sua loja.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_toptrends.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="maisVendidos">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Mais Vendidos</h4>
+                                                        <p class="card-text">Exiba os produtos mais vendidos de seu site em uma única vitrine.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_liquidacao.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="liquidacao">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Liquidação</h4>
+                                                        <p class="card-text">Exiba os produtos da sua loja que tem os maiores descontos.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_baixou.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="baixouDePreço">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Baixou de preço</h4>
+                                                        <p class="card-text">Mostramos em um bloco os produtos que abaixaram de preço em sua loja.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_chave.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="palavraChave">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Palavra chave</h4>
+                                                        <p class="card-text">Exiba produtos com base em uma palavra chave que você cadastre. A ROI HERO selecionará de forma dinâmica pra você.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_navegcomp.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="remarketingNavegacao">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Remarketing Navegação</h4>
+                                                        <p class="card-text">Mostramos em um bloco produtos que o cliente pode gostar, por ter navegado em um produto.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_geo.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="melhoresAvaliados">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Melhores Avaliados</h4>
+                                                        <p class="card-text">A ROI HERO identifica dinamicamente os melhores avaliados do seu site.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_avaliados.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="recemAvaliados" onclick="return false">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Recem Avaliados</h4>
+                                                        <p class="card-text">A ROI HERO identifica dinamicamente os produtos que foram avaliados recentemente no seu site.</p>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_maisvendidos.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaInteligenciaBusca" value="maisVendidosDaCategoriaManual">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Mais Vendidos da Categoria Manual</h4>
+                                                        <p class="card-text">Exiba os produtos mais vendidos de uma determinada categoria.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- INTELIGENCIAS PAGINA DE CARRINHO -->
+                            <div class="tab-pane" id="tabInteligenciasCarrinho">
+                                <div class="row">
+                                    <div class="col-xs-12 mb-1">
+                                        <h4 class="text-uppercase">Selecione uma inteligência</h4>
+                                        <p>Nós temos várias inteligências de recomendação, selecione uma.</p>
+                                    </div>
+                                    <div class="card-deck-wrapper">
+                                        <div class="card-deck">
+                                            <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_topcart.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button type="button" class="btn btn-success btn-lg btnSelecionaInteligenciaCarrinho" value="topCarrinho">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Carrinho Complementar</h4>
+                                                        <p class="card-text">Um bloco especial para página de carrinho, que mostra itens complementares ao que o cliente adicionou ao carrinho dinamicamente.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="card card-maker">
+                                                <div class="card-body">
+                                                    <div class="figure">
+                                                        <img class="card-img-top img-fluid" src="assets/images/carousel/maker_intel_bosschoice.png" alt="icone home">
+                                                        <div class="container-button-maker animated"><button class="btn btn-success btn-lg btnSelecionaInteligenciaCarrinho" value="manualCarrinho" onclick="return false">Selecionar</button></div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <h4 class="card-title">Carrinho Manual</h4>
+                                                        <p class="card-text">Um bloco especial para página de carrinho, que mostra os produtos similares ao que está no carrinho.</p>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- FIM PASSO 3 -->
+
+                        <!-- PASSO 4: FORMATO DO WIDGET -->
+                            <!-- FORMATOS -->
+                            <div class="tab-pane" id="tabFormatos">
+                                <div class="row">                            
+                                    <div class="col-xs-12 mb-1">
+                                        <h4 class="text-uppercase">Selecione um formato</h4>
+                                        <p>A Roi Hero tem vários formatos de recomendação para a sua loja, selecione um.</p>
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-12">
+                                        <div class="card-deck-wrapper">
+                                            <div class="card-deck">
+                                                <div class="card card-maker topCarrinho manualCarrinho liquidacao">
+                                                    <div class="card-body">
+                                                        <div class="figure">
+                                                            <img class="card-img-top img-fluid" src="assets/images/carousel/maker_prateleira.png" alt="icone home">
+                                                            <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaFormato" value="prateleira">Selecionar</button></div>
+                                                        </div>
+                                                        <div class="card-block">
+                                                            <h4 class="card-title">Prateleira</h4>
+                                                            <p class="card-text">Uma prateleira que exibe de 3 a 5 produtos.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-maker manualCarrinho liquidacao">
+                                                    <div class="card-body">
+                                                        <div class="figure">
+                                                            <img class="card-img-top img-fluid" src="assets/images/carousel/maker_plateleira_dupla.png" alt="icone home">
+                                                            <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaFormato" value="prateleiraDupla">Selecionar</button></div>
+                                                        </div>
+                                                        <div class="card-block">
+                                                            <h4 class="card-title">Prateleira Dupla</h4>
+                                                            <p class="card-text">Duas prateleiras que exibem de 3 a 5 produtos cada uma.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="card card-maker topCarrinho manualCarrinho liquidacao">
+                                                    <div class="card-body">
+                                                        <div class="figure">
+                                                            <img class="card-img-top img-fluid" src="assets/images/carousel/maker_carrossel.png" alt="icone home">
+                                                            <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaFormato" value="carrossel">Selecionar</button></div>
+                                                        </div>
+                                                        <div class="card-block">
+                                                            <h4 class="card-title">Carrossel</h4>
+                                                            <p class="card-text">Um slider que exibe de 9 a 12 produtos, onde o usuário pode avançar e voltar entre eles.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- 
+                                                <div class="card card-maker">
+                                                    <div class="card-body">
+                                                        <div class="figure">
+                                                            <img class="card-img-top img-fluid" src="assets/images/carousel/maker_totem.png" alt="icone home">
+                                                            <div class="container-button-maker animated"><button type="button" class="btn btn-lg btn-success btnSelecionaFormato" value="totem">Selecionar</button></div>
+                                                        </div>
+                                                        <div class="card-block">
+                                                            <h4 class="card-title">Totem</h4>
+                                                            <p class="card-text">Um toquem que exibe os produtos na vertical</p>
+                                                        </div>
+                                                    </div>
+                                                </div> 
+                                                -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                            
+                            </div> 
+                        <!-- FIM PASSO 4 -->
+
+                        <!-- PASSO 5: CONFIGURAÇÕES DO WIDGET -->
+                            <!-- CONFIGURAÇÕES DO WIDGET -->
+                            <div class="tab-pane" id="tabConfiguracoes">
+                                <div class="row">                            
+                                    <div class="col-xs-12 mb-1">
+                                        <h4 class="text-uppercase">Defina agora algumas configurações pra sua recomendação</h4>
+                                    </div>
+
+                                    <!-- NOME WIDGET -->
+                                    <div class="col-md-6">                                 
+                                        <div class="form-group validate">
+                                            <div class="controls">
+                                                <label class="">Nome do bloco</label>
+                                                <input name="nome" type="text" id="nomeBloco" class="form-control" placeholder="Digite aqui o nome do bloco" onchange="$('#nomeWidget').val(this.value)"
+                                                data-validation-required-message="Este campo é obrigatório" required>
+                                            </div>
+                                        </div>
+                                    </div> 
+
+                                    <!-- TITULO -->
+                                    <div class="col-md-6">
+                                        <div class="form-group validate">
+                                            <div class="controls">
+                                                <label>Título promocional</label>
+                                                <input name="titulo" type="text" id="tituloBloco" class="form-control" placeholder="Digite aqui o título que você quer que apareça no nosso bloco em seu site" data-validation-required-message="Este campo é obrigatório" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- UTM -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>Cadastre uma UTM personalizada se você quiser</label>
+                                                <input name="utm" type="text" id="utmBloco" class="form-control" placeholder="(opcional)">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ID CONTAINER -->
+                                    <div class="col-md-6">
+                                        <div class="col-md-8 pd-l-0">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label>Container</label>
+                                                    <input name="container" type="text" id="container" class="form-control" placeholder="id ou classe do container" required>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4 pd-l-0 pd-r-0">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label>Tipo</label>
+                                                    <select name="tipoContainer" class="form-control">
+                                                        <option value="id">ID</option>
+                                                        <option value="class">CLASSE</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ACIMA/ABAIXO -->
+                                    <div class="col-md-6">
+                                        <div class="col-md-6 pd-l-0 pd-r-0">
+                                            <div class="form-group">
+                                                <div class="input-group">
+                                                    <label>Posição relativa ao container</label>
+                                                    <select name="UpDown" class="form-control">
+                                                        <option selected value="1">Acima</option>
+                                                        <option value="0">Abaixo</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- MOSTRAR/ESCONDER URL -->
+                                    <div class="col-md-6">
+                                        <div>
+                                            <label>Mostrar ou esconder o bloco em uma determinada URL:</label>
+                                        </div>
+                                        
+                                        <div class="col-md-4 pd-r-0 pd-l-0">
+                                            <select name="url" class="form-control">
+                                                <option value="mostrar">Mostrar</option>
+                                                <option value="esconder">Esconder</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mt-1">
+                                        <div class="form-group">
+                                            <label> o bloco somente em:</label>
+                                            <div class="input-group">
+                                                <input type="text" id="urlInput" class="form-control" placeholder="Digite a URL e depois clique em adicionar">
+                                                <span class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button" onclick="adicionaUrl()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <label>Lista das URLs:</label>
+                                        <div class="form-group tags-container">
+                                            <input id="inputUrls" type="text" name="listaUrl" data-role="tagsinput" class="form-control typeahead-tags">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- COMPRE JUNTO -->
+                                <div id="cadastrarCompreJunto" style="display:none" class="row">                                
+                                    <div class="col-xl-12 col-md-12">
+                                        <div class="form-group config-group" data-id="1">
+                                            <!-- n apagar o comentario \/ -->
+                                            <!-- replaceForCloseButton -->
+
+                                            <label data-toggle="collapse" href="#collapse1">
+                                                <i class="fa fa-plus-square"></i> Grupo de Configuração 1
+                                            </label>
+                                            <div id="collapse1" class="panel-collapse collapse in">
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Palavra Chave Pai</label>
+                                                    <input name="p_chave_pai[]" type="text" id="p_chave_pai" class="form-control" placeholder="Digite aqui a palavra chave pai" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                </div>
+                                                    
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Palavra Chave Filho</label>
+                                                    <input name="p_chave_filho[]" type="text" id="p_chave_filho" class="form-control" placeholder="Digite aqui a palavra chave filho" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                </div>
+                                                
+                                                
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Tipo da Palavra Chave Pai</label>
+                                                    <select name="tp_chave_pai[]" type="text" id="tp_chave_pai" class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                        <option selected value="0">Título</option>
+                                                        <option value="1">Categoria</option>
+                                                    </select>
+                                                </div>    
+                                                
+                                                    
+
+                                        <!--        <input name="tp_chave_pai[]" type="text" id="tp_chave_pai" class="form-control" placeholder="Digite aqui o tipo da palavra chave pai" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                        --> 
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Tipo da Palavra Chave Filho</label>
+                                                    <select name="tp_chave_filho[]" type="text" id="tp_chave_filho" class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                        <option selected value="0">Título</option>
+                                                        <option value="1">Categoria</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                    
+
+                                        <!--        <input name="tp_chave_filho[]" type="text" id="tp_chave_filho" class="form-control" placeholder="Digite aqui o tipo da palavra chave filho" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                        -->
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Parâmetro Pai</label>
+                                                    <input name="parametro_pai[]" type="text" id="parametro_pai" class="form-control" placeholder="Digite aqui o parâmetro pai" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                </div>
+
+                                                
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Parâmetro Filho</label>
+                                                    <input name="parametro_filho[]" type="text" id="parametro_filho" class="form-control" placeholder="Digite aqui o parâmetro filho" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                </div>     
+                                                
+                                                
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Tipo do Parâmetro Pai</label>
+                                                    <select name="tp_parametro_pai[]" type="text" id="tp_parametro_pai" class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                        <option selected value="0">Título</option>
+                                                        <option value="1">Categoria</option>
+                                                    </select>
+                                                </div>    
+                                                
+                                                    
+                                                
+                                            <!--    <input name="tp_parametro_pai[]" type="text" id="tp_parametro_pai" class="form-control" placeholder="Digite aqui o tipo do parâmetro pai" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                            -->   
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Tipo do Parâmetro Filho</label>
+                                                    <select name="tp_parametro_filho[]" type="text" id="tp_parametro_filho" class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                        <option selected value="0">Título</option>
+                                                        <option value="1">Categoria</option>
+                                                    </select>
+                                                </div>
+
+                                                    
+                                                
+                                                
+                                            <!--    <input name="tp_parametro_filho[]" type="text" id="tp_parametro_filho" class="form-control" placeholder="Digite aqui o tipo do parâmetro filho" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                            -->    
+
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Negativa Pai</label>
+                                                    <input name="negativa_pai[]" type="text" id="negativa_pai" class="form-control" placeholder="Digite aqui a negativa pai" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                </div>
+
+                                                   
+                                                <div class="col-md-6 col-sm-12">
+                                                    <label>Negativa Filho</label>
+                                                    <input name="negativa_filho[]" type="text" id="negativa_filho" class="form-control" placeholder="Digite aqui a negativa filho" onchange="" data-validation-required-message="Este campo é obrigatório" required>
+                                                </div>
+                                                
+                                                
+                                            </div>
+                                        </div>                                    
+                                        <button class="btn btn-primary addConfGroup" title="Adicionar mais um grupo de configuração" data-index="1">
+                                            Adicionar novo Grupo <i class="fa fa-plus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- LOCALIZAÇÃO -->
+                                    <div id="cadastrarEstado" style="display:none" class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label for="uf">Localização</label>
+                                                <select name="estado" id="uf" class="form-control" onchange="$('#localizacaoWidget').val(this.value)">
+                                                    <option value="">-- Selecione um estado --</option>
+                                                    <option value="AC">Acre</option>
+                                                    <option value="AL">Alagoas</option>
+                                                    <option value="AP">Amapá</option>
+                                                    <option value="AM">Amazonas</option>
+                                                    <option value="BA">Bahia</option>
+                                                    <option value="CE">Ceará</option>
+                                                    <option value="DF">Distrito Federal</option>
+                                                    <option value="ES">Espírito Santo</option>
+                                                    <option value="GO">Goiás</option>
+                                                    <option value="MA">Maranhão</option>
+                                                    <option value="MT">Mato Grosso</option>
+                                                    <option value="MS">Mato Grosso do Sul</option>
+                                                    <option value="MG">Minas Gerais</option>
+                                                    <option value="PA">Pará</option>
+                                                    <option value="PB">Paraíba</option>
+                                                    <option value="PR">Paraná</option>
+                                                    <option value="PE">Pernambuco</option>
+                                                    <option value="PI">Piauí</option>
+                                                    <option value="RJ">Rio de Janeiro</option>
+                                                    <option value="RN">Rio Grande do Norte</option>
+                                                    <option value="RS">Rio Grande do Sul</option>
+                                                    <option value="RO">Rondônia</option>
+                                                    <option value="RR">Rorâima</option>
+                                                    <option value="SC">Santa Catarina</option>
+                                                    <option value="SP">São Paulo</option>
+                                                    <option value="SE">Sergipe</option>
+                                                    <option value="TO">Tocantins</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>                                
+                                    
+                                    <!-- CADASTRAR TERMOS (COLLECTION) -->
+                                    <div id="cadastrarCollection" style="display:none" class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Cadastre as coleções</label>
+                                            <div class="input-group">
+                                                <input  type="text" id="palavraChaveCollection" class="form-control" placeholder="Digite uma palavra chave" onblur="validaProdutos()">
+                                                <span class="input-group-btn" id="button-addon4">
+                                                    <button class="btn btn-primary" type="button" onclick="$('#inputCollection').tagsinput('add', $('#palavraChaveCollection').val());$('#palavraChaveCollection').val(''); return false;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Coleções:</label>
+                                            <div id="divTagsCollection" class="form-control">
+                                                <div class="controls">
+                                                    <input name="produtosCollection" id ="inputCollection" type="text" value="" data-role="tagsinput" class="form-control typeahead-tags" onchange="$('#produtosWidget').val(this.value);validaProdutos();" data-validation-required-message="Cadastre as palavras chave" hidden required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- CADASTRA PALAVRAS CHAVE PAI/FILHO (PRODUTOS RELACIONADOS) -->
+                                    <div id="cadastrarRelacionados" style="display: none;">
+                                        <div class="div-add">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Visualizando algum produto contendo:</label>
+                                                    <input id="prodRelPai" class="form-control" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 pd-l-0">
+                                                <div class="form-group">
+                                                    <label>Recomendar produtos contendo:</label>
+                                                    <input id="prodRelFilho" class="form-control" type="text">
+                                                    <button type="button" class="btn btn-primary btn-add-palavra" style="" onclick="adicionaPaiFilho()"><i class="fa fa-plus"></i></button>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-8">
+                                                <label>Pares de termos cadastrados:</label>
+                                                <div class="form-group">                       
+                                                    <input name="palavrasPaiFilho" id ="palavrasPaiFilho" type="text" value="" data-role="tagsinput" class="form-control typeahead-tags" onchange="$('#produtosWidget').val(this.value);validaProdutos();" data-validation-required-message="Cadastre as palavras chave" hidden required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- CADASTRAR PRODUTOS MANUALMENTE -->
+                                    <div id="cadastrarProdutos" style="display:none" class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Cadastre os produtos manualmente</label>
+                                            <div class="input-group">
+                                                <input  type="text" id="produto" class="form-control" placeholder="Digite o nome de um produto" onblur="validaProdutos()">
+                                                <span class="input-group-btn" id="button-addon4">
+                                                    <button class="btn btn-primary" type="button" onclick="adicionaProdutos()"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                                                </span>
+                                            </div>
+                                            <div id="listaProdutosAutocomplete" class="form-control autocomplete-overlay" ></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Produtos Cadastrados:</label>
+                                            <div id="divTagsProdutos" class="form-control">
+                                                <div class="controls">
+                                                    <input name="produtos" id ="inputProdutos" type="text" value="" data-role="tagsinput" class="form-control typeahead-tags" onchange="$('#produtosWidget').val(this.value);validaProdutos();" data-validation-required-message="Cadastre os produtos" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- TOP TRENDS -->
+                                    <div id="cadastrarTopTrends" style="display:none" class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>Recomendar os produtos mais clicados nos últimos</label>
+                                                <select name="maisClicados" class="form-control" onchange="$('#topTrendsWidget').val(this.value)">
+                                                    <option value="7" selected>7 dias</option>
+                                                    <option value="3">3 dias</option>
+                                                    <option value="1">1 dias</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PRODUTOS MAIS VENDIDOS -->
+                                    <div id="cadastrarMaisVendidos" style="display:none" class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>Recomendar os produtos mais vendidos nos últimos</label>
+                                                <select name="maisVendidos" class="form-control" onchange="$('#maisVendidosWidget').val(this.value)">
+                                                    <option value="7" selected>7 dias</option>
+                                                    <option value="3">3 dias</option>
+                                                    <option value="1">1 dias</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- NOME DA CATEGORIA CATEGORIA -->
+                                    <div id="cadastrarMaisVendidosDaCategoriaManual" style="display:none" class="col-md-6">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label>
+                                                    Nome da categoria dos produtos a serem recomendados:
+                                                </label>
+                                                <input name="maisVendidosDaCategoriaManual" type="text" id="maisVendidosDaCategoriaManual" class="form-control" placeholder="Digite o nome da categoria" data-validation-required-message="Este campo é obrigatório" required="required" aria-invalid="false"/>
+                                                <div class="help-block"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- PALAVRA CHAVE -->
+                                    <div id="cadastrarPalavraChave" style="display:none" class="col-md-6">
+                                        <div class="form-group validate">
+                                            <div class="controls">
+                                                <label>Cadastre uma palavra chave para a inteligência</label>
+                                                <input name="palavraChave" type="text" id="palavraChaveBloco" class="form-control" placeholder="Ex: caderno, azul, perfume"  onchange="$('#palavraChaveWidget').val(this.value)" data-validation-required-message="Digite uma palavra chave" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- CARRINHO MANUAL -->
+                                <div id="cadastrarCarrinhoManual" style="display:none;" class="row">
+                                    <div class="col-md-12"><label>Entre com os produtos da inteligência do carrinho</label></div>
+                                    <div class="col-md-6">
+                                        <div class="form-group validate">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="addonCarrinhoManual">Quando estiver mostrando:</span>
+                                                <input name="produtoCarrinho" id="prodCarrinho" type="text" class="form-control" placeholder="Digite o produto aqui" aria-describedby="addonCarrinhoManual" onchange="$('#carrinhoManualWidgetProd').val(this.value);return false;">
+                                            </div>
+                                        </div>
+                                        <div class="form-group validate">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" id="addonCarrinhoManual">Complementar com o produto:</span>
+                                                <input name="carrinhoComplementar" id="prodAd" type="text" class="form-control" placeholder="Digite o produto aqui" aria-describedby="addonCarrinhoManual" onchange="$('#carrinhoManualWidgetProdAdicional').val(this.value)">
+
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-primary" type="button" onclick="
+                                                        $('#inputCarrinhoManual').tagsinput('add', $('#prodCarrinho').val()+' *** '+$('#prodAd').val());
+                                                        $('#prodCarrinho').val('');
+                                                        $('#prodAd').val('');
+                                                        return false;
+                                                    "><i class="fa fa-plus" aria-hidden="true"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>                                      
+                                        <div class="form-group validate">
+                                            <div class="controls">
+                                                <label>Produtos Cadastrados:</label>
+                                                <div name="produtosCarrinhoManual" id="divTagsProdutos" class="form-control">
+                                                    <input id ="inputCarrinhoManual" type="text" value="" data-role="tagsinput" class="form-control typeahead-tags" onchange="$('#carrinhoManualWidget').val(this.value)" data-validation-required-message="Adicione pelo menos um par de produtos" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- BOTAO CRIAR RECOMENDACAO -->
+                                <div class="row"> 
+                                    <div class="col-md-12 xl-right">
+                                        <button id="btnCriaRecomendacao" class="btn btn-success btn-lg pull-right" onclick="validaWidget()">
+                                            Criar Recomendação 
+                                            <i class="fa fa-check" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        <!-- FIM PASSO 5 -->
+                    </div>
+                    <!-- DADOS DO WIDGET -->
+                    <input name="pagina" id="pageWidget" type="hidden" value=""> <!-- home/categoria/produtos... -->
+                    <input name="placement" id="placementWidget" type="hidden" value=""> <!-- topo/meio/fim -->
+                    <input name="inteligencia" id="inteligenciaWidget" type="hidden" value=""> <!-- Inteligencia de recomendação -->
+                    <input name="formato" id="formatoWidget" type="hidden" value=""> <!-- prateleira/prateleira dupla/collection -->
+                    <input name="carrinhoManualWidget" id="carrinhoManualWidget" type="hidden" value=""><!-- PRODUTOS CARRINHO MANUAL -->
+                </FORM>      
+                <!--// FIM WIDGET TABS -->
+            </div>
+        <!-- ^ FIM CARD-BLOCK PRINCIPAL -->
+        </div>
+    <!-- ^ FIM CARD-BODY PRINCIPAL -->
+    </div>
+<!-- ^ FIM CARD PRINCIPAL -->
+</div>
+    
+</div>      
+</div>
+
+<!-- SCRIPT WIDGET MAKER -->
+<script type="text/javascript" src="assets/js/widget_maker.js"></script>
+<link rel="stylesheet" type="text/css" href="assets/css/form_validation/form.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/pages/widget_maker/widget_maker.css"/>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("input,select,textarea").not("[type=submit]").jqBootstrapValidation();
+});
+</script>
+

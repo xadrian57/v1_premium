@@ -1,0 +1,82 @@
+<html>
+
+<head>
+    <title>ROI Hero - Contato</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
+    <meta name="description" content="Experiência de Compra que Converte!" />
+    <meta name="keywords" content="Experiência de Compra que Converte!" />
+    <meta name="author" content="ROI Hero">
+
+    <link rel="shortcut icon" href="images/icon/hero_login.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="css/form.css">
+</head>
+
+<body>
+
+    <div class="contact-title">
+           <h1>Entre em contato com a gente</h1>
+    </div>
+
+    <div class="contact-form">
+        <!-- <form id="contact-form" method="POST" action="php/envia_form.php"> -->
+        <form id="contact-form" method="POST">
+
+            <div class="input-title">
+                Nome
+            </div>
+            <input type="text" name="nome" class="form-control" placeholder="O Nome do Responsável" required/>
+            <div class="input-title">
+                Email
+            </div>
+            <input type="email" name="email" class="form-control" placeholder="Email para Contato" required/>
+
+            <div class="input-title">
+                URL
+            </div>
+            <input type="text" name="url" class="form-control" placeholder="URL da Loja" required/>
+
+            <div class="input-title">
+                Plataforma
+            </div>
+            <input type="text" name="plataforma" class="form-control" placeholder="Plataforma E-commerce Utilizada" required/>
+
+            <input type="submit" value="Enviar" class="form-control submit" />
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        $("#contact-form").submit(function (e) {
+
+
+            var form = $(this);
+            var url = form.attr('action');
+
+            $.ajax({
+                type: "POST",
+                url: 'php/envia_form.php',
+                data: form.serialize(), // serializes the form's elements.
+                success: function (data) {
+                    alert("Mensagem enviada. Agredecemos o contato"); // show response from the php script.
+                    window.location.href = 'index.html';
+                }
+            });
+
+            e.preventDefault(); // avoid to execute the actual submit of the form.
+        });
+
+    </script>
+
+
+
+</body>
+
+</html>

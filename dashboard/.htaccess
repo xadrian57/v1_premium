@@ -1,0 +1,32 @@
+RewriteOptions inherit
+
+RewriteEngine On 
+
+RewriteRule ^overview$ index.php [QSA,L,NC]
+RewriteRule ^controle_xml$ php/controle_xml.php [QSA,L,NC]
+RewriteRule ^controle_produtos$ php/controle_xml.php [QSA,L,NC]
+RewriteRule ^configuracoes$ php/configuracoes.php [QSA,L,NC]
+RewriteRule ^transacoes$ php/transacoes.php [QSA,L,NC]
+RewriteRule ^performance$ php/performance.php [QSA,L,NC]
+RewriteRule ^interacao$ php/interacao.php [QSA,L,NC]
+RewriteRule ^timeline$ php/timeline.php [QSA,L,NC]
+
+
+RewriteRule ^dados$ php/dados.php [QSA,L,NC]
+RewriteRule ^plano$ php/plano.php [QSA,L,NC]
+RewriteRule ^faturas$ php/faturas.php [QSA,L,NC]
+
+
+RewriteRule ^tagflag$ php/tagflag.php [QSA,L,NC]
+RewriteRule ^widget_maker$ php/widget_maker.php [QSA,L,NC]
+RewriteRule ^widget_maker2$ php/widget_maker_medio.php [QSA,L,NC]
+RewriteRule ^widget_maker3$ php/widget_maker_vip.php [QSA,L,NC]
+
+RewriteRule ^minhas_recomendacoes$ php/widgets.php [QSA,L,NC]
+RewriteRule ^editar_perfil$ php/editar_perfil.php [QSA,L,NC]
+RewriteRule ^layout$ php/layout.php [QSA,L,NC]
+
+RewriteRule ^editor_html$ php/code_editor.php [QSA,L,NC]
+RewriteRule ^biblioteca_de_templates$ php/template_library.php [QSA,L,NC]
+
+RewriteRule ^logout$ resource/resource_logout.php [QSA,L,NC]

@@ -1,0 +1,76 @@
+<!-- 
+*     Este é o arquivo do footer.
+*     Este arquivo contém os scripts que são usados em todas as páginas,
+*     assim como o footer e o fechamento das tags HTML e BODY.
+*
+*     Caso seja necessário adicionar um SCRIPT específico, 
+*     adicione na própria página para não prejudicar o carregamento do Dashboard.
+*
+* -->
+
+    <footer class="footer footer-static footer-light navbar-border">
+        <p class="clearfix blue-grey lighten-2 text-sm-center mb-0 px-2"><span class="float-md-left d-xs-block d-md-inline-block">Copyright  &copy; 2017 <a href="www.roihero.com.br" target="_blank" class="text-bold-800 grey darken-2">ROI HERO </a>, Todos os direitos reservados.</span></p>
+    </footer>
+
+    <script type="text/javascript" src="assets/js/bootstrap-tagsinput.min.js"></script>
+    <!-- DASH -->
+    <script type="text/javascript" src="assets/js/dashboard.js"></script>
+         
+    <script type="text/javascript" src="assets/js/charts/jquery.knob.min.js"></script>
+
+    <!-- SCRIPTS DOS GRÁFICOS -->
+    <script type="text/javascript" src="assets/js/charts/echarts/echarts-all.js"></script>
+    <script type="text/javascript" src="assets/js/charts/morris/raphael-min.js"></script>
+    <script type="text/javascript" src="assets/js/charts/morris/morris.min.js"></script>
+    <!-- END PAGE LEVEL JS-->   
+
+    <script type="text/javascript" src="assets/js/form_validator/jqBootstrapValidation.js"></script>
+
+    <!-- BOOTSTRAP CHECKBOX (INSERIR DEPOIS DO VENDOR.MIN.JS) -->
+    <script src="assets/js/bootstrap-checkbox.min.js" type="text/javascript"></script>
+    
+    <!-- BEGIN STACK JS-->
+    <!-- END STACK JS-->
+
+    <!-- CONPASS -->
+    
+    
+    <script type="text/javascript">
+     window.cpt=("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOnsiX2lkIjoiNWE1NGU2NzE5MzY3NjI3MmVkMTllNTVhIiwidXBkYXRlZEF0IjoiMjAxOC0wMS0yN1QwMzowMDowMC44MTVaIiwiY3JlYXRlZEF0IjoiMjAxOC0wMS0wOVQxNTo1NzozNy4yMThaIiwiYmFjb24iOiJIa3JsS0VzRFlIZiIsImVtYWlsIjoiZGF2aS5iZXJuYXJkZXNAcm9paGVyby5jb20uYnIiLCJfX3YiOjAsImFjdGl2ZSI6dHJ1ZSwibGFuZ3VhZ2UiOiJwdC1iciJ9LCJpYXQiOjE1MTg4OTM5NzEsImF1ZCI6Im1hc3RlcmFwcCJ9.KwPzLW_BDMlevengV3JDd9D2JcunW1ZewLa3-1bE-wA");
+    </script>
+    <script src="https://cdn.conpass.io/v2/conpass.js"></script>
+    <script type="text/javascript">
+        Conpass.identifyUser({
+          name: nomeCli,
+          email: emailCli,
+          
+          // Informações opcionais (usado para segmentação)
+          // custom_fields: {
+          //   lang: "pt_BR"
+          //   sexo: "Feminino"
+          // }
+        });
+        Conpass.Logger.start();
+    </script>
+    <!-- CONPASS -->
+
+    <!-- INTERCOM -->
+    <script>
+      window.intercomSettings = {
+        app_id: "bqgc77je",
+        email: window['emailCli'],
+        id_plan: window['idPlan'],
+        id_plat: window['idPlat'],
+        nome_cli: window['nomeCli']
+      };
+    </script>
+    <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/bqgc77je';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()
+    </script>
+    <!-- INTERCOM -->
+
+    <!-- OCTADESK -->    
+    <!-- <script src="https://chat.octadesk.services/widget/roihero"></script> -->
+    <!-- OCTADESK -->
+
+  </body>
+</html>

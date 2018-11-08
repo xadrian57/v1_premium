@@ -1,0 +1,192 @@
+<!doctype html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" hreflang="en" media="all" />
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" hreflang="en" media="all" />
+	<script type="text/javascript" src="https://www.roihero.com.br/lite/js/jquery.js"></script>
+	<meta charset="utf-8">
+	<title>FIDDLE HERO</title>
+	<style type="text/css">
+	#main {
+		padding-top: 25px;
+	}
+
+	#footer {
+		color: #fff;
+		border: #999;
+		display: inline-block;
+    	width: 100%;
+    	position: absolute;
+    	bottom: 0;
+    	left: 0;
+	}
+
+	p {
+		font-family: 'PT Sans Narrow', sans-serif;
+		font-size: 15px;
+	}
+	#codigo {
+		width: 100%;
+		height: 600px;
+		padding: 15px;
+		font-family: Andale Mono, Courier, Monaco;
+	}
+
+	#btn-executa {
+		float: right;
+	}
+
+	.resultado {
+		background: #bbdefb;
+		height: 600px;
+		border: 1px solid #ccc;
+		overflow: scroll;
+	}
+
+	#fiddle-logo {
+		font-family: 'Permanent Marker', cursive;
+		color: #fff;
+		margin: 0;
+		margin: 15px 0 0 0;
+	}
+
+	#slogan {
+		padding: 10px 20px;
+	}
+
+	body {
+		background: #555;
+		min-height: 100vh;
+		padding-bottom: 100px;
+		box-sizing: border-box;
+	}
+
+	.white {
+		color: #fff;
+	}
+
+	@media screen and (max-width: 480px) {
+		.resultado {
+			clear: both !important;
+			padding: 0 1%;
+			margin-top: 50px;
+		}
+
+	}
+
+	#conteudo {
+		display: block;
+		max-width: 1360px;
+		margin: 0 auto;
+		position: relative;
+	}
+
+</style>
+</head>
+<body>
+<div id="conteudo">
+	<DIV CLASS="col-md-12 text-center">
+	    <H1 id="fiddle-logo">Fiddle Hero</H1>
+		<p id="slogan" class="white">Por que fazer a cagada no cliente se você pode fazer aqui antes?</p>
+	</DIV>
+
+	<div class="col-md-6">
+<div id="codigo">&lt;?php
+	// cola o código aqui BB
+?&gt;
+</div>
+		<button id="btn-executa" class="btn btn-primary">EXECUTAR</button>
+	</div>
+
+	<div class="col-md-6 resultado">
+	<h1 class="text-center">RESPOSTA</h1>
+		<div id="result"></div>
+	</div>
+</div>
+
+<link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow" rel="stylesheet">
+<style type="text/css">
+	#main {
+		padding-top: 25px;
+	}
+
+	p {
+		font-family: 'PT Sans Narrow', sans-serif;
+		font-size: 15px;
+	}
+	#codigo {
+		width: 100%;
+		height: 600px;
+		padding: 15px;
+		font-size: 15px;
+	}
+
+	#btn-executa {
+		float: right;
+		margin-top: 15px;
+	}
+
+	.resultado {
+		background: #bbdefb;
+		height: 600px;
+		border: 1px solid #ccc;
+		overflow: scroll;
+	}
+
+	h1 {
+		font-family: 'Permanent Marker', cursive;
+	}
+</style>
+
+
+<script src="js/ace-text-editor-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script>
+    var editor = ace.edit("codigo");
+    editor.setTheme("ace/theme/monokai");
+    editor.session.setMode("ace/mode/php");
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#btn-executa").on("click", function(){
+			var code = editor.getValue();
+			code = code.replace('<?php','').replace('?>','').trim();
+			$.ajax({
+        		type: 'POST',
+				url: "fiddle.php",
+        		data: {'code': code},
+        		success: function(result){
+        			document.getElementById('result').innerHTML = result;
+        		}
+			});
+		});
+
+		$("#codigo").keydown(function(e) {
+		    if(e.keyCode === 9) { // tab was pressed
+		        // get caret position/selection
+		        var start = this.selectionStart;
+		        var end = this.selectionEnd;
+
+		        var $this = $(this);
+		        var value = $this.val();
+
+		        // set textarea value to: text before caret + tab + text after caret
+		        $this.val(value.substring(0, start)
+		                    + "\t"
+		                    + value.substring(end));
+
+		        // put caret at right position again (add one for the tab)
+		        this.selectionStart = this.selectionEnd = start + 1;
+
+		        // prevent the focus lose
+		        e.preventDefault();
+		    }
+		});
+
+	});
+
+</script>
+
+</body>
+</html>

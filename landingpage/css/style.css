@@ -1,0 +1,135 @@
+		
+		.rh_footer
+		{
+			background : url(../img/rodape.png) no-repeat;
+			background-size : 100% 100%;
+			width : 100% ;
+			height : 400px ;
+			padding-top : 20px;
+		}
+		
+		.rh_init
+		{
+			margin-bottom : 10px;
+			margin-top : -40px;
+		}
+		.rh_header
+		{
+			background : url(../img/header.png) no-repeat;
+			background-size : 100% 100%;
+			width : 100% ;
+			height : 500px ;
+			padding-top : 10px;
+		}
+		.rh_img-div
+		{
+			background : url(../img/hero.png) no-repeat ;
+			height : 100% ;
+		}
+		
+		.rh_footer-text
+		{
+			text-align : center;
+			color : white ;
+			font-size : 32px;
+		}
+		
+		.rh_header-title
+		{
+			text-align : center;
+			color : white ;
+			font-size : 60px;
+		}
+		
+		.rh_header-text
+		{
+			text-align : center;
+			color : white ;
+		}
+		.rh_clientname
+		{
+			font-weight : bold;
+			font-size : 70px;
+			color : white;
+			text-align : center;
+		}
+		
+		.rh_body-text
+		{
+			text-align : center;
+			color : #08088A;
+		}
+		.rh_funcionalidade-title
+		{
+			text-align : right;
+			font-weight : bold;
+			text-shadow : 3px 3px white;
+		}
+		.rh_funcionalidade-name
+		{
+			text-align : center;
+			font-weight : bold;
+		}
+		.rh_funcionalidade-descricao
+		{
+			text-align : center;
+		}
+		.rh_funcionalidade
+		{
+			position : relative;
+			left : 10%;
+			padding-top : 10px;
+			padding-bottom : 10px;
+		}
+		.rh_funcionalidade:hover
+		{
+			background : linear-gradient(to right,#5882FA,#2E2EFE);
+			border-radius: 20px;
+			
+		}
+		.rh_help-option
+		{
+			position : relative;
+			height : 400px;
+			padding-top : 100px;
+			width : 70%;
+			left : 10%;
+		}
+		.rh_help-option:hover
+		{
+			box-shadow : 5px 5px 5px 5px grey;
+		}
+		.rh_row-funcionalidades
+		{
+			background-color : #F2F2F2;
+			padding-bottom : 20px;
+			padding-top : 20px;
+			clip-path: polygon(0 5%, 100% 0, 100% 95%, 0 100%);
+		}
+		.rh_img-funcionalidades
+		{
+			display: block;
+    		margin-left: 15%;
+    		padding-top: 3%;
+    		margin-right: auto;
+    		width : 80%;
+    		height : auto;
+    	}
+    	.rh_img-icon
+		{
+			display: block;
+    		margin-left: auto;
+    		margin-right: auto;
+    	}
+    	.rh_descricao
+		{
+			text-align : center;
+			color : blue;
+		}
+		
+		.rh_row-help
+		{
+			margin-top : 50px;
+			margin-bottom : 50px;
+			
+		}

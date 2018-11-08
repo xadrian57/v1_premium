@@ -1,0 +1,178 @@
+.btn-maker {
+    padding: 5px !important;
+}
+
+.btnVoltaPasso {
+    display: none;
+    height: 20px;
+    margin: 15px 0;
+}
+
+.card-deck {
+    text-align: left;
+}
+
+.card-deck .card {
+    display: inline-block;
+    width: 23%;
+    margin: 2% 1%;
+    height: auto;
+}
+
+.card-deck .card .card-block {
+    padding: 0;
+}
+
+.card-deck .card .card-title {
+    margin: 10% auto auto auto;
+}
+
+.card-deck .card .card-body .figure {
+    position: relative;
+}
+
+.card-maker input[type=button],
+.card-maker button {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 75%;
+    max-height: 35px;
+    margin: auto;
+    opacity: 0;
+    transition: 0.3s;
+    font-size: 11px;
+    padding: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-maker:hover input[type=button],
+.card-maker:hover button {
+    opacity: 1;
+}
+
+.card-maker {
+    height: 480px;
+}
+
+.container-button-maker button {
+    width: 60%;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.btn-maker {
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 5%;
+    font-weight: bold;
+    position: relative;
+    cursor: default !important;
+}
+
+.btn-maker.active {
+    background: #4BA9F4;
+    border: 1px solid #777;
+    color: #fff;
+}
+
+.config-group {
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    padding: 15px;
+    position:  relative;
+}
+
+.config-group > label {
+    width: 100%;
+    margin: auto;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.config-group > label:hover {
+    font-weight: bold;
+}
+
+.config-group > label i {
+    margin: auto 5px auto auto;
+    display: inline-block;
+    vertical-align: baseline;
+}
+
+.config-group .panel-collapse {
+    margin: 30px auto auto auto;
+    overflow: hidden;
+}
+
+.config-group .panel-collapse input {
+    margin: 5px auto 25px auto;
+}
+
+.config-group .panel-collapse select {
+    margin: 5px auto 25px auto;
+}
+
+.btn-apaga-cfg {
+    position:absolute;
+    right: 25px;
+    top: 10px;
+    font-size: 20px;
+}
+
+.tags-container {
+    border: 1px solid #ccc;
+}
+
+@media (max-width: 767px) {
+
+    .card-deck {
+        text-align: center;
+    }
+    
+    .card-deck .card {
+        width: 31%;
+    }
+
+    .stepwizard-step p span {
+        display: none;
+    }
+}
+
+@media (max-width: 575px) {
+    
+    .card-deck .card {
+        width: 100%;
+        margin: 5% auto;
+    }
+
+    .stepwizard-step .page-info {
+        display: none;
+    }
+
+    .stepwizard-row {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    .stepwizard-row:before {
+        display: none;
+    }
+
+    .stepwizard-row .stepwizard-step {
+        display: inline-block;
+        margin: auto 3px;
+    }
+
+    .stepwizard-step p {
+        font-size: 0;
+    }
+
+    .stepwizard-step p i {
+        font-size: 12px;
+    }
+}

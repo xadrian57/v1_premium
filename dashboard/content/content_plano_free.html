@@ -1,0 +1,343 @@
+<div class="app-content content container-fluid">
+	<div class="content-wrapper">
+		<div class="content-header row">
+            <div class="content-header-left col-md-8 col-xs-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-xs-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="plano">Financeiro</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="faturas">Meu Plano</a>
+                        </ol>
+                    </div>
+                </div>
+                <h3 class="content-header-title mb-2">Meu Plano</h3>
+            </div>
+        </div>
+
+		<div class="row">        
+			<section id="resumo-plano">
+				<div class="row row-resumo-plano">
+					<div class="col-xs-12 col-md-12 col-sm-12">
+						<div class="card" style="height: 100%;">
+							<div class="card-header bg-success bg-lighten-1">
+								<h1 class="card-title"><strong> Informaçoes do plano</strong></h1>
+							</div>
+							<div class="card-body collapse in">
+								<div class="card-block text-xs-left">
+									<div class="table-responsive">
+										<ul class="list-group">
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Plano: <strong class="pull-right" id="nomePlano"></strong></li>
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Valor do plano: <strong class="pull-right" id="valor"></strong></li>
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Seu plano expira em: <strong class="pull-right" id="expiracao"></strong></li>
+									    	<li class="card-text border-bottom-blue-grey border-bottom-lighten-5 mt-1">Número de impressões de vitrines: <strong class="pull-right" id="views"></strong></li>
+									    </ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- 
+					<div class="col-md-4 col-sm-12">
+						<div class="card" style="height: 100%;">
+							<div class="card-header">
+								<h1 class="card-title text-center"><strong>Faça um upgrade agora!</bold></h1>
+							</div>
+							<div class="card-body collapse in">
+								<div class="card-block text-xs-center">
+									<p class="card-text">Assine um plano maior e garanta já as novas funcionalidades e um maior limite de impressões!</p>
+									<button class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalPlanos" style="margin: 20px;">Fazer Upgrade</button>
+								</div>
+							</div>
+						</div>
+					</div> 
+					-->
+				</div>
+			</section>                
+		</div>
+
+		<!-- FUNCIONALIDADES -->
+		<div class="row" style="display: none;">
+			<section id="decks">
+			<div class="row">
+				<div class="col-xs-12 mt-3 mb-1">
+					<h4 class="text-uppercase"><i class="icon-layers"></i> Funcionalidades Incríveis</h4>
+					<p>Veja abaixo todas as funcionalidades que vem com seu plano.</p>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="card-deck-wrapper">
+						<div class="card-deck">
+							<div class="card">
+								<div class="card-body">
+									<img class="card-img-top img-fluid" src="assets/images/carousel/03.jpg" alt="Card image cap">
+									<div class="card-block">
+										<h4 class="card-title">Não Vá Embora!</h4>
+										<p class="card-text">Um bloco sobreposto em sua loja que aparece quando o usuário tenta sair do site, exibindo produtos similares ao que ele navegou.</p>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="card">
+								<div class="card-body">
+									<img class="card-img-top img-fluid" src="assets/images/exemplos_blocos/oferta_limitada.jpg" alt="Exemplo do bloco funcionando">
+									<div class="card-block">
+										<h4 class="card-title">Oferta Limitada</h4>
+										<p class="card-text">Recomendação sobreposta em sua loja, fixada na barra lateral, que oferta um produto baseado na navegação do cliente, ou algum produto específico cadastrado manualmente.</p>
+									</div>
+								</div>
+							</div>
+
+							<div class="card">
+								<div class="card-body">
+									<img class="card-img-top img-fluid" src="assets/images/exemplos_blocos/footer.jpg" alt="Exemplo do bloco funcionando">
+									<div class="card-block">
+										<h4 class="card-title">Rodapé Produtos Similares</h4>
+										<p class="card-text">Uma vitrine que aparece após rolar 70% da sua página de produto, exibindo produtos similares ao que está sendo visualizado.</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		</div>
+	</div>
+</div>
+
+<div class="modal fade text-xs-center in" id="modalPlanos" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header bg-success white text-xs-left">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title"><i class="icon-diamond" aria-hidden="true"></i> Escolha Um Plano</h4>
+			</div>
+			<div class="modal-body" style="display:inline-block;width: 100%;">
+				<!-- PRICING-TABLE CONTAINER -->
+				<div class="pricing-table group">               
+					<!-- PERSONAL -->
+					<div class="block personal fl">
+						<h2 class="title">PLANO 1</h2>
+						<!-- CONTENT -->
+						<div class="plan-price">
+							<p class="price">
+								<sup>R$</sup>
+								<span>29</span>
+								<small>,90</small>
+								<sub>/mês</sub>
+							</p>
+							<p class="hint">Suporte 24hrs</p>
+						</div>
+						<!-- /CONTENT -->
+						<!-- FEATURES -->
+						<ul class="features">
+							<li><span class="fontawesome-cog"></span>300 MIL IMPRESSÕES</li>
+						</ul>
+						<!-- /FEATURES -->
+						<button class="btn btn-success mb-1">contratar <i class="icon-heart" area-hidden="true"></i></button>
+						<!-- PT-FOOTER -->
+						<div class="pt-footer">
+							<br>
+						</div>
+						<!-- /PT-FOOTER -->
+					</div>
+					<!-- /PERSONAL -->
+					<!-- PROFESSIONAL -->
+					<div class="block professional fl">
+						<h2 class="title">PLANO 2</h2>
+						<!-- CONTENT -->
+						<div class="plan-price">
+							<p class="price">
+								<sup>R$</sup>
+								<span>99</span>
+								<small>,90</small>
+								<sub>/mês</sub>
+							</p>
+							<p class="hint">Suporte 24hrs</p>
+						</div>
+						<!-- /CONTENT -->
+						<!-- FEATURES -->
+						<ul class="features">
+							<li><span class="fontawesome-cog"></span>600 MIL IMPRESSÕES</li>
+						</ul>
+						<!-- /FEATURES -->
+						<button class="btn btn-success mb-1">contratar <i class="icon-heart" area-hidden="true"></i></button>
+						<!-- PT-FOOTER -->
+						<div class="pt-footer">
+							<br>
+						</div>
+						<!-- /PT-FOOTER -->
+					</div>
+					<!-- /PROFESSIONAL -->
+				</div>
+				<!-- /PRICING-TABLE -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Fechar <i class="ft-x" aria-hidden="true"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<!-- CSS PLANOS -->
+
+<style type="text/css">
+	/*------ utiltity classes -----*/
+	.fl{ float:left; }
+	.fr{ float: right; }
+	/*its also known as clearfix*/
+	.group:before,
+	.group:after {
+	    content: "";
+	    display: table;
+	} 
+	.group:after {
+	    clear: both;
+	}
+	.group {
+	    zoom: 1;  /*For IE 6/7 (trigger hasLayout) */
+	}
+
+	.wrapper {
+	    
+	}
+	.pricing-table {
+	    text-align: center;
+	    padding-right: 0;
+	}
+	.pricing-table .heading{
+	    color: #9C9E9F;
+	    text-transform: uppercase;
+	    font-size: 1.3rem;
+	    margin-bottom: 4rem;
+	}
+	.block{
+	    width: 49%;
+	    margin: 0 0;
+	    overflow: hidden;
+	    -webkit-border-radius: 5px;
+	    -moz-border-radius: 5px;
+	    border-radius: 5px;
+	    margin: 0 .5%;
+	}
+	/*Shared properties*/
+	.title,.pt-footer{
+	    color: #FEFEFE;
+	    text-transform: capitalize;
+	    line-height: 2.5;
+	    position: relative;
+	}
+
+	.price small{
+	    font-weight: bolder;
+	    font-size: 2rem;
+	}
+
+	/*arrow creation*/
+	.content:after, .content:before,.pt-footer:before,.pt-footer:after {
+		top: 100%;
+		left: 50%;
+		border: solid transparent;
+		content: " ";
+		height: 0;
+		width: 0;
+		position: absolute;
+		pointer-events: none;
+	}
+	.pt-footer:after,.pt-footer:before{
+	    top:0;
+	}
+	.content:after,.pt-footer:after {
+		border-color: rgba(136, 183, 213, 0);	
+		border-width: 5px;
+		margin-left: -5px;
+	}
+	/*/arrow creation*/
+	.price{
+	    position: relative;
+	    display: inline-block;
+	    margin-bottom: 0.625rem;
+	}
+	.price span{    
+	    font-size: 6rem;
+	    font-weight: bold;        
+	}
+	.price sup{
+	    font-size: 1.5rem;    
+	    position: absolute;    
+	    top: 12px;
+	    left: -25px;
+	}
+	.hint{
+	    font-style: italic;
+	    font-size: 0.9rem;
+	}
+	.features{
+	    list-style-type: none;    
+	    background: #FFFFFF;
+	    text-align: left;
+	    color: #9C9C9C;
+	    padding:0 22%;
+	    font-size: 0.9rem;
+	}
+	.features li{
+	    padding:15px 0;
+	    width: 100%;
+	}
+	.features li span{
+	   padding-right: 0.4rem; 
+	}
+	.pt-footer{
+	    font-size: 0.95rem;
+	    text-transform: capitalize;
+	}
+	/*PERSONAL*/
+	.personal .title{        
+	    background: #78CFBF;    
+	}
+	.personal .content,.personal .pt-footer{
+	    background: #82DACA;
+	}
+	.personal .content:after{	
+		border-top-color: #82DACA;	
+	}
+	.personal .pt-footer:after{
+	    border-top-color: #FFFFFF;
+	}
+	/*PROFESSIONAL*/
+	.professional .title{
+	    background: #3EC6E0;
+	}
+	.professional .content,.professional .pt-footer{
+	    background: #53CFE9;
+	}
+	.professional .content:after{	
+		border-top-color: #53CFE9;	
+	}
+	.professional .pt-footer:after{
+	    border-top-color: #FFFFFF;
+	}
+	/*BUSINESS*/
+	.business .title{
+	    background: #E3536C;
+	}
+	.business .content,.business .pt-footer{
+	    background: #EB6379;
+	}
+	.business .content:after{	
+		border-top-color: #EB6379;	
+	}
+	.business .pt-footer:after {	
+		border-top-color: #FFFFFF;	
+	}
+</style>
+<script type="text/javascript" src="assets/js/pages/plano/plano.js"></script>

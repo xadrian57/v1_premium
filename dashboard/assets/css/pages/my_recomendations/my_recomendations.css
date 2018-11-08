@@ -1,0 +1,22 @@
+.config-group {
+	border: 1px solid lightgrey;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.config-group .panel-heading .panel-title a {
+	display: block;
+	position: relative;
+}
+
+.tagflag
+	{
+		border : 3px solid blue;
+		border-radius : 10px; 
+	}
+	.borderdiv
+	{
+		border-top : 5px solid blue ; 
+		border-bottom : 5px solid blue; 
+		border-radius : 5px;
+	}

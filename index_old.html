@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="pt-br" itemscope itemtype="https://schema.org/WebSite">
+    <head>
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="ROI HERO transforme o seu e-commerce com inteligência">
+        <meta name="google-site-verification" content="o-rSL1l0cnP04lDTktdWlPWraRFOezYsaDcEdnC_TB8" />
+        <title>ROI HERO</title>
+
+        <!-- SEO -->        
+        <link rel="base" href="https://www.roihero.com.br"/>
+        <link rel="canonical" href="https://www.roihero.com.br/"/>
+
+        <!--GOOGLE-->
+        <link rel="author" href="https://plus.google.com/107679315394377894447/posts"/>
+        <link rel="publisher" href="https://plus.google.com/107679315394377894447"/>
+
+        <meta itemprop="name" content="ROI HERO"/>
+        <meta itemprop="description" content="Nós ajudamos você a vender mais!"/>
+        <meta itemprop="image" content="https://www.roihero.com.br/images/roihero.png"/>
+        <meta itemprop="url" content="https://www.roihero.com.br/"/>
+
+        <!--FACEBOOK-->
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="ROI HERO" />
+        <meta property="og:description" content="Nós ajudamos você a vender mais!" />
+        <meta property="og:image" content="https://www.roihero.com.br/images/roihero.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="418" />  
+        <meta property="og:url" content="https://www.roihero.com.br/" />
+        <meta property="og:site_name" content="ROI HERO" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="article:author" content="https://www.facebook.com/curtaroihero" />
+        <meta property="article:publisher" content="https://www.facebook.com/curtaroihero" />
+
+        <link href="css/bootstrap.css" rel="stylesheet">
+
+        <!-- Startup CSS -->
+        <link href="css/lite.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="js/html5shiv.js"></script>
+          <script src="js/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicons -->
+        <link rel="shortcut icon" href="images/favicon.ico">
+        <script src="js/pace.js"></script>
+
+        <!-- Custom Google Font : Open Sans -->
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,600' rel='stylesheet' type='text/css'>
+        
+                <!-- Facebook Pixel Code -->
+        <script>
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '146865079065911');
+          fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=146865079065911&ev=PageView&noscript=1"
+        /></noscript>
+        <!-- End Facebook Pixel Code -->
+        
+        
+        <!-- Hotjar Tracking Code for www.roihero.com.br -->
+        <script>
+            (function(h,o,t,j,a,r){
+                h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+                h._hjSettings={hjid:652090,hjsv:6};
+                a=o.getElementsByTagName('head')[0];
+                r=o.createElement('script');r.async=1;
+                r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+                a.appendChild(r);
+            })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        </script>
+        
+        
+        <!-- Global Site Tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-93457397-3"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-93457397-3');
+        </script>
+
+        
+    </head>
+    <body>
+        <h1 class="ds_none">Roi Hero - O Heroi das suas vendas</h1>
+        
+        <!-- Modal -->
+<div id="modal-contato" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-body">
+    
+			<form data-toggle="validator" role="form" method="POST" action="enviar/envio_registro.php">
+				<div class="row">
+					<div class="col-md-12" align="center">
+					<img src="https://www.roihero.com.br/lite/img/logo.png" border="0" style="position:relative; top:13px">
+						<h3> Crie sua conta Grátis!</h3>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+			            	<label>Nome</label>
+			            	<input type="text" class="form-control" name="nome" placeholder="Seu nome">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+			            	<label>Telefone:</label>
+			            	<input type="text" class="form-control" name="celular" placeholder="(xx) xxxx-xxxx">
+						</div>
+		                <div class="help-block with-errors"></div>
+					</div>
+					<div class="col-md-12">
+						<div class="form-group">
+			            	<label>Email:</label>
+			            	<input type="text" class="form-control" name="email" placeholder="example@example.com" required autofocus>
+						</div>
+		                <div class="help-block with-errors"></div>
+		            </div>
+		            <div class="col-md-12">
+		            	<button class="btn btn-success" type="submit">Solicitar Demonstração</button>
+		            </div>					
+		        </div>
+			</form>
+	
+         </div>
+    </div>
+  </div>
+</div>
+        <main>    
+            <!-- Fixed navbar -->
+            <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">
+                            <img src="images/roihero_logo.png" alt="logo">
+                        </a>
+                    </div>
+                    
+                  
+                    
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="roihero_main_menu_item"><a href="#comofunciona">Como Funciona</a></li>
+                            <li class="roihero_main_menu_item"><a href="#features">Funcionalidades</a></li>
+                            <li class="roihero_main_menu_item"><a href="#planos">Planos</a></li>
+                           
+                            <li class="roihero_main_menu_item">
+                                <a style="margin-top: -7%;" href="#" data-toggle="modal" data-target="#modal-contato">
+                                    <button class="btn btn-success btn-small" >Criar Conta</button>
+                                </a>    
+                            </li>
+                            
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
+            </div>
+
+            <section id="top" class="masthead">
+                <div class="container"> 
+                    <header class="col-md-8 col-md-offset-2 masthead_cta">
+                        <!-- Hero Title -->
+                        <h1>Aumentamos suas <span class="calltoaction">vendas</span> e <span class="calltoaction">comprovamos</span> isso ainda no período de testes!
+                            
+                            <br /> Crie sua conta hoje mesmo.</h1>
+
+                      <div class="row">
+                            <div class="col-md-12 col-sm-12 subscribe">				
+                                <div class="form-group">
+                                    <div class="col-md-12 col-sm-12">
+                                        <a href="#" data-toggle="modal" data-target="#modal-contato"class="btn btn-success btn-lg">
+                                            Solicitar Demonstração
+                                        </a>
+                                    </div>
+                                </div>				
+                            </div>
+                        </div>
+                    </header>
+                </div>
+            </section>
+
+            <!-- // Parallax Header Ends --> 
+
+
+            <!-- containers -->
+            <section id="features">
+                <header class="container section-title">
+                    <h2><span class="calltoaction">Benefícios e Funcionalidades</span></h2>
+                </header>
+
+
+                <section class="container">
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> 
+                                <img src="images/aumento_conversao_roihero.png" alt="Aumento na conversão"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Aumento na Conversão</h3>
+                            <div>
+                                <p class="enfase">Nossas recomendações <span class="red">convertem até 8X mais </span> do que a taxa de conversão padrão da sua loja.</p>
+                                
+                                <p class="complementar">Isso significa que você venderá mais, sem precisar aumentar a quantidade de visitas que sua loja recebe.</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+
+                </section>
+
+
+                <section class="container">
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> <img src="images/aumento_ticketmedio_roihero.png" alt="aUMENTO TICKET MÉDIO"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Aumento no Ticket Médio</h3>
+                            <div >
+                                <p class="enfase">Nosso ticket médio chega a ser até<span class="red"> 35% maior que o ticket médio da sua loja.</span></p>
+                                <p class="complementar">Isso significa que você pode faturar mais com o mesmo número de pedidos que sua loja faz hoje.</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+
+
+                <section class="container"> 
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> <img src="images/aumento_engajamento_roihero.png" alt="Mais engajamento"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Mais Engajamento</h3>
+                            <div>
+                                <p class="enfase" >Os clientes que interagem com a ROI HERO<span class="red"> navegam em até 4X mais páginas </span>que os clientes que não interagem</p>
+                                <p class="complementar">Isso significa que sua loja passou a ser mais interessante e suas chances de vender e reter o cliente aumentam drasticamente.</p>
+                            </div>
+                        </header>			 
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                
+                            <!-- Container -->
+                <section class="container"> 		
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> <img src="images/reducao_rejeicao_roihero.png" alt="menos rejeição"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Menos Rejeição</h3>
+                            <div >
+                                <p class="enfase">Nossa taxa de rejeição chega a ser<span class="red"> 9X menor do que a da sua loja.</span></p>
+                                <p class="complementar">Isso significa que seu cliente passa a encontrar com mais facilidade os itens que ele quer, tornando sua loja mais atrativa.</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                <!-- // Container Ends --> 
+                
+                <section  id="comofunciona" class="benefits smartstore">
+                    <div class="container"> 
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3 class="color_white">Conheça as <span class="calltoaction">funcionalidades</span> <br />apresentadas por quem as criou.</h3>
+                        </header>	
+                        <div class="col-md-offset-2">
+                            <div class="videoWrapper"> 
+                                <iframe src="https://www.youtube.com/embed/gMCYIJ_RsWc" width="560" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: -10%;" class="col-md-12"> 		
+                            <div class="breath text-center"> 
+                                <a href="#" data-toggle="modal" data-target="#modal-contato" class="btn btn-success btn-lg gototop">Solicitar Demonstração</a> 
+                            </div>		 
+                        </div>
+                        
+                    </div>
+                </section>
+
+
+                
+                 <!-- Client Logos -->
+            <section class="container">
+                <header class="section-title">
+                    <h2><span class="calltoaction">Estão Falando Sobre A Gente</span></h2>
+                </header>
+                <div class="row clientlogo breath">
+                    <div class="col-md-12 breath text-center">
+                        <div class="col-md-2 text-center">
+                           <a href="https://www.terra.com.br/noticias/dino/vendi-um-projeto-para-um-cliente-e-so-depois-criei-a-startup-afirma-empreendedor,5f3a9bae683cd2a6ba2a71bfd355f41f5hwe2n4g.html"> 
+                               <img src="images/terra.jpg" alt="terra">
+                            </a>   
+                        </div>
+                        
+                        
+                        <div class="col-md-2 text-center">
+                           <a href="http://prafrentesempre.ig.com.br/programas/2017-10-26/startup-cria-vitrines-personalizadas.html"> 
+                               <img src="images/ig.jpg" alt="IG">
+                            </a>   
+                        </div> 
+                        
+                           <div class="col-md-2 text-center">
+                           <a href="https://conteudo.startse.com.br/startups/taina/roi-hero-startup-que-vendeu-o-produto-antes-mesmo-da-criacao-da-empresa/"> 
+                               <img src="images/startse.jpg" alt="startse">
+                            </a>   
+                        </div>                        
+                     
+                    
+                        <div class="col-md-2 text-center">
+                           <a href="https://ecommercenews.com.br/noticias/balancos/sartup-de-vitrines-personalizadas-espera-faturar-1-milhao-em-2018/"> 
+                               <img src="images/ecommercenews.jpg" alt="ecommerce news">
+                            </a>   
+                        </div>
+                        
+                          
+                        <div class="col-md-2 text-center">
+                           <a href="http://www.administradores.com.br/noticias/negocios/como-a-personalizacao-aumenta-o-engajamento-e-as-vendas-no-e-commerce/121836/"> 
+                               <img src="images/administradores.jpg" alt="Administradores">
+                            </a>   
+                        </div>
+                        
+                           <div class="col-md-2 text-center">
+                           <a href="https://www.ecommercebrasil.com.br/artigos/personalizacao-engajamento-vendas-e-commerce/"> 
+                               <img src="images/ecommercebrasil.jpg" alt="ecomerce Brasil">
+                            </a>   
+                        </div>
+                      
+                     </div>
+                </div>
+            </section>
+            <!-- // End Client Logos --> 
+
+    
+
+
+                <!-- Container -->
+                <section class="container"> 
+                <header class="container section-title">
+                    <h2><span class="calltoaction">Comprovamos resultados via Google Analytics!</span></h2>
+                </header>
+                    
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> <img src="images/gif_vitrine_nativa.gif" alt="flat-mockup-template"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>+ Oferta + Demanda</h3>
+                            <div >
+                                <p class="enfase">Nós temos mais de <span class="red">20 tipos de inteligências</span>, vitrines e prateleiras.</p>
+                                <p class="complementar">Já entrou em um supermercado vazio? É ruim, não é? Quanto mais produtos sua loja ofertar de maneira precisa, maior suas chances de fazer uma venda. Assim como prateleiras cheias vendem mais!</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                <!-- // Container Ends --> 
+
+                <!-- Container -->
+                <section class="container"> 		
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> 
+                                <img src="images/gif_oferta_limitada.gif" alt="flat-mockup-template">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Mais Produtos por Pedido</h3>
+                            <div >
+                                <p class="enfase">Se o seu cliente encontra mais itens relevantes com a ROI HERO, mais ele compra.</p>
+                                <p class="complementar">A ROI HERO ajuda sua loja a ofertar o "produto perfeito"! Com isso seus clientes acabam adicionando mais produtos no carrinho e você vendendo mais.</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                <!-- // Container Ends --> 
+
+                <!-- Container -->
+                <section class="container"> 		
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center">
+                                <img src="images/gif_slider_recomendacao.gif" alt="flat-mockup-template">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Mais Faturamento</h3>
+                            <div>
+                                <p class="enfase"><span class="red">Até 30% mais faturamento</span>, é o número que alguns lojistas têm experimentado ao utilizar a ROI HERO em suas lojas virtuais.</p>
+                                <p class="complementar">Nosso pior resultado foi um aumento de<span class="red"> 2.85% </span>no faturamento de um lojista! É comum os lojistas que usam a ROI HERO aumentarem entre <span class="red">6% e 12% a receita mensal</span> de suas lojas.</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                <!-- // Container Ends --> 
+
+                <!-- Parallax Footer Starts -->
+                <section class="col-md-12 benefits cta">
+                    <div class="container">
+                        <header class="col-md-8"> 	  
+                            <!-- Hero Title -->
+                            <h3 class="color_white">Aumente suas  <strong>Vendas Hoje! </strong><br>
+                                10.000 Recomendações Grátis!</h3>
+                        </header>  
+                        <div class="col-md-4"> 		
+                            <div class="col-md-12 breath text-center"> 
+                                <a href="#" data-toggle="modal" data-target="#modal-contato" class="btn btn-success btn-lg gototop">Solicitar Demonstração</a> 
+                            </div>		 
+                        </div>
+                    </div>  
+                </section>
+
+                <!-- Container -->
+                <section class="container"> 	
+                <div class="col-md-12">
+                    <header class="container section-title">
+                        <h2><span class="calltoaction">Garantia de sucesso e suporte incrível!</span></h2>
+                    </header>
+                 </div>
+                    
+
+                    <div class="col-md-7">
+                        <div class="row heroimg breath">
+                            <div class="text-center"> 
+                                <div class="videoWrapper"> 
+                                    <iframe src="https://www.youtube.com/embed/H0Zl3J_3Ixw" width="560" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Mais vendas, ou seu dinheiro de volta!</h3>
+                         </header>
+                            <div >
+                                <p class="enfase">É sério! A ROI HERO garante que em 30 dias sua loja venderá no mínimo o mesmo valor pago para nossa solução. E caso isso não aconteça,<span class="red"> devolvemos o seu dinheiro!</span></p>
+                                
+                            </div>
+                       
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                <!-- // Container Ends --> 
+
+                <!-- Container -->
+                <section class="container"> 		
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> <img src="images/todas%20as%20plataformas.jpg" alt="flat-mockup-template"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Integramos em qualquer plataforma</h3>
+                            <div >
+                                <p class="enfase">Qualquer plataforma de loja virtual que aceite edição html e libere o XML do google shopping, </p>
+                                <p class="complementar">Não sabe se sua plataforma tem isso? Fique tranquilo, quase <span class="red"> 100% das plataformas </span>tem os 02 itens necessários para a integração da ROI HERO :).</p>
+                            </div>
+                        </header>
+
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                <!-- // Container Ends --> 
+
+
+                <!-- Container -->
+                <section class="container"> 		
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center">
+                                <img src="images/suporte.png" alt="suporte de cair o queixo">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Suporte "de cair o queixo"</h3>
+                            <div >
+                                <p class="enfase">Skype, E-mail, Chat, "sinal de fumaça" :) a ROI HERO está presente em vários canais para te dar o<span class="red"> melhor atendimento.</span></p>
+                                <p class="complementar">Respondemos as solicitações quase que instantaneamente. Isso é motivo de muito orgulho para todo o time da ROI HERO!</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+
+                </section>
+                <!-- // Container Ends --> 
+
+                <!-- Container -->
+                <section class="container"> 		
+                    <div class="col-md-6">
+                        <div class="row heroimg breath">
+                            <div class="col-md-12 text-center"> 
+                                <img src="images/integracao.png" alt="nós integramos pra você">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!-- Hero Image -->
+                        <header class="section-title">
+                            <h3>Nós integramos. Você vende.</h3>
+                            <div >
+                                <p class="enfase">Você tem total <span class="red">controle e autonomia</span> sobre as recomendações da ROI HERO.</p>
+                                <p class="complementar">Porém toda a integração dos nossos blocos de maior resultado é feito pelo nosso time. Para que você esteja focado somente nas vendas.</p>
+                            </div>
+                        </header>
+                        <!-- //Hero Image --> 
+                    </div>
+                </section>
+                <!-- // Container Ends --> 
+
+                <!-- Parallax Footer Starts -->
+                <section class="col-md-12 benefits cta">
+                    <div class="container">
+                        <header class="col-md-8"> 	  
+                            <h3 class="color_white">Aumente suas  <strong>Vendas Hoje! </strong><br>
+                                10.000 Recomendações Grátis!</h3>
+                        </header>  
+                        <div class="col-md-4"> 		
+                            <div class="col-md-12 breath text-center"> 
+                                <a href="#" data-toggle="modal" data-target="#modal-contato" class="btn btn-success btn-lg gototop">Solicitar Demonstração</a> 
+                            </div>		 
+                        </div>
+                    </div>  
+                </section>
+                
+                
+            </section>
+            
+            
+            <!-- Client Logos -->
+            <section class="container">
+                <header class="section-title">
+                    <h2>Eles confiam na gente!</h2>
+                </header>
+                <div class="row clientlogo breath">
+                    <div class="col-md-12 text-center">
+                        <div class="col-md-4 text-center">
+                            <img src="images/pandora_logo.jpg" alt="pandora joias logo">
+                        </div>
+                        
+                        <div class="col-md-4 text-center">
+                            <img src="images/vestcasa_logo.jpg" alt="logo vest casa">
+                        </div>
+                                              
+                        
+                        <div class="col-md-4 text-center">
+                            <img src="images/iluminim_logo.jpg" alt="logo iluminim">
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-md-12 text-center">
+                        <div class="col-md-3 text-center">
+                            <img src="images/bavera_logo.jpg" alt="bavera home logo">
+                        </div>
+                        
+                        <div class="col-md-3 text-center">
+                            <img src="images/beluga_logo.jpg" alt="beluga logo">
+                        </div>
+                        
+                        
+                        <div class="col-md-3 text-center">
+                            <img src="images/cirilo_logo.jpg" alt="cirilo cabos logo">
+                        </div>                       
+                              
+                         
+                         <div class="col-md-3 text-center">
+                            <img src="images/cristalle_logo.jpg" alt="cristalle logo">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // End Client Logos --> 
+
+
+            <!-- Grey Highlight Section -->
+            <section class="highlight testimonials">
+                <div class="col-md-12"> 
+                    <div class="container">
+                        <!-- Features Section -->
+                        <header class="section-title">
+                            <h2>Não é preciso ter <span class="calltoaction">superpoderes</span> para utilizar</h2>
+                            <p class="tagline">É descomplicado, feito de um jeito que você entende e vê resultados</p>
+                        </header>
+                        <div class="row features"> 
+                            <!-- Feature 01 -->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail"> 
+                                    <img src="images/instalacao_rapida.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>INSTALAÇÃO A JATO</h3>
+                                        <p>Copia e Cola, simples, rápido e direto. Você mesmo pode fazer!</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Feature 02 -->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail"> 
+                                    <img src="images/compativel.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>100% COMPATÍVEL</h3>
+                                        <p>Não importa a sua plataforma de loja virtual, se é possível colar códigos, nós somos compatíveis.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Feature 03 -->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="images/facil%20de%20usar.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>FÁCIL DE USAR</h3>
+                                        <p>Não é preciso ter conhecimento avançado, e nem mesmo conhecimento em HTML.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Feature 04 -->
+
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="images/suporte_atencioso.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>SUPORTE ATENCIOSO</h3>
+                                        <p>Nós estamos aqui prontos para te atender, nossa equipe dedicada vai te ajudar e tirar dúvidas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // Features Section Ends --> 
+
+                        <div class="row features"> 
+                            <!-- Feature 01 -->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail"> 
+                                    <img src="images/garantido.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>É GARANTIDO</h3>
+                                        <p>Vendemos o mesmo que você pagou, ou devolvemos o dinheiro. Sem burocracia, vendas aferidas pelo Analytics.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Feature 02 -->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="images/controle.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>CONTROLE TOTAL</h3>
+                                        <p>Você mesmo pode ligar ou desligar quaisquer das nossas recomendações.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Feature 03 -->
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="images/veja%20resultados.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>VEJA RESULTADOS</h3>
+                                        <p>Você tem acesso ao nosso painel de controle, e saberá o quanto aumentamos em vendas.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Feature 04 -->
+
+                            <div class="col-sm-6 col-md-3">
+                                <div class="thumbnail">
+                                    <img src="images/funcionalidades.png" alt="analytics-icon">
+                                    <div class="caption">
+                                        <h3>MUITAS FUNCIONALIDADES</h3>
+                                        <p>Nós estamos aqui prontos para te atender, nossa equipe dedicada vai te ajudar e tirar dúvidas.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- // Features Section Ends --> 
+
+                    </div>  
+                </div>
+            </section>
+            <!-- // End Grey Highlight Section --> 
+
+
+            <!-- Container -->
+            <section id="planos" class="container"> 
+                <!-- Pricing -->
+                <header class="section-title">
+                    <h2><span class="calltoaction">Preço Imbatível, que cabe no seu bolso!</span></h2>
+                    <p class="tagline">Sem contrato de fidelidade, e com desconto progressivo.</p>
+                </header>
+                <div class="row breath planpricing">
+                   
+                    <div class="col-md-3">
+                        <a href="#" data-toggle="modal" data-target="#modal-contato">
+                        <div class="pricing color3">
+                            <div class="planname">FREE</div>
+                            <div class="price"> 
+                                <span class="curr">R$ </span>0,00<span class="curr"></span><span class="per">/Mês</span>
+                            </div>  
+                            <div class="billing">10.000 Recomendações</div>	
+                        </div>
+                        </a>
+                    </div>
+                    
+                    <div class="col-md-3">
+                        <a href="#" data-toggle="modal" data-target="#modal-contato">
+                        <div class="pricing color3">
+                            <div class="planname">PRO 1</div>
+                            <div class="price"> 
+                                <span class="curr">R$ </span>39<span class="curr"></span><span class="per">/Mês</span>
+                            </div>  
+                            <div class="billing">50.000 Recomendações</div>	
+                        </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-3">
+                        <a href="#" data-toggle="modal" data-target="#modal-contato">
+                        <div class="pricing color3">
+                            <div class="planname">PRO 2</div>
+                            <div class="price"> 
+                                <span class="curr">R$ </span>99<span class="curr"></span><span class="per">/Mês</span>
+                            </div>  
+                            <div class="billing">150.000 Recomendações</div>	
+                        </div>
+                        </a>
+                    </div>
+                    
+                    
+                    <div class="col-md-3">
+                        <a href="#" data-toggle="modal" data-target="#modal-contato">
+                        <div class="pricing color3">
+                            <div class="planname">PRO 3</div>
+                            <div class="price"> 
+                                <span class="curr">R$ </span>199<span class="curr"></span><span class="per">/Mês</span>
+                            </div>  
+                            <div class="billing">300.000 Recomendações</div>	
+                        </div>
+                        </a>
+                    </div>             
+                </div>
+            </section>
+            <!-- // End Pricing --> 
+            
+                        <!-- Container -->
+            <section class="benefits smartstore">
+                <div class="container"> 
+                    <!-- Hero Image -->
+                    <header class="section-title">
+                        <h2 class="color_white">Veja o Vídeo, <span class="calltoaction">Entenda</span> Como Funciona!</h2>
+                    </header>	
+                    <div class="col-md-offset-2">
+                        <div class="videoWrapper"> 
+                            <iframe src="https://www.youtube.com/embed/_eFdILZV7c0" width="560" height="350" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+
+            <section>
+
+                <!-- FAQ -->
+                <header class="section-title container">
+                    <h2><span class="calltoaction">Dúvidas mais comuns</span></h2>
+                </header>
+                <div class="row faq breath container">
+                    <div class="col-md-6">
+                        <h3>A ROI HERO funciona em todas as plataformas de loja virtual?</h3>
+                        <p>SIM! Funcionamos em todas as plataformas nas quais seja possível copiar e colar um código. Lembrando que a ROI HERO é de fácil integração, não precisa ser expert para integra-la.</p>
+                        <h3>Eu preciso saber usar HTML?</h3>
+                        <p>Não é necessário! Você realmente pode simplesmente copiar e colar o nosso código no seu site, e nós te ensinamos a fazer isso com vídeos tutoriais, mas é claro que, com conhecimento em HTML você pode fazer algumas coisas mais avançadas.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Tem multa se cancelar? Se eu fizer o teste sou obrigado a usar por algum tempo?</h3>
+                        <p>De jeito nenhum! Na ROI HERO voce é livre para efetuar o teste e também ir embora caso não deseje mais que seu site seja inteligente, sem multas, ou pegadinhas.</p>
+                        <h3>Escolhi meu plano, como eu pago?</h3>
+                        <p>Nós aceitamos boleto, e cartões de crédito. Todos os meses nós vamos te enviar um e-mail  com o intuito de lembrete de cobrança e assim, com sua autorização, será debitado automaticamente para sua comodidade. Caso opte pelo boleto, também iremos enviar via e-mail.</p>
+                    </div>
+                </div>
+            </section>
+
+                <!-- // End FAQ --> 
+
+                <!-- // Container Ends --> 
+
+                <!-- Parallax Footer Starts -->
+                <section class="col-md-12 benefits cta">
+                    <div class="container">
+                        <header class="col-md-8"> 	  
+                            <!-- Hero Title -->
+                            <h3 class="color_white">Aumente suas  <strong>Vendas Hoje! </strong><br>
+                                10.000 Recomendações Grátis!</h3>
+                        </header>  
+                        <div class="col-md-4"> 		
+                            <div class="col-md-12 breath text-center"> 
+                                <a href="#" data-toggle="modal" data-target="#modal-contato" class="btn btn-success btn-lg gototop">Criar Conta Grátis</a> 
+                            </div>		 
+                        </div>
+                    </div>  
+                </section>
+
+                <!-- FAQ 
+                <div class="gap-top">
+                    <div class="row faq breath container">
+                        <div class="col-md-4">
+                            <h3>A ROI HERO funciona em todas as plataformas de loja virtual?</h3>
+                            <p>SIM! Funcionamos em todas as plataformas que sejam possíveis copiar e colar um código. Lembrando que a ROI HERO é de fácil integração, não precisa ser expert para integra-la.</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h3>A ROI HERO funciona em todas as plataformas de loja virtual?</h3>
+                            <p>SIM! Funcionamos em todas as plataformas que sejam possíveis copiar e colar um código. Lembrando que a ROI HERO é de fácil integração, não precisa ser expert para integra-la.</p>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h3>A ROI HERO funciona em todas as plataformas de loja virtual?</h3>
+                            <p>SIM! Funcionamos em todas as plataformas que sejam possíveis copiar e colar um código. Lembrando que a ROI HERO é de fácil integração, não precisa ser expert para integra-la.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+          End FAQ --> 
+        </main>
+
+        <!-- JS and analytics only. --> 
+        <!-- Bootstrap core JavaScript
+        ================================================== --> 
+        <!-- Placed at the end of the document so the pages load faster --> 
+        <script src="js/jquery.js"></script> 
+        <script src="js/bootstrap.js"></script> 
+        <script src="js/easing.js"></script> 
+        <script src="js/typer.js"></script> 
+        <script src="js/nicescroll.js"></script> 
+        <script src="js/ketchup.all.js"></script> 
+        
+                
+        <!-- CHAT --> 
+        
+        <script type="text/javascript">var cbuser = {name: '', email: '', message: ''};var cburl = 'https://www.roihero.com.br/lite/chat/app/', access_token = 'BIPkYNjyE0Flbsc37mOH';document.write('<script type="text/javascript" src="' + cburl + 'assets/cmodule-chat/js/chatbull-init.js"></' + 'script>');</script>
+        
+        
+        <!-- Typer --> 
+
+        <script>
+            $(function () {
+                $('[data-typer-targets]').typer();
+            });
+        </script> 
+
+        <!-- Scroll to Explore --> 
+
+        <script>
+
+
+            $(function () {
+                $('.scrollto, .gototop').bind('click', function (event) {
+                    var $anchor = $(this);
+                    $('html, body').stop().animate({
+                        scrollTop: $($anchor.attr('href')).offset().top
+                    }, 1500, 'easeInOutExpo');
+                    event.preventDefault();
+                });
+
+                //################################# ROLAGEM SUAVE DO MENU
+                $('.roihero_main_menu_item a').click(function () {
+                    var goto = $($(this).attr('href')).position().top;
+                    $('html,body').animate({scrollTop: goto - $('.navbar-fixed-top').outerHeight()}, 2000);
+                    return false;
+                });
+
+
+            });
+
+
+        </script>
+
+    </body>
+</html>

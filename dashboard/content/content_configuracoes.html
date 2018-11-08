@@ -1,0 +1,232 @@
+<div class="app-content content container-fluid">
+	<div class="content-wrapper">
+		<div class="content-header row">
+			<div class="content-header-left col-md-8 col-xs-12 mb-2">
+				<div class="row breadcrumbs-top">
+					<div class="breadcrumb-wrapper col-xs-12">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="overview">Home</a>
+							</li>
+							<li class="breadcrumb-item"><a href="configuracoes">Configurações</a>
+							</ol>
+						</div>
+					</div>
+					<h3 class="content-header-title mb-0">CONFIGURAÇÕES</h3>
+				</div>
+			</div>
+
+			<div class="row"> 
+				<!-- VÍDEO PIXEL -->
+				<div class="col-xl-6 col-md-6 col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="card-block">
+								<h4 class="card-title">INSTALAÇÃO ROI HERO</h4>
+								<h6 class="card-subtitle text-muted">Este o código de instalação da Roi Hero, o funcionamento da nossa ferramenta no seu site depende de ele estar instalado corretamente.</h6>
+							</div>
+							<div class="embed-responsive embed-responsive-item embed-responsive-16by9">
+								<iframe id="video-tutorial" class="img-thumbnail" src="" allowfullscreen=""></iframe>
+							</div>
+							<div id="descricao-pixel" class="card-block">
+								<p class="card-text">Este Pixel deve ser inserido no footer de todas as páginas do seu site. logo antes do fechamento da tag <code>&lt;body&gt;</code>.</p>
+								<div class="form-actions center">
+									<button id="btnAbreModalCfg" type="submit" class="btn btn-outline-primary" data-toggle="modal" data-target="#modalPixelConfiguracoes">Visualizar Pixel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> 
+
+				<div class="col-xl-6 col-md-6 col-sm-12">
+					<div class="card">
+						<div class="card-body">
+							<div class="card-block">
+								<h4 class="card-title">Configurações Básicas</h4>
+								<h6 class="card-subtitle text-muted">Aqui você pode cadastrar o link do seu site, bem como configurar informações de pagamento da sua loja.</h6>
+							</div>
+							<div class="card-block">
+								<div class="form-body">
+									<div class="col-xl-12 col-md-12 col-sm-12">
+										<div class="form-group">
+											<label>Link da Sua Loja</label>
+											<input id="site" type="text" class="form-control">
+										</div>
+									</div>
+									<div class="col-xl-6 col-md-6 col-sm-12">
+										<fieldset class="form-group position-relative has-icon-left">
+											<label>Cor Primária da Sua Loja</label>
+				                            <input id="corPrimaria" type="text" class="form-control jscolor" name="corPrimaria">
+				                            <div class="form-control-position drop">
+				                                <i class="fa fa-eyedropper" aria-hidden="true"></i>
+				                            </div>
+				                        </fieldset>
+									</div>
+									<div class="col-xl-6 col-md-6 col-sm-12">
+										<fieldset class="form-group position-relative has-icon-left">
+											<label>Cor Secundária da Sua Loja</label>
+				                            <input id="corSecundaria" type="text" class="form-control jscolor" name="corSecundaria">
+				                            <div class="form-control-position drop">
+				                                <i class="fa fa-eyedropper" aria-hidden="true"></i>
+				                            </div>
+				                        </fieldset>
+									</div>
+									<div style="display: none;">
+										<div class="col-xl-12 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label>Porcentagem de deconto no boleto</label>
+												<input id="desconto" type="text" class="form-control">
+											</div>
+										</div>
+
+										<div class="col-xl-16 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label>Quantidade de Parcelas</label>
+												<input id="numeroParcelas" type="text" class="form-control">
+											</div>
+										</div>
+										<div class="col-xl-16 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label>Valor das Parcelas</label>
+												<input id="valorParcelas" type="text" class="form-control">
+											</div>
+										</div>
+									</div>
+
+								</div>
+
+								<div class="form-actions right">
+									<button id="btnSalvaConfig" type="submit" class="btn btn-outline-primary pull-right">Salvar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> 
+			<div class="row">
+				<style type="text/css">
+					.card-header .btn-group{
+						float: right;
+					}
+
+				</style>
+				<div class="col-md-12">
+					<div id="cardTrustvox" class="card" style="display: inline-block;width: 100%;">
+						<div class="card-header">
+							<h4 class="card-title" style="float:left;">Ativar TrustVox</h4>
+							<input id="ativa-trustvox" type="checkbox" class="switch" data-off-label="desativar" data-on-label="ativar" data-switch-always/>
+						</div>
+						<div class="card-body">
+							<div class="card-block">
+							</div>
+							<div class="col-xl-4 col-md-6">						
+								<div class="logo-rh-trustvox">
+									<img src="assets/images/logo-roihero-trustvox.jpg">
+								</div>
+								<div class="card-block">
+									<p class="card-text"></p>
+								</div>
+							</div>
+							<div class="col-xl-8 col-md-8">
+								<h5>Se você é cliente Roi Hero e Trustvox, você pode ativar as melhores inteligências de recomendações aqui!</h5>
+								<p class="card-text text-muted mt-2 mb-2">A Trustvox é a melhor ferramenta de avaliação de e-commerce do mercado, e trouxemos a melhor integração de ferramentas possível para você!<BR><BR> Você poderá utilizar a inteligência de recomendação da Roi Hero e ao mesmo tempo, usando as avaliações de confiança de Trustvox, trazendo uma melhor experiência de compra para o seu cliente, além de aumentar as suas taxas de conversão!</p>								
+							</div>	
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>      
+
+	<!-- Modal -->
+	<div id="modalPixelConfiguracoes" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 id="tituloModal" class="modal-title">Este é o código do nosso pixel</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-12">
+							<h5 class="primary">Copie e cole no seu site</h5>
+							<code id="codigo-pixel">
+							</code>
+							<textarea id="inputPixel" value="<script type=&quot;text/script>https://www.roihero.com.br/blablablascript.js</script>" style="
+							height: 0;
+							opacity: 0;
+							pointer-events: none;
+							"></textarea>
+						</div>
+					</div>
+				</div>            
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="
+					document.getElementById('inputPixel').select(); 
+					document.execCommand('copy');
+					toastr['success']('Copiado com sucesso para a área de transferência!');
+					">
+					Copiar e fechar <i class="fa fa-clipboard" aria-hidden="true"></i>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div id="modalAddUsuario" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title"><i class="fa fa-road"></i> Convidar Usuários</h4>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-xs-12">
+                        <p>Uma conta Roi Hero pode ter até 4 usuários. Você ainda pode convidar X usuários para poderem usar esta conta.<br>Basta inserir o e-mail do convidado e selecionar o papel dele.</p>
+                    	<div class="form-group">
+                    		<label>Email:</label>
+                    		<input class="form-control" type="text" placeholder="Digite o seu email">                    		
+                    	</div>
+                    	<div class="form-group">
+                    		<label>Papel</label>
+                    		<select class="form-control">
+                    			<option>Suporte</option>
+                    			<option>Técnico</option>
+                    			<option>Financeiro</option>
+                    			<option>Outro</option>
+                    		</select>
+                    	</div>
+                    	<div class="form-group">
+                    		<input type="text" class="form-control" value="13fhw$a@3%zfkl" readonly>
+                    	</div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+				<button type="button" class="btn grey btn-outline-secondary" data-dismiss="modal">Fechar</button>
+				<button type="button" class="btn btn-outline-primary">Copiar</button>
+			</div>
+        </div>
+    </div>
+</div> 
+
+<style type="text/css">
+	.form-control-position.drop {
+	    position: absolute;
+	    top: 32px;
+	    z-index: 2;
+	    display: block;
+	    width: 2.5rem;
+	    height: 2.5rem;
+	    line-height: 2.5rem;
+	    text-align: center;
+	    left: 4px !important;
+	}
+</style>
+
+<script type="text/javascript" src="assets/js/pages/configuracoes/configuracoes.js"></script>
+<!-- COLORPICKER -->
+<script type="text/javascript" src="assets/js/jscolor.js"></script>

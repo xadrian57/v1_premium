@@ -1,0 +1,140 @@
+html,
+body,
+div,
+ul,
+li,
+figure,
+figcaption,
+span,
+img,
+nav,
+a{
+    border:0;
+    padding:0;
+    margin:0;
+    text-decoration:none;
+    list-style:none;
+}
+
+.rh_gridTpl{
+    width: 90%;
+    max-width: 1200px;
+    min-width:280px;
+    margin:0 auto;
+    z-index: 1;
+    position: relative;
+}
+
+.rh_tpl h3{
+	text-align:center;
+	width:100%;
+	display:block;
+	font-family:Tahoma;
+	font-size:17px;
+	color:#363636;
+	position:relative;
+	text-transform:uppercase;
+	border-bottom:1px solid #acacac;
+}
+
+.rh_tpl h3:before{
+	content:'';
+	width:80%;
+	height:3px;
+	background: #fa0a15;
+	position:absolute;
+	bottom:-2px;
+	left:10%;
+	display:block;
+}
+
+.rh_tpl ul li{
+	float: left;
+	width: 23%;
+	margin: 0 1%;
+	text-align: center;
+	color: #4d4d4f;
+	font-family:Tahoma;
+}
+
+.rh_tpl ul li div{
+	border: 2px solid #ebebeb;
+	transition: box-shadow 0.4s, border 0.4s;
+}
+
+.rh_tpl ul li div:hover{
+	border: 2px solid #aaaaaa;
+	box-shadow: 0 0 20px 3px #0000006e;
+}
+
+.rh_tpl ul li a:hover figure{
+	opacity:0.7;
+}
+
+.rh_tpl ul li figure{
+	display: block;
+	width: 95%;
+	margin: 0 auto;
+	transition:opacity 0.4s;
+}
+
+.rh_tpl ul li figure img{
+	width: 100%;
+	display: block;
+	margin: 0 0 10px;
+}
+
+.rh_tpl ul li figure figcaption{
+	text-align:  center;
+	font-size: 15px;
+	font-weight: 800;
+	color: #4d4d4f;
+	text-transform:  uppercase;
+}
+
+.rh_tpl ul li strong{
+	font-size: 12px;
+	display:  block;
+	margin: 0 0 3px;
+	text-transform: uppercase;
+	font-weight: 400;
+}
+
+.rh_tpl ul li em{
+	font-style:  normal;
+	font-size: 12px;
+	display: block;
+}
+
+.rh_tpl ul li div.price{
+	margin: 8px 0;
+	border: 0;
+	box-shadow: none !important;
+}
+
+.rh_tpl ul li .price span{
+	display:  block;
+	font-size: 12px;
+	font-weight: 700;
+}
+
+.rh_tpl ul li .price span b{
+	font-size: 17px;
+	color: #fa0a15;
+}
+
+.rh_tpl ul li .buy{
+	display: inline-block;
+	background: #fa0a15;
+	color: #FFFFFF;
+	font-weight: 700;
+	padding: 5px 10px;
+	text-transform:  uppercase;
+	margin: 0 0 10px;
+	border-radius: 6px;
+	transition: background 0.4s;
+}
+
+.rh_tpl ul li .buy:hover{
+	background:#00a651;
+}

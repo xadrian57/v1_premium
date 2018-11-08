@@ -1,0 +1,335 @@
+<!doctype html>
+<html>
+<head>
+    <script type="text/javascript" src="dashboard/assets/js/jquery-3.2.1.min.js" assync></script> 
+    <script type="text/javascript" src="assets/js/valida_token.js"></script>
+    <title>Cadastro Roi Hero</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="keywords" content="login ROI HERO, dashboard roi hero, dash roi hero, admin roi hero, admin da roi hero">
+    <link rel="stylesheet" type="text/css" href="dashboard/assets/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="57x57" href="dashboard/assets/images/ico/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="dashboard/assets/images/ico/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="dashboard/assets/images/ico/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="dashboard/assets/images/ico/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="dashboard/assets/images/ico/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="dashboard/assets/images/ico/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="dashboard/assets/images/ico/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="dashboard/assets/images/ico/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="dashboard/assets/images/ico/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="dashboard/assets/images/ico/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="dashboard/assets/images/ico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="dashboard/assets/images/ico/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="dashboard/assets/images/ico/favicon-16x16.png">
+    <link rel="manifest" href="dashboard/assets/images/ico/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="dashboard/assets/images/ico/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i%7COpen+Sans:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">    
+    <link rel="stylesheet" type="text/css" href="dashboard/assets/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/form_validation/form.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/cadastro.css">
+    <link rel="stylesheet" type="text/css" href="assets/fonts/feather/style.min.css">
+    
+</head>
+<!-- -->
+<body>
+    <div class="blur"></div>
+    <div class="app-content content container-fluid">
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
+            <div class="content-body">
+                <section id="sessaoToken" class="flexbox-container">
+                    <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 box-shadow-3 p-0">
+                        <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+                            <div class="card-header no-border">
+                                <div class="card-title text-xs-center">
+                                    <img src="assets/img/logo.png" alt="Roi Hero logo">
+                                </div>
+                                <h6 class="card-subtitle text-muted text-xs-center font-small-3 pt-2"><span>Digite o token que você recebeu em seu email</span></h6>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="form-group">
+                                    <input class="form-control" type="text" maxlength="8" id="token" placeholder="token"/>
+                                </div>
+                                <div class="form-group">
+                                    <button id="btnValidaToken" class="btn btn-outline-success btn-block">Confirmar <i class="ft-check"></i></button>
+                                </div>
+                                <p class="card-subtitle text-muted text-xs-center font-small-3 mx-2 mt-2 mb-2">Caso você não tenha recebido o email, clique abaixo para reenviar</p>                                
+                                <div class="form-group">
+                                    <button id="btnReenviaEmail" class="btn btn-outline-warning btn-block">Reenviar <i class="ft-mail"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="cadastro" class="flexbox-container">
+                    <div class="center-modal col-md-8 col-xs-10 box-shadow-3 p-0">
+                        <div class="card border-grey border-lighten-3 px-1 py-1 m-0">
+                            <div class="card-header no-border">
+                                <div class="card-title text-xs-center">
+                                    <img src="assets/img/logo.png" alt="Roi Hero logo">
+                                </div>
+                                <h6 class="card-subtitle line-on-side text-muted text-xs-center font-small-3 pt-2"><span>Entre com os dados para o cadastro</span></h6>
+                            </div>
+
+                            <div class="card-body collapse in ">
+                                <form id="formularioCadastro" class="form" novalidate>
+                                    <div class="form-body"> 
+                                    	<div class="col-md-6">                                       
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label for="nomeLoja">Nome da Loja</label>
+                                                <input type="text" id="nomeLoja" class="form-control" placeholder="Digite o nome da sua loja" name="nomeLoja" 
+                                                required 
+                                                data-validation-required-message="Digite o nome da loja">
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label for="nomeResponsavel">Nome do Responsável</label>
+                                                <input type="text" id="nomeResponsavel" class="form-control" placeholder="Digite o nome do responsável" name="nomeResponsavel" 
+                                                required 
+                                                data-validation-required-message="Digite o nome da loja">
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group">
+                                            <div class="controls">
+                                               <label for="plat">Plataforma</label>
+                                               <select class="form-control" id="plat" name="plat" required data-validation-required-message="Selecione uma plataforma">
+                                                   <option disabled selected>-- Selecione --</option>
+                                                   <option value="vtex">VTEX</option>
+                                                   <option value="loja_integrada">LOJA INTEGRADA</option>
+                                                   <option value="woo_commerce">WOO COMMERCE</option>
+                                                   <option value="magento">MAGENTO</option>
+                                                   <option value="iset">ISET</option>
+                                                   <option value="anyshop">ANYSHOP</option>
+                                                   <option value="signativa">SIGNATIVA</option>
+                                                   <option value="rp_commerce">RP COMMERCE</option>
+                                                   <option value="xtech">XTECH</option>
+                                                   <option value="plataforma_online">PLATAFORMA ONLINE</option>
+                                                   <option value="moovin">MOOVIN</option>
+                                                   <option value="e-com_club">E-COM CLUB</option>
+                                                   <option value="tmw">TMW</option>
+                                                   <option value="irroba">IRROBA</option>
+                                                   <option value="adsmanager">ADSMANAGER</option>
+                                                   <option value="luqro">LUQRO</option>
+                                                   <option value="vannon">VANNON</option>
+                                                   <option value="piraweb">PIRAWEB</option>
+                                                   <option value="tray">TRAY</option>
+                                                   <option value="a2store">A2 STORE</option>
+                                                   <option value="bizcommerce">BIZCOMMERCE</option>
+                                                   <option value="ecshop">ECSHOP</option>
+                                                   <option value="nuvemshop">NUVEM SHOP</option>
+                                                   <option value="rakuten">RAKUTEN</option>
+                                                   <option value="n2nvirtual">N2N VIRTUAL</option>
+                                                   <option value="outros">Outros</option>
+                                               </select>
+                                            </div>
+                                        </div>
+                                        <div id="outraPlataforma" class="form-group" style="display: none;">
+                                            <div class="controls">
+                                               <label for="plataforma">Digite o nome da plataforma:</label>
+                                               <input class="form-control" type="text" name="plataforma_outros" required data-validation-required-message="Digite o nome da sua plataforma">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label for="site">Site</label>
+                                                <input type="text" id="site" class="form-control" placeholder="http://www.sualoja.com" name="site" required data-validation-required-message="Digite o site" data-validation-regex-regex="(https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\.[^\s]{2,}|https?:\/\/(?:www\.|(?!www))[a-zA-Z0-9]\.[^\s]{2,}|www\.[a-zA-Z0-9]\.[^\s]{2,})" data-validation-regex-message="Digite um site com o formato 'http://www.seusite.com.br'">
+                                            </div>
+                                        </div>
+                                       </div>
+                                       <div class="col-md-6">    
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label for="telefone">Telefone</label>
+                                                <input autocomplete="off" type="text" id="telefone" class="form-control" maxlength="15" placeholder="Telefone" name="telefone" required data-validation-required-message="Digite um telefone"
+                                                minlength="14"
+                                                data-validation-minlength-message="Digite um número de telefone válido"
+                                                >
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <div class="controls">
+                                               <label for="pedidos">Quantos pedidos sua loja tem por mês?</label>
+                                               <select class="form-control" id="pedidos" name="pedidos" required data-validation-required-message="Selecione uma quantidade">
+                                                   <option disabled selected>-- Selecione --</option>
+                                                   <option value="startup">10 a 100</option>
+                                                   <option value="pro">100 a 300</option>
+                                                   <option value="enterprise">300 a 500</option>
+                                                   <option value="enterprise2">500+</option>
+                                               </select>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label for="senha">Senha</label>
+                                                <input autocomplete="off" type="password" id="senha" class="form-control" placeholder="Digite a senha" name="senha" required data-validation-required-message="Digite a senha"
+                                                minlength="6" maxlength="12" data-validation-minlength-message="A senha precisa ter no mínimo 6 caracteres"
+                                                >
+                                            </div>
+                                        </div>
+                                       </div>
+                                    </div>
+
+                                    <input type="hidden" id="tokenForm" name="token">
+                                    <input type="hidden" id="plataforma" name="plataforma">
+
+                                    <div class="form-actions right">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fa fa-check-square-o"></i> Cadastrar
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>                                
+                </section>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="dashboard/assets/js/form_validator/jqBootstrapValidation.js"></script>
+<script type="text/javascript" src="assets/js/toastr.min.js"></script>
+
+
+
+<script type="text/javascript">
+    // block UI
+
+        !function(){"use strict";function e(e){function t(t,n){var s,h,k=t==window,y=n&&void 0!==n.message?n.message:void 0;if(n=e.extend({},e.blockUI.defaults,n||{}),!n.ignoreIfBlocked||!e(t).data("blockUI.isBlocked")){if(n.overlayCSS=e.extend({},e.blockUI.defaults.overlayCSS,n.overlayCSS||{}),s=e.extend({},e.blockUI.defaults.css,n.css||{}),n.onOverlayClick&&(n.overlayCSS.cursor="pointer"),h=e.extend({},e.blockUI.defaults.themedCSS,n.themedCSS||{}),y=void 0===y?n.message:y,k&&p&&o(window,{fadeOut:0}),y&&"string"!=typeof y&&(y.parentNode||y.jquery)){var m=y.jquery?y[0]:y,v={};e(t).data("blockUI.history",v),v.el=m,v.parent=m.parentNode,v.display=m.style.display,v.position=m.style.position,v.parent&&v.parent.removeChild(m)}e(t).data("blockUI.onUnblock",n.onUnblock);var g,I,w,U,x=n.baseZ;g=e(r||n.forceIframe?'<iframe class="blockUI" style="z-index:'+x++ +';display:none;border:none;margin:0;padding:0;position:absolute;width:100%;height:100%;top:0;left:0" src="'+n.iframeSrc+'"></iframe>':'<div class="blockUI" style="display:none"></div>'),I=e(n.theme?'<div class="blockUI blockOverlay ui-widget-overlay" style="z-index:'+x++ +';display:none"></div>':'<div class="blockUI blockOverlay" style="z-index:'+x++ +';display:none;border:none;margin:0;padding:0;width:100%;height:100%;top:0;left:0"></div>'),n.theme&&k?(U='<div class="blockUI '+n.blockMsgClass+' blockPage ui-dialog ui-widget ui-corner-all" style="z-index:'+(x+10)+';display:none;position:fixed">',n.title&&(U+='<div class="ui-widget-header ui-dialog-titlebar ui-corner-all blockTitle">'+(n.title||"&nbsp;")+"</div>"),U+='<div class="ui-widget-content ui-dialog-content"></div>',U+="</div>"):n.theme?(U='<div class="blockUI '+n.blockMsgClass+' blockElement ui-dialog ui-widget ui-corner-all" style="z-index:'+(x+10)+';display:none;position:absolute">',n.title&&(U+='<div class="ui-widget-header ui-dialog-titlebar ui-corner-all blockTitle">'+(n.title||"&nbsp;")+"</div>"),U+='<div class="ui-widget-content ui-dialog-content"></div>',U+="</div>"):U=k?'<div class="blockUI '+n.blockMsgClass+' blockPage" style="z-index:'+(x+10)+';display:none;position:fixed"></div>':'<div class="blockUI '+n.blockMsgClass+' blockElement" style="z-index:'+(x+10)+';display:none;position:absolute"></div>',w=e(U),y&&(n.theme?(w.css(h),w.addClass("ui-widget-content")):w.css(s)),n.theme||I.css(n.overlayCSS),I.css("position",k?"fixed":"absolute"),(r||n.forceIframe)&&g.css("opacity",0);var C=[g,I,w],S=e(k?"body":t);e.each(C,function(){this.appendTo(S)}),n.theme&&n.draggable&&e.fn.draggable&&w.draggable({handle:".ui-dialog-titlebar",cancel:"li"});var O=f&&(!e.support.boxModel||e("object,embed",k?null:t).length>0);if(u||O){if(k&&n.allowBodyStretch&&e.support.boxModel&&e("html,body").css("height","100%"),(u||!e.support.boxModel)&&!k)var E=d(t,"borderTopWidth"),T=d(t,"borderLeftWidth"),M=E?"(0 - "+E+")":0,B=T?"(0 - "+T+")":0;e.each(C,function(e,t){var o=t[0].style;if(o.position="absolute",2>e)k?o.setExpression("height","Math.max(document.body.scrollHeight, document.body.offsetHeight) - (jQuery.support.boxModel?0:"+n.quirksmodeOffsetHack+') + "px"'):o.setExpression("height",'this.parentNode.offsetHeight + "px"'),k?o.setExpression("width",'jQuery.support.boxModel && document.documentElement.clientWidth || document.body.clientWidth + "px"'):o.setExpression("width",'this.parentNode.offsetWidth + "px"'),B&&o.setExpression("left",B),M&&o.setExpression("top",M);else if(n.centerY)k&&o.setExpression("top",'(document.documentElement.clientHeight || document.body.clientHeight) / 2 - (this.offsetHeight / 2) + (blah = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "px"'),o.marginTop=0;else if(!n.centerY&&k){var i=n.css&&n.css.top?parseInt(n.css.top,10):0,s="((document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop) + "+i+') + "px"';o.setExpression("top",s)}})}if(y&&(n.theme?w.find(".ui-widget-content").append(y):w.append(y),(y.jquery||y.nodeType)&&e(y).show()),(r||n.forceIframe)&&n.showOverlay&&g.show(),n.fadeIn){var j=n.onBlock?n.onBlock:c,H=n.showOverlay&&!y?j:c,z=y?j:c;n.showOverlay&&I._fadeIn(n.fadeIn,H),y&&w._fadeIn(n.fadeIn,z)}else n.showOverlay&&I.show(),y&&w.show(),n.onBlock&&n.onBlock.bind(w)();if(i(1,t,n),k?(p=w[0],b=e(n.focusableElements,p),n.focusInput&&setTimeout(l,20)):a(w[0],n.centerX,n.centerY),n.timeout){var W=setTimeout(function(){k?e.unblockUI(n):e(t).unblock(n)},n.timeout);e(t).data("blockUI.timeout",W)}}}function o(t,o){var s,l=t==window,a=e(t),d=a.data("blockUI.history"),c=a.data("blockUI.timeout");c&&(clearTimeout(c),a.removeData("blockUI.timeout")),o=e.extend({},e.blockUI.defaults,o||{}),i(0,t,o),null===o.onUnblock&&(o.onUnblock=a.data("blockUI.onUnblock"),a.removeData("blockUI.onUnblock"));var r;r=l?e("body").children().filter(".blockUI").add("body > .blockUI"):a.find(">.blockUI"),o.cursorReset&&(r.length>1&&(r[1].style.cursor=o.cursorReset),r.length>2&&(r[2].style.cursor=o.cursorReset)),l&&(p=b=null),o.fadeOut?(s=r.length,r.stop().fadeOut(o.fadeOut,function(){0===--s&&n(r,d,o,t)})):n(r,d,o,t)}function n(t,o,n,i){var s=e(i);if(!s.data("blockUI.isBlocked")){t.each(function(e,t){this.parentNode&&this.parentNode.removeChild(this)}),o&&o.el&&(o.el.style.display=o.display,o.el.style.position=o.position,o.el.style.cursor="default",o.parent&&o.parent.appendChild(o.el),s.removeData("blockUI.history")),s.data("blockUI.static")&&s.css("position","static"),"function"==typeof n.onUnblock&&n.onUnblock(i,n);var l=e(document.body),a=l.width(),d=l[0].style.width;l.width(a-1).width(a),l[0].style.width=d}}function i(t,o,n){var i=o==window,l=e(o);if((t||(!i||p)&&(i||l.data("blockUI.isBlocked")))&&(l.data("blockUI.isBlocked",t),i&&n.bindEvents&&(!t||n.showOverlay))){var a="mousedown mouseup keydown keypress keyup touchstart touchend touchmove";t?e(document).bind(a,n,s):e(document).unbind(a,s)}}function s(t){if("keydown"===t.type&&t.keyCode&&9==t.keyCode&&p&&t.data.constrainTabKey){var o=b,n=!t.shiftKey&&t.target===o[o.length-1],i=t.shiftKey&&t.target===o[0];if(n||i)return setTimeout(function(){l(i)},10),!1}var s=t.data,a=e(t.target);return a.hasClass("blockOverlay")&&s.onOverlayClick&&s.onOverlayClick(t),a.parents("div."+s.blockMsgClass).length>0?!0:0===a.parents().children().filter("div.blockUI").length}function l(e){if(b){var t=b[e===!0?b.length-1:0];t&&t.focus()}}function a(e,t,o){var n=e.parentNode,i=e.style,s=(n.offsetWidth-e.offsetWidth)/2-d(n,"borderLeftWidth"),l=(n.offsetHeight-e.offsetHeight)/2-d(n,"borderTopWidth");t&&(i.left=s>0?s+"px":"0"),o&&(i.top=l>0?l+"px":"0")}function d(t,o){return parseInt(e.css(t,o),10)||0}e.fn._fadeIn=e.fn.fadeIn;var c=e.noop||function(){},r=/MSIE/.test(navigator.userAgent),u=/MSIE 6.0/.test(navigator.userAgent)&&!/MSIE 8.0/.test(navigator.userAgent),f=(document.documentMode||0,e.isFunction(document.createElement("div").style.setExpression));e.blockUI=function(e){t(window,e)},e.unblockUI=function(e){o(window,e)},e.growlUI=function(t,o,n,i){var s=e('<div class="growlUI"></div>');t&&s.append("<h1>"+t+"</h1>"),o&&s.append("<h2>"+o+"</h2>"),void 0===n&&(n=3e3);var l=function(t){t=t||{},e.blockUI({message:s,fadeIn:"undefined"!=typeof t.fadeIn?t.fadeIn:700,fadeOut:"undefined"!=typeof t.fadeOut?t.fadeOut:1e3,timeout:"undefined"!=typeof t.timeout?t.timeout:n,centerY:!1,showOverlay:!1,onUnblock:i,css:e.blockUI.defaults.growlCSS})};l();s.css("opacity");s.mouseover(function(){l({fadeIn:0,timeout:3e4});var t=e(".blockMsg");t.stop(),t.fadeTo(300,1)}).mouseout(function(){e(".blockMsg").fadeOut(1e3)})},e.fn.block=function(o){if(this[0]===window)return e.blockUI(o),this;var n=e.extend({},e.blockUI.defaults,o||{});return this.each(function(){var t=e(this);n.ignoreIfBlocked&&t.data("blockUI.isBlocked")||t.unblock({fadeOut:0})}),this.each(function(){"static"==e.css(this,"position")&&(this.style.position="relative",e(this).data("blockUI.static",!0)),this.style.zoom=1,t(this,o)})},e.fn.unblock=function(t){return this[0]===window?(e.unblockUI(t),this):this.each(function(){o(this,t)})},e.blockUI.version=2.7,e.blockUI.defaults={message:"<h1>Please wait...</h1>",title:null,draggable:!0,theme:!1,css:{padding:0,margin:0,width:"30%",top:"40%",left:"35%",textAlign:"center",color:"#000",border:"3px solid #aaa",backgroundColor:"#fff",cursor:"wait"},themedCSS:{width:"30%",top:"40%",left:"35%"},overlayCSS:{backgroundColor:"#000",opacity:.6,cursor:"wait"},cursorReset:"default",growlCSS:{width:"350px",top:"10px",left:"",right:"10px",border:"none",padding:"5px",opacity:.6,cursor:"default",color:"#fff",backgroundColor:"#000","-webkit-border-radius":"10px","-moz-border-radius":"10px","border-radius":"10px"},iframeSrc:/^https/i.test(window.location.href||"")?"javascript:false":"about:blank",forceIframe:!1,baseZ:1e3,centerX:!0,centerY:!0,allowBodyStretch:!0,bindEvents:!0,constrainTabKey:!0,fadeIn:200,fadeOut:400,timeout:0,showOverlay:!0,focusInput:!0,focusableElements:":input:enabled:visible",onBlock:null,onUnblock:null,onOverlayClick:null,quirksmodeOffsetHack:4,blockMsgClass:"blockMsg",ignoreIfBlocked:!1};var p=null,b=[]}"function"==typeof define&&define.amd&&define.amd.jQuery?define(["jquery"],e):e(jQuery)}();
+    // -------
+
+    $(document).ready(function(){
+        $("input").not("[type=submit]").jqBootstrapValidation();
+    });
+    
+    toastr.options = {
+      "closeButton": false,
+      "debug": false,
+      "newestOnTop": false,
+      "progressBar": false,
+      "positionClass": "toast-top-center",
+      "preventDuplicates": false,
+      "onclick": null,
+      "showDuration": "1000",
+      "hideDuration": "1000",
+      "timeOut": "5000",
+      "extendedTimeOut": "1000",
+      "showEasing": "swing",
+      "hideEasing": "linear",
+      "showMethod": "fadeIn",
+      "hideMethod": "fadeOut"
+    }
+
+
+    var validaCampos = function(form){
+        let 
+        inputs = form.getElementsByTagName('input'),
+        selects = form.getElementsByTagName('select');
+
+        for (var i = 0; i < inputs.length; i++) {
+            let input = inputs[i];
+            if (input.value.trim() === ''){
+                return false;
+            }
+        }
+
+        for (var i = 0; i < selects.length; i++) {
+            let select = selects[i];
+            if (select.value.trim() === ''){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    var validaCadastro = function(form){
+        if ($('#outraPlataforma input').is(':visible')) {
+            if ($('#outraPlataforma input').val() === "") {
+                return false;
+            }
+        } else {
+            $('#outraPlataforma').remove();
+        }
+
+        if (validaCampos(form)){
+            $('button[type=submit]').attr('disabled','true');
+            $('button[type=submit]').block({
+                message: '<div class="ft-refresh-cw icon-spin font-medium-2"></div>',
+                overlayCSS: {
+                    backgroundColor: '#fff',
+                    opacity: 0.8,
+                    cursor: 'wait'
+                },
+                css: {
+                    border: 0,
+                    padding: 0,
+                    backgroundColor: 'transparent'
+                }
+            });
+        }    
+    }
+
+    $('#formularioCadastro').submit(function(){
+        validaCadastro(this);
+    });
+
+    $('#plat').change(function(){
+        if (this.value === "outros"){
+            $('#outraPlataforma').show();
+            $('#outraPlataforma input').attr('required','true');
+        } else {
+            $('#outraPlataforma').hide();
+            $('#outraPlataforma input').removeAttr('required');
+            $('#outraPlataforma input').val();
+            $('#plataforma').val(this.value);
+        }
+    });
+
+    $('#outraPlataforma input').blur(function(){
+        $('#plataforma').val(this.value);
+    });
+
+    $('#btnReenviaEmail').click(function(){
+        var e = localStorage.getItem('_trh');
+        $.ajax({
+            type: 'post',
+            url: 'resource/resource_reenvia_email.php',
+            data: {e: e},
+            success: function(response){
+                console.log(response);                
+            }
+        });
+        $(this).attr('disabled','true');
+        toastr['success']('Um novo token de confirmação foi enviado para o seu email e chegará em instantes');
+    })
+
+    // mascara telefone
+    function mtel(v){
+        v=v.replace(/\D/g,"");             //Remove tudo o que não é dígito
+        v=v.replace(/^(\d{2})(\d)/g,"($1) $2"); //Coloca parênteses em volta dos dois primeiros dígitos
+        v=v.replace(/(\d)(\d{4})$/,"$1-$2");    //Coloca hífen entre o quarto e o quinto dígitos
+        if(v.length > 15){v = v.slice(0,15)}
+
+        return v;
+    }
+
+    $('#telefone').keyup(function(){
+        $(this).val(mtel($(this).val()));
+    });
+</script>
+</body>
+</html>
+

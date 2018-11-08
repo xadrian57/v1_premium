@@ -1,0 +1,22 @@
+<?php
+namespace roihero\widget\inteligencia;
+
+class BaixouDePrecoInteligencia extends AbstractInteligencia {
+    
+    /**
+     * 
+     * {@inheritDoc}
+     * @see \roihero\widget\inteligencia\IInteligencia::processar()
+     */
+    public function processar() {
+        
+        $select = "SELECT " . $this->XML_select .  "
+                   FROM XML_".$this->widget->getIdCli()."
+                   WHERE XML_availability = 1
+                   ORDER BY XML_time_insert DESC
+                   LIMIT " . $this->numMaxProdutos;
+        $this->executeSelect($select);        
+    }
+    
+}
+?>
