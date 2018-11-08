@@ -5,6 +5,7 @@ blog/**/*
 widget/css/**/* 
 widget/templates/**/* 
 searchbar/templates/**/* 
+busca/templates/**/* 
 error_log
 .buildpath
 .project
