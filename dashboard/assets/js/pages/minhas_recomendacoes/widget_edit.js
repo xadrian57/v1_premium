@@ -1043,7 +1043,7 @@ $(document).ready(function(){
 							var dicionarioFormatos = {
 								1:'Prateleira',
 								2:'Prateleira Dupla',
-								3:'Slider'
+								3:'Carrossel'
 								/*8:'Vitrine',
 								11:'Totem'*/
 							};
@@ -1132,7 +1132,7 @@ $(document).ready(function(){
 
 							if(widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5){ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
 								containerID +=
-									//1 - Prateleira ;    2 - Dupla   ; 3 - Slider;      11 - Totem;     8 - Vitrine
+									//1 - Prateleira ;    2 - Dupla   ; 3 - Carrossel;      11 - Totem;     8 - Vitrine
 									'<div class="form-group">'+
 										'<label>Formato do Bloco</label>'+
 										'<div class="eliabo-input-icon-right">'+
@@ -1148,19 +1148,16 @@ $(document).ready(function(){
 							htmlHide = '<div class="form-group exceptions">'+
 									'<div class="eliabo-input-icon-right">'+
 										'<input id="widHide" name="widHide" class="form-control" type="url" value="">'+
-										'<abbr title="Informe o nome da página que deseja que o widget não seja executado" class="info-abbr">'+
-											'<i class="icon-info"></i>'+
-										'</abbr>'+
+										'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>'+
 									'</div>'+
 								'</div>';
 
-							htmlShow = '<div class="form-group inclusions">'+
+							htmlShow = 
+									'<div class="form-group inclusions">'+
 										'<div class="eliabo-input-icon-right">'+
-											'<input id="widShow" name="widShow" class="form-control" type="url" value="">'+
-											'<abbr title="Informe o nome da página que deseja que o widget seja executado" class="info-abbr">'+
-												'<i class="icon-info"></i>'+
-											'</abbr>'+
+											'<input name="widShow" class="form-control" type="url" value="">'+
 										'</div>'+
+										'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>'+
 									'</div>';
 
 							$('#container-configuracoes').html(
@@ -1312,16 +1309,25 @@ $(document).ready(function(){
 	});
 
 	$(document).on('click', '#container-configuracoes .addHideField', function(event) {
-
 		$(this).before(htmlHide);
+		addListenerBtnDeleteForm();
 		event.preventDefault();
 	});
 
 	$(document).on('click', '#container-configuracoes .addShowField', function(event) {
-
 		$(this).before(htmlShow);
+		addListenerBtnDeleteForm();
 		event.preventDefault();
 	});
+
+	function addListenerBtnDeleteForm() {
+		$('.btn-delete-form-group').off('click', removeForm );
+		$('.btn-delete-form-group').on('click', removeForm );
+	}
+
+	function removeForm( event ) {
+		$(event.target).closest('.form-group').remove();
+	}
 
 	// CARREGA TODOS OS WIDGETS
 	widgets.inicia();

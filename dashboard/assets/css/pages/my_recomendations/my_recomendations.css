@@ -9,14 +9,24 @@
 	position: relative;
 }
 
-.tagflag
-	{
-		border : 3px solid blue;
-		border-radius : 10px; 
-	}
-	.borderdiv
-	{
-		border-top : 5px solid blue ; 
-		border-bottom : 5px solid blue; 
-		border-radius : 5px;
-	}
+.tagflag {
+	border : 3px solid blue;
+	border-radius : 10px; 
+}
+.borderdiv {
+	border-top : 5px solid blue ; 
+	border-bottom : 5px solid blue; 
+	border-radius : 5px;
+}
+
+.form-group {
+	position: relative;
+}
+
+.btn-delete-form-group {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	font-size: 20px;
+	cursor: pointer;
+}
