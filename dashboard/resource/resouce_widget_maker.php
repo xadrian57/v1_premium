@@ -74,7 +74,7 @@
 		'topTrendsFaixaEtaria' => 32,
 		'landingPage' => 33,
 		'produtosRelacionados' => 34,
-		'remarketingNavegacao' => 35,
+		'remarketingComplementar' => 23, // msm q navegacao complementar
 		'smartHome' => 36
 	);
 	//$placements = array('topo'=>1,'meio'=>2,'final'=>3);

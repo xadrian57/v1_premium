@@ -14,19 +14,27 @@
 	border-radius : 10px; 
 }
 .borderdiv {
-	border-top : 5px solid blue ; 
-	border-bottom : 5px solid blue; 
-	border-radius : 5px;
+	border-top : 5px solid #16D39A ; 
+	border-bottom : 5px solid #16D39A;
 }
 
 .form-group {
 	position: relative;
 }
 
-.btn-delete-form-group {
+.btn-delete-form-group,
+.btn-remove-panel-group {
 	position: absolute;
 	right: 10px;
 	top: 5px;
 	font-size: 20px;
 	cursor: pointer;
+}
+.btn-remove-panel-group {
+	right: 30px;
+	top: 8px;
+}
+
+#divTagsProdutosRelacionados input {
+	display: none;
 }

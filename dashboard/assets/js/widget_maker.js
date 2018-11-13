@@ -137,8 +137,8 @@ ready(function(){
 			document.getElementsByClassName('btn-maker')[3].classList.add('active');
 			$('#crumbInteligencia').html('Compre Junto');				
 			$('#crumbFormato').html('Compre Junto');
-		} else if (this.value === 'remarketingNavegacao') {
-			$('#inteligenciaWidget').val('remarketingNavegacao');
+		} else if (this.value === 'remarketingComplementar') {
+			$('#inteligenciaWidget').val('remarketingComplementar');
 			$('#formatoWidget').val('slider_complementar');
 			passo2.hide()
 			//pula passo 3
@@ -146,8 +146,8 @@ ready(function(){
 			passo4.show();
 			document.getElementsByClassName('btn-maker')[1].classList.remove('active');
 			document.getElementsByClassName('btn-maker')[3].classList.add('active');
-			$('#crumbInteligencia').html('remarketing navegação');				
-			$('#crumbFormato').html('remarketing navegação');
+			$('#crumbInteligencia').html('remarketing complementar');				
+			$('#crumbFormato').html('remarketing complementar');
 		} else {
 			$('#inteligenciaWidget').val(this.value);
 			document.getElementsByClassName('btn-maker')[1].classList.remove('active');
@@ -354,8 +354,8 @@ ready(function(){
 				passo3.show();
 				$('#crumbInteligencia').html('Mais Vendidos da Categoria Manual');
 				break;
-			case 'remarketingNavegacao':
-				$('#inteligenciaWidget').val('remarketingNavegacao');
+			case 'remarketingComplementar':
+				$('#inteligenciaWidget').val('remarketingComplementar');
 				$('#formatoWidget').val('slider_complementar');
 				passo2.hide()
 				//pula passo 3
@@ -363,8 +363,8 @@ ready(function(){
 				passo4.show();
 				document.getElementsByClassName('btn-maker')[1].classList.remove('active');
 				document.getElementsByClassName('btn-maker')[3].classList.add('active');
-				$('#crumbInteligencia').html('remarketing navegação');				
-				$('#crumbFormato').html('remarketing navegação');
+				$('#crumbInteligencia').html('remarketing complementar');				
+				$('#crumbFormato').html('remarketing complementar');
 				break;
 			case 'smartHome':
 				$('#inteligenciaWidget').val('smartHome');
@@ -556,8 +556,8 @@ ready(function(){
 				passo3.show();
 				$('#crumbInteligencia').html('oferta limitada');
 				break;	
-			case 'remarketingNavegacao':
-				$('#inteligenciaWidget').val('remarketingNavegacao');
+			case 'remarketingComplementar':
+				$('#inteligenciaWidget').val('remarketingComplementar');
 				$('#formatoWidget').val('slider_complementar');
 				passo2.hide()
 				//pula passo 3
@@ -565,8 +565,8 @@ ready(function(){
 				passo4.show();
 				document.getElementsByClassName('btn-maker')[1].classList.remove('active');
 				document.getElementsByClassName('btn-maker')[3].classList.add('active');
-				$('#crumbInteligencia').html('remarketing navegação');				
-				$('#crumbFormato').html('remarketing navegação');
+				$('#crumbInteligencia').html('remarketing complementar');				
+				$('#crumbFormato').html('remarketing complementar');
 				break;
 			default:
 				$('#inteligenciaWidget').val(this.value);
@@ -736,7 +736,7 @@ ready(function(){
 					document.getElementsByClassName('btn-maker')[3].classList.remove('active');
 					document.getElementsByClassName('btn-maker')[1].classList.add('active');
 					$('#crumbInteligencia').html('');
-				} else if($('#crumbFormato').html() === 'remarketing navegação'){ //remarketing navegação					
+				} else if($('#crumbFormato').html() === 'remarketing complementar'){ //remarketing complementar					
 					passo4.hide();
 					passo2.show();
 					document.getElementsByClassName('btn-maker')[3].classList.remove('active');
