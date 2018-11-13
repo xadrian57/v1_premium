@@ -39,6 +39,7 @@ $(document).ready(function(){
 						window['__categoria'] = JSON.parse(result)['widgetsCategoria'];
 						window['__carrinho'] = JSON.parse(result)['widgetsCarrinho'];
 						window['__basicos'] = JSON.parse(result)['widgetsBasicos'];
+						window['__busca'] = JSON.parse(result)['widgetsBusca'];
 
 						// INICIA AS FUNÇÕES PRINCIPAIS
 						widgets.checaPlano();
@@ -46,7 +47,7 @@ $(document).ready(function(){
 						widgets.carregaProduto();
 						widgets.carregaCarrinho();
 						widgets.carregaCategoria();
-						// widgets.carregaBusca();
+						widgets.carregaBusca();
 						widgets.caregaBasicos();
 						widgets.botoesEditar();
 						widgets.botoesSalvar();
@@ -149,21 +150,20 @@ $(document).ready(function(){
 				});
 			},
 
-			// carregaBusca : function(){
-			// 	var widgetsBusca = document.getElementById('widgetsBusca');
-			// 	widgetsBusca.innerHTML = "";
-			// 	__busca.forEach(function(wid){
-			// 		var ativo = (wid.ativo === '1') ? 'checked' : '';
-			// 		widgetsBusca.innerHTML = widgetsBusca.innerHTML +
-			// 		'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
-			// 			'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
-			// 				'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
-			// 				'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
-			// 	            '<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always '+ativo+'/>'+
-			// 	         '</div>'+
-			// 		'</li>';
-			// 	});
-			// },
+			carregaBusca : function(){
+				var widgetsBusca = document.getElementById('widgetsBusca');
+				widgetsBusca.innerHTML = "";
+				__busca.forEach(function(wid){
+					var ativo = (wid.ativo === '1') ? '<span class="success">Status:  Ativo<i class="ft-check"></i></span>' : '<span class="warning">Status:  Desativado<i class="ft-times"></i></span>';
+					widgetsBusca.innerHTML = widgetsBusca.innerHTML +
+					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
+						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
+							'<span class="ml-1 pull-right">'+ativo+'</span>'+
+							'<span class="pull-right primary">ID: '+wid.id+'</span>'+
+				         '</div>'+
+					'</li>';
+				});
+			},
 
 			carregaCategoria : function(){
 				var widgetsCategoria = document.getElementById('widgetsCategoria');

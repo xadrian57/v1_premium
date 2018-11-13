@@ -133,8 +133,28 @@ if($_SESSION['idPlan'] == 42) {
 // TODO Remover essa linha, quando liberar o Tagflag para uso geral
 }
 ?>
+					<!-- BUSCA -->
+					<div class="col-lg-12 col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Busca</h4>
+								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-body collapse in">
+								<div class="card-block">
+									<ul class="list-group" id="widgetsBusca">
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
 					
-					<!-- BLOCOS BÁSICOS -->
+					<!-- OVERLAYSS -->
 					<div class="col-lg-12 col-md-12">
 						<div class="card">
 							<div class="card-header">
