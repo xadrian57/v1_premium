@@ -376,22 +376,9 @@
 			$ids .= "','". $post[$i]['id'];
 		}
 
-		//print_r($post);
-
-		//$ids = implode("','", $post['id']);
-
-		if($idcli == 292)
-		{
-			$select = "SELECT ". campos() ."
-               FROM XML_".$idcli."
-               WHERE XML_id IN ('". $ids ."')";
-		}
-		else
-		{
-			$select = "SELECT ". campos() ."
-               FROM XML_".$idcli."
-               WHERE XML_availability = 1 AND XML_id IN ('". $ids ."')";
-        }		
+		$select = "SELECT ". campos() ."
+           FROM XML_".$idcli."
+           WHERE XML_id IN ('". $ids ."')";	
     
     	$result = mysqli_query($conDados, $select);
 

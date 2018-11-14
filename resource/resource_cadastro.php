@@ -113,11 +113,12 @@
 			$ativado = $array['CLI_ativo'];
 			$id = $array['CLI_id'];
 			$nome = $array['CLI_nome'];
+			$token = sha1($id);
 			//insert na tabela cadastro com o telefone
 			$qInsertCAD = "INSERT INTO cadastro (CAD_id_cli, CAD_telefone, CAD_nome_cli) VALUES ($id, '$telefone', '$nomeResponsavel')";
 			$resultInsertCad = mysqli_query($conCad,$qInsertCAD);
 			//insere registro em config
-			$qInsertConfig = "INSERT INTO config (CONF_id_cli, CONF_cor_prim, CONF_cor_sec) VALUES ($id, '000', '888888')";
+			$qInsertConfig = "INSERT INTO config (CONF_id_cli, CONF_cor_prim, CONF_cor_sec, CONF_template) VALUES ($id, '000', '888888', '$token')";
 			$resultInsertConfig = mysqli_query($conCad,$qInsertConfig);
 			//controle de pixel
 			$qInsertControle = "INSERT INTO controle (CONT_id_cli, CONT_pixel_instalado) VALUES ($id, 0) ON DUPLICATE KEY UPDATE CONT_pixel_instalado = 0";
@@ -133,150 +134,48 @@
 			5: carrinho
 			*/
 			$formatos = 1;
-			$arrayWidgets = array(            
-				1	=> array(1, $formatos, "Mais Desejados", "1-7", "Os produtos mais desejados", false),
-				2	=> array(3, $formatos, "Mais Vendidos da Categoria", "4", "Os mais vendidos da categoria", false),
-				3	=> array(4, $formatos, "Remarketing On-site", "1-2-7", "Os produtos que você queria!", false),
-				4	=> array(5, $formatos, "Similar Por Produto", "2", "Aproveite também essas ofertas!", false),
-				5	=> array(10, 6, "Oferta Limitada", "1", "Oferta Limitada", true),
-				6	=> array(13, 5, "Não vá Embora", "0", "Olhe o que separamos para você!", true),
-				7	=> array(15, $formatos, "Lançamentos", "1-7", "Os Lançamentos", false),
-				8	=> array(2, $formatos, "Mais Vendidos", "1-7", "Os mais desejados!", false),
-				9	=> array(6, "1", "Liquidação", "1-7", "Aproveite essas promoções!", false),
-				// A PEDIDO DE PAULO - 25/05/2018  // 10	=> array(14, $formatos, "Baixou de Preço", "1-7", "Olhe essas Ofertas", false)
+			$arrayWidgets = array( 
+				array(1, "3", "Mais Desejados", "1", "Os produtos mais desejados", false),
+				array(2, "3", "Mais Vendidos", "1", "Os mais desejados!", false),
+				array(3, "3", "Mais Vendidos da Categoria", "4", "Os mais vendidos da categoria", false),
+				array(4, "3", "Remarketing On-site", "1-2", "Os produtos que você queria!", false),
+				array(5, "3", "Similar Por Produto", "2", "Aproveite também essas ofertas!", false),
+				array(6, "3", "Liquidação", "1", "Aproveite essas promoções!", false),
+				array(7, "3", "Collection", "2", "Produtos da mesma coleção", true),
+				array(9, "3", "Manual", "1", "As melhores ofertas", true),
+				array(10, 6, "Oferta Limitada", "1", "Oferta Limitada", true),
+				array(12, "3", "Itens Complementares", "2", "Quem comprou, comprou também", false),
+				array(13, 5, "Não vá Embora", "0", "Olhe o que separamos para você!", false),
+				array(14, "3", "Baixou de Preço", "1", "Olhe o que baixou de preço", false),
+				array(15, "3", "Lançamentos", "1", "Os Lançamentos", false),
+				array(22, "7", "Barra de Busca", "0", "", true),
+				array(24, "3", "Mais Vendidos da Categoria Manual", "1", "Os mais vendidos da categoria", true),
+				array(25, "3", "Palavra-Chave", "1", "Aproveite essas ofertas", true),
+				array(34, "3", "Produtos Relacionados", "2", "Talvez você se interesse por esses", true),
+				array(36, "3", "Smart Home", "1", "Smart Home", false),
+				array(38, "3", "Mais Vendidos da Marca Manual", "1", "Os mais vendidos dessa marca", true),
+				array(39, "3", "Similar por Parâmetro", "2", "Você pode gostar desses", true),
+				array(40, "3", "Lançamentos da Marca", "1", "Os lançamentos dessa marca", true)	
 			);
-			$token = sha1($id);
+			
 			$i = 1;
-			while ($i <= 9){
-				//pega todas as paginas nas quai esse widget pode ser implementado
-				$paginas = explode("-", $arrayWidgets[$i][3]);
-				//pra cada uma das páginas, insere com o id da página
-				//1:home; 2:produto; 3:busca vazia; 4:categoria; 5:carrinho
-				foreach ($paginas as $pagina) {
-					// -- PEDIDO DO PAULO 05/04 - PROVISÓRIO
-					if($idPlataforma == 2){ // SE FOR LOJA INTEGRADA, INSERE AS DIVS DEFINIDAS PELO PAULO
-						//if($pagina == "3" or $pagina == "7")
-							//continue; // não insere widget pra busca vazia
-						if($i == 1 and $pagina == 1){ // se for Mais desejados na home
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'blank-home-position3')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 3 and $pagina == 1) { // se for remarketing na home
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'blank-home-position4')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 3 and $pagina == 2) { // se for remarketing no produto
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'blank-product-position3')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 4 and $pagina == 2) { // se for similar por produto na página de produto
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'blank-product-position1')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 8 and $pagina == 1) { // mais vendidos home
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'blank-home-position3')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 9 and $pagina == 1) { // liquidação home
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'blank-home-position3')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 7 and $pagina == 1) { // novidades home
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'blank-home-position3')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 6){ // se overlay de saída
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'rhOverlay')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 5){ // se oferta limitada
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'rhOfertaLimitada')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} else {
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						}
-					} elseif($idPlataforma == 9 || $idPlataforma == 12){
-						if($i == 1 and $pagina == 1){ // se for Mais desejados na home
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'Rh_home1')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 3 and $pagina == 1) { // se for remarketing na home
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'Rh_home2')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} else {
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						}
 
-					} else { // ------ FIM DO PEDIDO DO PAULO
-						if($i == 6){ // se overlay de saída
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'rhOverlay')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} elseif($i == 5){ // se oferta limitada
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_div)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 1, CURRENT_DATE(),'".$pagina."', 'rhOfertaLimitada')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						} else {
-							$insertWidgets = "INSERT INTO widget
-							(WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina)
-							VALUES
-							('$id', '$token', ".$arrayWidgets[$i][0].", ".$arrayWidgets[$i][1].", '".$arrayWidgets[$i][2]."', '".$arrayWidgets[$i][4]."', 0, CURRENT_DATE(),'".$pagina."')";
-							$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-						}
-					}
+			$i = 0;
+			while ($i < count($arrayWidgets)){
+				$inseriuWidget = insereWidget($arrayWidgets[$i]);
+				if (!$inseriuWidget)
 
-					$ultimoId = mysqli_insert_id($conCad);
+					return false;
 
-
-					if($arrayWidgets[$i][5]){ // se possui configuração, insere um registro em widget_config vazio
-						$insertWidgets = "INSERT INTO widget_config (WC_id_wid) VALUES ('$ultimoId')";
-						$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
-					}
-				}
 				
 				$i++;
 			}
+
 			$qUpdateMelhorAvaliados = "UPDATE widget SET WID_status = 2 WHERE WID_inteligencia = 20";
 			$resultUpdateMelhorAvaliados = mysqli_query($conCad, $qUpdateMelhorAvaliados);
 			//------
 			//insere o plano Trial no banco
-			$insertTrial = "INSERT INTO plano (PLAN_id_cli, PLAN_id_plano, PLAN_valor, PLAN_views, PLAN_data_venc, PLAN_status) VALUES ('$id', 0, 0, 10000, ADDDATE(CURRENT_DATE, 7), 0)";
+			$insertTrial = "INSERT INTO plano (PLAN_id_cli, PLAN_id_plano, PLAN_valor, PLAN_views, PLAN_data_venc, PLAN_status, PLAN_tempo) VALUES ('$id', 42, 0, 2147483647, ADDDATE(CURRENT_DATE, 380), 1, 360)";
 			$queryTrial = mysqli_query($conCad, $insertTrial);
 			//insere notificação de "Bem-vindo"
 			$qNotBemVindo = "INSERT INTO notificacoes (NOT_id_cli, NOT_titulo, NOT_texto, NOT_data, NOT_status, NOT_icone) VALUES ($id, 'Bem-vindo', 'Bem-vindo à Roi Hero! A partir de agora iremos atuar em sua loja para fazer você lucrar muito mais!', CURRENT_DATE(), 1, 'success')";
@@ -611,6 +510,74 @@
 			);
 			return $retorno;
 		}
+	}
+
+	function insereWidget($widget){
+		global $conCad;
+		global $id;
+		global $site;
+
+		$siteShow = "";
+
+		$idCli = $id;
+
+		//PROVISÓRIO ATÉ IMPLEMENTAR O FRONT DE CADA UMA DESSAS WIDGETS
+		//	 TMB NÃO CRIA PRO MELHOR AVALIADOS
+		/* $widgetProblematicas = ["25"];
+		if(in_array($widget[0], $widgetProblematicas)){
+			return true;
+		} */
+
+		//se tem mais de um formato, pega o primeiro
+		$formato = explode("-", $widget[1])[0];
+		//pega todas as paginas nas quais esse widget pode ser implementado
+		$paginas = explode("-", $widget[3]);
+
+		$token = sha1($idCli);
+
+		//pra cada uma das páginas, insere com o id da página
+		//1:home; 2:produto; 3:busca; 4:categoria; 5:carrinho; 6:compra; 7:busca vazia
+		foreach ($paginas as $pagina) { 
+			if ($widget[0] == 10 || $widget[0] == 13) {
+				$siteShow = $site."/?rid=testeOverlay";
+			} elseif($pagina == 1){
+					$siteShow = $site."/?rid=testeHome";
+			} else {
+				$siteShow = "";
+			}
+
+
+			if ($widget[0] == 22) {
+				$insertWidgets = "INSERT INTO widget (WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina) VALUES 
+				('$idCli', '$token', ".$widget[0].", ".$formato.", '".$widget[2]."', '".$widget[4]."', 1, CURRENT_DATE(), $pagina)";
+				$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
+			} else{
+				$insertWidgets = "INSERT INTO widget (WID_id_cli,  WID_owa_token,  WID_inteligencia,  WID_formato,  WID_nome,  WID_texto,  WID_status,  WID_data, WID_pagina, WID_show) VALUES 
+				('$idCli', '$token', ".$widget[0].", ".$formato.", '".$widget[2]."', '".$widget[4]."', 0, CURRENT_DATE(), $pagina, '$siteShow')";
+				$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
+			}
+
+			if(!$queryInsertWidgets){
+				echo json_encode(array('status' => '0', 'msg' => 'Erro inesperado. Por favor, verifique sua conexão ou contate nosso suporte'));
+				return false;
+			}
+
+			$ultimoId = mysqli_insert_id($conCad);
+
+
+			if($widget[5]){ // se possui configuração, insere um registro em widget_config vazio
+				$insertWidgets = "INSERT INTO widget_config (WC_id_wid) VALUES ('$ultimoId')";
+				$queryInsertWidgets = mysqli_query($conCad, $insertWidgets);
+
+				if(!$queryInsertWidgets){
+					echo json_encode(array('status' => '0', 'msg' => 'Erro inesperado. Por favor, verifique sua conexão ou contate nosso suporte'));
+					return false;
+				}
+			}						
+		}
+
+		return true;
+
 	}
 
 ?>

@@ -1,37 +1,5 @@
 <?php
 
-//CONEXÃO BD Dados
-// include '../../bd/conexao_bd_dados.php';
-
-//CONEXÃO BD CADASTRO
-// include '../../bd/conexao_bd_cadastro.php';
-
-// mysqli_set_charset($conDados, 'utf8');
-
-// header('Content-Type: text/html; charset=utf-8');
-
-//DEFINIR SESSAO
-// session_name('premium');
-// session_start();
-// session_write_close();
-
-//ESCONDER WARNING
-//error_reporting(0);
-//ini_set('display_errors', FALSE);
-
-/*
-$id = $_SESSION['id'];    
-
-$querySite = "SELECT CLI_site as URL FROM cliente WHERE CLI_id = '$id'";
-$resultadoSite = mysqli_query($conCad, $queryXML);
-$array = mysqli_fetch_array($resultadoXML);
-$url = $array['URL'];
-*/
-
-// $id = 1687;
-// $url = 'https://www.lupo.com.br/';
-
-
 function API_VTEX($id, $url, $conCad, $conDados)
 {
     $time = time();
@@ -322,12 +290,7 @@ function API_VTEX($id, $url, $conCad, $conDados)
     {
         return '0';
     }
-
 }
-
-
-
-
 
 // FUNÇÕES AUXILIARES
 
@@ -416,7 +379,8 @@ function createXML($id, $conDados)
     mysqli_query($conDados, $criaRGER);
 }
 
-function notificaXML($id, $conCad){
+function notificaXML($id, $conCad)
+{
     $qNotXMLCadastrado = "INSERT INTO notificacoes (NOT_id_cli, NOT_titulo, NOT_texto, NOT_data, NOT_status) VALUES ($id, 'XML cadastrado com sucesso', 'Seu XML foi cadastrado com sucesso. Agora você já pode aproveitar todas as vantagens da ROI Hero no seu site!', CURRENT_DATE(), 1)";
     $resultNotXMLCadastrado = mysqli_query($conCad, $qNotXMLCadastrado);
 }

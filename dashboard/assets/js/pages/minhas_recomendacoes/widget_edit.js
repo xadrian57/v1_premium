@@ -39,6 +39,7 @@ $(document).ready(function(){
 						window['__categoria'] = JSON.parse(result)['widgetsCategoria'];
 						window['__carrinho'] = JSON.parse(result)['widgetsCarrinho'];
 						window['__basicos'] = JSON.parse(result)['widgetsBasicos'];
+						window['__busca'] = JSON.parse(result)['widgetsBusca'];
 
 						// INICIA AS FUNÇÕES PRINCIPAIS
 						widgets.checaPlano();
@@ -153,13 +154,12 @@ $(document).ready(function(){
 				var widgetsBusca = document.getElementById('widgetsBusca');
 				widgetsBusca.innerHTML = "";
 				__busca.forEach(function(wid){
-					var ativo = (wid.ativo === '1') ? 'checked' : '';
+					var ativo = (wid.ativo === '1') ? '<span class="success">Status:  Ativo<i class="ft-check"></i></span>' : '<span class="warning">Status:  Desativado<i class="ft-times"></i></span>';
 					widgetsBusca.innerHTML = widgetsBusca.innerHTML +
 					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
-							'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
-							'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
-				            '<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always '+ativo+'/>'+
+							'<span class="ml-1 pull-right">'+ativo+'</span>'+
+							'<span class="pull-right primary">ID: '+wid.id+'</span>'+
 				         '</div>'+
 					'</li>';
 				});
@@ -294,6 +294,7 @@ $(document).ready(function(){
 							$('#tituloWidget').val(widget.WID_texto);
 							$('#utmWidget').val(widget.WID_utm);
 
+							$('#rhIdWid').html(widget.WID_id)
 
 
 							var intels = {
@@ -329,7 +330,10 @@ $(document).ready(function(){
 								34:"Produtos Relacionados",
 								35:"Remarketing Navegação",
 								36:"Smart Home",
-								37:"Compre Junto Complementar"
+								37:"Compre Junto Complementar",
+								38:"Mais Desejados da Marca",
+								39:"Similares por Parâmetros",
+								40:"Lançamentos da Marca"
 							};
 
 							//document.getElementById("titulo-modal-edit").innerHTML='<i class="ft ft-edit"></i>&nbsp;&nbsp;Editar Bloco \'' + intels[widget.WID_inteligencia] + '\'';
@@ -1046,6 +1050,34 @@ $(document).ready(function(){
 										return false;
 									})
 
+									break;
+
+								case '39':
+									camposAdicionais.innerHTML+= // PALAVRA CHAVE
+										'<div class="col-md-6 pd-l-0">'+
+											'<div class="form-group">'+
+												'<label>Tag XML 1</label>'+
+												'<div class="eliabo-input-icon-right">'+
+													'<input name="parametro_pai" class="form-control" type="text" value="'+widget.tx_param_pai+'">'+
+													'<abbr data-toggle="tooltip" data-placement="right";'+
+														'data-original-title="Coloque aqui uma Tag presente no seu XML que você queira levar em consideração na similaridade." class="info-abbr">'+
+														'<i class="icon-info"></i>'+
+													'</abbr>'+
+												'</div>'+
+											'</div>'+
+										'</div>'+
+										'<div class="col-md-6 pd-l-0">'+
+											'<div class="form-group">'+
+												'<label>Tag XML 1</label>'+
+												'<div class="eliabo-input-icon-right">'+
+													'<input name="parametro_filho" class="form-control" type="text" value="'+widget.tx_param_filho+'">'+
+													'<abbr data-toggle="tooltip" data-placement="right";'+
+														'data-original-title="Coloque aqui uma Tag presente no seu XML que você queira levar em consideração na similaridade." class="info-abbr">'+
+														'<i class="icon-info"></i>'+
+													'</abbr>'+
+												'</div>'+
+											'</div>'+
+										'</div>';
 									break;
 
 								default:
