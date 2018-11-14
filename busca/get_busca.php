@@ -115,7 +115,11 @@
 			        	$post = scoreFonetico(fonetizar($termo), $posts);
 			        	$post = score($termo, $post);
 			        	$post = geraProdsFonetico($post, $idcli, $conDados);
-			        	$post = array_slice($post, 0, $limite, true);
+
+			        	if(count($post) > 0)
+			        	{
+				        	$post = array_slice($post, 0, $limite, true);
+				        }
 			        }
 			        else
 			        {
@@ -418,7 +422,7 @@
 	{
 		if($idcli == 292 || $idcli == 1210)
 		{
-			return " OR custom_1 LIKE '%". $busca ."%' ";
+			return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) ";
 		}
 		else if($idcli == 598) 
 		{
@@ -426,7 +430,7 @@
 		}
 		else
 		{
-			return '';
+			return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) OR id = '". $busca ."' ";
 		}
 	}
 
