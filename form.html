@@ -9,7 +9,7 @@
     <meta name="keywords" content="Experiência de Compra que Converte!" />
     <meta name="author" content="ROI Hero">
 
-    <link rel="shortcut icon" href="images/icon/hero_login.png">
+    <link rel="shortcut icon" href="images/ico/hero_login.png">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -46,11 +46,25 @@
             <div class="input-title">
                 Plataforma
             </div>
-            <input type="text" name="plataforma" class="form-control" placeholder="Plataforma E-commerce Utilizada" required/>
-
+            <!-- <input type="text" name="plataforma" class="form-control" placeholder="Plataforma E-commerce Utilizada" required/> -->
+            <select name="plataforma" class="form-control">
+                <option value="loja_integrada">Loja Integrada</option>
+                <option value="vtex">VTEX</option>
+                <option value="xtech">XTECH</option>
+                <option value="tray">Tray</option>
+                <option value="traycommerce">Traycommerce</option>
+                <option value="propria">Plataforma Própria</option>
+                <option value="outro">Outro</option>
+              </select>
+              <div class="input-title">
+                Mensagem
+            </div>
+            <textarea rows="4" name="mensagem" placeholder="Você pode especificar o motivo do seu contato" class="form-control"></textarea>
             <input type="submit" value="Enviar" class="form-control submit" />
         </form>
     </div>
+
+    
 
 
     <script type="text/javascript">
@@ -66,7 +80,7 @@
                 data: form.serialize(), // serializes the form's elements.
                 success: function (data) {
                     alert("Mensagem enviada. Agredecemos o contato"); // show response from the php script.
-                    window.location.href = 'index.html';
+                    //window.location.href = 'index.html';
                 }
             });
 
