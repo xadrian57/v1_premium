@@ -18,9 +18,7 @@ if ($plataforma == "loja_integrada") {
     $emailCopia = 'paulo.castello.branco@roihero.com.br';
     $emailPrincipal = "daniela@roihero.com.br";
     enviaEmailContato($emailCopia, $emailPrincipal);
-} else{
-    $emailPrincipal = "daniela@roihero.com.br";
-    
+} else{    
     
     $msg = '<!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
