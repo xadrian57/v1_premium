@@ -42,9 +42,7 @@
 		$('#telefoneAdministrativo').val(dados.telefoneAdministrativo);
 		$('#email').val(dados.email);
 		$('#telefoneFinanceiro').val(dados.telefoneFinanceiro);
-		$('#site').val(dados.site);
-		$('#segmento').val(dados.segmento);
-		$('#plataforma').val(dados.plataforma);
+		$('#emailFinanceiro').val(dados.emailFinanceiro);
 	}
 
 	$('.btnEdita').on('click',function(){
@@ -78,8 +76,6 @@
 		var email = $('#email').val();
 		var emailFinanceiro = $('#emailFinanceiro').val();
 		var telefoneFinanceiro = $('#telefoneFinanceiro').val();
-		var segmento = $('#segmento').val();
-		var site = $('#site').val();
 
 		$.ajax({
 			type: 'post',
@@ -101,9 +97,7 @@
 				'telefoneAdministrativo':telefoneAdministrativo,
 				'email':email,
 				'emailFinanceiro':emailFinanceiro,
-				'telefoneFinanceiro':telefoneFinanceiro,
-				'site':site,
-				'segmento':segmento
+				'telefoneFinanceiro':telefoneFinanceiro
 			},
 
 			success: function(response){

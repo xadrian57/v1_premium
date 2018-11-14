@@ -383,7 +383,6 @@ $(document).ready(function(){
 					'g:title':'Nome Produto',
 					'brand':'Marca do produto',
 					'g:brand':'Disponibilidade em estoque',
-					'reference_id':'Custom 5'
 				}
 
 				// tags pre definidas parcelamento

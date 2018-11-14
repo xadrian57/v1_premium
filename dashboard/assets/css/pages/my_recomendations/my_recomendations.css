@@ -14,7 +14,6 @@
 	border-radius : 10px; 
 }
 .borderdiv {
-	display: none;
 	border-top : 5px solid #16D39A ; 
 	border-bottom : 5px solid #16D39A;
 }
@@ -38,9 +37,4 @@
 
 #divTagsProdutosRelacionados input {
 	display: none;
-}
-
-.modal-footer .rh-id-wid {
-	position: relative;
-	top: 15px;
 }
