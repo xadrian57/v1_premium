@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 	// OBJ PRINCIPAL WIDGETS
 	var
-		html 	 = '',
+		htmlCfgCompreJunto	 = '',
 		htmlHide = '',
 		htmlShow = '',
 		widgets  = {
@@ -32,7 +32,7 @@ $(document).ready(function(){
 					url: 'resource/resource_widget_edit.php',
 					data: {'idCli': idCli, 'op': 1},
 					success: function(result){
-						console.log(result);
+						//console.log(result);
 						window['__home'] = JSON.parse(result)['widgetsHome'];
 						window['__produto'] = JSON.parse(result)['widgetsProduto'];
 						window['__busca'] = JSON.parse(result)['widgetsBusca'];
@@ -65,7 +65,7 @@ $(document).ready(function(){
 						console.log('-------- Widgets Busca -------');
 						console.log(__busca);
 					}
-				});
+				});				
 			},
 
 			checaPlano : function(){
@@ -288,8 +288,6 @@ $(document).ready(function(){
 						data: {'idCli': idCli, 'op': 2, idWid : id},
 						success: function(result){
 							$('#modalEditarWidget').modal('show');
-							console.log('resposta-----------------------');
-							console.log(result);
 							var widget = JSON.parse(result);
 							console.log(widget);
 							$('#nomeWidget').val(widget.WID_nome);
@@ -336,8 +334,12 @@ $(document).ready(function(){
 
 							//document.getElementById("titulo-modal-edit").innerHTML='<i class="ft ft-edit"></i>&nbsp;&nbsp;Editar Bloco \'' + intels[widget.WID_inteligencia] + '\'';
 							//$("h4.adic").text($("h4.adic").text() + " Coiso");
-							
+
 							document.getElementById("spec-inteligencia-modal-edit").innerText = intels[widget.WID_inteligencia];
+
+							if (widget.WID_formato == 6) {
+								document.getElementById("spec-inteligencia-modal-edit").innerText = "Oferta Limitada";
+							}
 
 							/* var text = document.createTextNode(intels[widget.WID_inteligencia]);
 							var child = document.getElementById('titulo-modal-edit');
@@ -389,7 +391,8 @@ $(document).ready(function(){
 									
 									var i = 0; //iterador da quantidade de grupos
 
-									html = '<div class="col-md-12 config-group mb-1">'+
+									htmlCfgCompreJunto= 
+									'<div class="col-md-12 config-group mb-1">'+
 										'<div class="panel-group">'+
 											'<div class="panel panel-default">'+
 												'<div class="panel-heading">'+
@@ -397,9 +400,6 @@ $(document).ready(function(){
 														'<a data-toggle="collapse" href="#collapse#index#">'+
 															'Grupo de Configuração #index#' +
 															'<i class="fa fa-caret-down pull-right"></i>'+
-															'<abbr data-toggle="tooltip" data-placement="right" data-original-title="Essa é a palavra chave do seu bloco, a nossa inteligênca recomendará os produtos de acordo com ela" class="info-abbr" style="right:15px; top:0;">'+
-																'<i class="icon-info"></i>'+
-															'</abbr>'+
 														'</a>'+
 													'</h5>'+
 												'</div>'+
@@ -530,26 +530,45 @@ $(document).ready(function(){
 													'</div>'+
 												'</div>'+
 											'</div>'+
+											'<span class="btn-remove-panel-group"><i class="fa fa-trash red"></i></span>'+
 										'</div>'+
 									'</div>';
 
 									var htmlInicio = '';
 
 									while(i < widget.WC_cj_f.length){
-										htmlInicio 	+= '<div class="col-md-12 config-group mb-1">'+
-											'<div class="panel-group">'+
-												'<div class="panel panel-default">'+
-													'<div class="panel-heading">'+
-														'<h5 class="panel-title mb-0">'+
-															'<a data-toggle="collapse" href="#collapse#index#">'+
-																'Grupo de Configuração #index#' +
-																'<i class="fa fa-caret-down pull-right"></i>'+
-																'<abbr data-toggle="tooltip" data-placement="right" data-original-title="Essa é a palavra chave do seu bloco, a nossa inteligênca recomendará os produtos de acordo com ela" class="info-abbr" style="right:15px; top:0;">'+
-																	'<i class="icon-info"></i>'+
-																'</abbr>'+
-															'</a>'+
-														'</h5>'+
-													'</div>'+
+										if (i == 0) {
+											htmlInicio 	+= 
+											'<div class="col-md-12 config-group mb-1">'+
+												'<div class="panel-group">'+
+													'<div class="panel panel-default">'+
+														'<div class="panel-heading">'+
+															'<h5 class="panel-title mb-0">'+
+																'<a data-toggle="collapse" href="#collapse#index#">'+
+																	'Grupo de Configuração #index#' +
+																	'<i class="fa fa-caret-down pull-right"></i>'+
+																	'<abbr data-toggle="tooltip" data-placement="right" data-original-title="Essa é a palavra chave do seu bloco, a nossa inteligênca recomendará os produtos de acordo com ela" class="info-abbr" style="right:15px; top:0;">'+
+																		'<i class="icon-info"></i>'+
+																	'</abbr>'+
+																'</a>'+
+															'</h5>'+
+														'</div>';
+										} else {
+											htmlInicio 	+= 
+											'<div class="col-md-12 config-group mb-1">'+
+												'<div class="panel-group">'+
+													'<div class="panel panel-default">'+
+														'<div class="panel-heading">'+
+															'<h5 class="panel-title mb-0">'+
+																'<a data-toggle="collapse" href="#collapse#index#">'+
+																	'Grupo de Configuração #index#' +
+																	'<i class="fa fa-caret-down pull-right"></i>'+
+																'</a>'+
+															'</h5>'+
+														'</div>'+
+													'<span class="btn-remove-panel-group"><i class="fa fa-trash red"></i></span>';
+										}
+										htmlInicio 	+= 
 													'<div id="collapse#index#" class="panel-collapse collapse">'+
 														'<div class="panel-body mt-1">'+
 															'<div class="col-md-6 pd-l-0">'+
@@ -720,7 +739,6 @@ $(document).ready(function(){
 
 									break;
 								case '9':
-//=======================================
 									if(widget.WID_formato == 6){
 										camposAdicionais.innerHTML+=
 											'<div class="form-group">'+
@@ -780,7 +798,6 @@ $(document).ready(function(){
 										});
 										
 									} else {
-//=======================================
 
 										camposAdicionais.innerHTML+=
 											'<div class="form-group">'+
@@ -835,12 +852,8 @@ $(document).ready(function(){
 												$('#listaProdutosAutocomplete').html("");
 											}
 										});
-										
-								
 
 										$('#btnAddProdutoManual').click(function(){
-
-
 											if ($('#produtoManual').val().trim() === '') {
 												toastr['error']('Você precisa digitar um nome para o produto');
 												$('#produtoManual').focus();
@@ -866,7 +879,6 @@ $(document).ready(function(){
 											}
 											return false;
 										});
-
 									}
 									break;
 								case '10':
@@ -976,24 +988,24 @@ $(document).ready(function(){
 									camposAdicionais.innerHTML+=
 										'<div id="cadastrarRelacionados" style="">'+
 										'<div class="div-add">' + 
-											'<div class="col-md-4">' +
+											'<div class="col-md-6">' +
 												'<div class="form-group validate">' +
 													'<label>Visualizando algum produto contendo:</label>' +
 													'<input id="prodRelPai" class="form-control" type="text">' +
 												'</div>' +
 											'</div>' +
-											'<div class="col-md-4 pd-l-0">' +
+											'<div class="col-md-6 pd-l-0">' +
 												'<div class="form-group validate">' +
 													'<label>Recomendar produtos contendo:</label>' +
 													'<input id="prodRelFilho" class="form-control" type="text">' +
 													'<button id="btnAddPaiFilho" type="button" class="btn btn-primary btn-add-palavra" style=""><i class="fa fa-plus"></i></button>' +
 												'</div>' +
 											'</div>' +
-											'<div class="col-md-8">' +
+											'<div class="col-md-12">' +
 												'<label>Pares de termos cadastrados:</label>' +
 												'<div id="divTagsProdutosRelacionados" class="form-control">' +                     
 													'<div  class="controls">' +
-														'<input name="palavrasPaiFilho" id="palavrasPaiFilho" type="text" value="'+palavrasPaiFilho+'" data-role="tagsinput" class="form-control typeahead-tags" onchange="$(\'#produtosWidget\').val(this.value);validaProdutos();" data-validation-required-message="Cadastre as palavras chave" hidden="" required="" style="display: none;">' +
+														'<input name="palavrasPaiFilho" id="palavrasPaiFilho" type="text" value="'+palavrasPaiFilho+'" data-role="tagsinput" class="form-control typeahead-tags" onchange="$(\'#produtosWidget\').val(this.value);validaProdutos();" data-validation-required-message="Cadastre as palavras chave" hidden="" required="" style="display: none;" readonly>' +
 													'</div>' +
 												'</div>' +
 											'</div>' +
@@ -1001,8 +1013,14 @@ $(document).ready(function(){
 									'</div>';
 									
 
-
-									$('#palavrasPaiFilho').tagsinput('add', palavrasPaiFilho);
+									if (palavrasPaiFilho.replace('->','').trim() !== '') {
+										console.log(palavrasPaiFilho.replace('->','').trim());
+										$('#palavrasPaiFilho').tagsinput('add', palavrasPaiFilho);
+									} else {
+										console.log(palavrasPaiFilho);
+										$('#palavrasPaiFilho').val('');
+										$('#palavrasPaiFilho').tagsinput();
+									}
 
 									$('#btnAddPaiFilho').click(function(){
 
@@ -1030,8 +1048,6 @@ $(document).ready(function(){
 
 									break;
 
-
-
 								default:
 									camposAdicionais.innerHTML = '';
 									break;
@@ -1043,7 +1059,7 @@ $(document).ready(function(){
 							var dicionarioFormatos = {
 								1:'Prateleira',
 								2:'Prateleira Dupla',
-								3:'Slider'
+								3:'Carrossel'
 								/*8:'Vitrine',
 								11:'Totem'*/
 							};
@@ -1132,7 +1148,7 @@ $(document).ready(function(){
 
 							if(widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5){ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
 								containerID +=
-									//1 - Prateleira ;    2 - Dupla   ; 3 - Slider;      11 - Totem;     8 - Vitrine
+									//1 - Prateleira ;    2 - Dupla   ; 3 - Carrossel;      11 - Totem;     8 - Vitrine
 									'<div class="form-group">'+
 										'<label>Formato do Bloco</label>'+
 										'<div class="eliabo-input-icon-right">'+
@@ -1148,19 +1164,16 @@ $(document).ready(function(){
 							htmlHide = '<div class="form-group exceptions">'+
 									'<div class="eliabo-input-icon-right">'+
 										'<input id="widHide" name="widHide" class="form-control" type="url" value="">'+
-										'<abbr title="Informe o nome da página que deseja que o widget não seja executado" class="info-abbr">'+
-											'<i class="icon-info"></i>'+
-										'</abbr>'+
+										'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>'+
 									'</div>'+
 								'</div>';
 
-							htmlShow = '<div class="form-group inclusions">'+
+							htmlShow = 
+									'<div class="form-group inclusions">'+
 										'<div class="eliabo-input-icon-right">'+
-											'<input id="widShow" name="widShow" class="form-control" type="url" value="">'+
-											'<abbr title="Informe o nome da página que deseja que o widget seja executado" class="info-abbr">'+
-												'<i class="icon-info"></i>'+
-											'</abbr>'+
+											'<input name="widShow" class="form-control" type="url" value="">'+
 										'</div>'+
+										'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>'+
 									'</div>';
 
 							$('#container-configuracoes').html(
@@ -1205,8 +1218,6 @@ $(document).ready(function(){
 								'</div>'
 							);
 						
-
-
 							// tooltips
 							iniciaTooltip();
 
@@ -1214,7 +1225,6 @@ $(document).ready(function(){
 							$.each(widget.WID_hide, function(index, val) {
 
 								if (index > 0) {
-
 									$('.addHideField').trigger('click');
 								}
 
@@ -1225,7 +1235,6 @@ $(document).ready(function(){
 							$.each(widget.WID_show, function(index, val) {
 
 								if (index > 0) {
-
 									$('.addShowField').trigger('click');
 								}
 
@@ -1301,32 +1310,45 @@ $(document).ready(function(){
 	});
 
     $(document).on('click', '#widedit-opcoes-adicionais .addConfGroup', function(event) {
-
-		var
-			index = parseInt($(this).attr('data-index')) + 1;
-
+		var index = parseInt($(this).attr('data-index')) + 1;
 		$(this).attr('data-index', index);
-
-		$(this).before(html.replace(/#index#/g, index));
+		$(this).before(htmlCfgCompreJunto.replace(/#index#/g, index));
+		addListenerBtnDeleteForm();
 		event.preventDefault();
 	});
 
 	$(document).on('click', '#container-configuracoes .addHideField', function(event) {
-
 		$(this).before(htmlHide);
+		addListenerBtnDeleteForm();
 		event.preventDefault();
 	});
 
 	$(document).on('click', '#container-configuracoes .addShowField', function(event) {
-
 		$(this).before(htmlShow);
+		addListenerBtnDeleteForm();
 		event.preventDefault();
 	});
 
+	function addListenerBtnDeleteForm() {
+		$('.btn-remove-panel-group').off('click', removePanel );
+		$('.btn-remove-panel-group').on('click', removePanel );
+		$('.btn-delete-form-group').off('click', removeForm );
+		$('.btn-delete-form-group').on('click', removeForm );
+	}
+
+	// listeners botoes remover
+	addListenerBtnDeleteForm();
+
+	function removeForm( event ) {
+		$(event.target).closest('.form-group').remove();
+	}
+
+	function removePanel( event ) {
+		$(event.target).closest('.config-group').remove();
+	}
+
 	// CARREGA TODOS OS WIDGETS
 	widgets.inicia();
-
-	
 
 	function reloadAllCards() {
 		var block_ele = $('.card');
@@ -1345,7 +1367,6 @@ $(document).ready(function(){
 	        }
 	    });
 	}
-
 
 });
 
@@ -1393,7 +1414,6 @@ function preencheCampoAutoOfertaLimitada(titulo, id){
 	$('#listaProdutosAutocomplete').fadeOut();
 	$('#listaProdutosAutocomplete').html("");
 }
-
 
 function preencheCampoAuto(titulo, id, formato){
 	var nomeInput = '#produtoManual';

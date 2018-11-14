@@ -1,19 +1,19 @@
 <?php
 
 //CONEXÃO BD Dados
-include '../../bd/conexao_bd_dados.php';
+// include '../../bd/conexao_bd_dados.php';
 
 //CONEXÃO BD CADASTRO
-include '../../bd/conexao_bd_cadastro.php';
+// include '../../bd/conexao_bd_cadastro.php';
 
-mysqli_set_charset($conDados, 'utf8');
+// mysqli_set_charset($conDados, 'utf8');
 
-header('Content-Type: text/html; charset=utf-8');
+// header('Content-Type: text/html; charset=utf-8');
 
 //DEFINIR SESSAO
-session_name('premium');
-session_start();
-session_write_close();
+// session_name('premium');
+// session_start();
+// session_write_close();
 
 //ESCONDER WARNING
 //error_reporting(0);
@@ -28,291 +28,303 @@ $array = mysqli_fetch_array($resultadoXML);
 $url = $array['URL'];
 */
 
-$id = 1687;
-$url = 'https://www.lupo.com.br/';
-
-$time = time();
-
-$idProdAux = '0';
-
-$checkCreateXML = false;
-
-$posts = [];
-
-$arrayIdsProd = [];
-$arrayEstoqueProd = [];
-
-/*$ch = curl_init();
-$timeout = 0;
-curl_setopt($ch, CURLOPT_URL, $url.'/api/catalog_system/pub/category/tree/1');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-$categoria = curl_exec ($ch);
-
-$categoria = (json_decode($categoria, true));
-
-curl_close($ch);
-
-for($i = 0; $i < count($categoria); $i++)
-{*/
-    $page_begin = 1;
-    $page_end = 50;
-
-    for($j = 0; $j < 25; $j++) 
-    {  
-
-        $ch = curl_init();
-        $timeout = 0;
-        //curl_setopt($ch, CURLOPT_URL, $url.'/api/catalog_system/pub/products/search?fq='. $categoria[$i]['id'] .'&_from='. $page_begin .'&_to='. $page_end);
-        curl_setopt($ch, CURLOPT_URL, $url.'/api/catalog_system/pub/products/search?_from='. $page_begin .'&_to='. $page_end);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
-        $conteudo = curl_exec ($ch);
-
-        $conteudo = (json_decode($conteudo, true));
-
-        curl_close($ch);
-
-        if(empty($conteudo))
-        {
-            break;
-        }
-
-        foreach ($conteudo as $key => $value) 
-        {
-            // ID
-
-            $titulo = $value['productName'];
-
-            $descricao =  $value['description'];                    
-            
-            $idprod = $value['productId'];
-            
-            $link = limpaLink($value['link']);
-
-            $type = ajustaCategoria($value['categories'][0]);
-            
-            if(!empty($value['items'][0]['images']) && $id != 14)
-            {
-
-                $image_link = $value['items'][0]['images'][0]['imageUrl'];
-
-                $image_link_2 = $value['items'][0]['images'][1]['imageUrl'];
-
-            }
-            else
-            {
-                //imagem bazar http://bazarhorizonte.vteximg.com.br/arquivos/
-                $image_link = 'http://bazarhorizonte.vteximg.com.br/arquivos/'.$value['Imagem Principal'][0];
-
-                if($image_link == 'http://bazarhorizonte.vteximg.com.br/arquivos/')
-                {
-                    $image_link = ajustaImagem($value['Amostra'][0]);
-
-                    if($image_link == '')
-                    {
-                        $image_link = $value['items'][0]['images'][0]['imageUrl'];
-                    } 
-                } 
-            }
-
-            // ID
-            
-            // SKU
-
-            $skuKey = 0;
-            $sku = [];
-            $variante = [];
-            $variante2 = [];
-            $availabilityArray = [];
-
-            foreach ($conteudo[$key]['items'] as $keySKU => $valueSKU)
-            {
-                $sku[$skuKey] = $valueSKU['itemId'];
-                
-                if(!empty($valueSKU['COR']))
-                {
-                    $variante[$skuKey] = $valueSKU['COR'][0];
-                }
-                else if(!empty($valueSKU['Cor'])) 
-                {
-                    $variante[$skuKey] = $valueSKU['Cor'][0];
-                }
-                else if(!empty($valueSKU['Colors'])) 
-                {
-                    $variante[$skuKey] = $valueSKU['Colors'][0];
-                }
-                else if(!empty($valueSKU['Cores'])) 
-                {
-                    $variante[$skuKey] = $valueSKU['Cores'][0];
-                }
-
-                if(!empty($valueSKU['Sizes']))
-                {
-                    $variante2[$skuKey] = $valueSKU['Sizes'][0];
-                }
-                else if(!empty($valueSKU['Tamanho']))
-                {
-                    $variante2[$skuKey] = $valueSKU['Tamanho'][0];
-                }                
-
-                $availabilityArray[$skuKey] = $valueSKU['sellers'][0]['commertialOffer']['AvailableQuantity'];
-
-                $skuKey++;
-            }
-
-            $skuSTR = implode(',', $sku);
-            $varianteSTR = implode(',', $variante);
-            $variante2STR = implode(',', $variante2);
-
-            $availability = array_sum ( $availabilityArray );           
-            
-            $price = $value['items'][0]['sellers'][0]['commertialOffer']['ListPrice'];
-            
-            $sale_price = $value['items'][0]['sellers'][0]['commertialOffer']['Price'];
-
-            if($price == 0.00 && $sale_price == 0.00)
-            {
-                foreach ($value['items'] as $keyPrec => $valuePrec) 
-                {                    
-                    $price = $valuePrec['sellers'][0]['commertialOffer']['ListPrice'];
-                    $sale_price = $valuePrec['sellers'][0]['commertialOffer']['Price'];
-
-                    if($price != 0.00 && $sale_price != 0.00)
-                    {
-                        break;
-                    }
-                }
-            }
-            
-            //$availability = $value['items'][0]['sellers'][0]['commertialOffer']['AvailableQuantity'];
-
-            $posParcela = posParcela($value);
-            
-            $months = $value['items'][0]['sellers'][0]['commertialOffer']['Installments'][$posParcela]['NumberOfInstallments'];
-            $amount = $value['items'][0]['sellers'][0]['commertialOffer']['Installments'][$posParcela]['Value'];        
-
-            // SKU
-            
-            $SALE_PRICE = $sale_price;
-            $PRICE = $price;
-            $AMOUNT = $amount;
-            
-            $desconto = calculaDesconto($PRICE, $SALE_PRICE);
-            
-            $availability = geraEstoque($availability);
-            
-            if($idprod != "" && $idprod != null)
-            {
-                if(!$checkCreateXML)
-                {
-                    createXML($id, $conDados);
-                    $checkCreateXML = true;
-                }
-                
-                if(verificaProd($arrayIdsProd, $arrayEstoqueProd, $idprod, $availability))
-                {
-                    $arrayIdsProd[] = $idprod;
-                    $arrayEstoqueProd[] = $availability;
-                
-
-                    $update ="UPDATE XML_".$id." SET XML_time='$time', XML_titulo='" . htmlspecialchars($titulo) . "', XML_descricao = '" . $descricao . "', XML_titulo_upper=UPPER('" .  $titulo . "'), XML_sku='$skuSTR', XML_price = '$PRICE', XML_sale_price = '$SALE_PRICE', XML_desconto = '$desconto', XML_availability = '$availability', XML_link = '$link',XML_type ='" . htmlspecialchars($type) . "',XML_type_upper=UPPER('" .  $type . "'),  XML_image_link = '$image_link', XML_vparcela = '$AMOUNT', XML_nparcelas = '$months', XML_custom_nome1 = 'variante', XML_custom_nome2 = 'variante2', XML_custom1 = '$varianteSTR', XML_custom2 = '$variante2STR', XML_image_link2 = '$image_link_2' WHERE XML_id = '$idprod'";
-                    $resultado = mysqli_query($conDados, $update);
-                    
-                    if(mysqli_affected_rows($conDados) < 1)
-                    {
-                        $insere=("INSERT INTO XML_".$id." (XML_descricao, XML_time, XML_time_insert, XML_titulo, XML_titulo_upper, XML_id, XML_sku, XML_price, XML_sale_price, XML_desconto, XML_availability, XML_link, XML_type, XML_type_upper, XML_image_link, XML_vparcela, XML_nparcelas, XML_custom_nome1, XML_custom1, XML_custom_nome2, XML_custom2, XML_image_link2) VALUES ('" . $descricao . "', '$time', '$time', '" . htmlspecialchars($titulo) . "',UPPER('" .  $titulo . "'), '$idprod', '$skuSTR', '$PRICE', '$SALE_PRICE','$desconto', '$availability', '$link','" . htmlspecialchars($type) . "',UPPER('" .  $type . "'),'$image_link', '$AMOUNT', '$months', 'variante', '$varianteSTR', 'variante2', '$variante2STR', '$image_link_2')");
-                        $resultadoInsere = mysqli_query($conDados, $insere);                   
-                    }
-    
-    
-                    $select = "SELECT XML_venda_7 FROM XML_".$id." WHERE XML_id = '$idprod'";
-                    $querySelect = mysqli_query($conDados, $select);
-                    
-                    $arraySelect = mysqli_fetch_array($querySelect);
-                    
-                    $posJSON = atualizaProdJSON($posts, $idprod);
-
-                    if($posJSON != false)
-                    {
-                        $posts[$posJSON] = array
-                                        (
-                                            'id'=> strval($idprod), 
-                                            'sku'=> $sku, 
-                                            'title'=> urlencode($titulo), 
-                                            'in_stock'=> $availability,
-                                            'price'=> $PRICE, 
-                                            'sale_price'=> $SALE_PRICE, 
-                                            'link'=> urlencode($link), 
-                                            'link_image'=> urlencode($image_link), 
-                                            'type'=> urlencode($type), 
-                                            'amount'=> $AMOUNT, 
-                                            'months'=> $months, 
-                                            'venda' => $arraySelect['XML_venda_7'], 
-                                            'desconto' => $desconto,
-                                            'productReference' => $value['productReference']
-                                        );
-                    }
-                    else
-                    {
-                        $posts[] = array
-                                        (
-                                            'id'=> strval($idprod), 
-                                            'sku'=> $sku, 
-                                            'title'=> urlencode($titulo), 
-                                            'in_stock'=> $availability,
-                                            'price'=> $PRICE, 
-                                            'sale_price'=> $SALE_PRICE, 
-                                            'link'=> urlencode($link), 
-                                            'link_image'=> urlencode($image_link), 
-                                            'type'=> urlencode($type), 
-                                            'amount'=> $AMOUNT, 
-                                            'months'=> $months, 
-                                            'venda' => $arraySelect['XML_venda_7'], 
-                                            'desconto' => $desconto,
-                                            'productReference' => $value['productReference']
-                                        );
-                    }
-                    
-                }
-            }
-            else
-            {
-                echo '3';
-            }
-        }
-
-        $page_begin += 50;
-        $page_end += 50;
-    }
-
-//} //fim do while
+// $id = 1687;
+// $url = 'https://www.lupo.com.br/';
 
 
-if($insere OR $update)
+function API_VTEX($id, $url, $conCad, $conDados)
 {
-    $atualiza = "UPDATE config SET CONF_XML = '$url', CONF_at_xml = CURRENT_TIMESTAMP() WHERE CONF_id_cli = '$id'";
-    $insert3 = mysqli_query($conCad, $atualiza);
-    
-    $updatestats ="UPDATE XML_".$id." SET XML_availability = 0 WHERE XML_time != '$time' OR XML_time IS NULL";
-    $resultadostats = mysqli_query($conDados, $updatestats);
+    $time = time();
 
-    if($id == 14)
+    $idProdAux = '0';
+
+    $checkCreateXML = false;
+
+    $posts = [];
+
+    $arrayIdsProd = [];
+    $arrayEstoqueProd = [];
+
+    if(($url == '') || ($url == NULL))
     {
-        $updateCat ="UPDATE XML_14 SET `XML_availability` = 0 WHERE `XML_type` LIKE '%xx%'";
-        $resultadoCat = mysqli_query($conDados, $updateCat);
+        $queryXML = "SELECT CONF_XML as URL_XML FROM config WHERE CONF_id_cli = '$id'";
+        $resultadoXML = mysqli_query($conCad, $queryXML);
+        $array = mysqli_fetch_array($resultadoXML);
+        $url = $array['URL_XML'];
     }
 
-    notificaXML($id, $conCad);
+    /*$ch = curl_init();
+    $timeout = 0;
+    curl_setopt($ch, CURLOPT_URL, $url.'/api/catalog_system/pub/category/tree/1');
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+    $categoria = curl_exec ($ch);
 
-    geraJSON($id, $posts);
-    
-    echo '1';
+    $categoria = (json_decode($categoria, true));
+
+    curl_close($ch);
+
+    for($i = 0; $i < count($categoria); $i++)
+    {*/
+        $page_begin = 1;
+        $page_end = 50;
+
+        for($j = 0; $j < 25; $j++) 
+        {  
+
+            $ch = curl_init();
+            $timeout = 0;
+            //curl_setopt($ch, CURLOPT_URL, $url.'/api/catalog_system/pub/products/search?fq='. $categoria[$i]['id'] .'&_from='. $page_begin .'&_to='. $page_end);
+            curl_setopt($ch, CURLOPT_URL, $url.'/api/catalog_system/pub/products/search?_from='. $page_begin .'&_to='. $page_end);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+            $conteudo = curl_exec ($ch);
+
+            $conteudo = (json_decode($conteudo, true));
+
+            curl_close($ch);
+
+            if(empty($conteudo))
+            {
+                break;
+            }
+
+            foreach ($conteudo as $key => $value) 
+            {
+                // ID
+
+                $titulo = $value['productName'];
+
+                $descricao =  $value['description'];                    
+                
+                $idprod = $value['productId'];
+                
+                $link = limpaLink($value['link']);
+
+                $type = ajustaCategoria($value['categories'][0]);
+                
+                if(!empty($value['items'][0]['images']) && $id != 14)
+                {
+
+                    $image_link = $value['items'][0]['images'][0]['imageUrl'];
+
+                    $image_link_2 = $value['items'][0]['images'][1]['imageUrl'];
+
+                }
+                else
+                {
+                    //imagem bazar http://bazarhorizonte.vteximg.com.br/arquivos/
+                    $image_link = 'http://bazarhorizonte.vteximg.com.br/arquivos/'.$value['Imagem Principal'][0];
+
+                    if($image_link == 'http://bazarhorizonte.vteximg.com.br/arquivos/')
+                    {
+                        $image_link = ajustaImagem($value['Amostra'][0]);
+
+                        if($image_link == '')
+                        {
+                            $image_link = $value['items'][0]['images'][0]['imageUrl'];
+                        } 
+                    } 
+                }
+
+                // ID
+                
+                // SKU
+
+                $skuKey = 0;
+                $sku = [];
+                $variante = [];
+                $variante2 = [];
+                $availabilityArray = [];
+
+                foreach ($conteudo[$key]['items'] as $keySKU => $valueSKU)
+                {
+                    $sku[$skuKey] = $valueSKU['itemId'];
+                    
+                    if(!empty($valueSKU['COR']))
+                    {
+                        $variante[$skuKey] = $valueSKU['COR'][0];
+                    }
+                    else if(!empty($valueSKU['Cor'])) 
+                    {
+                        $variante[$skuKey] = $valueSKU['Cor'][0];
+                    }
+                    else if(!empty($valueSKU['Colors'])) 
+                    {
+                        $variante[$skuKey] = $valueSKU['Colors'][0];
+                    }
+                    else if(!empty($valueSKU['Cores'])) 
+                    {
+                        $variante[$skuKey] = $valueSKU['Cores'][0];
+                    }
+
+                    if(!empty($valueSKU['Sizes']))
+                    {
+                        $variante2[$skuKey] = $valueSKU['Sizes'][0];
+                    }
+                    else if(!empty($valueSKU['Tamanho']))
+                    {
+                        $variante2[$skuKey] = $valueSKU['Tamanho'][0];
+                    }                
+
+                    $availabilityArray[$skuKey] = $valueSKU['sellers'][0]['commertialOffer']['AvailableQuantity'];
+
+                    $skuKey++;
+                }
+
+                $skuSTR = implode(',', $sku);
+                $varianteSTR = implode(',', $variante);
+                $variante2STR = implode(',', $variante2);
+
+                $availability = array_sum ( $availabilityArray );           
+                
+                $price = $value['items'][0]['sellers'][0]['commertialOffer']['ListPrice'];
+                
+                $sale_price = $value['items'][0]['sellers'][0]['commertialOffer']['Price'];
+
+                if($price == 0.00 && $sale_price == 0.00)
+                {
+                    foreach ($value['items'] as $keyPrec => $valuePrec) 
+                    {                    
+                        $price = $valuePrec['sellers'][0]['commertialOffer']['ListPrice'];
+                        $sale_price = $valuePrec['sellers'][0]['commertialOffer']['Price'];
+
+                        if($price != 0.00 && $sale_price != 0.00)
+                        {
+                            break;
+                        }
+                    }
+                }
+                
+                //$availability = $value['items'][0]['sellers'][0]['commertialOffer']['AvailableQuantity'];
+
+                $posParcela = posParcela($value);
+                
+                $months = $value['items'][0]['sellers'][0]['commertialOffer']['Installments'][$posParcela]['NumberOfInstallments'];
+                $amount = $value['items'][0]['sellers'][0]['commertialOffer']['Installments'][$posParcela]['Value'];        
+
+                // SKU
+                
+                $SALE_PRICE = $sale_price;
+                $PRICE = $price;
+                $AMOUNT = $amount;
+                
+                $desconto = calculaDesconto($PRICE, $SALE_PRICE);
+                
+                $availability = geraEstoque($availability);
+                
+                if($idprod != "" && $idprod != null)
+                {
+                    if(!$checkCreateXML)
+                    {
+                        createXML($id, $conDados);
+                        $checkCreateXML = true;
+                    }
+                    
+                    if(verificaProd($arrayIdsProd, $arrayEstoqueProd, $idprod, $availability))
+                    {
+                        $arrayIdsProd[] = $idprod;
+                        $arrayEstoqueProd[] = $availability;
+                    
+
+                        $update ="UPDATE XML_".$id." SET XML_time='$time', XML_titulo='" . htmlspecialchars($titulo) . "', XML_descricao = '" . $descricao . "', XML_titulo_upper=UPPER('" .  $titulo . "'), XML_sku='$skuSTR', XML_price = '$PRICE', XML_sale_price = '$SALE_PRICE', XML_desconto = '$desconto', XML_availability = '$availability', XML_link = '$link',XML_type ='" . htmlspecialchars($type) . "',XML_type_upper=UPPER('" .  $type . "'),  XML_image_link = '$image_link', XML_vparcela = '$AMOUNT', XML_nparcelas = '$months', XML_custom_nome1 = 'variante', XML_custom_nome2 = 'variante2', XML_custom1 = '$varianteSTR', XML_custom2 = '$variante2STR', XML_image_link2 = '$image_link_2' WHERE XML_id = '$idprod'";
+                        $resultado = mysqli_query($conDados, $update);
+                        
+                        if(mysqli_affected_rows($conDados) < 1)
+                        {
+                            $insere=("INSERT INTO XML_".$id." (XML_descricao, XML_time, XML_time_insert, XML_titulo, XML_titulo_upper, XML_id, XML_sku, XML_price, XML_sale_price, XML_desconto, XML_availability, XML_link, XML_type, XML_type_upper, XML_image_link, XML_vparcela, XML_nparcelas, XML_custom_nome1, XML_custom1, XML_custom_nome2, XML_custom2, XML_image_link2) VALUES ('" . $descricao . "', '$time', '$time', '" . htmlspecialchars($titulo) . "',UPPER('" .  $titulo . "'), '$idprod', '$skuSTR', '$PRICE', '$SALE_PRICE','$desconto', '$availability', '$link','" . htmlspecialchars($type) . "',UPPER('" .  $type . "'),'$image_link', '$AMOUNT', '$months', 'variante', '$varianteSTR', 'variante2', '$variante2STR', '$image_link_2')");
+                            $resultadoInsere = mysqli_query($conDados, $insere);                   
+                        }
+        
+        
+                        $select = "SELECT XML_venda_7 FROM XML_".$id." WHERE XML_id = '$idprod'";
+                        $querySelect = mysqli_query($conDados, $select);
+                        
+                        $arraySelect = mysqli_fetch_array($querySelect);
+                        
+                        $posJSON = atualizaProdJSON($posts, $idprod);
+
+                        if($posJSON != false)
+                        {
+                            $posts[$posJSON] = array
+                                            (
+                                                'id'=> strval($idprod), 
+                                                'sku'=> $sku, 
+                                                'title'=> urlencode($titulo), 
+                                                'in_stock'=> $availability,
+                                                'price'=> $PRICE, 
+                                                'sale_price'=> $SALE_PRICE, 
+                                                'link'=> urlencode($link), 
+                                                'link_image'=> urlencode($image_link), 
+                                                'type'=> urlencode($type), 
+                                                'amount'=> $AMOUNT, 
+                                                'months'=> $months, 
+                                                'venda' => $arraySelect['XML_venda_7'], 
+                                                'desconto' => $desconto,
+                                                'productReference' => $value['productReference']
+                                            );
+                        }
+                        else
+                        {
+                            $posts[] = array
+                                            (
+                                                'id'=> strval($idprod), 
+                                                'sku'=> $sku, 
+                                                'title'=> urlencode($titulo), 
+                                                'in_stock'=> $availability,
+                                                'price'=> $PRICE, 
+                                                'sale_price'=> $SALE_PRICE, 
+                                                'link'=> urlencode($link), 
+                                                'link_image'=> urlencode($image_link), 
+                                                'type'=> urlencode($type), 
+                                                'amount'=> $AMOUNT, 
+                                                'months'=> $months, 
+                                                'venda' => $arraySelect['XML_venda_7'], 
+                                                'desconto' => $desconto,
+                                                'productReference' => $value['productReference']
+                                            );
+                        }
+                        
+                    }
+                }
+                else
+                {
+                    return '3';
+                }
+            }
+
+            $page_begin += 50;
+            $page_end += 50;
+        }
+        //} //fim do while
+
+    if($insere OR $update)
+    {
+        $atualiza = "UPDATE config SET CONF_XML = '$url', CONF_at_xml = CURRENT_TIMESTAMP() WHERE CONF_id_cli = '$id'";
+        $insert3 = mysqli_query($conCad, $atualiza);
+        
+        $updatestats ="UPDATE XML_".$id." SET XML_availability = 0 WHERE XML_time != '$time' OR XML_time IS NULL";
+        $resultadostats = mysqli_query($conDados, $updatestats);
+
+        if($id == 14)
+        {
+            $updateCat ="UPDATE XML_14 SET `XML_availability` = 0 WHERE `XML_type` LIKE '%xx%'";
+            $resultadoCat = mysqli_query($conDados, $updateCat);
+        }
+
+        notificaXML($id, $conCad);
+
+        geraJSON($id, $posts);
+        
+        return '1';
+    }
+    else
+    {
+        return '0';
+    }
+
 }
-else
-{
-    echo '0';
-}
+
 
 
 

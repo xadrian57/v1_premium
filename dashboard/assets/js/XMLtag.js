@@ -292,10 +292,7 @@ $(document).ready(function(){
 						XMLtagsSecundarias = {};
 						$('#XMLTAG').modal('show');
 					}
-				} else {					
-					toastr['error']('Não foi possível ler esse XML, verifique se o link está correto');
-					console.log(response);
-				}
+				} 
 
 				desbloqueiaTela(); // desbloqueia tela
 			}

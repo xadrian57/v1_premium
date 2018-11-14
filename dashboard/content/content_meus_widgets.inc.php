@@ -117,7 +117,7 @@ if($_SESSION['idPlan'] == 42) {
 										Começar Já!
 									</a>
 					<?php } else { ?>
-					                <p style="font-size: 18px; color: red"><?php echo $msgTagflag; ?></p>
+					                <p class="red"><?php echo $msgTagflag; ?></p>
 					<?php } ?>
 									</div>
 									<div class="col-lg-6 col-md-6">
