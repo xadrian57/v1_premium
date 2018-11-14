@@ -10,18 +10,31 @@
 
 window['rhSearchBarSendReq'] = function(idCli,idWid){
     // REALIZAR ESSA FUNÇÃO NO INICIO DO PROCESSAMENTO
-    var rh = document.createElement('link');
-    rh.async = true;
-    rh.rel="stylesheet";
-    rh.type="text/css";
-    rh.href = 'https://www.roihero.com.br/searchbar/templates/sb_'+idCli+'/sb_'+idCli+'.css';
+    var css = document.createElement('link');
+    css.async = true;
+    css.rel="stylesheet";
+    css.type="text/css";
+    css.href = 'https://www.roihero.com.br/searchbar/templates/sb_'+idCli+'/sb_'+idCli+'.css';
+
+    // checa se carregou o css
+    if (css.readyState) {
+        css.onreadystatechange = function () {
+            console.log('carregou');
+            window['rh_sb_css_ready'] = true;
+        };
+    } else {
+        css.onload = function () {
+            console.log('carregou');
+            window['rh_sb_css_ready'] = true;
+        };
+    };
 
     var rh_s = document.getElementsByTagName('link')[0];
-    rh_s.parentNode.insertBefore(rh, rh_s);
+    rh_s.parentNode.insertBefore(css, rh_s);
 
     var req = new XMLHttpRequest();
     req.open('post','https://www.roihero.com.br/widget/templates/kit_'+idCli+'/get_searchbar.php',true);
-
+   
 
     // FUNÇÃO QUE LÊ OS MAIS PESQUISADOS E RETORNA O CONTEÚDO HTML DA BARRA DE BUSCA
     var formData = new FormData();
@@ -44,124 +57,128 @@ window['rhSearchBarSendReq'] = function(idCli,idWid){
     {
         // Verifica se o Ajax realizou todas as operações corretamente (essencial)
         if(req.readyState == 4 && req.status == 200)
-        {
-            rh_lite_termos_personalizados = [];
-            rh_lite_mais_buscados = [];
+        {   
+            goOn = function(){
+                rh_lite_termos_personalizados = [];
+                rh_lite_mais_buscados = [];
 
-            window['rh_lite_termos'] = req.responseText.replace(/\+/g, ' ');
+                window['rh_lite_termos'] = req.responseText.replace(/\+/g, ' ');
 
 
-            try {
-                rh_lite_termos = JSON.parse(rh_lite_termos);
+                try {
+                    rh_lite_termos = JSON.parse(rh_lite_termos);
 
-                // decodifica
-                for (var i = 0; i < rh_lite_termos[0].length; i++) {
-                    rh_lite_termos[0][i] = decodeURIComponent(rh_lite_termos[0][i]);
-                }
-
-                rh_lite_termos[1].descri = decodeURIComponent(rh_lite_termos[1].descri);
-                rh_lite_termos[1].imagem = decodeURIComponent(rh_lite_termos[1].imagem);
-                rh_lite_termos[1].link = decodeURIComponent(rh_lite_termos[1].link);
-                rh_lite_termos[1].termo = decodeURIComponent(rh_lite_termos[1].termo);
-                rh_lite_termos[1].titulo = decodeURIComponent(rh_lite_termos[1].titulo);
-
-                console.log('Termos/conteudo:');
-                console.log(rh_lite_termos);
-
-                // CHECK DE SEGURANÇA
-                // CASO N TENHA NENHUM RANK DE PRODUTOS MAIS BUSCADOS AINDA NO BANCO, RECEBE VAZIO
-                if (rh_lite_termos[0]["termos"] === "") {
-                    rh_lite_mais_buscados = [];
-                } else { // CASO TENHA, RETIRAR OS REPETIDOS
-                    rh_lite_mais_buscados = rh_lite_termos.slice(0,rh_lite_termos.length-1)[0];
-
-                    for (var i = 0; i < rh_lite_mais_buscados.length; i++) {
-                        rh_lite_mais_buscados[i] = rh_lite_mais_buscados[i].trim().toLowerCase();
+                    // decodifica
+                    for (var i = 0; i < rh_lite_termos[0].length; i++) {
+                        rh_lite_termos[0][i] = decodeURIComponent(rh_lite_termos[0][i]);
                     }
-                    // NOVA ARRAY Q RECEBE OS PRODUTOS QUE NAO SAO REPETIDOS
-                    var uniqueArray = rh_lite_mais_buscados.filter(function(item, pos) {
-                        return rh_lite_mais_buscados.indexOf(item) == pos;
-                    })
 
-                    rh_lite_mais_buscados = uniqueArray.slice(0);
-                }
+                    rh_lite_termos[1].descri = decodeURIComponent(rh_lite_termos[1].descri);
+                    rh_lite_termos[1].imagem = decodeURIComponent(rh_lite_termos[1].imagem);
+                    rh_lite_termos[1].link = decodeURIComponent(rh_lite_termos[1].link);
+                    rh_lite_termos[1].termo = decodeURIComponent(rh_lite_termos[1].termo);
+                    rh_lite_termos[1].titulo = decodeURIComponent(rh_lite_termos[1].titulo);
 
+                    console.log('Termos/conteudo:');
+                    console.log(rh_lite_termos);
 
-                // if (!rh_lite_termos[3]) {
-                //     rh_lite_termos_manuais = "";
-                // } else {
-                //     rh_lite_termos_manuais = rh_lite_termos.slice(3)[0];
-                //     var newArrayTermos = [];
-                //       for (var y = 0; y < rh_lite_termos_manuais.termosClick.length; y++) {
-                //         newArrayTermos.push({termo:unescape(rh_lite_termos_manuais.termosClick[y]),
-                //         link:unescape(rh_lite_termos_manuais.linksClick[y])});
-                //       };
-                //     rh_lite_termos_manuais = newArrayTermos.slice(0);
+                    // CHECK DE SEGURANÇA
+                    // CASO N TENHA NENHUM RANK DE PRODUTOS MAIS BUSCADOS AINDA NO BANCO, RECEBE VAZIO
+                    if (rh_lite_termos[0]["termos"] === "") {
+                        rh_lite_mais_buscados = [];
+                    } else { // CASO TENHA, RETIRAR OS REPETIDOS
+                        rh_lite_mais_buscados = rh_lite_termos.slice(0,rh_lite_termos.length-1)[0];
 
-                //     // NOVA ARRAY Q RECEBE OS PRODUTOS QUE NAO SAO REPETIDOS
-                //     var uniqueArray = rh_lite_mais_buscados.filter(function(item, pos) {
-                //         return rh_lite_mais_buscados.indexOf(item) == pos;
-                //     })
-                // }
-
-                // INSERE BARRA DE BUSCA NO CONTAINER
-                document.getElementById('__rh-searchbar__').innerHTML = rh_lite_termos[2]['html'];
-                document.getElementById('rh-searchbar-main').style.display = 'block';
-
-                var inputCfg = document.getElementById('rh-searchbar-config');
-                window['searchbar'] = window['searchbar'] || {};
-                window['searchbar'].config = {
-                    urlJson : 'http://www.roihero.com.br/JSON/get-content.php',
-                    searchbar : document.getElementById(inputCfg.dataset.searchbar),
-                    searchbutton : document.getElementById(inputCfg.dataset.searchbutton),
-                    searchbarOverlay: document.getElementById(inputCfg.dataset.searchbarOverlay),
-                    searchbarContainer : document.getElementById(inputCfg.dataset.containerSearchbar),
-                    searchbarResults : document.getElementById(inputCfg.dataset.containerResultados),
-                    searchbarResultsOverlay: document.getElementById(inputCfg.dataset.containerResultadosOverlay),
-                    overlay : document.getElementById(inputCfg.dataset.containerOverlay),
-                    similarWords: JSON.parse(inputCfg.dataset.similarWords),
-                    currency: inputCfg.dataset.currency || 'R$',
-                    customResults: inputCfg.dataset.customResults, // resultados fixos no dropdown com links personalizados para quando usuário clicar a primeira vez na barra
-                    paginate: inputCfg.dataset.paginate, // paginar busca e coletar resultados do servidor
-                    redirect: inputCfg.dataset.redirect || false
-                }
-
-                var cfg = window['searchbar'].config;
-                rhSearchBar(cfg,idCli,idWid);
-
-            } catch(e){
-                rh_lite_termos = JSON.parse('[{"termos":""},{"termo":"","link":"","titulo":"","descri":"","imagem":""}]');
-                console.warn(e);
-            }
-
-            // TERMOS PERSONALIZADOS
-            // CRIA UM OBJ DE A PARTIR DOS PARAMETROS DOS TERMOS PERSONALIZADOS
-            function rh_lite_organizaTermos() {
-                // CHECA PRIMEIRO SE A ARRAY EXISTE
-                if (rh_lite_termos.slice(1)[0].termo === '' || rh_lite_termos.slice(1)[0].termo === null) { return false; }
-                var termo = rh_lite_termos.slice(1)[0].termo.split(',');
-                var link = rh_lite_termos.slice(1)[0].link.split(',');
-                var titulo = rh_lite_termos.slice(1)[0].titulo.split(',');
-                var descri = rh_lite_termos.slice(1)[0].descri.split(',');
-                var imagem = rh_lite_termos.slice(1)[0].imagem.split(',');
-                for (var i = 0; i < rh_lite_termos.slice(1)[0].termo.split(',').length; i++) {
-                    rh_lite_termos_personalizados.push(
-                        {
-                            'termo':termo[i],
-                            'link':link[i],
-                            'titulo':titulo[i],
-                            'descri':descri[i],
-                            'imagem':imagem[i]
+                        for (var i = 0; i < rh_lite_mais_buscados.length; i++) {
+                            rh_lite_mais_buscados[i] = rh_lite_mais_buscados[i].trim().toLowerCase();
                         }
-                    );
+                        // NOVA ARRAY Q RECEBE OS PRODUTOS QUE NAO SAO REPETIDOS
+                        var uniqueArray = rh_lite_mais_buscados.filter(function(item, pos) {
+                            return rh_lite_mais_buscados.indexOf(item) == pos;
+                        })
+
+                        rh_lite_mais_buscados = uniqueArray.slice(0);
+                    }
+
+                    // INSERE BARRA DE BUSCA NO CONTAINER
+                    document.getElementById('__rh-searchbar__').innerHTML = rh_lite_termos[2]['html'];
+                    document.getElementById('rh-searchbar-main').style.display = 'block';
+
+                    var inputCfg = document.getElementById('rh-searchbar-config');
+                    window['searchbar'] = window['searchbar'] || {};
+                    window['searchbar'].config = {
+                        urlJson : 'http://www.roihero.com.br/JSON/get-content.php',
+                        searchbar : document.getElementById(inputCfg.getAttribute('data-searchbar')),
+                        searchbutton : document.getElementById(inputCfg.getAttribute('data-searchbutton')),
+                        searchbarOverlay: document.getElementById(inputCfg.getAttribute('data-searchbar-overlay')),
+                        searchbarContainer : document.getElementById(inputCfg.getAttribute('data-container-searchbar')),
+                        searchbarResults : document.getElementById(inputCfg.getAttribute('data-container-resultados')),
+                        searchbarResultsOverlay: document.getElementById(inputCfg.getAttribute('data-container-resultados-overlay')),
+                        overlay : document.getElementById(inputCfg.getAttribute('data-container-overlay')),
+                        similarWords: JSON.parse(inputCfg.getAttribute('data-similar-words')),
+                        currency: inputCfg.getAttribute('data-currency') || 'R$',
+                        customResults: inputCfg.getAttribute('data-custom-results'), // resultados fixos no dropdown com links personalizados para quando usuário clicar a primeira vez na barra
+                        paginate: inputCfg.getAttribute('data-paginate'), // paginar busca e coletar resultados do servidor
+                        redirect: inputCfg.getAttribute('data-redirect') || false
+                    }
+
+                    var cfg = window['searchbar'].config;
+                    rhSearchBar(cfg,idCli,idWid);
+
+                } catch(e){
+                    rh_lite_termos = JSON.parse('[{"termos":""},{"termo":"","link":"","titulo":"","descri":"","imagem":""}]');
+                    console.warn(e);
+                }
+
+                // TERMOS PERSONALIZADOS
+                // CRIA UM OBJ DE A PARTIR DOS PARAMETROS DOS TERMOS PERSONALIZADOS
+                function rh_lite_organizaTermos() {
+                    // CHECA PRIMEIRO SE A ARRAY EXISTE
+                    if (rh_lite_termos.slice(1)[0].termo === '' || rh_lite_termos.slice(1)[0].termo === null) { return false; }
+                    var termo = rh_lite_termos.slice(1)[0].termo.split(',');
+                    var link = rh_lite_termos.slice(1)[0].link.split(',');
+                    var titulo = rh_lite_termos.slice(1)[0].titulo.split(',');
+                    var descri = rh_lite_termos.slice(1)[0].descri.split(',');
+                    var imagem = rh_lite_termos.slice(1)[0].imagem.split(',');
+                    for (var i = 0; i < rh_lite_termos.slice(1)[0].termo.split(',').length; i++) {
+                        rh_lite_termos_personalizados.push(
+                            {
+                                'termo':termo[i],
+                                'link':link[i],
+                                'titulo':titulo[i],
+                                'descri':descri[i],
+                                'imagem':imagem[i]
+                            }
+                        );
+                    }
+                }
+
+                // TERMOS PERSONALIZADOS
+                rh_lite_organizaTermos();
+
+                // TOUCH
+                if (typeof rhInitHammer !== 'undefined') {
+                    rhInitHammer();
                 }
             }
-
-            // TERMOS PERSONALIZADOS
-            rh_lite_organizaTermos();
-
-            // TOUCH
-            rhInitHammer();
+            
+            // checa se carregou o css
+            if (window['rh_sb_css_ready']) {
+                goOn();
+            }
+            else if (css.readyState) {
+                css.onreadystatechange = function () {
+                    console.log('carregou');
+                    goOn();
+                };
+            } else {
+                css.onload = function () {
+                    console.log('carregou');
+                    goOn();
+                };
+            };
+                        
+            // MAGIC ends
         }
     }
     req.send(formData);
@@ -208,7 +225,6 @@ rhSearchBar = function(cfg,idCli,idWid){
         // Quando o objeto recebe o retorno, chamamos a seguinte função;
         req2.onreadystatechange = function()
         {
-            var utm = document.getElementById('rh_lite_searchbar_utm').value;
             var idWid = document.getElementById('rh_lite_searchbar_wid').value;
             // Verifica se o Ajax realizou todas as operações corretamente (essencial)
             if(req2.readyState == 4 && req2.status == 200)
@@ -264,10 +280,11 @@ rhSearchBar = function(cfg,idCli,idWid){
                     }
 
                     // DECODIFICANDO OS NOMES E OS LINKS
-                    rh_lite_obj[x].title = decodeURIComponent(rh_lite_obj[x].title).replace(/\+/g, ' ');
-                    rh_lite_obj[x].link = decodeURIComponent(rh_lite_obj[x].link)+'?idwid='+idWid+'&utm='+utm;
+                    rh_lite_obj[x].title =  decodeURIComponent(rh_lite_obj[x].title.replace(/\+/g, ' '));
+                    rh_lite_obj[x].link = decodeURIComponent(rh_lite_obj[x].link)+'?idwid='+idWid;
                     rh_lite_obj[x].link_image = decodeURIComponent(rh_lite_obj[x].link_image);
                     rh_lite_obj[x].type = decodeURIComponent(rh_lite_obj[x].type).replace(/\+/g, ' ');
+                    
                 }
 
 
@@ -288,7 +305,13 @@ rhSearchBar = function(cfg,idCli,idWid){
 
     // NOVA FUNCAO D BUSCA
     rhSearchProducts = function(searchTerm){
-        if (rhClientIdSb === "12c6fc06c99a462375eeb3f43dfd832b08ca9e17") {
+        if (rhClientIdSb === "12c6fc06c99a462375eeb3f43dfd832b08ca9e17" || 
+            rhClientIdSb === "823b29ffd8dbab9367eddca53376226a17cdc00f" ||
+            rhClientIdSb === "7c7b84eeaec18233e982d101637ab2a4033c6fb0" ||
+            rhClientIdSb === "1784f0e37c1fdd6200c1e8b28e8caae5402e74e0" ||
+            rhClientIdSb === "bda09ba2c0046773a13bfac20bf620d2317adbf6" ||
+            rhClientIdSb === "3c2675338c88905be5329fb284b89482fbfc872a"
+            ) {
             if (!isNaN(parseInt(searchTerm[0]))) {
                 console.log('pesquisa por referencia');
                 resultados_busca = rh_lite_obj.filter(function(produto){
@@ -360,50 +383,52 @@ rhSearchBar = function(cfg,idCli,idWid){
             prod = produtos[i],
             prodName = rhRemoveAcento(prod.title.toLowerCase().trim()),
             wordsInProd = prodName.split(' '),
-            wordsInSearch = searchTerm.split(' '),
-            totalWordsInProduct = 0; // total de palavras da busca que esta dentro da outra
+            wordsInSearch = searchTerm.split(' ');
 
             if (searchTerm == prodName) {
-                score+=100;
+                score+=10;
             }
 
             // levenshtein palavra inteira
             if (rh_lite_lev(prodName,searchTerm)) {
-                score+=60;
+                score+=10;
             }
 
             if (prodName.indexOf(searchTerm) == 0){
-                score+=50;
+                score+=10;
             }
 
             if (prodName.indexOf(searchTerm) >= 0 && searchTerm.indexOf(searchTerm) >= 0){
-                score+=40;
+                score+=10;
+            }
+                
+            if(wordsInSearch[0] === wordsInProd[0]){
+                score+=10;
             }
 
-            if(wordsInSearch.length > 1){
-                if(wordsInSearch[0] === wordsInProd[0]){
-                    score+=30;
+            if(wordsInSearch[0].indexOf(wordsInProd[0]) >= 0){
+				score+=10;
+			}
+
+			if( wordsInProd[0].indexOf(wordsInSearch[0]) >= 0){
+				score+=10;
+			} 
+
+            // levenshtein primeira palavra
+            if (rh_lite_lev(wordsInProd[0],wordsInSearch[0])) {
+                score+=10;
+            }
+
+            for (var j = 0; j < wordsInSearch.length; j++) {
+                var word = wordsInSearch[j].trim();
+
+                if (word !== '' && prodName.indexOf(word) >= 0){
+                    score+=10;
                 }
-
-                // levenshtein primeira palavra
-                if (rh_lite_lev(wordsInProd[0],wordsInSearch[0])) {
-                    score+=30;
-                }
-
-                for (var j = 0; j < wordsInSearch.length; j++) {
-                    var
-                    totalWordsInProduct = 0,
-                    word = wordsInSearch[j].trim();
-
-                    if (word !== '' && prodName.indexOf(word) >= 0){
-                        score+=20;
-                    }
-                }
-
             }
 
             if (searchTerm.indexOf(prodName) >= 0){
-                score+=20;
+                score+=10;
             }
 
             if (prodName.indexOf(searchTerm) >= 0){
@@ -452,10 +477,10 @@ rhSearchBar = function(cfg,idCli,idWid){
             clearInterval(rh_clock_intervalo);
         }
 
-        var interval = (typeof document.getElementById('rh-searchbar-config').dataset.delay === 'undefined') ? 500 : parseFloat(document.getElementById('rh-searchbar-config').dataset.delay);
-
-
-        cfg.searchbarResults.classList.add('loading');
+        var interval = (typeof document.getElementById('rh-searchbar-config').getAttribute('data-delay') === 'undefined') ? 500 : parseFloat(document.getElementById('rh-searchbar-config').getAttribute('data-delay'));
+        
+        cfg.searchbarResults.classList.add('loading');        
+        document.getElementById('rh_lite_results').scrollTop = 0; // reseta scroll
         window['__time__'] = Date.now(); // calcular tempo pesquisa
 
         rh_lite_segundos_sb = 0;
@@ -490,22 +515,40 @@ rhSearchBar = function(cfg,idCli,idWid){
         relacionados = document.getElementById('rh_lite_related_results');
 
         // CASO AINDA NÃO TENHA DIGITADO NADA, MOSTRAR OS TERMOS CADASTRADOS MANUALMENTE
-        if (el.value.trim() === '' && rh_lite_mais_buscados.length > 2){ 
-                relacionados.innerHTML = '<ul id="rh_lite_table_result">'; // monta começo UL
+        if (el.value.trim() === ''){             
+            relacionados.innerHTML = '<ul id="rh_lite_table_result">'; // monta começo UL
 
+            if (rh_lite_mais_buscados.length > 2) {
                 // verifica se os termos customizados estao cadastrados
-                if (typeof window['searchbar'].config.customResults !== 'undefined') {
+                if (window['searchbar'].config.customResults !== null) {
                     var customR = JSON.parse(window['searchbar'].config.customResults);
 
                     for (var i = 0; i < customR.length; i++) {
                         var termo = customR[i];
 
-                        document.getElementById('rh_lite_table_result').innerHTML+=
-                        '<li class="rh_lite_mais_pesquisados"><a href="'+termo.link+'">'+termo.title+'</li>';
+                        if (termo.link) {
+                            document.getElementById('rh_lite_table_result').innerHTML+=
+                            '<li class="rh_lite_mais_pesquisados"><a href="'+termo.link+'">'+termo.title+'</li>';
+                        } else {
+                            if (window['searchbar'].config.paginate === 'true') {
+                                document.getElementById('rh_lite_table_result').innerHTML+=
+                                '<li class="rh_lite_mais_pesquisados"><a onclick="(function(){'+
+                                    'let el = document.getElementById(\'rh_lite_searchbar\');'+
+                                    'el.value = \''+termo.title+'\';'+
+                                    'el.focus();'+
+                                    'el.click();'+
+                                    'rhTyping(el)'+
+                                '}())">'+termo.title+'</li>'; 
+                            } else {
+                                document.getElementById('rh_lite_table_result').innerHTML+=
+                                '<li class="rh_lite_mais_pesquisados"><a onclick="rhPesquisaTermo(\''+termo.title+'\');">'+termo.title+'</li>';
+
+                            }                            
+                        }                        
                     };
                 }
                 else {
-                    if (rh_lite_mais_buscados.length >= 1) { document.getElementById('rh_lite_table_result').innerHTML+= '<h2 class="rh_lite_h2_sb">Os Mais Procurados</h2>'; }
+                    document.getElementById('rh_lite_table_result').innerHTML+= '<h2 class="rh_lite_h2_sb">Os Mais Procurados</h2>';
                     for (var i = 0; i < rh_lite_mais_buscados.length; i++) {
                         var termo = rh_lite_mais_buscados[i];
 
@@ -514,12 +557,13 @@ rhSearchBar = function(cfg,idCli,idWid){
                         if (i === 5){break;} // MAXIMO DE 5 TERMOS
                     };
                 }
+            }                
 
-                relacionados.innerHTML += '</ul>';
+            relacionados.innerHTML += '</ul>';
 
-                cfg.searchbarResults.classList.add('active'); // MOSTRANDO OS RESULTADOS
-                resultado.style.display = 'none'; // ESCONDE RESULTADO PESQUISA
-                relacionados.style.display = 'block';
+            cfg.searchbarResults.classList.add('active'); // MOSTRANDO OS RESULTADOS
+            resultado.style.display = 'none'; // ESCONDE RESULTADO PESQUISA
+            relacionados.style.display = 'block';
 
 
             // remove loader
@@ -527,12 +571,17 @@ rhSearchBar = function(cfg,idCli,idWid){
             return false;
         }
 
+        if (el.value.trim() === '') {
+
+        }
+
         // PRIMEIRO, VERIFICA SE N É UM TERMO CADASTRADO MANUALMENTE
         if (rh_lite_termos_personalizados.length >= 1){ // APENAS VERIFICAR SE TIVER PELO MENOS 1 TERMO CADASTRADO
             pesquisa = rhRemoveAcento(el.value.toLowerCase());
             for (var i = 0; i < rh_lite_termos_personalizados.length; i++) {
                 var termo = rhRemoveAcento(rh_lite_termos_personalizados[i].termo.toLowerCase());
-                if (termo === pesquisa){
+                if (termo === pesquisa){            
+
                     var termo = rh_lite_termos_personalizados[i];
                     document.getElementById('rh_lite_results').innerHTML = '<a href="'+termo.link+'" target="_blank">'+
                                                                                 '<figure class="rh_lite_searchbar_results_figure" style="width: 120px;">'+
@@ -568,7 +617,41 @@ rhSearchBar = function(cfg,idCli,idWid){
         resultado.innerHTML = ''; // RESETANDO OS RESULTADOS
         resultadoString ='';      // ADICIONANDO O RESULTADO DA PESQUISA
         if (resultados_busca !== ''){
-            for(var x=0; x<resultados_busca.length;x++){
+            for(var x=0; x<resultados_busca.length;x++){                
+                // staples
+                var tag = '';
+                if (rhClientIdSb === '85f1002bf139bebdb7f0d07b31fa14155aea9dfc') {
+                    // selo papel
+                    var productName = prod[x].nome.toLowerCase();
+                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a0') != -1 ) {
+                        tag='<span class="x-image__highlight x-image__highlight--a0">A0</span>';
+                    }
+                    
+                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a1') != -1 ) {
+                        tag='<span class="x-image__highlight x-image__highlight--a1">A1</span>';
+                    }
+                    
+                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a2') != -1 ) {
+                        tag='<span class="x-image__highlight x-image__highlight--a2">A2</span>';
+                    }
+                    
+                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a3') != -1 ) {
+                        tag='<span class="x-image__highlight x-image__highlight--a3">A3</span>';
+                    }
+                    
+                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a4') != -1 ) {
+                        tag='<span class="x-image__highlight x-image__highlight--a4">A4</span>';
+                    }
+                    
+                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a5') != -1 ) {
+                        tag='<span class="x-image__highlight x-image__highlight--a5">A5</span>';
+                    }
+                    
+                    if ( productName.indexOf('papel') != -1 && productName.indexOf('carta') != -1 ) {
+                        tag='<span class="x-image__highlight x-image__highlight--carta">Carta</span>';
+                    }
+                }
+
                 var prod = resultados_busca[x];
                 resultadoString+='<a href="'+prod.link+'">'+
                                     '<figure class="rh_lite_searchbar_results_figure">'+
@@ -595,7 +678,6 @@ rhSearchBar = function(cfg,idCli,idWid){
             }
             resultado.innerHTML = resultadoString;
         }
-
 
         if (resultados_busca.length <= 0){ // CASO ENCONTRAR RESULTADO, MOSTRAR
             resultado.style.display = 'none';
@@ -680,23 +762,52 @@ rhSearchBar = function(cfg,idCli,idWid){
                             }
 
                             // DECODIFICANDO OS NOMES E OS LINKS
-                            result[x].title = decodeURIComponent(result[x].title).replace(/\+/g, ' ');
-                            result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utm='+utm;
-                            result[x].link_image = decodeURIComponent(result[x].link_image);
-                            result[x].type = decodeURIComponent(result[x].type).replace(/\+/g, ' ');
-
-                            
-                            result[x].title = decodeURIComponent(result[x].title).replace(/\+/g, ' ');
+                            result[x].title = decodeURIComponent(result[x].title.replace(/\+/g, ' '));
                             result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utm='+utm;
                             result[x].link_image = decodeURIComponent(result[x].link_image);
                             result[x].type = decodeURIComponent(result[x].type).replace(/\+/g, ' ');
                         // -------------------
 
                         var prod = result[x];
+                        
+                        // staples
+                        var tag = '';
+                        if (rhClientIdSb === '85f1002bf139bebdb7f0d07b31fa14155aea9dfc') {
+                            // selo papel
+                            var productName = prod.title.toLowerCase();
+                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a0') != -1 ) {
+                                tag='<span class="x-image__highlight x-image__highlight--a0">A0</span>';
+                            }
+                            
+                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a1') != -1 ) {
+                                tag='<span class="x-image__highlight x-image__highlight--a1">A1</span>';
+                            }
+                            
+                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a2') != -1 ) {
+                                tag='<span class="x-image__highlight x-image__highlight--a2">A2</span>';
+                            }
+                            
+                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a3') != -1 ) {
+                                tag='<span class="x-image__highlight x-image__highlight--a3">A3</span>';
+                            }
+                            
+                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a4') != -1 ) {
+                                tag='<span class="x-image__highlight x-image__highlight--a4">A4</span>';
+                            }
+                            
+                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a5') != -1 ) {
+                                tag='<span class="x-image__highlight x-image__highlight--a5">A5</span>';
+                            }
+                            
+                            if ( productName.indexOf('papel') != -1 && productName.indexOf('carta') != -1 ) {
+                                tag='<span class="x-image__highlight x-image__highlight--carta">Carta</span>';
+                            }
+                        }
 
                         resultadoString+='<a href="'+prod.link+'">'+
                                             '<figure class="rh_lite_searchbar_results_figure">'+
                                                 '<img src="'+prod.link_image+'">'+
+                                                tag+
                                             '</figure>'+
                                             '<div class="rh_lite_searchbar_results_infoprod">'+
                                                 '<span class="rh_lite_searchbar_results_nomeprod">'+
@@ -750,8 +861,11 @@ rhSearchBar = function(cfg,idCli,idWid){
 
         // xhr.send(formData);
 
-        
-        xhr.open('post','https://roihero.com.br/busca/get_busca.php?idcli='+rhClientIdSb+'&termo='+termo+'&limit=24');
+        if (rhClientId === "b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f") {
+            xhr.open('get','https://roihero.com.br/busca/get_busca.php?idcli='+rhClientIdSb+'&termo='+termo+'&limite=50');
+        } else {
+            xhr.open('get','https://roihero.com.br/busca/get_busca.php?idcli='+rhClientIdSb+'&termo='+termo+'&limite=24');
+        }
         xhr.send(null);
     }
 
@@ -809,6 +923,7 @@ rhSearchBar = function(cfg,idCli,idWid){
         setTimeout(function(){
             cfg.searchbarContainer.classList.remove('active');
             cfg.searchbarResults.classList.remove('active');
+
             // LIMPA CRONOMETRO
             try {
                 clearInterval(rh_clock_intervalo); // LIMPA RELÓGIO
@@ -824,7 +939,7 @@ rhSearchBar = function(cfg,idCli,idWid){
     }
 
     // FUNÇÃO QUE ORGANIZA AS INFORMACOES DO OVERLAY E JOGA OS PRODUTOS DENTRO DO SLIDER
-    rhSetOverlay = function (){   
+    rhSetOverlay = function (){
         var termo = cfg.searchbar.value; // VALOR DO INPUT QUE O USUÁRIO DIGITOU PARA PESQUISAR
 
         if (!window.hasOwnProperty('rh_lite_obj') && !window.hasOwnProperty('rh_lite_termos_personalizados')) { return false;} // SE AINDA NAO TIVER LIDO OS PRODUTOS, SAIR DA FUNÇÃO
@@ -881,26 +996,70 @@ rhSearchBar = function(cfg,idCli,idWid){
 
         var produtos = resultados_busca.slice();                              // COPIANDO RESULTADO DOS PRODUTOS PARA UMA ARRAY DIFERENTE
         var slider = document.getElementById('rh_lite_searchbar_slider_produtos'); // CONTAINER HTML ONDE FICAM OS PRODUTOS DO SLIDER
-        var listaProdutos = '';                                                    // STRING VAZIA QUE VAI PREENCHER O CONTAINER DO SLIDER
+        var listaProdutos = '';         
 
         for (var x = 0;x<produtos.length;x++){
+            // staples
+            var tag = '';
+            if (rhClientIdSb === '85f1002bf139bebdb7f0d07b31fa14155aea9dfc') {
+                // selo papel
+                var productName = produtos[x].nome.toLowerCase();
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a0') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a0">A0</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a1') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a1">A1</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a2') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a2">A2</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a3') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a3">A3</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a4') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a4">A4</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a5') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a5">A5</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('carta') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--carta">Carta</span>';
+                }
+            }
+            
+
             listaProdutos+='<div class="rh_lite_produto_bus">'+
                                     '<figure class="rh_lite_figure_bus">'+
                                         '<a href="'+produtos[x].link+'">'+
                                             '<img class="rh_lite_imagem_bus" src="'+produtos[x].link_image+'" alt="'+produtos[x].nome+'">'+
+                                            tag+
                                         '</a>'+
                                     '</figure>'+
                                     '<p class="rh_lite_nomeproduto_bus">'+
-                                        produtos[x].title+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].title+
+                                        '</a>'+
                                     '</p>'+
                                     '<div class="rh_lite_precon_bus">'+
-                                        produtos[x].price+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].price+
+                                        '</a>'+
                                     '</div>'+
                                     '<div class="rh_lite_precop_bus">'+
-                                        produtos[x].sale_price+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].sale_price+
+                                        '</a>'+
                                     '</div>'+
                                     '<div class="rh_lite_parcelamento_bus">'+
-                                        produtos[x].months+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].months+
+                                        '</a>'+
                                     '</div>'+
                                     '<div class="rh_lite_btn_bus">'+
                                     '<a href="'+produtos[x].link+'">'+
@@ -958,6 +1117,9 @@ rhSearchBar = function(cfg,idCli,idWid){
         if (typeof rh_lite_obj === "undefined" && window['searchbar'].config.paginate !== 'true'){
             return false;
         }
+
+        // checa se existe o array de resultados
+        if (typeof resultados_busca === 'undefined') { return false }
 
         rhSetOverlay(); // ajusta OVERLAY
         rhHideResults(); // ESCONDE RESULTADOS BARRA DE BUSCA
@@ -1059,23 +1221,66 @@ rhSearchBar = function(cfg,idCli,idWid){
         var listaProdutos = '';                                                    // STRING VAZIA QUE VAI PREENCHER O CONTAINER DO SLIDER
 
         for (var x = 0;x<produtos.length;x++){
+            // staples
+            var tag = '';
+            if (rhClientIdSb === '85f1002bf139bebdb7f0d07b31fa14155aea9dfc') {
+                // selo papel
+                var productName = produtos[x].nome.toLowerCase();
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a0') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a0">A0</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a1') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a1">A1</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a2') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a2">A2</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a3') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a3">A3</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a4') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a4">A4</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('a5') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--a5">A5</span>';
+                }
+                
+                if ( productName.indexOf('papel') != -1 && productName.indexOf('carta') != -1 ) {
+                    tag='<span class="x-image__highlight x-image__highlight--carta">Carta</span>';
+                }
+            }
+
             listaProdutos+='<div class="rh_lite_produto_bus">'+
                                     '<figure class="rh_lite_figure_bus">'+
                                         '<a href="'+produtos[x].link+'">'+
                                             '<img class="rh_lite_imagem_bus" src="'+produtos[x].link_image+'" alt="'+produtos[x].nome+'">'+
+                                            tag+
                                         '</a>'+
                                     '</figure>'+
                                     '<p class="rh_lite_nomeproduto_bus">'+
-                                        produtos[x].title+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].title+
+                                        '</a>'+
                                     '</p>'+
                                     '<div class="rh_lite_precon_bus">'+
-                                        produtos[x].price+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].price+
+                                        '</a>'+
                                     '</div>'+
                                     '<div class="rh_lite_precop_bus">'+
-                                        produtos[x].sale_price+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].sale_price+
+                                        '</a>'+
                                     '</div>'+
                                     '<div class="rh_lite_parcelamento_bus">'+
-                                        produtos[x].months+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].months+
+                                        '</a>'+
                                     '</div>'+
                                     '<div class="rh_lite_btn_bus">'+
                                     '<a href="'+produtos[x].link+'">'+
@@ -1161,7 +1366,7 @@ rhSearchBar = function(cfg,idCli,idWid){
     }
 
     // FUNÇÃO QUE VERIFICA SE O USUÁRIO DIGITOU ENTER NA BARRA DE BUSCA
-    rh_lite_whichKey = function(e,el){            
+    rh_lite_whichKey = function(e,el){
         if (e.keyCode === 13){
             if (window['searchbar'].config.redirect) {
                 var word = document.getElementById('rh_lite_searchbar').value;
@@ -1175,6 +1380,12 @@ rhSearchBar = function(cfg,idCli,idWid){
             } else {
                 el.parentElement.children[1].click(); // SE DIGITAR ENTER, CLICA NO BOTAO PESQUISAR
             }
+        }
+        else if (window['searchbar'].config.paginate === 'true') {
+            rhHideOverlay();
+            cfg.searchbarResults.classList.add('active');
+            cfg.searchbarResults.classList.add('loading');
+            resultados_busca = undefined;
         }
     }
 
@@ -1257,7 +1468,7 @@ rhSearchBar = function(cfg,idCli,idWid){
 
     rhGetHammer();
 
-    rhInitHammer = function(){        
+    rhInitHammer = function(){
         if (typeof Hammer === 'undefined') {
             setTimeout(function(){
                 rhInitHammer();    
@@ -1378,12 +1589,21 @@ rhSearchBar = function(cfg,idCli,idWid){
     // FUNÇÃO QUE MOSTRA OS MAIS PESQUISADOS
     rhPesquisaTermo = function(termo) {
         var searchbar = cfg.searchbar; // BARRA DE PESQUISA
-        searchbar.value = termo.trim(); // MUDANDO O VALOR DA BARRA DE PESQUISA
-        setTimeout(function(){
-            rhShowOverlay();
-            rhSetOverlay(); // SETANDO OVERLAY COM SLIDER E RESULTADOS
-        },200)
-    }
+        searchbar.value = termo.trim(); // MUDANDO O VALOR DA BARRA DE PESQUIS
+        if (window['searchbar'].config.paginate === 'true') {
+            setTimeout(function(){
+                window['searchbar'].config.searchbar.click();
+                document.getElementById('rh_lite_container_results').classList.add('active');
+            },400);
+        }
+        else {
+            setTimeout(function(){
+                rhSetOverlay(); // SETANDO OVERLAY COM SLIDER E RESULTADOS
+                rhShowOverlay();
+            },200);
+        }
+        
+    };
 
     // FUNÇÃO QUE ORGANIZA OS MAIS BUSCADOS E RETORNA OS TERMOS RELACIONADOS À BUSCA
     rhSimilarSearches = function(s,a){
@@ -1463,11 +1683,6 @@ rhSearchBar = function(cfg,idCli,idWid){
         cfg.overlay.classList.remove('active'); // DEIXANDO OVERLAY TRANSPARENTE
         document.getElementById('rh_lite_searchbar_slider_produtos').style.left = '0';  // RESETANDO POSIÇÃO DO SLIDER
         document.getElementById('rh_lite_searchbar_slider_produtos').style.right = '0'; // RESETANDO POSIÇÃO DO SLIDER
-
-        
-        if (window['searchbar'].config.paginate === 'true') {
-            resultados_busca = undefined;
-        }
     }
 
     // ADICIONANDO LISTENNER NA JANELA PRA QUANDO CLICAR FORA DO OVERLAY OU NO BOTAO DE FECHAR O OVERLAY
