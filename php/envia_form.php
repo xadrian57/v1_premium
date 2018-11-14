@@ -4,7 +4,7 @@ $nome       = $_POST['nome'];
 $email      = $_POST['email'];
 $url        = $_POST['url'];
 $plataforma = $_POST['plataforma'];
-$mensagem   = $_POST['mensagem'];
+$conteudo   = $_POST['mensagem'];
 
 
 
@@ -274,7 +274,7 @@ function enviaEmailContato($emailCopia, $emailPrincipal){
     $headers .= "X-Mailer: PHP". phpversion() ."\r\n";
 
 
-    $message = "Um cliente entrou em contato:\n\n\nNome: " . $nome."\n\nEmail: ".$email."\n\nURL: ".$url."\n\nPlataforma: ".$plataforma;
+    $message = "Um cliente entrou em contato:\n\n\nNome: " . $nome."\n\nEmail: ".$email."\n\nURL: ".$url."\n\nPlataforma: ".$plataforma."\n\nMensagem:".$conteudo;
     mail($emailPrincipal , "Cliente entrou em contato pela página provisória", $message,$headers);
 }
 
