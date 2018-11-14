@@ -6,6 +6,12 @@ include '../../bd/conexao_bd_dados.php';
 //CONEXÃO BD CADASTRO
 include '../../bd/conexao_bd_cadastro.php';
 
+//CONEXÃO BD BUSCA
+include '../../bd/conexao_bd_busca.php';
+
+// FONETIZAR
+include '../../../pt_metaphone/portuguese_metaphone.php';
+
 mysqli_set_charset($conDados, 'utf8');
 
 header('Content-Type: text/html; charset=utf-8');
@@ -27,6 +33,18 @@ $url = urldecode(mysqli_escape_string($conCad, $_POST['url']));
 $jsonTags1 = $_POST['tags'];
 $jsonTags2 = $_POST['tags_secundarias'];
 
+$selectAPIOrXML = "SELECT CONF_api_vtex, CONF_busca_be FROM config WHERE CONF_id_cli = ". $id;
+$resultAPIOrXML = mysqli_query($conCad, $selectAPIOrXML);
+
+$arrayAPIOrXML = mysqli_fetch_array($resultAPIOrXML);
+
+if($arrayAPIOrXML['CONF_api_vtex'] == 1)
+{
+    include 'resource_api_vtex.php';
+    echo API_VTEX($id, $url, $conCad, $conDados);
+    exit();
+}
+
 
 $jsonTagsConc = [];
 
@@ -47,12 +65,12 @@ if(!empty($id))
     if(!empty($jsonTags1)) {
         
         // INSERT NO BD
-        $update = "UPDATE customXML SET CXML_item = '".$jsonTagsConc['Tag do Produto']."', CXML_id_prod = '".$jsonTagsConc['ID Produto']."', CXML_titulo = '".$jsonTagsConc['Nome Produto']."', CXML_descricao = '".$jsonTagsConc['Descrição do Produto']."', CXML_valor = '".$jsonTagsConc['Preço Normal']."', CXML_valor_promo = '".$jsonTagsConc['Preço Promocional']."', CXML_n_parc = '".$jsonTagsConc['Quantidade de parcelas']."', CXML_parc = '".$jsonTagsConc['Valor das parcelas']."', CXML_link = '".$jsonTagsConc['Link Produto']."', CXML_link_imagem1 = '".$jsonTagsConc['Foto Produto']."', CXML_link_imagem2 = '".$jsonTagsConc['Foto Produto secundária']."', CXML_sku = '".$jsonTagsConc['ID do SKU']."', CXML_categoria = '".$jsonTagsConc['Categoria']."', CXML_brand = '".$jsonTagsConc['Marca do produto']."', CXML_estoque = '".$jsonTagsConc['Disponibilidade em estoque']."' WHERE CXML_id_cliente = '$id'";
+        $update = "UPDATE customXML SET CXML_item = '".$jsonTagsConc['Tag do Produto']."', CXML_id_prod = '".$jsonTagsConc['ID Produto']."', CXML_titulo = '".$jsonTagsConc['Nome Produto']."', CXML_descricao = '".$jsonTagsConc['Descrição do Produto']."', CXML_valor = '".$jsonTagsConc['Preço Normal']."', CXML_valor_promo = '".$jsonTagsConc['Preço Promocional']."', CXML_n_parc = '".$jsonTagsConc['Quantidade de parcelas']."', CXML_parc = '".$jsonTagsConc['Valor das parcelas']."', CXML_link = '".$jsonTagsConc['Link Produto']."', CXML_link_imagem1 = '".$jsonTagsConc['Foto Produto']."', CXML_link_imagem2 = '".$jsonTagsConc['Foto Produto secundária']."', CXML_sku = '".$jsonTagsConc['ID do SKU']."', CXML_categoria = '".$jsonTagsConc['Categoria']."', CXML_brand = '".$jsonTagsConc['Marca do produto']."', CXML_estoque = '".$jsonTagsConc['Disponibilidade em estoque']."', CXML_custom1 = '".$jsonTagsConc['Custom 1']."', CXML_custom2 = '".$jsonTagsConc['Custom 2']."', CXML_custom3 = '".$jsonTagsConc['Custom 3']."', CXML_custom4 = '".$jsonTagsConc['Custom 4']."', CXML_custom5 = '".$jsonTagsConc['Custom 5']."' WHERE CXML_id_cliente = '$id'";
         $resultado = mysqli_query($conCad, $update);
         
         if(mysqli_affected_rows($conCad) < 1)
         {
-            $insere = "INSERT INTO customXML(CXML_id_cliente, CXML_item, CXML_id_prod, CXML_titulo, CXML_descricao, CXML_valor, CXML_valor_promo, CXML_n_parc, CXML_parc, CXML_link, CXML_link_imagem1, CXML_link_imagem2, CXML_sku, CXML_categoria, CXML_brand, CXML_estoque) VALUES ('$id','".$jsonTagsConc['Tag do Produto']."', '".$jsonTagsConc['ID Produto']."', '".$jsonTagsConc['Nome Produto']."', '".$jsonTagsConc['Descrição do Produto']."', '".$jsonTagsConc['Preço Normal']."', '".$jsonTagsConc['Preço Promocional']."', '".$jsonTagsConc['Quantidade de parcelas']."', '".$jsonTagsConc['Valor das parcelas']."', '".$jsonTagsConc['Link Produto']."', '".$jsonTagsConc['Foto Produto']."', '".$jsonTagsConc['Foto Produto secundária']."', '".$jsonTagsConc['ID do SKU']."', '".$jsonTagsConc['Categoria']."', '".$jsonTagsConc['Marca do produto']."', '".$jsonTagsConc['Disponibilidade em estoque']."')";
+            $insere = "INSERT INTO customXML(CXML_id_cliente, CXML_item, CXML_id_prod, CXML_titulo, CXML_descricao, CXML_valor, CXML_valor_promo, CXML_n_parc, CXML_parc, CXML_link, CXML_link_imagem1, CXML_link_imagem2, CXML_sku, CXML_categoria, CXML_brand, CXML_estoque, CXML_custom1, CXML_custom2, CXML_custom3, CXML_custom4, CXML_custom5) VALUES ('$id','".$jsonTagsConc['Tag do Produto']."', '".$jsonTagsConc['ID Produto']."', '".$jsonTagsConc['Nome Produto']."', '".$jsonTagsConc['Descrição do Produto']."', '".$jsonTagsConc['Preço Normal']."', '".$jsonTagsConc['Preço Promocional']."', '".$jsonTagsConc['Quantidade de parcelas']."', '".$jsonTagsConc['Valor das parcelas']."', '".$jsonTagsConc['Link Produto']."', '".$jsonTagsConc['Foto Produto']."', '".$jsonTagsConc['Foto Produto secundária']."', '".$jsonTagsConc['ID do SKU']."', '".$jsonTagsConc['Categoria']."', '".$jsonTagsConc['Marca do produto']."', '".$jsonTagsConc['Disponibilidade em estoque']."', '".$jsonTagsConc['Custom 1']."', '".$jsonTagsConc['Custom 2']."', '".$jsonTagsConc['Custom 3']."', '".$jsonTagsConc['Custom 4']."', '".$jsonTagsConc['Custom 5']."')";
             $resultadoInsere = mysqli_query($conCad, $insere);
         }
     }
@@ -116,6 +134,8 @@ if(!empty($id))
     $arrayIdsProd = [];
     $arrayEstoqueProd = [];
 
+    $buscaBackEnd = $arrayCli['CONF_busca_be'];
+
     $selectPlat = "SELECT CLI_id_plataforma FROM cliente WHERE CLI_id = ". $id;
     $resultPlat = mysqli_query($conCad, $selectPlat);
 
@@ -177,6 +197,8 @@ if(!empty($id))
                         $item = simplexml_import_dom($n);
                         
                         $titulo = customXML($arrayCXML['CXML_titulo'], $item);
+
+                        $fonetizado = fonetizar($titulo);
 
                         $descricao = customXML($arrayCXML['CXML_descricao'], $item);                    
                         
@@ -257,36 +279,55 @@ if(!empty($id))
                                 {
                                     $insere=("INSERT INTO XML_".$id." (XML_descricao, XML_time, XML_time_insert, XML_titulo, XML_titulo_upper, XML_id, XML_sku, XML_price, XML_sale_price, XML_desconto, XML_availability, XML_link, XML_type, XML_type_upper, XML_image_link, XML_vparcela, XML_nparcelas, XML_brand, XML_custom1, XML_custom2, XML_custom3, XML_custom4, XML_custom5) VALUES ('$descricao', '$time', '$time', '" . htmlspecialchars($titulo) . "',UPPER('" .  $titulo . "'), '$idprod', '$sku', '$PRICE', '$SALE_PRICE','$desconto', '$availability', '$link','" . htmlspecialchars($type) . "',UPPER('" .  $type . "'),'$image_link', '$AMOUNT', '$months', '$brand', '$custom1', '$custom2', '$custom3', '$custom4', '$custom5')");
                                     $resultadoInsere = mysqli_query($conDados, $insere);
+
+                                    if($buscaBackEnd)
+                                    {  
+                                        $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom5')");
+                                        $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
+                                    }
+                                }
+                                else
+                                {
+                                    if($buscaBackEnd)
+                                    {  
+                                        $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '$custom5' WHERE id = '$idprod'";
+                                        $resultadoBusca = mysqli_query($conBusca, $updateBusca);
+
+                                        if(mysqli_affected_rows($conBusca) < 1)
+                                        {
+                                            $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod')");
+                                            $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
+                                        }
+                                    }
                                 }
 
-                                // if($idProdAux != $idprod)
-                                // {
-                                //     $idProdAux = $idprod;
+                                $select = "SELECT XML_click_7 FROM XML_".$id." WHERE XML_id = '$idprod'";
+                                $querySelect = mysqli_query($conDados, $select);
+                                
+                                $arraySelect = mysqli_fetch_array($querySelect);
 
-                                    $select = "SELECT XML_venda_7 FROM XML_".$id." WHERE XML_id = '$idprod'";
-                                    $querySelect = mysqli_query($conDados, $select);
-                                    
-                                    $arraySelect = mysqli_fetch_array($querySelect);
+                                $posJSON = atualizaProdJSON($posts, $idprod);
 
-                                    $posJSON = atualizaProdJSON($posts, $idprod);
+                                if($posJSON != false)
+                                {
+                                    $posts[$posJSON] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
+                                    'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
+                                    'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_click_7'],
+                                    'desconto' => $desconto, 'productReference' => $custom5);
+                                }
+                                else
+                                {
+                                    $posts[] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
+                                    'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
+                                    'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_click_7'],
+                                    'desconto' => $desconto, 'productReference' => $custom5);
+                                }
 
-                                    if($posJSON != false)
-                                    {
-                                        $posts[$posJSON] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
-                                        'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
-                                        'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_venda_7'],
-                                        'desconto' => $desconto, 'productReference' => $custom5);
-                                    }
-                                    else
-                                    {
-                                        $posts[] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
-                                        'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
-                                        'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_venda_7'],
-                                        'desconto' => $desconto, 'productReference' => $custom5);
-                                    }
-                                    
-                                     
-                                // }
+                                if($buscaBackEnd)
+                                {                                
+                                    $updateBusca ="UPDATE BUSCA_".$id." SET click = '". $arraySelect['XML_click_7'] ."' WHERE id = '$idprod'";
+                                    $resultadoBusca = mysqli_query($conBusca, $updateBusca);
+                                }
                             }
                         }
                         else
@@ -514,6 +555,20 @@ function ajustaCategoria($type)
     $type = str_replace(">", " - ", $type);
     
     return $type;
+}
+
+function fonetizar($titulo)
+{
+    $arrayPalavras = explode(' ', $titulo);
+
+    $arrayPalavrasAux = [];
+    
+    for($i=0; $i < count($arrayPalavras); $i++)
+    {
+        $arrayPalavrasAux[] = portuguese_metaphone($arrayPalavras[$i]);
+    }
+    
+    return implode($arrayPalavrasAux, ' ');
 }
 
 function ajusteImagemCliente($image_link, $id)
