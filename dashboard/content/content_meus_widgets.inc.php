@@ -133,12 +133,32 @@ if($_SESSION['idPlan'] == 42) {
 // TODO Remover essa linha, quando liberar o Tagflag para uso geral
 }
 ?>
-					
-					<!-- BLOCOS BÁSICOS -->
+					<!-- BUSCA -->
 					<div class="col-lg-12 col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">BLOCOS BÁSICOS</h4>
+								<h4 class="card-title">Busca</h4>
+								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-body collapse in">
+								<div class="card-block">
+									<ul class="list-group" id="widgetsBusca">
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<!-- OVERLAYSS -->
+					<div class="col-lg-12 col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">OVERLAYS</h4>
 								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
 								<div class="heading-elements">
 									<ul class="list-inline mb-0">
@@ -158,7 +178,7 @@ if($_SESSION['idPlan'] == 42) {
 					<div class="col-lg-12 col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">BLOCOS QUE ESTÃO NA HOME</h4>
+								<h4 class="card-title">RECOMENDAÇÕES DA HOME</h4>
 								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
 								<div class="heading-elements">
 									<ul class="list-inline mb-0">
@@ -178,7 +198,7 @@ if($_SESSION['idPlan'] == 42) {
 					<div class="col-lg-12 col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">BLOCOS QUE ESTÃO NA PÁGINA DE PRODUTO</h4>
+								<h4 class="card-title">RECOMENDAÇÕES DA PÁGINA DE PRODUTO</h4>
 								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
 								<div class="heading-elements">
 									<ul class="list-inline mb-0">
@@ -201,7 +221,7 @@ if($_SESSION['idPlan'] == 42) {
 					<div id="coluna-widgets-categoria" class="col-lg-12 col-md-12" style="display: none;">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">BLOCOS QUE ESTÃO NA PÁGINA DE CATEGORIA</h4>
+								<h4 class="card-title">RECOMENDAÇÕES DA PÁGINA DE CATEGORIA</h4>
 								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
 								<div class="heading-elements">
 									<ul class="list-inline mb-0">
@@ -219,10 +239,10 @@ if($_SESSION['idPlan'] == 42) {
 						</div>
 					</div>
 					<!-- BLOCOS PAGINA BUSCA VAZIA -->
-					<div class="col-lg-12 col-md-12">
+					<!-- <div class="col-lg-12 col-md-12">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">BLOCOS QUE ESTÃO NA PÁGINA DE BUSCA VAZIA</h4>
+								<h4 class="card-title">RECOMENDAÇÕES DA PÁGINA DE BUSCA VAZIA</h4>
 								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
 								<div class="heading-elements">
 									<ul class="list-inline mb-0">
@@ -237,7 +257,7 @@ if($_SESSION['idPlan'] == 42) {
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
 				<div class="row match-height">
@@ -245,7 +265,7 @@ if($_SESSION['idPlan'] == 42) {
 					<div id="coluna-widgets-carrinho" class="col-lg-12 col-md-12" style="display: none;">
 						<div class="card">
 							<div class="card-header">
-								<h4 class="card-title">BLOCOS QUE ESTÃO NA PÁGINA DE CARRINHO</h4>
+								<h4 class="card-title">RECOMENDAÇÕES DA PÁGINA DE CARRINHO</h4>
 								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
 								<div class="heading-elements">
 									<ul class="list-inline mb-0">
@@ -275,7 +295,7 @@ if($_SESSION['idPlan'] == 42) {
             <div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title adic" id="titulo-modal-edit"><i class="ft ft-edit"></i>&nbsp;&nbsp;Editar Bloco de Recomendação</h4>
-				<span class="primary page-info" id = "spec-inteligencia-modal-edit"></span>
+				<span class="primary page-info" id="spec-inteligencia-modal-edit"></span>
             </div>
 
             <div class="modal-body">
@@ -335,6 +355,7 @@ if($_SESSION['idPlan'] == 42) {
             </div>
 
             <div class="modal-footer">
+            	<span class="rh-id-wid primary pull-left">ID: <span id="rhIdWid"></span></span>
 				<button type="button" class="btn btn-outline-warning" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
 				<button id="btn-salva-wid" type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i> Salvar Alterações</button>
 			 </div>
