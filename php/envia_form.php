@@ -16,11 +16,9 @@ if ($plataforma == "loja_integrada") {
     $emailPrincipal = "marcos@roihero.com.br";
 } elseif ($plataforma == "vtex" || $plataforma == "xtech" || $plataforma == "tray" || $plataforma == "traycommerce" || $plataforma == "propria") {
     $emailCopia = 'paulo.castello.branco@roihero.com.br';
-    $emailPrincipal = "daniela@roihero.com.br";
+    $emailPrincipal = "daniela.guimaraes@roihero.com.br";
     enviaEmailContato($emailCopia, $emailPrincipal);
-} else{
-    $emailPrincipal = "daniela@roihero.com.br";
-    
+} else{    
     
     $msg = '<!DOCTYPE html>
     <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">

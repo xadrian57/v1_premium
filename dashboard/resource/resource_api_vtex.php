@@ -67,9 +67,9 @@ function API_VTEX($id, $url, $conCad, $conDados)
                 
                 $idprod = $value['productId'];
                 
-                $link = limpaLink($value['link']);
+                $link = limpaLink_API($value['link']);
 
-                $type = ajustaCategoria($value['categories'][0]);
+                $type = ajustaCategoria_API($value['categories'][0]);
                 
                 if(!empty($value['items'][0]['images']) && $id != 14)
                 {
@@ -86,7 +86,7 @@ function API_VTEX($id, $url, $conCad, $conDados)
 
                     if($image_link == 'http://bazarhorizonte.vteximg.com.br/arquivos/')
                     {
-                        $image_link = ajustaImagem($value['Amostra'][0]);
+                        $image_link = ajustaImagem_API($value['Amostra'][0]);
 
                         if($image_link == '')
                         {
@@ -166,7 +166,7 @@ function API_VTEX($id, $url, $conCad, $conDados)
                 
                 //$availability = $value['items'][0]['sellers'][0]['commertialOffer']['AvailableQuantity'];
 
-                $posParcela = posParcela($value);
+                $posParcela = posParcela_API($value);
                 
                 $months = $value['items'][0]['sellers'][0]['commertialOffer']['Installments'][$posParcela]['NumberOfInstallments'];
                 $amount = $value['items'][0]['sellers'][0]['commertialOffer']['Installments'][$posParcela]['Value'];        
@@ -177,19 +177,19 @@ function API_VTEX($id, $url, $conCad, $conDados)
                 $PRICE = $price;
                 $AMOUNT = $amount;
                 
-                $desconto = calculaDesconto($PRICE, $SALE_PRICE);
+                $desconto = calculaDesconto_API($PRICE, $SALE_PRICE);
                 
-                $availability = geraEstoque($availability);
+                $availability = geraEstoque_API($availability);
                 
                 if($idprod != "" && $idprod != null)
                 {
                     if(!$checkCreateXML)
                     {
-                        createXML($id, $conDados);
+                        createXML_API($id, $conDados);
                         $checkCreateXML = true;
                     }
                     
-                    if(verificaProd($arrayIdsProd, $arrayEstoqueProd, $idprod, $availability))
+                    if(verificaProd_API($arrayIdsProd, $arrayEstoqueProd, $idprod, $availability))
                     {
                         $arrayIdsProd[] = $idprod;
                         $arrayEstoqueProd[] = $availability;
@@ -210,7 +210,7 @@ function API_VTEX($id, $url, $conCad, $conDados)
                         
                         $arraySelect = mysqli_fetch_array($querySelect);
                         
-                        $posJSON = atualizaProdJSON($posts, $idprod);
+                        $posJSON = atualizaProdJSON_API($posts, $idprod);
 
                         if($posJSON != false)
                         {
@@ -280,9 +280,9 @@ function API_VTEX($id, $url, $conCad, $conDados)
             $resultadoCat = mysqli_query($conDados, $updateCat);
         }
 
-        notificaXML($id, $conCad);
+        notificaXML_API($id, $conCad);
 
-        geraJSON($id, $posts);
+        geraJSON_API($id, $posts);
         
         return '1';
     }
@@ -294,7 +294,7 @@ function API_VTEX($id, $url, $conCad, $conDados)
 
 // FUNÇÕES AUXILIARES
 
-function createXML($id, $conDados)
+function createXML_API($id, $conDados)
 {
     $criaXML = ("CREATE TABLE IF NOT EXISTS XML_".$id." (
             XML_titulo VARCHAR(256),
@@ -379,13 +379,13 @@ function createXML($id, $conDados)
     mysqli_query($conDados, $criaRGER);
 }
 
-function notificaXML($id, $conCad)
+function notificaXML_API($id, $conCad)
 {
     $qNotXMLCadastrado = "INSERT INTO notificacoes (NOT_id_cli, NOT_titulo, NOT_texto, NOT_data, NOT_status) VALUES ($id, 'XML cadastrado com sucesso', 'Seu XML foi cadastrado com sucesso. Agora você já pode aproveitar todas as vantagens da ROI Hero no seu site!', CURRENT_DATE(), 1)";
     $resultNotXMLCadastrado = mysqli_query($conCad, $qNotXMLCadastrado);
 }
 
-function limpaLink($link)
+function limpaLink_API($link)
 {
     $pos = strpos($link, '?');
     
@@ -397,7 +397,7 @@ function limpaLink($link)
     return $link;
 }
 
-function ajustaImagem($link)
+function ajustaImagem_API($link)
 {
     $link = str_replace('<img src="', '', $link);
     $pos = strpos ($link , '.jpg');
@@ -411,7 +411,7 @@ function ajustaImagem($link)
     return $link;
 }
 
-function ajustaCategoria($type)
+function ajustaCategoria_API($type)
 {
     $type = explode('/', $type);
 
@@ -428,7 +428,7 @@ function ajustaCategoria($type)
     return $type;
 }
 
-function calculaDesconto($PRICE, $SALE_PRICE)
+function calculaDesconto_API($PRICE, $SALE_PRICE)
 {
     if($PRICE > 0)
     {
@@ -441,7 +441,7 @@ function calculaDesconto($PRICE, $SALE_PRICE)
         return $desconto;
 }
 
-function geraEstoque($availability)
+function geraEstoque_API($availability)
 {
     if(intval($availability) > 0)
     {
@@ -455,13 +455,13 @@ function geraEstoque($availability)
     return $availability;
 }
 
-function geraJSON($id, $posts)
+function geraJSON_API($id, $posts)
 {
     $json_data = json_encode($posts);
     file_put_contents('../../JSON/JSON_'.sha1($id).'.json', $json_data);
 }
 
-function verificaProd($arrayIdsProd, $arrayEstoqueProd, $idProd, $estoqueProd)
+function verificaProd_API($arrayIdsProd, $arrayEstoqueProd, $idProd, $estoqueProd)
 {
     for($i=0; $i < count($arrayIdsProd); $i++)
     {
@@ -477,7 +477,7 @@ function verificaProd($arrayIdsProd, $arrayEstoqueProd, $idProd, $estoqueProd)
     return true;
 }
 
-function atualizaProdJSON($posts, $idprod)
+function atualizaProdJSON_API($posts, $idprod)
 {
     for($i=0; $i < count($posts); $i++)
     {
@@ -490,7 +490,7 @@ function atualizaProdJSON($posts, $idprod)
     return false;
 }
 
-function posParcela($value)
+function posParcela_API($value)
 {
     $auxParcNumb = 0;
     
