@@ -29,12 +29,11 @@
 		$widgetsBusca = []; 
 		$widgetsCategoria = []; 
 		$widgetsCarrinho = [];
-		$widgetsBusca = [];
 
 		if (isset($idWidget)){
 			for ($i=0; $i < count($idWidget); $i++) {
 
-				if ($formatoWidget[$i] == 7) {
+				if ($inteligenciaWidget[$i] == 22) {
 					array_push($widgetsBusca, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
 				} else {
 					switch ($paginaWidget[$i]) {
@@ -50,14 +49,6 @@
 								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
 							} else {
 								array_push($widgetsProduto, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
-							}
-							break;
-						case '7': // pagina de busca vazia 
-							// PROVISÓRIO - DEPOIS PRECISA DIFERENCIAR O 3 (BUSCA) DO 7 (BUSCA VAZIA)
-							if (ehWidgetBasico($formatoWidget[$i])){
-								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
-							} else {
-								array_push($widgetsBusca, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
 							}
 							break;
 						case '4': // pagina de categoria

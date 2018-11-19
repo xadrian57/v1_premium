@@ -5,7 +5,8 @@ blog/**/*
 widget/css/**/* 
 widget/templates/**/* 
 searchbar/templates/**/* 
-busca/templates/**/* 
+busca/templates/**/*
+busca/js/searchbar/searchbar.min.js
 error_log
 .buildpath
 .project
