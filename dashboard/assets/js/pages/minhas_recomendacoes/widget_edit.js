@@ -772,6 +772,9 @@ $(document).ready(function(){
 	
 										camposAdicionais.innerHTML+= htmlManualOfertaLimitada;
 
+										// preenche nome produto
+										preencheCampoAutoOfertaLimitada(widget.WC_titulos_produtos, 1);
+
 										camposAdicionais.getElementsByTagName('select')[0].addEventListener('click',function(){
 											if (this.value === '9'){
 												$('#manualOfertaLimitada').show();
@@ -1090,7 +1093,6 @@ $(document).ready(function(){
 							var select = '<select name="formatoWidget" class="form-control">';
 							var dicionarioFormatos = {
 								1:'Prateleira',
-								2:'Prateleira Dupla',
 								3:'Carrossel'
 								/*8:'Vitrine',
 								11:'Totem'*/
@@ -1126,54 +1128,49 @@ $(document).ready(function(){
 							selectUpDown+= '</select>';
 							//-------------------
 
-							var containerID = '<div class="form-group">'+
-								'<label>Container</label>'+
+							var containerID = 
+							'<div class="form-group">'+
 								'<div class="row">'+
-								'<div class="col-xs-4">'+
-								'<div class="eliabo-input-icon-right">'+
-									'<select id="widDivType" name="widDivType" class="form-control">'+
-									'<option id="1"';
-									if(widget.WID_div_type == 'id' || widget.WID_div_type == 'ID')
-										containerID += 'selected ';
-									containerID += 'value="id">ID</option>'+
-									'<option id="2"'; 
-									if(widget.WID_div_type == 'class' || widget.WID_div_type == 'CLASS')
-										containerID += 'selected ';
-									containerID += 'value="class">CLASS</option>'+
-									'</select>'+
+									'<div class="col-xs-3">'+
+										'<label>Tipo do Container</label>'+
+										'<div class="eliabo-input-icon-right">'+
+											'<select id="widDivType" name="widDivType" class="form-control">'+
+												'<option id="1"';
+												if(widget.WID_div_type == 'id' || widget.WID_div_type == 'ID')
+													containerID += 'selected ';
+												containerID += 'value="id">ID</option>'+
+												'<option id="2"'; 
+												if(widget.WID_div_type == 'class' || widget.WID_div_type == 'CLASS')
+													containerID += 'selected ';
+												containerID += 'value="class">CLASS</option>'+
+											'</select>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-xs-4">'+
+										'<label>Nome da classe ou ID</label>'+
+										'<div class="eliabo-input-icon-right">'+
+											'<input id="widDiv" name="widDiv" class="form-control" type="text" value="'+widget.WID_div+'">'+
+											'<abbr title="Esse é o identificador do container onde o nosso bloco vai ficar dentro da sua loja" class="info-abbr">'+
+												'<i class="icon-info"></i>'+
+											'</abbr>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-xs-5">'+
+										'<label>Posição relativa ao Container</label>'+
+										'<div class="eliabo-input-icon-right">'+
+											'<select name="UpDown" class="form-control">'+
+												'<option id="1" ';
+												if(parseInt(widget.WID_updown) == 1)
+													containerID += 'selected ';
+												containerID += 'value="1">Acima</option>'+
+												'<option id="2" '; 
+												if(parseInt(widget.WID_updown) == 0)
+													containerID += 'selected ';
+												containerID += 'value="0">Abaixo</option>'+
+											'</select>'+
+										'</div>'+
+									'</div>'+
 								'</div>'+
-								'</div>'+
-								'<div class="col-xs-8">'+
-								'<div class="eliabo-input-icon-right">'+
-									'<input id="widDiv" name="widDiv" class="form-control" type="text" value="'+widget.WID_div+'">'+
-									'<abbr title="Esse é o identificador do container onde o nosso bloco vai ficar dentro da sua loja" class="info-abbr">'+
-										'<i class="icon-info"></i>'+
-									'</abbr>'+
-								'</div>'+
-								'</div>'+
-								'</div>'+
-								'</div>'+
-
-								'<div class="form-group">'+
-								'<label>Posição relativa ao Container</label>'+
-								'<div class="row">'+
-								'<div class="col-xs-4">'+
-								'<div class="eliabo-input-icon-right">'+
-									'<select name="UpDown" class="form-control">'+
-									'<option id="1" ';
-									if(parseInt(widget.WID_updown) == 1)
-										containerID += 'selected ';
-									containerID += 'value="1">Acima</option>'+
-									'<option id="2" '; 
-									if(parseInt(widget.WID_updown) == 0)
-										containerID += 'selected ';
-									containerID += 'value="0">Abaixo</option>'+
-									'</select>'+
-								'</div>'+
-								'</div>'+
-								'</div>'+
-								'</div>'+
-
 							'</div>';
 							
 
