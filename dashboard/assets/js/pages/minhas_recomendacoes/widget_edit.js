@@ -753,14 +753,11 @@ $(document).ready(function(){
 												'</select>'+
 											'</div>';
 										var htmlManualOfertaLimitada = 
-								
+										
 										'<div id="manualOfertaLimitada" class="form-group">'+
 											'<label>Nome do Produto</label>'+
 											'<div class="eliabo-input-icon-right">'+
 												'<input name="manualOfertaLimitada" id="manualOfertaLimitadaInput" class="form-control" type="text"';
-												if (typeof widget.WC_titulos_produtos != 'undefined' && widget.WC_titulos_produtos.lenght > 1){
-													htmlManualOfertaLimitada+= ' value="'+widget.WC_titulos_produtos+'"';
-												}
 												htmlManualOfertaLimitada+= 
 												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false">' +
 												'<abbr title="Digite o nome do produto que está no seu XML" class="info-abbr">'+
@@ -1088,6 +1085,9 @@ $(document).ready(function(){
 									break;
 							}
 
+							// nome produto manual
+							$('#manualOfertaLimitadaInput').val(widget.tx_param_pai[0]);
+
 							// se nao for widget basico, mostra id e opcao de alterar o formato
 							// opcoes select formato
 							var select = '<select name="formatoWidget" class="form-control">';
@@ -1292,6 +1292,7 @@ $(document).ready(function(){
 					var selects = $('#campos-wid-edit select');
 
 					var info = [];
+
 					// PEGA O VALOR DE TODOS OS INPUTS
 					for (var i = 0; i < inputs.length;i++){
 						var key = inputs[i].name;
@@ -1307,6 +1308,10 @@ $(document).ready(function(){
 
 					var key = "bossChoiceProdId";
 					var val = bossChoiceProdId;
+					info.push({[key]:val});
+					
+					var key = "bossChoiceProdTitulo";
+					var val = bossChoiceProdTitulo;
 					info.push({[key]:val});
 
 					info = JSON.stringify(info);
@@ -1457,6 +1462,5 @@ function preencheCampoAuto(titulo, id, formato){
 	bossChoiceProdId = id;
 	bossChoiceProdTitulo = titulo.replace(",", ".");
 	$(nomeDiv).fadeOut();
-	$(nomeDiv).html("");
-	
+	$(nomeDiv).html("");	
 }

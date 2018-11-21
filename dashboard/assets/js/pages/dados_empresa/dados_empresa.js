@@ -45,6 +45,8 @@
 		$('#site').val(dados.site);
 		$('#segmento').val(dados.segmento);
 		$('#plataforma').val(dados.plataforma);
+		$('#skype').val(dados.skype);
+		$('#emailFinanceiro').val(dados.emailFinanceiro);
 	}
 
 	$('.btnEdita').on('click',function(){
@@ -80,6 +82,7 @@
 		var telefoneFinanceiro = $('#telefoneFinanceiro').val();
 		var segmento = $('#segmento').val();
 		var site = $('#site').val();
+		var skype = $('#skype').val();
 
 		$.ajax({
 			type: 'post',
@@ -103,7 +106,8 @@
 				'emailFinanceiro':emailFinanceiro,
 				'telefoneFinanceiro':telefoneFinanceiro,
 				'site':site,
-				'segmento':segmento
+				'segmento':segmento,
+				'skype':skype
 			},
 
 			success: function(response){

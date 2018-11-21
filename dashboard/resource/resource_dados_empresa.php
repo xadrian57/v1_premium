@@ -9,7 +9,7 @@
 	function getData($conCad,$idCLI)
 	{
 		// ENDEREÇO DO CLIENTE
-		$query1 = "SELECT CAD_segmento, CAD_inscricao_estadual, CAD_email_sec, CAD_cnpj, CAD_telefone, CAD_rua, CAD_numero, CAD_bairro, CAD_tel_sec , CAD_cidade, CAD_estado, CAD_complemento, CAD_CEP FROM cadastro WHERE CAD_id_cli = '$idCLI'";
+		$query1 = "SELECT CAD_skype, CAD_segmento, CAD_inscricao_estadual, CAD_email_sec, CAD_cnpj, CAD_telefone, CAD_rua, CAD_numero, CAD_bairro, CAD_tel_sec , CAD_cidade, CAD_estado, CAD_complemento, CAD_CEP FROM cadastro WHERE CAD_id_cli = '$idCLI'";
 		$result1 = mysqli_query($conCad, $query1) or print(mysqli_error($conCad));
 		$array1 = mysqli_fetch_array($result1);
 
@@ -27,6 +27,7 @@
 		$telefoneFinanceiro = $array1['CAD_tel_sec'];
 		$emailFinanceiro = $array1['CAD_email_sec'];
 		$segmento = $array1['CAD_segmento'];
+		$skype = $array1['CAD_skype'];
 
 		// DADOS DA EMPRESA
 		$query2 = "SELECT CLI_nome, CLI_email, CLI_site, CLI_plataforma FROM cliente WHERE CLI_id = '$idCLI'";
@@ -51,6 +52,7 @@
 			'email' => $email,
 			'emailFinanceiro' => $emailFinanceiro,
 			'telefoneAdministrativo' => $telefone,
+			'skype' => $skype,
 
 			'site' => $site,
 			'plataforma' => $plataforma,
@@ -68,15 +70,13 @@
 		$estado = mysqli_real_escape_string($conCad,$data['estado']);
 		$complemento = mysqli_real_escape_string($conCad,$data['complemento']);
 		$CEP = mysqli_real_escape_string($conCad,$data['CEP']);
-		$razaoSocial = mysqli_real_escape_string($conCad,$data['razaoSocial']);
 		$email = mysqli_real_escape_string($conCad,$data['email']);
 		$telefone = mysqli_real_escape_string($conCad,$data['telefoneAdministrativo']);
 		$telefoneFinanceiro = mysqli_real_escape_string($conCad,$data['telefoneFinanceiro']);
-		$inscricaoEstadual = mysqli_real_escape_string($conCad,$data['inscricaoEstadual']);
-		$cnpj = mysqli_real_escape_string($conCad,$data['cnpj']);
 		$emailFinanceiro = mysqli_real_escape_string($conCad,$data['emailFinanceiro']);
 		$site = mysqli_real_escape_string($conCad,$data['site']);
 		$segmento = mysqli_real_escape_string($conCad,$data['segmento']);
+		$skype = mysqli_real_escape_string($conCad,$data['skype']);
 
 		// ENDEREÇO DO CLIENTE
 		$query1 = 
@@ -85,8 +85,6 @@
 		CAD_telefone = '$telefone',
 		CAD_tel_sec = '$telefoneFinanceiro',
 		CAD_email_sec = '$emailFinanceiro',
-		CAD_inscricao_estadual = '$inscricaoEstadual', 
-		CAD_cnpj = '$cnpj',
 		CAD_rua = '$rua',
 		CAD_numero = '$numero',
 		CAD_bairro = '$bairro', 
@@ -94,14 +92,18 @@
 		CAD_estado = '$estado',
 		CAD_complemento = '$complemento',
 		CAD_CEP = '$CEP',
-		CAD_segmento = '$segmento'
+		CAD_segmento = '$segmento',
+		CAD_skype = '$skype'
 		WHERE CAD_id_cli = '$idCLI'";
+		
+		echo $query1;
 
 		$result1 = mysqli_query($conCad, $query1) or print(mysqli_error($conCad));
 
 		// DADOS DA EMPRESA
 		$query2 = 
-		"UPDATE cliente SET CLI_nome = '$razaoSocial',CLI_email = '$email',CLI_site = '$site' WHERE CLI_id = '$idCLI'";
+		"UPDATE cliente SET CLI_email = '$email',CLI_site = '$site' WHERE CLI_id = '$idCLI'";
+
 		$result2 = mysqli_query($conCad, $query2) or print(mysqli_error($conCad));
 
 		if ($result1 && $result2){
