@@ -134,7 +134,7 @@ if(!empty($id))
     $arrayIdsProd = [];
     $arrayEstoqueProd = [];
 
-    $buscaBackEnd = $arrayCli['CONF_busca_be'];
+    $buscaBackEnd = $arrayAPIOrXML['CONF_busca_be'];
 
     $selectPlat = "SELECT CLI_id_plataforma FROM cliente WHERE CLI_id = ". $id;
     $resultPlat = mysqli_query($conCad, $selectPlat);
