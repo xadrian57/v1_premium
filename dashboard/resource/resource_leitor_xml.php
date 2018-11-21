@@ -198,6 +198,8 @@ if(!empty($id))
                         
                         $titulo = customXML($arrayCXML['CXML_titulo'], $item);
 
+                        $titulo = limpaTitulo($titulo)
+
                         $fonetizado = fonetizar($titulo);
 
                         $descricao = customXML($arrayCXML['CXML_descricao'], $item);                    
@@ -512,6 +514,13 @@ function customXML($custom, $item)
     }
     
     return trim($resp);
+}
+
+function limpaTitulo($titulo)
+{
+    $titulo = str_replace('\'',' ',$titulo);
+
+    return $titulo;
 }
 
 function limpaLink($link)
