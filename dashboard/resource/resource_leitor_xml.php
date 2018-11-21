@@ -198,7 +198,7 @@ if(!empty($id))
                         
                         $titulo = customXML($arrayCXML['CXML_titulo'], $item);
 
-                        $titulo = limpaTitulo($titulo)
+                        $titulo = limpaTitulo($titulo);
 
                         $fonetizado = fonetizar($titulo);
 
