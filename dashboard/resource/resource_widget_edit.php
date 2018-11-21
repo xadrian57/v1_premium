@@ -176,6 +176,7 @@
 			'p_chave' => 'WC_collection',
 			'categoriaManual' => 'WC_categoria',
 			'bossChoiceProdId' => 'WC_id_produto',
+			'bossChoiceProdTitulo' => 'tx_param_pai',
 			'tp_chave_pai' => 'tx_tipo_pai',
 			'tp_chave_filho' => 'tx_tipo_filho',
 			'parametro_pai' => 'tx_param_pai',
