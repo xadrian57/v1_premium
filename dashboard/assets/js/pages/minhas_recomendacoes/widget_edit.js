@@ -154,11 +154,9 @@ $(document).ready(function(){
 				var widgetsBusca = document.getElementById('widgetsBusca');
 				widgetsBusca.innerHTML = "";
 				__busca.forEach(function(wid){
-					var ativo = (wid.ativo === '1') ? '<span class="success">Status:  Ativo<i class="ft-check"></i></span>' : '<span class="warning">Status:  Desativado<i class="ft-times"></i></span>';
 					widgetsBusca.innerHTML = widgetsBusca.innerHTML +
 					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
-							'<span class="ml-1 pull-right">'+ativo+'</span>'+
 							'<span class="pull-right primary">ID: '+wid.id+'</span>'+
 				         '</div>'+
 					'</li>';
