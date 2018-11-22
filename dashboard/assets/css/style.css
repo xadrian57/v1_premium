@@ -201,6 +201,13 @@
         max-width: 150px;
     }
 
+    @media screen and (max-width: 767px) {
+        .header-navbar .navbar-header .navbar-brand {
+            padding: 5px 0 0 0 !important;
+            width: 170px;
+        }
+    }
+
 /* NAVBAR */
   .user-name{
     font-size: .9rem;
@@ -483,7 +490,7 @@
         }
     }
 
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 767px){
         .row-resumo-plano{
             display: flex;
             flex-direction row;

@@ -96,8 +96,6 @@
 		CAD_skype = '$skype'
 		WHERE CAD_id_cli = '$idCLI'";
 		
-		echo $query1;
-
 		$result1 = mysqli_query($conCad, $query1) or print(mysqli_error($conCad));
 
 		// DADOS DA EMPRESA

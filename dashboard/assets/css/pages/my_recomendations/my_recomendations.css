@@ -44,3 +44,23 @@
 	position: relative;
 	top: 15px;
 }
+
+@media screen and (max-width: 1024px) {
+	.switch~.btn-group a.btn,
+	.btn {
+		padding: 5px;
+		font-size: 12px;
+	}
+
+	.list-group-item > span {
+		font-size: 12px;
+		max-width: 45%;
+		height: 21px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: inline-block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
