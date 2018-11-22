@@ -8,14 +8,8 @@ $conteudo   = $_POST['mensagem'];
 
 
 
-$emailCopia = "";
-$emailPrincipal = "";
-
-if ($plataforma == "loja_integrada") {
-    $emailCopia = 'paulo.castello.branco@roihero.com.br';
-    $emailPrincipal = "marcos@roihero.com.br";
-} elseif ($plataforma == "vtex" || $plataforma == "xtech" || $plataforma == "tray" || $plataforma == "propria") {
-    $emailCopia = 'paulo.castello.branco@roihero.com.br';
+if ($plataforma == "loja_integrada" || $plataforma == "vtex" || $plataforma == "xtech" || $plataforma == "tray" || $plataforma == "propria") {
+    $emailCopia = "michelle.tavares@roihero.com.br";
     $emailPrincipal = "daniela.guimaraes@roihero.com.br";
     enviaEmailContato($emailCopia, $emailPrincipal);
 } else{    
