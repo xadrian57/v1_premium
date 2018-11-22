@@ -23,6 +23,8 @@ RewriteRule ^widget_maker2$ php/widget_maker_medio.php [QSA,L,NC]
 RewriteRule ^widget_maker3$ php/widget_maker_vip.php [QSA,L,NC]
 
 RewriteRule ^minhas_recomendacoes$ php/widgets.php [QSA,L,NC]
+RewriteRule ^$ php/widgets.php [QSA,L,NC]
+
 RewriteRule ^editar_perfil$ php/editar_perfil.php [QSA,L,NC]
 RewriteRule ^layout$ php/layout.php [QSA,L,NC]
 
