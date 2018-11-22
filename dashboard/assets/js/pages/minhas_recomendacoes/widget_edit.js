@@ -106,7 +106,7 @@ $(document).ready(function(){
 				__basicos.forEach(function(wid){
 					var ativo = (wid.ativo === '1') ? 'checked' : '';
 					widgetsBasicos.innerHTML = widgetsBasicos.innerHTML +
-					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
+					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 							'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
 							'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
@@ -123,7 +123,7 @@ $(document).ready(function(){
 				__home.forEach(function(wid){
 					var ativo = (wid.ativo === '1') ? 'checked' : '';
 					widgetsHome.innerHTML = widgetsHome.innerHTML +
-					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
+					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 							'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
 							'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
@@ -140,7 +140,7 @@ $(document).ready(function(){
 					var ativo = (wid.ativo === '1') ? 'checked' : '';
 
 					widgetsProduto.innerHTML = widgetsProduto.innerHTML +
-					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
+					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 							'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
 							'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
@@ -155,7 +155,7 @@ $(document).ready(function(){
 				widgetsBusca.innerHTML = "";
 				__busca.forEach(function(wid){
 					widgetsBusca.innerHTML = widgetsBusca.innerHTML +
-					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
+					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 							'<span class="pull-right primary">ID: '+wid.id+'</span>'+
 				         '</div>'+
@@ -170,7 +170,7 @@ $(document).ready(function(){
 					__categoria.forEach(function(wid){
 						var ativo = (wid.ativo === '1') ? 'checked' : '';
 						widgetsCategoria.innerHTML = widgetsCategoria.innerHTML +
-						'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
+						'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 							'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 								'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
 								'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
@@ -187,7 +187,7 @@ $(document).ready(function(){
 				__carrinho.forEach(function(wid){
 					var ativo = (wid.ativo === '1') ? 'checked' : '';
 					widgetsCarrinho.innerHTML = widgetsCarrinho.innerHTML +
-					'<li class="list-group-item" wid-id="'+wid.id+'">'+wid.nome+''+
+					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 							'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
 							'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
