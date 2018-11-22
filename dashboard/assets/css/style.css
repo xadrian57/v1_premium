@@ -309,6 +309,10 @@
         max-height: 100%;
     }
 
+    #cardTrustvox {
+        display: none !important;
+    }
+
 /* PÁGINA OVERVIEW */
     .card-produto{
         height: 300px;
