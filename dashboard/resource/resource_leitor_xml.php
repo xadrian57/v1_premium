@@ -134,7 +134,7 @@ if(!empty($id))
     $arrayIdsProd = [];
     $arrayEstoqueProd = [];
 
-    $buscaBackEnd = $arrayCli['CONF_busca_be'];
+    $buscaBackEnd = $arrayAPIOrXML['CONF_busca_be'];
 
     $selectPlat = "SELECT CLI_id_plataforma FROM cliente WHERE CLI_id = ". $id;
     $resultPlat = mysqli_query($conCad, $selectPlat);
@@ -198,7 +198,7 @@ if(!empty($id))
                         
                         $titulo = customXML($arrayCXML['CXML_titulo'], $item);
 
-                        $titulo = limpaTitulo($titulo)
+                        $titulo = limpaTitulo($titulo);
 
                         $fonetizado = fonetizar($titulo);
 
@@ -286,6 +286,8 @@ if(!empty($id))
                                     {  
                                         $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom5')");
                                         $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
+
+                                        echo mysqli_error($conBusca);
                                     }
                                 }
                                 else
@@ -295,10 +297,14 @@ if(!empty($id))
                                         $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '$custom5' WHERE id = '$idprod'";
                                         $resultadoBusca = mysqli_query($conBusca, $updateBusca);
 
+                                        echo mysqli_error($conBusca);
+
                                         if(mysqli_affected_rows($conBusca) < 1)
                                         {
                                             $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod')");
                                             $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
+
+                                            echo mysqli_error($conBusca);
                                         }
                                     }
                                 }
