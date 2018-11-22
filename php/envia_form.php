@@ -8,14 +8,8 @@ $conteudo   = $_POST['mensagem'];
 
 
 
-$emailCopia = "";
-$emailPrincipal = "";
-
-if ($plataforma == "loja_integrada") {
-    $emailCopia = 'paulo.castello.branco@roihero.com.br';
-    $emailPrincipal = "marcos@roihero.com.br";
-} elseif ($plataforma == "vtex" || $plataforma == "xtech" || $plataforma == "tray" || $plataforma == "propria") {
-    $emailCopia = 'paulo.castello.branco@roihero.com.br';
+if ($plataforma == "loja_integrada" || $plataforma == "vtex" || $plataforma == "xtech" || $plataforma == "tray" || $plataforma == "propria") {
+    $emailCopia = "michelle.tavares@roihero.com.br";
     $emailPrincipal = "daniela.guimaraes@roihero.com.br";
     enviaEmailContato($emailCopia, $emailPrincipal);
 } else{    
@@ -66,7 +60,7 @@ if ($plataforma == "loja_integrada") {
 
     $headers .= "Reply-To: Roi Hero <atendimento@roihero.com.br>\r\n";
     $headers .= "Return-Path: Roi Hero <atendimento@roihero.com.br>\r\n";
-    $headers .= "From: <atendimento@roihero.com.br>";
+    $headers .= "From: <atendimento@roihero.com.br>\r\n";
     $headers .= "Organization: Roi Hero - Recomendações Inteligentes\r\n";
     $headers .= "MIME-Version: 1.0\r\n";
     $headers .= "Content-type: text/html; charset=UTF-8\r\n";
@@ -81,22 +75,23 @@ function enviaEmailContato($emailCopia, $emailPrincipal){
     global  $nome, 
             $email,
             $url,
-            $plataforma;
+            $plataforma,
+            $conteudo;
 
 
-    $headers .= "Reply-To: Roi Hero <atendimento@roihero.com.br>\r\n";
-    $headers .= "Return-Path: Roi Hero <atendimento@roihero.com.br>\r\n";
-    $headers .= "From: <".$email.">";
-
-    if ($emailCopia != "") {
-        $headers .= 'Cc: ' . $emailCopia . "\r\n";
-    }
-
-    $headers .= "Organization: Roi Hero - Recomendações Inteligentes\r\n";
-    $headers .= "MIME-Version: 1.0\r\n";
-    $headers .= "Content-type: text/plain; charset=iso-8859-1\r\n";
-    $headers .= "X-Priority: 3\r\n";
-    $headers .= "X-Mailer: PHP". phpversion() ."\r\n";
+        $headers = "Reply-To: Roi Hero <atendimento@roihero.com.br>\r\n";
+        $headers .= "Return-Path: Roi Hero <atendimento@roihero.com.br>\r\n";
+        $headers .= "From: <".$email.">\r\n";
+    
+        if ($emailCopia != "") {
+            $headers .= 'Cc: ' . $emailCopia . "\r\n";
+        }
+    
+        $headers .= "Organization: Roi Hero - Recomendações Inteligentes\r\n";
+        $headers .= "MIME-Version: 1.0\r\n";
+        $headers .= "Content-type: text/plain; charset=UTF-8\r\n";
+        $headers .= "X-Priority: 3\r\n";
+        $headers .= "X-Mailer: PHP". phpversion() ."\r\n";
 
 
     $message = "Um cliente entrou em contato:\n\n\nNome: " . $nome."\n\nEmail: ".$email."\n\nURL: ".$url."\n\nPlataforma: ".$plataforma."\n\nMensagem:".$conteudo;
