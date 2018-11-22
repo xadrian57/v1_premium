@@ -190,16 +190,22 @@
         text-align:  center;
     }
 
-    .nav-item .navbar-brand{
-        width: 170px;
+    .nav-item .navbar-brand{        
+        width:  100%;
         display: block;
         margin:  0 auto;
-        padding: 5px 0 0 0 !important;
     }
 
     .navbar-brand .rh-dashboard-logo-medium{
         display: inline-block;
         max-width: 150px;
+    }
+
+    @media screen and (max-width: 767px) {
+        .header-navbar .navbar-header .navbar-brand {
+            padding: 5px 0 0 0 !important;
+            width: 170px;
+        }
     }
 
 /* NAVBAR */
@@ -484,7 +490,7 @@
         }
     }
 
-    @media screen and (min-width: 768px){
+    @media screen and (min-width: 767px){
         .row-resumo-plano{
             display: flex;
             flex-direction row;
