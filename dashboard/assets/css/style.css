@@ -190,10 +190,11 @@
         text-align:  center;
     }
 
-    .nav-item .navbar-brand{        
-        width:  100%;
+    .nav-item .navbar-brand{
+        width: 170px;
         display: block;
         margin:  0 auto;
+        padding: 5px 0 0 0 !important;
     }
 
     .navbar-brand .rh-dashboard-logo-medium{
