@@ -1085,8 +1085,10 @@ $(document).ready(function(){
 									break;
 							}
 
-							// nome produto manual
-							$('#manualOfertaLimitadaInput').val(widget.tx_param_pai[0]);
+							// nome produto manual ol
+							if (typeof widget.tx_param_pai != 'undefined') {
+								$('#manualOfertaLimitadaInput').val(widget.tx_param_pai[0]);
+							}
 
 							// se nao for widget basico, mostra id e opcao de alterar o formato
 							// opcoes select formato
