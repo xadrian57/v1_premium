@@ -64,3 +64,10 @@
 		text-overflow: ellipsis;
 	}
 }
+
+@media screen and (max-width: 500px) {
+	.list-group-item > div {
+		width: 100% !important;
+		float: none !important;
+	}
+}

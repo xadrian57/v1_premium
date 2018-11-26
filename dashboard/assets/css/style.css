@@ -1021,6 +1021,14 @@
         width: inherit;
         margin-bottom: 1rem;
     }
+
+    @media screen and (max-width: 1024px) {
+        td,
+        tr,
+        th {
+            padding: 5px 10px !important;
+        }
+    }
   
 /* RELATÓRIO TRANSAÇÕES */
 /* TIMELINE */
