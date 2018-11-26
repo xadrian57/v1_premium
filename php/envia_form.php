@@ -9,8 +9,10 @@ $conteudo   = $_POST['mensagem'];
 
 
 if ($plataforma == "loja_integrada" || $plataforma == "vtex" || $plataforma == "xtech" || $plataforma == "tray" || $plataforma == "propria") {
-    $emailCopia = "michelle.tavares@roihero.com.br";
-    $emailPrincipal = "daniela.guimaraes@roihero.com.br";
+    /* $emailCopia = "michelle.tavares@roihero.com.br";
+    $emailPrincipal = "daniela.guimaraes@roihero.com.br"; */
+    $emailPrincipal = "paulo.mw.cb@gmail.com";
+    $emailCopia = "daniela.guimaraes@roihero.com.br, michelle.tavares@roihero.com.br";
     enviaEmailContato($emailCopia, $emailPrincipal);
 } else{    
     
