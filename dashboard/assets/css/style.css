@@ -1014,6 +1014,22 @@
         position: relative;
         bottom: 12px;
     }
+
+    @media screen and (max-width: 900px) {
+        #tableProdutosXML_wrapper {
+            display: none;
+        }
+
+        #linkXML {
+            font-size: 15px;
+        }
+
+        #visualizarProdutosXML .media-right.media-middle.col-md-12 {
+            display: block;
+            float: none;
+            margin: 10px 0 0 0;
+        }
+    }    
     
     /* Botões do calendário datepicker do dashboard */
     .range_inputs button {
