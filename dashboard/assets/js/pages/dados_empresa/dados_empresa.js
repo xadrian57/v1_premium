@@ -47,10 +47,6 @@
 		$('#plataforma').val(dados.plataforma);
 		$('#skype').val(dados.skype);
 		$('#emailFinanceiro').val(dados.emailFinanceiro);
-
-		$('#razaoSocial').val(dados.razaoSocial);
-		$('#cnpj').val(dados.cnpj);
-		$('#inscricaoEstadual').val(dados.inscricaoEstadual);
 	}
 
 	$('.btnEdita').on('click',function(){
@@ -88,6 +84,11 @@
 		var site = $('#site').val();
 		var skype = $('#skype').val();
 
+		// temporario
+		var razaoSocial = $('#razaoSocial').val();
+		var cnpj = $('#cnpj').val();
+		var inscricaoEstadual = $('#inscricaoEstadual').val();
+		
 		$.ajax({
 			type: 'post',
 			url: 'resource/resource_dados_empresa.php',

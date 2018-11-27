@@ -47,6 +47,9 @@
 			'estado' => $estado,
 			'complemento' => $complemento,
 			'CEP' => $CEP,
+			'razaoSocial' => $razaoSocial,
+			'cnpj' => $cnpj,
+			'inscricaoEstadual' => $inscricaoEstadual,
 
 			'telefoneFinanceiro' => $telefoneFinanceiro,
 			'email' => $email,
