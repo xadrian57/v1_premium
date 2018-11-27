@@ -75,30 +75,18 @@
 		$resultConfig = mysqli_query($conCad, $selectConfig);
 		$arrayTemplate = mysqli_fetch_array($resultConfig);
 		$idTemplate = $arrayTemplate['CONF_template'];
-
-		// READ
-		$idSHA1 = sha1($idCLI);
-		$corPrimaria = '#'.$corPrimaria;
-		$corSecundaria = '#'.$corSecundaria;
-
-		$css = file_get_contents('../../widget/templates/kit_'.$idTemplate.'/css/dynamic-style.css');
-		$css = str_replace('{PRIMARY_COLOR}', $corPrimaria, $css);
-		$css = str_replace('{SECONDARY_COLOR}', $corSecundaria, $css);
 		
-		// escrevendo as configuracoes no css
-		file_put_contents('../../widget/css/rh_'.$idSHA1.'.css', $css);
-
-		//da purge no cache com a cloudflare
-		$api = new cloudflare_api('davi.bernardes@roihero.com.br','1404cc5e783d0287897bfb2ebf7faa9e87eb5');
-
-		$ident = $api->identificador('roihero.com.br');
-
-		$arquivos = [
-			'https://roihero.com.br/widget/css/rh_'.sha1($idCLI).'.css'
-		];
 		$result = $api->purgeArquivos($ident,$arquivos );
 		//echo json_encode($result); 
 		// -------
+		
+		$query = 'SELECT CONF_cor, CONF_template_overlay FROM config WHERE CONF_id_cli = '.$idCLI;
+		$exec = mysqli_query($conCad, $query);
+		$result = mysqli_fetch_array($exec);
+		$template = $result['CONF_template_overlay'];
+	
+		$colors = json_decode($result['CONF_cor'], true);
+		$template = $result['CONF_template_overlay'];
 	}
 
 	switch ($operacao) {

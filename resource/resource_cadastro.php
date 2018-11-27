@@ -192,16 +192,19 @@
 			integra_api_lahar($traducao);
 			integra_api_slack_app($nome, $plataforma, $email, $telefone, $site, $nomeResponsavel, $pedidos);
 			
-			if($pedidos == "enterprise" || $pedidos == "enterprise2")
+			if($pedidos == "enterprise" || $pedidos == "enterprise2") {
 				integra_api_pipedrive($nome, $email, $telefone, $nomeResponsavel);
-
-			if($idPlataforma == 2){ // -- PROVISÓRIO LOJA INTEGRADA
-				$css = file_get_contents("../widget/templates/kit_loja_integrada/css/styles.css");
-				file_put_contents ( "../widget/css/rh_".sha1($id).".css", $css);
-			} else {
-				$css = file_get_contents("../widget/templates/kit_1/css/styles.css");
-				file_put_contents ( "../widget/css/rh_".sha1($id).".css", $css);
 			}
+
+			// Cria os arquivos da barra de busca
+			$HTMLbusca = file_get_contents("../busca/templates/search_1/searchbar/searchbar.html");
+			$CSSbusca = file_get_contents("../busca/templates/search_1/searchbar/searchbar.css");
+			file_put_contents ( "../busca/templates/search_".sha1($id)."/searchbar/searchbar.html", $HTMLbusca);
+			file_put_contents ( "../busca/templates/search_".sha1($id)."/searchbar/searchbar.css", $CSSbusca);
+						
+			// cria o CSS dos overlays
+			$css = file_get_contents("../widget/templates/overlay_1/styles.css");
+			file_put_contents ( "../widget/css/overlay/rh_overlay_".sha1($id).".css", $css);
 			
 			$site_id = sha1($id);
 			$qInsertOWA = "INSERT INTO owa_site (id, site_id, domain, name) VALUES (
