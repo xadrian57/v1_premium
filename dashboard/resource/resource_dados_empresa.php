@@ -78,6 +78,11 @@
 		$segmento = mysqli_real_escape_string($conCad,$data['segmento']);
 		$skype = mysqli_real_escape_string($conCad,$data['skype']);
 
+		// temporario
+		$inscricaoEstadual = mysqli_real_escape_string($conCad, $data['inscricaoEstadual']);
+		$razaoSocial =  mysqli_real_escape_string($conCad, $data['razaoSocial']);
+		$cnpj = mysqli_real_escape_string($conCad, $data['cnpj']);
+
 		// ENDEREÇO DO CLIENTE
 		$query1 = 
 		"UPDATE cadastro 
@@ -93,14 +98,23 @@
 		CAD_complemento = '$complemento',
 		CAD_CEP = '$CEP',
 		CAD_segmento = '$segmento',
-		CAD_skype = '$skype'
+		CAD_skype = '$skype',
+		
+		CAD_inscricao_estadual = '$inscricaoEstadual',
+		CAD_cnpj = '$cnpj'
+		
+
 		WHERE CAD_id_cli = '$idCLI'";
 		
 		$result1 = mysqli_query($conCad, $query1) or print(mysqli_error($conCad));
 
 		// DADOS DA EMPRESA
 		$query2 = 
-		"UPDATE cliente SET CLI_email = '$email',CLI_site = '$site' WHERE CLI_id = '$idCLI'";
+		"UPDATE cliente SET 
+		CLI_email = '$email',
+		CLI_site = '$site',		
+		CLI_nome = '$razaoSocial'
+		WHERE CLI_id = '$idCLI'";
 
 		$result2 = mysqli_query($conCad, $query2) or print(mysqli_error($conCad));
 

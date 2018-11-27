@@ -47,6 +47,10 @@
 		$('#plataforma').val(dados.plataforma);
 		$('#skype').val(dados.skype);
 		$('#emailFinanceiro').val(dados.emailFinanceiro);
+
+		$('#razaoSocial').val(dados.razaoSocial);
+		$('#cnpj').val(dados.cnpj);
+		$('#inscricaoEstadual').val(dados.inscricaoEstadual);
 	}
 
 	$('.btnEdita').on('click',function(){

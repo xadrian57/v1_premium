@@ -61,7 +61,7 @@
             </div>
             <div class="content-body">
             <section class="flexbox-container">
-                <div class="col-md-4 offset-md-4 col-xs-10 offset-xs-1 box-shadow-2 p-0">
+                <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4 col-xs-10 offset-xs-1 box-shadow-2 p-0">
                     <div class="logo-container text-center"><a href="https://www.roihero.com.br"><img alt="ROI HERO" src="dashboard/assets/images/logo/stack-logo.png" class="brand-logo"></a></div>
                     <div id="card-login" class="card border-grey border-lighten-3 m-0">
                         <div class="card-body collapse in">

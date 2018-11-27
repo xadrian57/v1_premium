@@ -200,7 +200,6 @@ $(document).ready(function(){
 			toggleSwitches : function(){
 				// SWITCHS
 				'use strict';
-				var $html = $('html');
 
 				/*  Toggle Starts   */
 				$('.switch:checkbox').checkboxpicker();
