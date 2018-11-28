@@ -1048,6 +1048,34 @@ $(document).ready(function(){
 									})
 
 									break;
+								case '38':
+									camposAdicionais.innerHTML+= // Mais desejados da Marca
+									'<div class="col-md-6 pd-l-0">'+
+										'<div class="form-group">'+
+											'<label>Marca</label>'+
+											'<div class="eliabo-input-icon-right">'+
+												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
+													'<i class="icon-info"></i>'+
+												'</abbr>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+									break;
+								case '40':
+									camposAdicionais.innerHTML+= // Lançamentos da Marca
+									'<div class="col-md-6 pd-l-0">'+
+										'<div class="form-group">'+
+											'<label>Marca</label>'+
+											'<div class="eliabo-input-icon-right">'+
+												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
+													'<i class="icon-info"></i>'+
+												'</abbr>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
+									break;
 
 								case '39':
 									camposAdicionais.innerHTML+= // PALAVRA CHAVE
@@ -1055,7 +1083,7 @@ $(document).ready(function(){
 											'<div class="form-group">'+
 												'<label>Tag XML 1</label>'+
 												'<div class="eliabo-input-icon-right">'+
-													'<input name="parametro_pai" class="form-control" type="text" value="'+widget.tx_param_pai+'">'+
+													'<input name="marca" class="form-control" type="text" value="'+widget.tx_param_pai+'">'+
 													'<abbr data-toggle="tooltip" data-placement="right";'+
 														'data-original-title="Coloque aqui uma Tag presente no seu XML que você queira levar em consideração na similaridade." class="info-abbr">'+
 														'<i class="icon-info"></i>'+
