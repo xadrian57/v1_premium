@@ -1,10 +1,3 @@
-/*
---	Autor: Eliabe
---	Data: 10/2017
---	Update: 16/02/2018
---	Desc: Script que retorna todos os dados do banco em um JSON
---
-*/
 'use strict';
 (function () {
 	window['idCli'] = $('#infsess').attr('data-cli');
@@ -24,8 +17,22 @@
 		$('#numeroParcelas').val(dados.numeroParcelas);
 		$('#valorParcelas').val((dados.valorParcelas));
 		$('#site').val(dados.site);
-		$('#corPrimaria').val('#' + (dados.corPrimaria || '#fff'));
-		$('#corSecundaria').val('#' + (dados.corSecundaria || '#fff'));
+
+
+		function componentToHex(c) {
+			var hex = c.toString(16);
+			return hex.length == 1 ? "0" + hex : hex;
+		}
+		
+		function rgbToHex(s) {
+			var rgb = s.split(',');
+			return componentToHex( parseInt(rgb[0]) )+ componentToHex( parseInt(rgb[1]) ) + componentToHex( parseInt(rgb[2]) );
+		}
+
+		var cores = JSON.parse(dados.cores);
+
+		$('#corPrimaria').val('#' + (rgbToHex(cores.primary) || '#fff'));
+		$('#corSecundaria').val('#' + (rgbToHex(cores.secondary)  || '#fff'));
 
 		if ($('#desconto').val() !== '') {
 			var valor = $('#desconto').val();
@@ -288,8 +295,18 @@
 		var numeroParcelas = $('#numeroParcelas').val();
 		var valorParcelas = $('#valorParcelas').val().replace('R$', '').trim();
 		var site = $('#site').val();
-		var corPrimaria = $('#corPrimaria').val();
-		var corSecundaria = $('#corSecundaria').val();
+		
+		function hexToRgb(hex) {
+			var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+			return result ? [
+				parseInt(result[1], 16),
+				parseInt(result[2], 16),
+				parseInt(result[3], 16)
+			 ] : null;
+		}
+		
+		var corPrimaria = hexToRgb( $('#corPrimaria').val() ).join(',');
+		var corSecundaria = hexToRgb( $('#corSecundaria').val() ).join(',');
 
 		$.ajax({
 			type: 'post',
@@ -315,6 +332,16 @@
 
 			}
 		});
+
+		$.ajax({
+			type: 'get',
+			url: '../widget/update_colors_css_overlay.php',
+			data: {
+				'id': idCli,
+				'primary': corPrimaria,
+				'secondary': corSecundaria,
+			}
+		})
 	});
 
 	var errorActiveTrustvox = false;
