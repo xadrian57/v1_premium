@@ -9,13 +9,14 @@
 	function getData($conCad,$idCLI)
 	{
 		// ENDEREÇO DO CLIENTE
-		$query1 = "SELECT CAD_skype, CAD_segmento, CAD_inscricao_estadual, CAD_email_sec, CAD_cnpj, CAD_telefone, CAD_rua, CAD_numero, CAD_bairro, CAD_tel_sec , CAD_cidade, CAD_estado, CAD_complemento, CAD_CEP FROM cadastro WHERE CAD_id_cli = '$idCLI'";
+		$query1 = "SELECT CAD_razao_social, CAD_skype, CAD_segmento, CAD_inscricao_estadual, CAD_email_sec, CAD_cnpj, CAD_telefone, CAD_rua, CAD_numero, CAD_bairro, CAD_tel_sec , CAD_cidade, CAD_estado, CAD_complemento, CAD_CEP FROM cadastro WHERE CAD_id_cli = '$idCLI'";
 		$result1 = mysqli_query($conCad, $query1) or print(mysqli_error($conCad));
 		$array1 = mysqli_fetch_array($result1);
 
 		$telefone = $array1['CAD_telefone'];
 		$inscricaoEstadual = $array1['CAD_inscricao_estadual'];
 		$cnpj = $array1['CAD_cnpj'];
+		$razaoSocial = $array1['CAD_razao_social'];
 
 		$rua = $array1['CAD_rua'];
 		$numero = $array1['CAD_numero'];
@@ -30,11 +31,10 @@
 		$skype = $array1['CAD_skype'];
 
 		// DADOS DA EMPRESA
-		$query2 = "SELECT CLI_nome, CLI_email, CLI_site, CLI_plataforma FROM cliente WHERE CLI_id = '$idCLI'";
+		$query2 = "SELECT CLI_email, CLI_site, CLI_plataforma FROM cliente WHERE CLI_id = '$idCLI'";
 		$result2 = mysqli_query($conCad, $query2) or print(mysqli_error($conCad));
 		$array2 = mysqli_fetch_array($result2);
 
-		$razaoSocial = $array2['CLI_nome'];
 		$email = $array2['CLI_email'];
 		$site = $array2['CLI_site'];
 		$plataforma = $array2['CLI_plataforma'];
@@ -102,6 +102,7 @@
 		CAD_CEP = '$CEP',
 		CAD_segmento = '$segmento',
 		CAD_skype = '$skype',
+		CAD_razao_social = '$razaoSocial',
 		
 		CAD_inscricao_estadual = '$inscricaoEstadual',
 		CAD_cnpj = '$cnpj'
@@ -115,8 +116,7 @@
 		$query2 = 
 		"UPDATE cliente SET 
 		CLI_email = '$email',
-		CLI_site = '$site',		
-		CLI_nome = '$razaoSocial'
+		CLI_site = '$site'
 		WHERE CLI_id = '$idCLI'";
 
 		$result2 = mysqli_query($conCad, $query2) or print(mysqli_error($conCad));
