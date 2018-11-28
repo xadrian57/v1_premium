@@ -26,7 +26,7 @@
 		$data = $dados;
 	//-------------------------------
 
-		$selectConf = "SELECT CONF_cor_prim, CONF_cor_sec, CONF_desc_boleto, CONF_tv FROM config WHERE CONF_id_cli = '$idCLI'";
+		$selectConf = "SELECT CONF_cor, CONF_cor_prim, CONF_cor_sec, CONF_desc_boleto, CONF_tv FROM config WHERE CONF_id_cli = '$idCLI'";
 		$queryConf = mysqli_query($conCad, $selectConf) or print(mysqli_error($conCad));
 		$result = mysqli_fetch_array($queryConf);
 
@@ -36,7 +36,8 @@
 			'corPrimaria' => $result['CONF_cor_prim'],
 	        'corSecundaria' => $result['CONF_cor_sec'],
 	        'trustvoxAtiva' => ($result['CONF_tv'] == 1 ? true : false),
-			'idSHA1' => sha1($idCLI)
+			'idSHA1' => sha1($idCLI),
+			'cores' => $result['CONF_cor'],
 		);
 
 		$data = array_merge($data,$dados);
@@ -47,23 +48,36 @@
 
 	function saveData($conCad,$idCLI,$data)
 	{
+
+		// cor primária e secundária
+		$corPrimaria = mysqli_real_escape_string($conCad,$data['corPrimaria']);
+		$corSecundaria = mysqli_real_escape_string($conCad,$data['corSecundaria']);
+
+		$selectPegaCor = 'SELECT CONF_cor from config WHERE CONF_id_cli = '.$idCLI;
+		$queryPegaCor = mysqli_query($conCad, $selectPegaCor);
+		$cores = mysqli_fetch_array($queryPegaCor)['CONF_cor'];
+		$cores = json_decode($cores, true);
+
+		$cores['primary'] = $corPrimaria;
+		$cores['secondary'] = $corSecundaria;
+
+		$coresJson = json_encode($cores);
+		$updateSalvaCor = "UPDATE config SET CONF_cor = '$coresJson' WHERE CONF_id_cli = '$idCLI'";
+
+		$querySalvaCor = mysqli_query($conCad, $updateSalvaCor);
+
 		$site = mysqli_real_escape_string($conCad,$data['site']);
 		$desconto = mysqli_real_escape_string($conCad,$data['desconto']);
 		$numeroParcelas = mysqli_real_escape_string($conCad,$data['numeroParcelas']);
 		$valorParcelas = mysqli_real_escape_string($conCad,$data['valorParcelas']);
-		$corPrimaria = mysqli_real_escape_string($conCad,$data['corPrimaria']);
-		$corSecundaria = mysqli_real_escape_string($conCad,$data['corSecundaria']);
-
-		$corPrimaria = str_replace("#", "", $corPrimaria);
-		$corSecundaria = str_replace("#", "", $corSecundaria);
 
 		$updateCli = "UPDATE cliente SET CLI_site = '$site' WHERE CLI_id = '$idCLI'";
 		$queryCli = mysqli_query($conCad,$updateCli);
 
-		$updateConf = "UPDATE config SET CONF_cor_prim = '$corPrimaria', CONF_cor_sec = '$corSecundaria', CONF_desc_boleto = '$desconto' WHERE CONF_id_cli = '$idCLI'";
-		$queryConf = mysqli_query($conCad, $updateConf) or print(mysqli_error($conCad));
-
-		if ($queryConf && $queryCli) {
+		$updateConf = "UPDATE config SET CONF_desc_boleto = '$desconto' WHERE CONF_id_cli = '$idCLI'";
+		$queryConf = mysqli_query($conCad, $updateConf) or print(mysqli_error($conCad));		
+	
+		if ($queryConf && $queryCli && $querySalvaCor && $queryPegaCor) {
 			echo "1";
 		} else {
 			echo "0";
@@ -75,30 +89,17 @@
 		$resultConfig = mysqli_query($conCad, $selectConfig);
 		$arrayTemplate = mysqli_fetch_array($resultConfig);
 		$idTemplate = $arrayTemplate['CONF_template'];
-
-		// READ
-		$idSHA1 = sha1($idCLI);
-		$corPrimaria = '#'.$corPrimaria;
-		$corSecundaria = '#'.$corSecundaria;
-
-		$css = file_get_contents('../../widget/templates/kit_'.$idTemplate.'/css/dynamic-style.css');
-		$css = str_replace('{PRIMARY_COLOR}', $corPrimaria, $css);
-		$css = str_replace('{SECONDARY_COLOR}', $corSecundaria, $css);
 		
-		// escrevendo as configuracoes no css
-		file_put_contents('../../widget/css/rh_'.$idSHA1.'.css', $css);
-
-		//da purge no cache com a cloudflare
-		$api = new cloudflare_api('davi.bernardes@roihero.com.br','1404cc5e783d0287897bfb2ebf7faa9e87eb5');
-
-		$ident = $api->identificador('roihero.com.br');
-
-		$arquivos = [
-			'https://roihero.com.br/widget/css/rh_'.sha1($idCLI).'.css'
-		];
-		$result = $api->purgeArquivos($ident,$arquivos );
 		//echo json_encode($result); 
 		// -------
+		
+		$query = 'SELECT CONF_cor, CONF_template_overlay FROM config WHERE CONF_id_cli = '.$idCLI;
+		$exec = mysqli_query($conCad, $query);
+		$result = mysqli_fetch_array($exec);
+		$template = $result['CONF_template_overlay'];
+	
+		$colors = json_decode($result['CONF_cor'], true);
+		$template = $result['CONF_template_overlay'];
 	}
 
 	switch ($operacao) {

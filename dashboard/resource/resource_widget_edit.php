@@ -154,7 +154,6 @@
 	// ATUALIZA AS INFORMAÇOES DO WIDGET NO BANCO COM O QUE FOI EDITADO
 	function atualizaWidget($conCad, $idWid, $info){ 
 
-
 		$camposBDWID = array( // campos do widget
 			'nome'=>'WID_nome',
 			'titulo'=>'WID_texto',
@@ -168,6 +167,7 @@
 			'formatoWidget' => 'WID_formato'
 			// 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
 		);
+
 		$camposBDWIDCONFIG = array( // campos configuracao widget
 			'produtosCollection' => 'WC_collection',
 			'produtosWidget' => 'WC_id_produto',
@@ -185,8 +185,10 @@
 			'tp_parametro_filho' => 'tx_tipo_param_filho',
 			'negativa_pai' => 'tx_negativa_pai',
 			'negativa_filho' => 'tx_negativa_filho',
-			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f'
+			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f',
+			'marca' => 'WC_marca'
 		);
+		
 		foreach($info as $k1 => $v1)
 			foreach($v1 as $k => $v)
 				if($k == "produtosWidget")

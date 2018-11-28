@@ -56,7 +56,7 @@
 		$result = ($result['CONF_XML'] === null) ? '':$result['CONF_XML'];
 		$data['url'] = urlencode($result);
 
-		if ($data['url'] === "" || count($result) === 0){
+		if ($data['url'] === ""){
 			echo "0";
 		} else {
 			echo json_encode($data);
