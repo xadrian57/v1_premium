@@ -498,7 +498,8 @@
 			$idcli_cryp == '85f1002bf139bebdb7f0d07b31fa14155aea9dfc' ||
 			$idcli_cryp == '7c7b84eeaec18233e982d101637ab2a4033c6fb0' ||
 			$idcli_cryp == 'b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f' ||
-			$idcli_cryp == '2ad96cc16e625017327b9aa877bbddfb3532a718')
+			$idcli_cryp == '2ad96cc16e625017327b9aa877bbddfb3532a718' ||
+			$idcli_cryp == '5b17adc969018b102b802193f65ffebc07494a2c')
 		{
 			return true;
 		}
