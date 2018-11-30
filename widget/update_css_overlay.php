@@ -15,7 +15,7 @@
         echo "\n".$idCli;
 
         // Pega o arquivo css e substitui as cores
-        echo $css = @file_get_contents('templates/overlay/kit_'.$template.'/style_to_replace.css');
+        $css = @file_get_contents('templates/overlay/kit_'.$template.'/style_to_replace.css');
 
         if(!empty($css))
         {
