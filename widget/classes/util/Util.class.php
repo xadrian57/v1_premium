@@ -198,6 +198,7 @@ class Util {
     public static function get_HTML($obj, $arrayConfig, $arrayWidgets)
     {
         $template = $arrayConfig['CONF_template'];
+        $templateOverlay = $arrayConfig['CONF_template_overlay'];
         $moeda = $arrayConfig['CONF_moeda'];
         $idCli = $arrayWidgets['WID_id_cli'];
         $formato = $arrayWidgets['WID_formato'];
@@ -232,11 +233,24 @@ class Util {
             if($numProd == 0)
             {
                 $numProd = self::getNumProd($formato);
-            }       
-            
-            $formato = self::getFormatName($formato);
+            }
 
-            $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
+            //NOVOS OVERLAYS PADRÃO
+            if($formato == 5 || $formato == 6)
+            {
+                $formato = self::getFormatName($formato);
+                $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
+
+                if(empty($html))
+                {
+                    $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
+                }
+            }
+            else
+            {
+                $formato = self::getFormatName($formato);
+                $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
+            }            
 
             $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
             $html = str_replace('{SUB_TITLE}', $subTitulo, $html);
