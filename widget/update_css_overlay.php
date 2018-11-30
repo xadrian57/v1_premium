@@ -17,6 +17,8 @@
 
         if(empty($css))
         {
+            echo "\n".$idCli;
+
             $css = str_replace( '{PRIMARY_COLOR}' , $cor['primary'] , $css );
             $css = str_replace( '{SECONDARY_COLOR}' , $cor['secondary'] , $css );
 
