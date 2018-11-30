@@ -941,7 +941,32 @@ $(document).ready(function(){
 										}
 									});
 									break;
-
+								case '13':
+									// camposAdicionais.innerHTML+=
+									// '<div class="col-md-6 pd-l-0">'+
+									// 	'<div class="form-group">'+
+									// 		'<label>Imagem do Banner</label>'+
+									// 		'<div class="eliabo-input-icon-right">'+
+									// 			'<input name="categoriaManual" class="form-control" type="file" accept="image/x-png,image/gif,image/jpeg">'+
+									// 			'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
+									// 				'<i class="icon-info"></i>'+
+									// 			'</abbr>'+
+									// 		'</div>'+
+									// 	'</div>'+
+									// '</div>'+
+									// '<div class="col-md-6 pd-l-0">'+
+									// 	'<div class="form-group">'+
+									// 		'<label>Link do Banner</label>'+
+									// 		'<div class="eliabo-input-icon-right">'+
+									// 			'<input name="categoriaManual" class="form-control" type="text">'+
+									// 			'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
+									// 				'<i class="icon-info"></i>'+
+									// 			'</abbr>'+
+									// 		'</div>'+
+									// 	'</div>'+
+									// '</div>';
+									camposAdicionais.innerHTML = '';
+									break;
 								case '24':
 									camposAdicionais.innerHTML+= // NOME DA CATEGORIA
 									'<div class="col-md-6 pd-l-0">'+
