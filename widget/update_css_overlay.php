@@ -10,14 +10,17 @@
     while($result = mysqli_fetch_array($exec))
     {
         $template = $result['CONF_template_overlay'];
-        $cor = json_decode($result['CONF_cor'], true);
+
+        echo "\n".$idCli;
 
         // Pega o arquivo css e substitui as cores
         $css = @file_get_contents('templates/overlay/kit_'.$template.'/style_to_replace.css');
 
         if(empty($css))
         {
-            echo "\n".$idCli;
+            echo "\n^-------------------------ATUALIZOU";
+
+            $cor = json_decode($result['CONF_cor'], true);
 
             $css = str_replace( '{PRIMARY_COLOR}' , $cor['primary'] , $css );
             $css = str_replace( '{SECONDARY_COLOR}' , $cor['secondary'] , $css );
