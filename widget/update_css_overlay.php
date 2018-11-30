@@ -14,21 +14,26 @@
 
         // Pega o arquivo css e substitui as cores
         $css = @file_get_contents('templates/overlay/kit_'.$template.'/style_to_replace.css');
-        
-        $css = str_replace( '{PRIMARY_COLOR}' , $cor['primary'] , $css );
-        $css = str_replace( '{SECONDARY_COLOR}' , $cor['secondary'] , $css );
 
-        @file_put_contents('css/overlay/rh_overlay_'.sha1($idCli).'.css',$css );
+        if(empty($css))
+        {
+            echo "\n".$idCli;
 
-        //da purge no cache com a cloudflare
-        $api = new cloudflare_api('moises.dourado@roihero.com.br','1404cc5e783d0287897bfb2ebf7faa9e87eb5');
+            $css = str_replace( '{PRIMARY_COLOR}' , $cor['primary'] , $css );
+            $css = str_replace( '{SECONDARY_COLOR}' , $cor['secondary'] , $css );
 
-        $ident = $api->identificador('roihero.com.br');
+            file_put_contents('css/overlay/rh_overlay_'.sha1($idCli).'.css',$css );
 
-        $arquivos = [
-            'https://roihero.com.br/widget/css/overlay/rh_overlay_'.sha1($idCli).'.css'
-        ];
+            //da purge no cache com a cloudflare
+            $api = new cloudflare_api('moises.dourado@roihero.com.br','1404cc5e783d0287897bfb2ebf7faa9e87eb5');
 
-        $api->purgeArquivos($ident,$arquivos);
+            $ident = $api->identificador('roihero.com.br');
+
+            $arquivos = [
+                'https://roihero.com.br/widget/css/overlay/rh_overlay_'.sha1($idCli).'.css'
+            ];
+
+            $api->purgeArquivos($ident,$arquivos);
+        }
     }
 ?>
