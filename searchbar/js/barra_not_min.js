@@ -118,6 +118,7 @@ window['rhSearchBarSendReq'] = function(idCli,idWid){
                         similarWords: JSON.parse(inputCfg.getAttribute('data-similar-words')),
                         currency: inputCfg.getAttribute('data-currency') || 'R$',
                         customResults: inputCfg.getAttribute('data-custom-results'), // resultados fixos no dropdown com links personalizados para quando usuário clicar a primeira vez na barra
+                        customSearchResults: inputCfg.getAttribute('data-rh-custom-results'),
                         paginate: inputCfg.getAttribute('data-paginate'), // paginar busca e coletar resultados do servidor
                         redirect: inputCfg.getAttribute('data-redirect') || false
                     }
@@ -321,6 +322,7 @@ rhSearchBar = function(cfg,idCli,idWid){
             }
         }
 
+        // pesquisa por sku
         if (rhClientIdSb === '818307e00b8ddd4f8f671d975f099a1adf3b6149') {
             if (!isNaN(parseInt(searchTerm.trim()))) {
                 resultados_busca = rh_lite_obj.filter(function(produto){
@@ -571,8 +573,34 @@ rhSearchBar = function(cfg,idCli,idWid){
             return false;
         }
 
-        if (el.value.trim() === '') {
+        if (window['searchbar'].config.customSearchResults !== null) {           
 
+            var customR = JSON.parse(window['searchbar'].config.customSearchResults);
+
+            for (var i = 0; i < customR.length; i++) {
+                var customResult = customR[i];
+
+                for (var j = 0; j < customResult.terms.length; j++) {
+                    var term = customResult.terms[j];
+
+                    if (term === el.value.trim()) {   
+                        relacionados.innerHTML = '<ul id="rh_lite_table_result">'; // monta começo UL                     
+                        document.getElementById('rh_lite_table_result').innerHTML+=
+                        '<li class="rh_lite_mais_pesquisados rh_lite_custom_result"><a href="'+customResult.link+'">'+customResult.title+'</li>';
+                        
+                        relacionados.innerHTML += '</ul>'; // monta começo UL
+                        cfg.searchbarResults.classList.add('active'); // MOSTRANDO OS RESULTADOS
+                        resultado.style.display = 'none'; // ESCONDE RESULTADO PESQUISA
+                        relacionados.style.display = 'block';
+
+
+                        // remove loader
+                        cfg.searchbarResults.classList.remove('loading');
+                        return false;
+                    }
+                }                                     
+            };
+            
         }
 
         // PRIMEIRO, VERIFICA SE N É UM TERMO CADASTRADO MANUALMENTE

@@ -20,6 +20,6 @@ include 'config/config.inc.php';
 use roihero\widget\Widget;
 
 $widget = new Widget();
-$widget->setParametros($_POST);
+$widget->setParametros($_GET);
 $widget->executar();
 ?>
