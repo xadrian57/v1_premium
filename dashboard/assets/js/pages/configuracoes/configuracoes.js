@@ -332,16 +332,6 @@
 
 			}
 		});
-
-		$.ajax({
-			type: 'get',
-			url: '../widget/update_colors_css_overlay.php',
-			data: {
-				'id': idCli,
-				'primary': corPrimaria,
-				'secondary': corSecundaria,
-			}
-		})
 	});
 
 	var errorActiveTrustvox = false;
