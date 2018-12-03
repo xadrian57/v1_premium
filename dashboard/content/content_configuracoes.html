@@ -17,7 +17,7 @@
 
 			<div class="row"> 
 				<!-- VÍDEO PIXEL -->
-				<div class="col-xl-6 col-md-6 col-sm-12">
+				<div class="col-xl-6 col-md-12 col-sm-12">
 					<div class="card">
 						<div class="card-body">
 							<div class="card-block">
@@ -37,7 +37,7 @@
 					</div>
 				</div> 
 
-				<div class="col-xl-6 col-md-6 col-sm-12">
+				<div class="col-xl-6 col-md-12 col-sm-12">
 					<div class="card">
 						<div class="card-body">
 							<div class="card-block">
@@ -53,8 +53,8 @@
 										</div>
 									</div>
 									<div class="col-xl-6 col-md-6 col-sm-12">
+										<label>Cor Primária da Sua Loja</label>
 										<fieldset class="form-group position-relative has-icon-left">
-											<label>Cor Primária da Sua Loja</label>
 				                            <input id="corPrimaria" type="text" class="form-control jscolor" name="corPrimaria">
 				                            <div class="form-control-position drop">
 				                                <i class="fa fa-eyedropper" aria-hidden="true"></i>
@@ -62,8 +62,8 @@
 				                        </fieldset>
 									</div>
 									<div class="col-xl-6 col-md-6 col-sm-12">
+										<label>Cor Secundária da Sua Loja</label>
 										<fieldset class="form-group position-relative has-icon-left">
-											<label>Cor Secundária da Sua Loja</label>
 				                            <input id="corSecundaria" type="text" class="form-control jscolor" name="corSecundaria">
 				                            <div class="form-control-position drop">
 				                                <i class="fa fa-eyedropper" aria-hidden="true"></i>
@@ -216,7 +216,8 @@
 <style type="text/css">
 	.form-control-position.drop {
 	    position: absolute;
-	    top: 32px;
+	    top: calc(50% - 17.5px);
+	    top: webkit-calc(50% - 17.5px);
 	    z-index: 2;
 	    display: block;
 	    width: 2.5rem;
