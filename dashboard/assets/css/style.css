@@ -610,10 +610,10 @@
         line-height: 1.428571429;
         border-radius: 15px;
     }
-    .eliabo-input-icon-right{
+    .rh-input-icon-right{
         position: relative;
     }
-    .eliabo-input-icon-right .info-abbr{
+    .rh-input-icon-right .info-abbr{
         right: 10px;
         top: 13px;
     }

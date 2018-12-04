@@ -152,7 +152,35 @@
 	}
 
 	// ATUALIZA AS INFORMAÇOES DO WIDGET NO BANCO COM O QUE FOI EDITADO
-	function atualizaWidget($conCad, $idWid, $info){ 
+	function atualizaWidget($conCad, $idWid, $post, $files){
+
+		// pega as chaves que vieram no post pra iterar e criar uma nova array
+		$info = array();
+		$names = array_keys($post);
+		foreach ($names as $name) {
+			$info[$name] = $post[$name];
+		}
+
+
+		if (isset($files["imagemBanner"])) {
+			echo `aaaaa`;
+			switch ($files["imagemBanner"]['type']) {
+				case "image/png":
+					$extension = 'png';
+					break;
+				case "image/jpg":
+					$extension = 'jpg';
+					break;
+				case "image/jpeg":
+					$extension = 'jpeg';
+					break;
+			}
+
+			// echo readfile($_FILES["imagemBanner"]["tmp_name"]);
+			$sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
+			$targetPath = "../../widget/images/overlay/".$idWid.'.'.$extension; // Target path where file is to be stored
+			move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+		}
 
 		$camposBDWID = array( // campos do widget
 			'nome'=>'WID_nome',
@@ -188,13 +216,11 @@
 			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f',
 			'marca' => 'WC_marca'
 		);
-		
-		foreach($info as $k1 => $v1)
-			foreach($v1 as $k => $v)
-				if($k == "produtosWidget")
-					unset($camposBDWIDCONFIG["bossChoiceProdId"]);
 
-/*
+		// imagem banner overlay
+
+		
+		/*
 		foreach($compreJunto as $campo => $valor){
 			$valor = implode(",", $valor);
 			$valor = strtoupper($valor);
@@ -236,84 +262,86 @@
 		$hides = "";
 		$shows = "";
 
-
 		foreach($info as $k1 => $v1){
-			foreach($v1 as $k => $v){
-				if($k == "widHide"){
-					if($primeiros[$k][0]){
-						$primeiros[$k][0] = false;
-						$primeiros[$k][1] = $k1;
-						$info[$k1]->$k = $v;
-					} else {
-						$info[$primeiros[$k][1]]->$k .= ",".$v;
-						$evitar[] = $k1;
+			if (is_array($k1)) {
+				foreach($v1 as $k => $v){
+					if($k == "widHide"){
+						if($primeiros[$k][0]){
+							$primeiros[$k][0] = false;
+							$primeiros[$k][1] = $k1;
+							$info[$k1]->$k = $v;
+						} else {
+							$info[$primeiros[$k][1]]->$k .= ",".$v;
+							$evitar[] = $k1;
+						}
+					}
+
+					if($k == "widShow"){
+						if($primeiros[$k][0]){
+							$primeiros[$k][0] = false;
+							$primeiros[$k][1] = $k1;
+							$info[$k1]->$k = $v;
+						} else {
+							$info[$primeiros[$k][1]]->$k .= ",".$v;
+							$evitar[] = $k1;
+						}
+					}
+
+					if(in_array($k, $compreJunto)){
+						$v = strtoupper($v);
+						if($primeiros[$k][0]){
+							$primeiros[$k][0] = false;
+							$primeiros[$k][1] = $k1;
+							$info[$k1]->$k = $v;
+						} else {
+							$info[$primeiros[$k][1]]->$k .= ",".$v;
+							$evitar[] = $k1;
+						}
 					}
 				}
-
-				if($k == "widShow"){
-					if($primeiros[$k][0]){
-						$primeiros[$k][0] = false;
-						$primeiros[$k][1] = $k1;
-						$info[$k1]->$k = $v;
-					} else {
-						$info[$primeiros[$k][1]]->$k .= ",".$v;
-						$evitar[] = $k1;
-					}
-				}
-
-				if(in_array($k, $compreJunto)){
-					$v = strtoupper($v);
-					if($primeiros[$k][0]){
-						$primeiros[$k][0] = false;
-						$primeiros[$k][1] = $k1;
-						$info[$k1]->$k = $v;
-					} else {
-						$info[$primeiros[$k][1]]->$k .= ",".$v;
-						$evitar[] = $k1;
-					}
-				}
-
-			}
+			}			
 		}
 
 		// -- fim tratamentos
-
-		
-
-		for ($i=0; $i < count($info); $i++) {
+		$i = 0;
+		foreach ($info as $key => $value) {
 			if (in_array($i, $evitar))
 				continue;
-			foreach ($info[$i] as $key => $value) {
-				if($key == "widDiv" and $value == "")
-					continue;
-				if(in_array($key, $compreJunto))
-					$value = strtoupper($value);
-				if(isset($camposBDWID[$key])){
-					$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
-				} 
-				else if (isset($camposBDWIDCONFIG[$key])){
-					if($key == "palavrasPaiFilho"){
-						//$palavrasPaiFilho = str_replace(" ", "", $value);
-						$partes = explode(",", $value);
-						
-						$filhos = [];
-						$pais = [];
-						foreach($partes as $k => $parte){
-							$pai_filho = explode("->", $parte);
+			
+			if (is_array($info[$key])) {
+				foreach ($info[$key] as $key => $value) {
+					if($key == "widDiv" and $value == "")
+						continue;
+					if(in_array($key, $compreJunto))
+						$value = strtoupper($value);
+					if(isset($camposBDWID[$key])){
+						$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
+					} 
+					else if (isset($camposBDWIDCONFIG[$key])){
+						if($key == "palavrasPaiFilho"){
+							//$palavrasPaiFilho = str_replace(" ", "", $value);
+							$partes = explode(",", $value);
 							
-							$filhos[] = $pai_filho[1];
-							$pais[] = $pai_filho[0];
+							$filhos = [];
+							$pais = [];
+							foreach($partes as $k => $parte){
+								$pai_filho = explode("->", $parte);
+								
+								$filhos[] = $pai_filho[1];
+								$pais[] = $pai_filho[0];
+							}
+							
+							$pais = implode(",", $pais);
+							$filhos = implode(",", $filhos);
+	
+							$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
+						} else{
+							$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
 						}
-						
-						$pais = implode(",", $pais);
-						$filhos = implode(",", $filhos);
-
-						$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
-					} else{
-						$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
 					}
 				}
 			}
+			$i++;
 		}
 
 		$updateWid = substr($updateWid,0,-2); // Remove a última vírgula
@@ -358,10 +386,7 @@
 			break;
 		case '3': // ATUALIZA INFORMAÇÕES DO WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
-			$infoWid = $_POST['widInfo'];
-			$infoWid = stripcslashes($infoWid); //removendo caracteres de escape
-			$infoWid = (array) json_decode($infoWid);
-			atualizaWidget($conCad, $idWid, $infoWid);
+			atualizaWidget($conCad, $idWid, $_POST, $_FILES);
 			break;
 		case '4': // ATIVA/DESATIVA WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);

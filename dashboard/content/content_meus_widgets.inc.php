@@ -303,7 +303,7 @@ if($_SESSION['idPlan'] == 42) {
                 	<div class="col-md-12">
                 		<div class="form-group">
 	                    	<label>Nome</label>
-	                    	<div class="eliabo-input-icon-right">
+	                    	<div class="rh-input-icon-right">
 	                    		<input id="nomeWidget" name="nome" class="form-control" type="text">
                                 <abbr title="Esse nome serve para identificação do seu bloco aqui dentro do Dashboard apenas, ele não irá aparecer na sua loja" class="info-abbr">
                                     <i class="icon-info"></i>
@@ -314,7 +314,7 @@ if($_SESSION['idPlan'] == 42) {
                 	<div class="col-md-12">
 	                    <div class="form-group">
 	                    	<label>Título Promocional</label>
-	                    	<div class="eliabo-input-icon-right">
+	                    	<div class="rh-input-icon-right">
 		                    	<input id="tituloWidget" name="titulo" class="form-control" type="text">
                                 <abbr title="Esse é o título do bloco que irá aparecer na sua loja" class="info-abbr">
                                     <i class="icon-info"></i>
@@ -325,7 +325,7 @@ if($_SESSION['idPlan'] == 42) {
                 	<div class="col-md-12">
 	                    <div class="form-group">
 	                    	<label>UTM</label>
-	                    	<div class="eliabo-input-icon-right">
+	                    	<div class="rh-input-icon-right">
 	                    		<input id="utmWidget" name="utm" class="form-control" type="text">
                                 <abbr title="Link por onde você pode fazer a analise de fluxo de dados via Google Analytics" class="info-abbr">
                                     <i class="icon-info"></i>

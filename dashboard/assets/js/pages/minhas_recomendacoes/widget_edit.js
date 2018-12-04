@@ -409,7 +409,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0">'+
 															'<div class="form-group">'+
 																'<label>Palavra Chave Pai</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																	'<input name="p_chave_pai" class="form-control" type="text" value="">'+
 																	'<abbr title="Essa é a palavra pai que vai ser usada como referência pela nossa inteligência. Iremos recomendar os produtos da palavra filho quando estiver sendo exibido um produto referente a ela" class="info-abbr">'+
 																		'<i class="icon-info"></i>'+
@@ -420,7 +420,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0 pd-r-0">'+
 															'<div class="form-group">'+
 																'<label>Palavra Chave Filho</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																'<input name="p_chave_filho" class="form-control" type="text" value="">'+
 																	'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																		'<i class="icon-info"></i>'+
@@ -431,7 +431,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0">'+
 															'<div class="form-group">'+
 																'<label>Tipo da Palavra Chave Pai</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																	'<select name="tp_chave_pai" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>'+
 																		'<option selected value="0">Título</option>'+
 																		'<option value="1">Categoria</option>'+
@@ -445,7 +445,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0 pd-r-0">'+
 															'<div class="form-group">'+
 																'<label>Tipo da Palavra Chave Filho</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																	'<select name="tp_chave_filho" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>'+
 																		'<option selected value="0">Título</option>'+
 																		'<option value="1">Categoria</option>'+
@@ -459,7 +459,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0">'+
 															'<div class="form-group">'+
 																'<label>Parâmetro Pai</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																'<input name="parametro_pai" class="form-control" type="text" value="">'+
 																	'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																		'<i class="icon-info"></i>'+
@@ -470,7 +470,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0 pd-r-0">'+
 															'<div class="form-group">'+
 																'<label>Parâmetro Filho</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																'<input name="parametro_filho" class="form-control" type="text" value="">'+
 																	'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																		'<i class="icon-info"></i>'+
@@ -481,7 +481,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0">'+
 															'<div class="form-group">'+
 																'<label>Tipo do Parâmetro Pai</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																	'<select name="tp_parametro_pai" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>'+
 																		'<option selected value="0">Título</option>'+
 																		'<option value="1">Categoria</option>'+
@@ -495,7 +495,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0 pd-r-0">'+
 															'<div class="form-group">'+
 																'<label>Tipo do Parâmetro Filho</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																	'<select name="tp_parametro_filho" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>'+
 																		'<option selected value="0">Título</option>'+
 																		'<option value="1">Categoria</option>'+
@@ -509,7 +509,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0">'+
 															'<div class="form-group">'+
 																'<label>Negativa Pai</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																'<input name="negativa_pai" class="form-control" type="text" value="">'+
 																	'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																		'<i class="icon-info"></i>'+
@@ -520,7 +520,7 @@ $(document).ready(function(){
 														'<div class="col-md-6 pd-l-0 pd-r-0">'+
 															'<div class="form-group">'+
 																'<label>Negativa Filho</label>'+
-																'<div class="eliabo-input-icon-right">'+
+																'<div class="rh-input-icon-right">'+
 																'<input name="negativa_filho" class="form-control" type="text" value="">'+
 																	'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																		'<i class="icon-info"></i>'+
@@ -575,7 +575,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0">'+
 																'<div class="form-group">'+
 																	'<label>Palavra Chave Pai</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																		'<input name="p_chave_pai" class="form-control" type="text" value="'+widget.WC_cj_p[i]+'">'+
 																		'<abbr title="Essa é a palavra pai que vai ser usada como referência pela nossa inteligência. Iremos recomendar os produtos da palavra filho quando estiver sendo exibido um produto referente a ela" class="info-abbr">'+
 																			'<i class="icon-info"></i>'+
@@ -586,7 +586,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0 pd-r-0">'+
 																'<div class="form-group">'+
 																	'<label>Palavra Chave Filho</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																	'<input name="p_chave_filho" class="form-control" type="text" value="'+widget.WC_cj_f[i]+'">'+
 																		'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																			'<i class="icon-info"></i>'+
@@ -597,7 +597,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0">'+
 																'<div class="form-group">'+
 																	'<label>Tipo da Palavra Chave Pai</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																		'<select name="tp_chave_pai" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>';
 																			if(widget.tx_tipo_pai[i] == 0){
 																				htmlInicio 	+= '<option selected value="0">Título</option>'+
@@ -616,7 +616,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0 pd-r-0">'+
 																'<div class="form-group">'+
 																	'<label>Tipo da Palavra Chave Filho</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																		'<select name="tp_chave_filho" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>';
 																				if(widget.tx_tipo_filho[i] == 0){
 																					htmlInicio 	+= '<option selected value="0">Título</option>'+
@@ -635,7 +635,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0">'+
 																'<div class="form-group">'+
 																	'<label>Parâmetro Pai</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																	'<input name="parametro_pai" class="form-control" type="text" value="'+widget.tx_param_pai[i]+'">'+
 																		'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																			'<i class="icon-info"></i>'+
@@ -646,7 +646,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0 pd-r-0">'+
 																'<div class="form-group">'+
 																	'<label>Parâmetro Filho</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																	'<input name="parametro_filho" class="form-control" type="text" value="'+widget.tx_param_filho[i]+'">'+
 																		'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																			'<i class="icon-info"></i>'+
@@ -657,7 +657,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0">'+
 																'<div class="form-group">'+
 																	'<label>Tipo do Parâmetro Pai</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																		'<select name="tp_parametro_pai" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>';
 																				if(widget.tx_tipo_param_pai[i] == 0){
 																					htmlInicio 	+= '<option selected value="0">Título</option>'+
@@ -676,7 +676,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0 pd-r-0">'+
 																'<div class="form-group">'+
 																	'<label>Tipo do Parâmetro Filho</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																		'<select name="tp_parametro_filho" type="text"class="form-control" onchange="" data-validation-required-message="Este campo é obrigatório" required>';
 																					if(widget.tx_tipo_param_filho[i] == 0){
 																						htmlInicio 	+= '<option selected value="0">Título</option>'+
@@ -695,7 +695,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0">'+
 																'<div class="form-group">'+
 																	'<label>Negativa Pai</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																	'<input name="negativa_pai" class="form-control" type="text" value="'+widget.tx_negativa_pai[i]+'">'+
 																		'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																			'<i class="icon-info"></i>'+
@@ -706,7 +706,7 @@ $(document).ready(function(){
 															'<div class="col-md-6 pd-l-0 pd-r-0">'+
 																'<div class="form-group">'+
 																	'<label>Negativa Filho</label>'+
-																	'<div class="eliabo-input-icon-right">'+
+																	'<div class="rh-input-icon-right">'+
 																	'<input name="negativa_filho" class="form-control" type="text" value="'+widget.tx_negativa_filho[i]+'">'+
 																		'<abbr title="Essa é a palavra filho que vai ser usada como referência pela nossa inteligência, iremos recomendar produtos de acordo com ela" class="info-abbr">'+
 																			'<i class="icon-info"></i>'+
@@ -730,7 +730,7 @@ $(document).ready(function(){
 
 									camposAdicionais.innerHTML+= // PALAVRA CHAVE PAI
 									'<div class="form-group">'+
-								    	'<div class="eliabo-input-icon-right">'+
+								    	'<div class="rh-input-icon-right">'+
 										htmlInicio+
 									    	'<button class="btn btn-primary addConfGroup" title="Adicionar mais um grupo de configuração" data-index="' + i + '">'+
 									    	'+ Adicionar novo Grupo'+
@@ -753,7 +753,7 @@ $(document).ready(function(){
 										
 										'<div id="manualOfertaLimitada" class="form-group">'+
 											'<label>Nome do Produto</label>'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<input name="manualOfertaLimitada" id="manualOfertaLimitadaInput" class="form-control" type="text"';
 												htmlManualOfertaLimitada+= 
 												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false">' +
@@ -896,7 +896,7 @@ $(document).ready(function(){
 									
 									'<div id="manualOfertaLimitada" class="form-group" style="display:none;">'+
 										'<label>Nome do Produto</label>'+
-										'<div class="eliabo-input-icon-right">'+
+										'<div class="rh-input-icon-right">'+
 											'<input name="manualOfertaLimitada" id="manualOfertaLimitadaInput" class="form-control" type="text"';
 											if (typeof widget.WC_titulos_produtos != 'undefined' && widget.WC_titulos_produtos.lenght > 1){
 												htmlManualOfertaLimitada+= ' value="'+widget.WC_titulos_produtos+'"';
@@ -942,37 +942,36 @@ $(document).ready(function(){
 									});
 									break;
 								case '13':
-									// camposAdicionais.innerHTML+=
-									// '<div class="col-md-6 pd-l-0">'+
-									// 	'<div class="form-group">'+
-									// 		'<label>Imagem do Banner</label>'+
-									// 		'<div class="eliabo-input-icon-right">'+
-									// 			'<input name="categoriaManual" class="form-control" type="file" accept="image/x-png,image/gif,image/jpeg">'+
-									// 			'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
-									// 				'<i class="icon-info"></i>'+
-									// 			'</abbr>'+
-									// 		'</div>'+
-									// 	'</div>'+
-									// '</div>'+
-									// '<div class="col-md-6 pd-l-0">'+
-									// 	'<div class="form-group">'+
-									// 		'<label>Link do Banner</label>'+
-									// 		'<div class="eliabo-input-icon-right">'+
-									// 			'<input name="categoriaManual" class="form-control" type="text">'+
-									// 			'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
-									// 				'<i class="icon-info"></i>'+
-									// 			'</abbr>'+
-									// 		'</div>'+
-									// 	'</div>'+
-									// '</div>';
-									camposAdicionais.innerHTML = '';
+									camposAdicionais.innerHTML+=
+									'<div class="col-md-6 pd-l-0">'+
+										'<div class="form-group">'+
+											'<label>Imagem do Banner</label>'+
+											'<div class="rh-input-icon-right">'+
+												'<input id="imagemBanner" name="imagemBanner" class="form-control" type="file" accept="image/x-png,image/gif,image/jpeg">'+
+												'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
+													'<i class="icon-info"></i>'+
+												'</abbr>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+									'<div class="col-md-6 pd-l-0">'+
+										'<div class="form-group">'+
+											'<label>Link do Banner</label>'+
+											'<div class="rh-input-icon-right">'+
+												'<input name="categoriaManual" class="form-control" type="text">'+
+												'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
+													'<i class="icon-info"></i>'+
+												'</abbr>'+
+											'</div>'+
+										'</div>'+
+									'</div>';
 									break;
 								case '24':
 									camposAdicionais.innerHTML+= // NOME DA CATEGORIA
 									'<div class="col-md-6 pd-l-0">'+
 										'<div class="form-group">'+
 											'<label>Nome da Categoria</label>'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<input name="categoriaManual" class="form-control" type="text" value="'+widget.WC_categoria+'">'+
 												'<abbr data-toggle="tooltip" data-placement="right";'+
 													'data-original-title="Esse é o nome da categoria dos produtos a serem recomendados" class="info-abbr">'+
@@ -988,7 +987,7 @@ $(document).ready(function(){
 										'<div class="col-md-6 pd-l-0">'+
 											'<div class="form-group">'+
 												'<label>Palavra Chave</label>'+
-												'<div class="eliabo-input-icon-right">'+
+												'<div class="rh-input-icon-right">'+
 													'<input name="p_chave" class="form-control" type="text" value="'+widget.WC_collection+'">'+
 													'<abbr data-toggle="tooltip" data-placement="right";'+
 														'data-original-title="Essa é a palavra chave do seu bloco, a nossa inteligênca recomendará os produtos de acordo com ela" class="info-abbr">'+
@@ -1078,7 +1077,7 @@ $(document).ready(function(){
 									'<div class="col-md-6 pd-l-0">'+
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
@@ -1092,7 +1091,7 @@ $(document).ready(function(){
 									'<div class="col-md-6 pd-l-0">'+
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
@@ -1107,7 +1106,7 @@ $(document).ready(function(){
 										'<div class="col-md-6 pd-l-0">'+
 											'<div class="form-group">'+
 												'<label>Tag XML 1</label>'+
-												'<div class="eliabo-input-icon-right">'+
+												'<div class="rh-input-icon-right">'+
 													'<input name="marca" class="form-control" type="text" value="'+widget.tx_param_pai+'">'+
 													'<abbr data-toggle="tooltip" data-placement="right";'+
 														'data-original-title="Coloque aqui uma Tag presente no seu XML que você queira levar em consideração na similaridade." class="info-abbr">'+
@@ -1119,7 +1118,7 @@ $(document).ready(function(){
 										'<div class="col-md-6 pd-l-0">'+
 											'<div class="form-group">'+
 												'<label>Tag XML 1</label>'+
-												'<div class="eliabo-input-icon-right">'+
+												'<div class="rh-input-icon-right">'+
 													'<input name="parametro_filho" class="form-control" type="text" value="'+widget.tx_param_filho+'">'+
 													'<abbr data-toggle="tooltip" data-placement="right";'+
 														'data-original-title="Coloque aqui uma Tag presente no seu XML que você queira levar em consideração na similaridade." class="info-abbr">'+
@@ -1185,7 +1184,7 @@ $(document).ready(function(){
 								'<div class="row">'+
 									'<div class="col-xs-3">'+
 										'<label>Tipo do Container</label>'+
-										'<div class="eliabo-input-icon-right">'+
+										'<div class="rh-input-icon-right">'+
 											'<select id="widDivType" name="widDivType" class="form-control">'+
 												'<option id="1"';
 												if(widget.WID_div_type == 'id' || widget.WID_div_type == 'ID')
@@ -1200,7 +1199,7 @@ $(document).ready(function(){
 									'</div>'+
 									'<div class="col-xs-4">'+
 										'<label>Nome da classe ou ID</label>'+
-										'<div class="eliabo-input-icon-right">'+
+										'<div class="rh-input-icon-right">'+
 											'<input id="widDiv" name="widDiv" class="form-control" type="text" value="'+widget.WID_div+'">'+
 											'<abbr title="Esse é o identificador do container onde o nosso bloco vai ficar dentro da sua loja" class="info-abbr">'+
 												'<i class="icon-info"></i>'+
@@ -1209,7 +1208,7 @@ $(document).ready(function(){
 									'</div>'+
 									'<div class="col-xs-5">'+
 										'<label>Posição relativa ao Container</label>'+
-										'<div class="eliabo-input-icon-right">'+
+										'<div class="rh-input-icon-right">'+
 											'<select name="UpDown" class="form-control">'+
 												'<option id="1" ';
 												if(parseInt(widget.WID_updown) == 1)
@@ -1232,7 +1231,7 @@ $(document).ready(function(){
 									//1 - Prateleira ;    2 - Dupla   ; 3 - Carrossel;      11 - Totem;     8 - Vitrine
 									'<div class="form-group">'+
 										'<label>Formato do Bloco</label>'+
-										'<div class="eliabo-input-icon-right">'+
+										'<div class="rh-input-icon-right">'+
 											select+
 											'<abbr title="Esse é o formato que o nosso bloco vai aparecer em sua loja" class="info-abbr" style="right:20px;">'+
 												'<i class="icon-info"></i>'+
@@ -1243,7 +1242,7 @@ $(document).ready(function(){
 							
 
 							htmlHide = '<div class="form-group exceptions">'+
-									'<div class="eliabo-input-icon-right">'+
+									'<div class="rh-input-icon-right">'+
 										'<input id="widHide" name="widHide" class="form-control" type="url" value="">'+
 										'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>'+
 									'</div>'+
@@ -1251,7 +1250,7 @@ $(document).ready(function(){
 
 							htmlShow = 
 									'<div class="form-group inclusions">'+
-										'<div class="eliabo-input-icon-right">'+
+										'<div class="rh-input-icon-right">'+
 											'<input name="widShow" class="form-control" type="url" value="">'+
 										'</div>'+
 										'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>'+
@@ -1263,7 +1262,7 @@ $(document).ready(function(){
 									'<div class="col-md-6">'+
 										'<div class="form-group exceptions">'+
 											'<label>Excessões de páginas</label>'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<input id="widHide" name="widHide" class="form-control" type="url" value="">'+
 												'<abbr title="Informe o nome da página que deseja que o widget não seja executado" class="info-abbr">'+
 													'<i class="icon-info"></i>'+
@@ -1271,7 +1270,7 @@ $(document).ready(function(){
 											'</div>'+
 										'</div>'+
 										'<div class="form-group">'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<button class="btn btn-primary addHideField" title="Adicionar mais uma página de excessão">'+
 												'+'+
 												'</button>'+
@@ -1281,7 +1280,7 @@ $(document).ready(function(){
 									'<div class="col-md-6">'+
 										'<div class="form-group inclusions">'+
 											'<label>Inclusões de páginas</label>'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<input id="widShow" name="widShow" class="form-control" type="url" value="">'+
 												'<abbr title="Informe o nome da página que deseja que o widget seja executado" class="info-abbr">'+
 													'<i class="icon-info"></i>'+
@@ -1289,7 +1288,7 @@ $(document).ready(function(){
 											'</div>'+
 										'</div>'+
 										'<div class="form-group">'+
-											'<div class="eliabo-input-icon-right">'+
+											'<div class="rh-input-icon-right">'+
 												'<button class="btn btn-primary addShowField" title="Adicionar mais uma página de inclusão">'+
 												'+'+
 												'</button>'+
@@ -1343,35 +1342,45 @@ $(document).ready(function(){
 					var inputs = $('#campos-wid-edit input');
 					var selects = $('#campos-wid-edit select');
 
-					var info = [];
+					var formData = new FormData();
+					formData.append('idWid',idWid);
+					formData.append('op',3);
 
 					// PEGA O VALOR DE TODOS OS INPUTS
 					for (var i = 0; i < inputs.length;i++){
 						var key = inputs[i].name;
-						var val = inputs[i].value;
-						info.push({[key]:val});
+						if (inputs[i].type == 'file') {
+							var val = inputs[i].files[0];
+						} else {
+							var val = inputs[i].value;
+						}
+						
+						formData.append(key, val);
 					}
 					// PEGA O VALOR DE TODOS OS SELECTS
 					for (var i = 0; i < selects.length; i++) {
 						var key = selects[i].name;
 						var val = selects[i].value;
-						info.push({[key]:val});
+						formData.append(key, val);
 					};
 
 					var key = "bossChoiceProdId";
 					var val = bossChoiceProdId;
-					info.push({[key]:val});
+					formData.append("bossChoiceProdId", bossChoiceProdId);
 					
 					var key = "bossChoiceProdTitulo";
 					var val = bossChoiceProdTitulo;
-					info.push({[key]:val});
+					formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
 
-					info = JSON.stringify(info);
 
 					$.ajax({
 						type: 'POST',
 						url: 'resource/resource_widget_edit.php',
-						data: {'idWid':idWid, 'widInfo': info, 'op':3},
+						dataType: 'text',  // what to expect back from the PHP script, if anything
+				        cache: false,
+				        contentType: false,
+				        processData: false,
+						data: formData,
 						success: function(result){
 							$('#modalEditarWidget').modal('hide');
 							toastr['success']('As informações do seu bloco de recomendação foram atualizadas!');
