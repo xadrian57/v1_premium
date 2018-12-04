@@ -4,6 +4,7 @@ blog/**/*
 *.txt
 widget/css/**/* 
 widget/templates/**/* 
+widget/images/**/* 
 searchbar/templates/**/* 
 busca/templates/**/*
 busca/js/searchbar/searchbar.min.js
