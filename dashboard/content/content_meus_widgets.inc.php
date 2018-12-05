@@ -386,4 +386,42 @@ if($_SESSION['idPlan'] == 42) {
 	</div>
 </div>
 <script type="text/javascript" src="assets/js/pages/minhas_recomendacoes/widget_edit.js"></script>
+<script>
+	
+
+	var rhPhoto = function (el) {
+		$(el).click( function(){
+			var path = this.dataset.target;
+
+			var modal = document.createElement('div');
+			modal.id = 'modalViewPhoto';
+			modal.classList = 'modal';
+
+			modal.innerHTML = `
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content text-xs-center">
+						<div class="modal-header text-xs-left">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+							<h4 class="modal-title"><i class="ft-image"></i> Imagem</h4>							
+						</div>
+						<div class="modal-body">
+							<img src="${path}">
+						</div>
+					</div>
+				</div>
+			`;
+
+			$(modal).insertBefore($('body')[0].firstChild);
+			
+			$('#modalViewPhoto').modal();		
+			$('#modalEditarWidget').modal('hide');
+
+			$('#modalViewPhoto').on('hidden.bs.modal', function () {
+				$('#modalEditarWidget').modal('show');
+			});
+		});
+	}	
+</script>
 

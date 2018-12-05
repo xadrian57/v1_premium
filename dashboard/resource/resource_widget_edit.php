@@ -160,28 +160,6 @@
 		foreach ($names as $name) {
 			$info[$name] = $post[$name];
 		}
-
-
-		if (isset($files["imagemBanner"])) {
-			echo `aaaaa`;
-			switch ($files["imagemBanner"]['type']) {
-				case "image/png":
-					$extension = 'png';
-					break;
-				case "image/jpg":
-					$extension = 'jpg';
-					break;
-				case "image/jpeg":
-					$extension = 'jpeg';
-					break;
-			}
-
-			// echo readfile($_FILES["imagemBanner"]["tmp_name"]);
-			$sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
-			$targetPath = "../../widget/images/overlay/".$idWid.'.'.$extension; // Target path where file is to be stored
-			move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
-		}
-
 		$camposBDWID = array( // campos do widget
 			'nome'=>'WID_nome',
 			'titulo'=>'WID_texto',
@@ -214,11 +192,39 @@
 			'negativa_pai' => 'tx_negativa_pai',
 			'negativa_filho' => 'tx_negativa_filho',
 			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f',
-			'marca' => 'WC_marca'
+			'marca' => 'WC_marca',
+			'imagemBanner' => 'WC_banner',
+			'linkBannerOverlay' => 'WC_link_banner'
 		);
 
 		// imagem banner overlay
+		if (isset($files["imagemBanner"])) {
+			switch ($files["imagemBanner"]['type']) {
+				case "image/png":
+					$extension = 'png';
+					break;
+				case "image/jpg":
+					$extension = 'jpg';
+					break;
+				case "image/jpeg":
+					$extension = 'jpeg';
+					break;
+			}
 
+			$banner = "banner_overlay_".$idWid.'.'.$extension;
+
+			// echo readfile($_FILES["imagemBanner"]["tmp_name"]);
+			$sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
+			$targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
+			move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+
+			$info['imagemBanner'] = $banner;
+
+		} 
+		// caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
+		else {
+			unset($camposBDWIDCONFIG['imagemBanner']);
+		}
 		
 		/*
 		foreach($compreJunto as $campo => $valor){
@@ -262,52 +268,42 @@
 		$hides = "";
 		$shows = "";
 
-		foreach($info as $k1 => $v1){
-			if (is_array($k1)) {
-				foreach($v1 as $k => $v){
-					if($k == "widHide"){
-						if($primeiros[$k][0]){
-							$primeiros[$k][0] = false;
-							$primeiros[$k][1] = $k1;
-							$info[$k1]->$k = $v;
-						} else {
-							$info[$primeiros[$k][1]]->$k .= ",".$v;
-							$evitar[] = $k1;
-						}
-					}
-
-					if($k == "widShow"){
-						if($primeiros[$k][0]){
-							$primeiros[$k][0] = false;
-							$primeiros[$k][1] = $k1;
-							$info[$k1]->$k = $v;
-						} else {
-							$info[$primeiros[$k][1]]->$k .= ",".$v;
-							$evitar[] = $k1;
-						}
-					}
-
-					if(in_array($k, $compreJunto)){
-						$v = strtoupper($v);
-						if($primeiros[$k][0]){
-							$primeiros[$k][0] = false;
-							$primeiros[$k][1] = $k1;
-							$info[$k1]->$k = $v;
-						} else {
-							$info[$primeiros[$k][1]]->$k .= ",".$v;
-							$evitar[] = $k1;
-						}
-					}
+		foreach($info as $k => $v){
+			if($k == "widHide"){
+				if($primeiros[$k][0]){
+					$primeiros[$k][0] = false;
+					$primeiros[$k][1] = $k;
+				} else {
+					$info[$primeiros[$k][1]]->$k .= ",".$v;
+					$evitar[] = $k;
 				}
-			}			
+			}
+
+			if($k == "widShow"){
+				if($primeiros[$k][0]){
+					$primeiros[$k][0] = false;
+					$primeiros[$k][1] = $k;
+				} else {
+					$info[$primeiros[$k][1]]->$k .= ",".$v;
+					$evitar[] = $k;
+				}
+			}
+
+			if(in_array($k, $compreJunto)){
+				$v = strtoupper($v);
+				if($primeiros[$k][0]){
+					$primeiros[$k][0] = false;
+					$primeiros[$k][1] = $k;
+				} else {
+					$info[$primeiros[$k][1]]->$k .= ",".$v;
+					$evitar[] = $k;
+				}
+			}	
 		}
 
 		// -- fim tratamentos
 		$i = 0;
-		foreach ($info as $key => $value) {
-			if (in_array($i, $evitar))
-				continue;
-			
+		foreach ($info as $key => $value) {			
 			if (is_array($info[$key])) {
 				foreach ($info[$key] as $key => $value) {
 					if($key == "widDiv" and $value == "")
@@ -335,10 +331,12 @@
 							$filhos = implode(",", $filhos);
 	
 							$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
-						} else{
-							$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
 						}
 					}
+				}
+			} else{
+				if (isset($camposBDWIDCONFIG[$key])) { // checa se existe o campo de configuracao no wid
+					$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
 				}
 			}
 			$i++;
@@ -355,6 +353,8 @@
 			$updateWid = substr($updateWid,0,-2);
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
+
+			echo $queryWidConfig;
 		}		
 	}
 

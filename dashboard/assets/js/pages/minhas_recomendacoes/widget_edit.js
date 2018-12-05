@@ -943,22 +943,39 @@ $(document).ready(function(){
 									break;
 								case '13':
 									camposAdicionais.innerHTML+=
-									'<div class="col-md-6 pd-l-0">'+
-										'<div class="form-group">'+
-											'<label>Imagem do Banner</label>'+
+									'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
+										'<label>Imagem Atual:</label>'+
+										'<div class="form-control">'+
+											'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
+												'<i class="icon-info"></i>'+
+											'</abbr>'+
 											'<div class="rh-input-icon-right">'+
-												'<input id="imagemBanner" name="imagemBanner" class="form-control" type="file" accept="image/x-png,image/gif,image/jpeg">'+
-												'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
-													'<i class="icon-info"></i>'+
-												'</abbr>'+
+												'<div class="media">'+
+													'<div class="media-left">'+
+														'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WC_banner+'">'+
+													'</div>'+
+													'<div class="media-body">'+
+														'<div class="form-group">'+
+															'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WC_banner+'">Visualizar <i class="ft-eye"></i></button>'+
+														'</div>'+
+														'<div class="form-group">'+
+															'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>'+	
+														'</div>'+
+													'</div>'+													
+												'</div>'+
+											'</div>'+
+										'</div>'+
+										'<div class="form-group">'+
+											'<div class="rh-input-icon-right">'+
+												'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+													
 											'</div>'+
 										'</div>'+
 									'</div>'+
 									'<div class="col-md-6 pd-l-0">'+
 										'<div class="form-group">'+
-											'<label>Link do Banner</label>'+
+											'<label for="linkBannerOverlay">Link do Banner</label>'+
 											'<div class="rh-input-icon-right">'+
-												'<input name="categoriaManual" class="form-control" type="text">'+
+												'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WC_link_banner+'">'+
 												'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -1107,7 +1124,7 @@ $(document).ready(function(){
 											'<div class="form-group">'+
 												'<label>Tag XML 1</label>'+
 												'<div class="rh-input-icon-right">'+
-													'<input name="marca" class="form-control" type="text" value="'+widget.tx_param_pai+'">'+
+													'<input name="parametro_pai" class="form-control" type="text" value="'+widget.tx_param_pai+'">'+
 													'<abbr data-toggle="tooltip" data-placement="right";'+
 														'data-original-title="Coloque aqui uma Tag presente no seu XML que você queira levar em consideração na similaridade." class="info-abbr">'+
 														'<i class="icon-info"></i>'+
@@ -1117,7 +1134,7 @@ $(document).ready(function(){
 										'</div>'+
 										'<div class="col-md-6 pd-l-0">'+
 											'<div class="form-group">'+
-												'<label>Tag XML 1</label>'+
+												'<label>Tag XML 2</label>'+
 												'<div class="rh-input-icon-right">'+
 													'<input name="parametro_filho" class="form-control" type="text" value="'+widget.tx_param_filho+'">'+
 													'<abbr data-toggle="tooltip" data-placement="right";'+
@@ -1132,6 +1149,47 @@ $(document).ready(function(){
 								default:
 									camposAdicionais.innerHTML = '';
 									break;
+							}
+
+							// ver imagem banner
+							if ($('#btnViewBanner').length > 0) {
+								rhPhoto($('#btnViewBanner'));
+
+								$('#btnEditBanner').click( function() {									
+									$('#imagemBanner')[0].focus();
+									$('#imagemBanner')[0].click();
+								});
+
+								$('#imagemBanner').change( function(){
+
+									bloqueiaElemento($('#containerAlteraImagemForm')[0]);
+
+									var file = this.files[0];
+									var reader = new FileReader();
+									reader.onload = function(f) {
+
+										// pega dimensoes da imagem
+										var img = new Image;
+										img.src = f.target.result;
+
+										img.onload = function() {
+											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' ) {
+												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
+												$('#imagemBanner').val('');
+											}
+											if (img.width != 350 && img.height != 500) {
+												toastr['error']('As dimensões da imagem devem ser de exatamente 350px de largura por 500px de altura.');
+												$('#imagemBanner').val('');
+											} else {											
+												$('.img-banner-small').attr('src', f.target.result);
+											}
+											desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
+										}										
+
+									}
+
+									reader.readAsDataURL(file);
+								})
 							}
 
 							// nome produto manual ol
@@ -1364,13 +1422,16 @@ $(document).ready(function(){
 						formData.append(key, val);
 					};
 
-					var key = "bossChoiceProdId";
-					var val = bossChoiceProdId;
-					formData.append("bossChoiceProdId", bossChoiceProdId);
-					
-					var key = "bossChoiceProdTitulo";
-					var val = bossChoiceProdTitulo;
-					formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
+					// esses dados soh sao enviados para o oferta limitada manual
+					if ($('#manualOfertaLimitada').length > 0) {
+						var key = "bossChoiceProdId";
+						var val = bossChoiceProdId;
+						formData.append("bossChoiceProdId", bossChoiceProdId);
+						
+						var key = "bossChoiceProdTitulo";
+						var val = bossChoiceProdTitulo;
+						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
+					}				
 
 
 					$.ajax({
