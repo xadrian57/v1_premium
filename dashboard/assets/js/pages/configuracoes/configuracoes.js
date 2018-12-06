@@ -31,8 +31,19 @@
 
 		var cores = JSON.parse(dados.cores);
 
-		$('#corPrimaria').val('#' + (rgbToHex(cores.primary) || '#fff'));
-		$('#corSecundaria').val('#' + (rgbToHex(cores.secondary)  || '#fff'));
+		var p1 = new jscolor($('#corPrimaria')[0]);
+		var p2 = new jscolor($('#corSecundaria')[0]);
+
+		cores.secondary = cores.secondary.split(',');
+		cores.primary = cores.primary.split(',');
+
+		for (var i = 0; i < 2; i++) {
+			cores.secondary[i] = parseInt(cores.secondary[i]);
+			cores.primary[i] = parseInt(cores.primary[i]);
+		}
+
+		p1.fromRGB( cores.primary[0], cores.primary[1], cores.primary[2] );
+		p2.fromRGB( cores.secondary[0], cores.secondary[1], cores.secondary[2] );
 
 		if ($('#desconto').val() !== '') {
 			var valor = $('#desconto').val();
@@ -304,7 +315,7 @@
 				parseInt(result[3], 16)
 			 ] : null;
 		}
-		
+
 		var corPrimaria = hexToRgb( $('#corPrimaria').val() ).join(',');
 		var corSecundaria = hexToRgb( $('#corSecundaria').val() ).join(',');
 
