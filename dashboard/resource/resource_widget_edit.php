@@ -88,11 +88,11 @@
 		echo json_encode($widgets);
 	}
 
-	function carregaInfoWidget($conCad, $id){
+	function carregaInfoWidget($conCad, $id, $idCli){
 		global $conDados;
 		$query = 'SELECT WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id ='.$id.'';
 		$result = mysqli_query($conCad, $query);
-		$result = mysqli_fetch_array($result);
+		$result = $result->fetch_array(MYSQLI_ASSOC);
 
 		// CARREGA CONFIGURACOES WIDGETS
 		$queryWidConfig = 'SELECT * FROM widget_config WHERE WC_id_wid = '.$id.'';
@@ -120,10 +120,14 @@
 
 			$resultWidConfig['tx_negativa_pai'] = explode(",", $resultWidConfig['tx_negativa_pai']); 
 			$resultWidConfig['tx_negativa_filho'] = explode(",", $resultWidConfig['tx_negativa_filho']); 
-		}	
+		}
 		
+		// pega id template
+		$selectTemplate = 'SELECT CONF_template_overlay from config WHERE CONF_id_cli ='.$idCli;
+		$queryTemplate = mysqli_query($conCad, $selectTemplate);
+		$resultTemplate = $queryTemplate->fetch_array(MYSQLI_ASSOC);
 
-		$data = array_merge($result,$resultWidConfig);
+		$data = array_merge($result, $resultWidConfig, $resultTemplate);
 
 		if($data['WID_inteligencia'] == '9' && isset($data['WC_id_produto']) && $data['WC_id_produto'] != ''){
 			$idsProdutos = explode("," ,$data['WC_id_produto']);
@@ -382,7 +386,8 @@
 			break;
 		case '2': // CARREGA INFORMAÇÕES DO WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
-			carregaInfoWidget($conCad,$idWid);
+			$idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
+			carregaInfoWidget($conCad,$idWid,$idCli);
 			break;
 		case '3': // ATUALIZA INFORMAÇÕES DO WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);

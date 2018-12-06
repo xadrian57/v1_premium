@@ -942,46 +942,50 @@ $(document).ready(function(){
 									});
 									break;
 								case '13':
-									camposAdicionais.innerHTML+=
-									'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
-										'<label>Imagem Atual:</label>'+
-										'<div class="form-control">'+
-											'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
-												'<i class="icon-info"></i>'+
-											'</abbr>'+
-											'<div class="rh-input-icon-right">'+
-												'<div class="media">'+
-													'<div class="media-left">'+
-														'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WC_banner+'">'+
+									if (widget.CONF_template_overlay != 0) {
+										camposAdicionais.innerHTML+=
+										'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
+											'<label>Imagem Atual:</label>'+
+											'<div class="form-control">'+
+												'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
+													'<i class="icon-info"></i>'+
+												'</abbr>'+
+												'<div class="rh-input-icon-right">'+
+													'<div class="media">'+
+														'<div class="media-left">'+
+															'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WC_banner+'">'+
+														'</div>'+
+														'<div class="media-body">'+
+															'<div class="form-group">'+
+																'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WC_banner+'">Visualizar <i class="ft-eye"></i></button>'+
+															'</div>'+
+															'<div class="form-group">'+
+																'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>'+	
+															'</div>'+
+														'</div>'+													
 													'</div>'+
-													'<div class="media-body">'+
-														'<div class="form-group">'+
-															'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WC_banner+'">Visualizar <i class="ft-eye"></i></button>'+
-														'</div>'+
-														'<div class="form-group">'+
-															'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>'+	
-														'</div>'+
-													'</div>'+													
+												'</div>'+
+											'</div>'+
+											'<div class="form-group">'+
+												'<div class="rh-input-icon-right">'+
+													'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+													
 												'</div>'+
 											'</div>'+
 										'</div>'+
-										'<div class="form-group">'+
-											'<div class="rh-input-icon-right">'+
-												'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+													
+										'<div class="col-md-6 pd-l-0">'+
+											'<div class="form-group">'+
+												'<label for="linkBannerOverlay">Link do Banner</label>'+
+												'<div class="rh-input-icon-right">'+
+													'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WC_link_banner+'">'+
+													'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
+														'<i class="icon-info"></i>'+
+													'</abbr>'+
+												'</div>'+
 											'</div>'+
-										'</div>'+
-									'</div>'+
-									'<div class="col-md-6 pd-l-0">'+
-										'<div class="form-group">'+
-											'<label for="linkBannerOverlay">Link do Banner</label>'+
-											'<div class="rh-input-icon-right">'+
-												'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WC_link_banner+'">'+
-												'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
-													'<i class="icon-info"></i>'+
-												'</abbr>'+
-											'</div>'+
-										'</div>'+
-									'</div>';
+										'</div>';
+									} else {
+										camposAdicionais.innerHTML = '';
+									}									
 									break;
 								case '24':
 									camposAdicionais.innerHTML+= // NOME DA CATEGORIA
