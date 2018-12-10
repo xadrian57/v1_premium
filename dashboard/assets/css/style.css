@@ -610,10 +610,10 @@
         line-height: 1.428571429;
         border-radius: 15px;
     }
-    .eliabo-input-icon-right{
+    .rh-input-icon-right{
         position: relative;
     }
-    .eliabo-input-icon-right .info-abbr{
+    .rh-input-icon-right .info-abbr{
         right: 10px;
         top: 13px;
     }
@@ -1029,8 +1029,15 @@
             float: none;
             margin: 10px 0 0 0;
         }
-    }    
-    
+    } 
+
+    @media screen and (max-width: 768px) {
+        #btnExcluirXml,
+        #btnEditarXml { 
+            display: none;
+        }
+    }
+
     /* Botões do calendário datepicker do dashboard */
     .range_inputs button {
         display: inline;
