@@ -12,7 +12,7 @@ Addtype application/x-httpd-php .inc
 Options -Indexes
 
 # php -- BEGIN cPanel-generated handler, do not edit
-# Defina o pacote “ea-php56” como a linguagem padrão de programação “PHP”.
+# Set the “ea-php56” package as the default “PHP” programming language.
 <IfModule mime_module>
   AddType application/x-httpd-ea-php56 .php .php5 .phtml
 </IfModule>
