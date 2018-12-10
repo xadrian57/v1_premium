@@ -26,18 +26,17 @@
 		$data = $dados;
 	//-------------------------------
 
-		$selectConf = "SELECT CONF_cor, CONF_cor_prim, CONF_cor_sec, CONF_desc_boleto, CONF_tv FROM config WHERE CONF_id_cli = '$idCLI'";
+		$selectConf = "SELECT CONF_cor, CONF_cor_prim, CONF_cor_sec, CONF_template_overlay FROM config WHERE CONF_id_cli = '$idCLI'";
 		$queryConf = mysqli_query($conCad, $selectConf) or print(mysqli_error($conCad));
 		$result = mysqli_fetch_array($queryConf);
 
 		$dados = [];
 		$dados = array(
-			'desconto' => $result['CONF_desc_boleto'],
 			'corPrimaria' => $result['CONF_cor_prim'],
 	        'corSecundaria' => $result['CONF_cor_sec'],
-	        'trustvoxAtiva' => ($result['CONF_tv'] == 1 ? true : false),
 			'idSHA1' => sha1($idCLI),
 			'cores' => $result['CONF_cor'],
+			'templateOverlay' => $result['CONF_template_overlay'],
 		);
 
 		$data = array_merge($data,$dados);
@@ -48,7 +47,6 @@
 
 	function saveData($conCad,$idCLI,$data)
 	{
-
 		// cor primária e secundária
 		$corPrimaria = mysqli_real_escape_string($conCad,$data['corPrimaria']);
 		$corSecundaria = mysqli_real_escape_string($conCad,$data['corSecundaria']);
@@ -66,42 +64,44 @@
 
 		$querySalvaCor = mysqli_query($conCad, $updateSalvaCor);
 
-		$site = mysqli_real_escape_string($conCad,$data['site']);
-		$desconto = mysqli_real_escape_string($conCad,$data['desconto']);
-		$numeroParcelas = mysqli_real_escape_string($conCad,$data['numeroParcelas']);
-		$valorParcelas = mysqli_real_escape_string($conCad,$data['valorParcelas']);
-
 		$updateCli = "UPDATE cliente SET CLI_site = '$site' WHERE CLI_id = '$idCLI'";
 		$queryCli = mysqli_query($conCad,$updateCli);
-
-		$updateConf = "UPDATE config SET CONF_desc_boleto = '$desconto' WHERE CONF_id_cli = '$idCLI'";
-		$queryConf = mysqli_query($conCad, $updateConf) or print(mysqli_error($conCad));		
 	
-		if ($queryConf && $queryCli && $querySalvaCor && $queryPegaCor) {
+		if ($queryCli && $querySalvaCor && $queryPegaCor) {
 			echo "1";
 		} else {
 			echo "0";
 		}
+		
+		// atualiza css overlays		
+		// pega id do template
+		$select = 'SELECT CONF_template_overlay FROM config WHERE CONF_id_cli = '.$idCLI;
+		$query = mysqli_query($conCad, $select);
+		$template = mysqli_fetch_array($query)['CONF_template_overlay'];
 
-		// altera CSS cliente
-		// pega id template no banco
-		$selectConfig = "SELECT CONF_template FROM config WHERE CONF_id_cli = ".$idCLI;
-		$resultConfig = mysqli_query($conCad, $selectConfig);
-		$arrayTemplate = mysqli_fetch_array($resultConfig);
-		$idTemplate = $arrayTemplate['CONF_template'];
-		
-		//echo json_encode($result); 
-		// -------
-		
-		$query = 'SELECT CONF_cor, CONF_template_overlay FROM config WHERE CONF_id_cli = '.$idCLI;
-		$exec = mysqli_query($conCad, $query);
-		$result = mysqli_fetch_array($exec);
-		$template = $result['CONF_template_overlay'];
-	
-		$colors = json_decode($result['CONF_cor'], true);
-		$template = $result['CONF_template_overlay'];
+		// Pega o arquivo css e substitui as cores
+        $css = @file_get_contents('../../widget/templates/overlay/kit_'.$template.'/style_to_replace.css');
+
+        if(!empty($css))
+        {
+            $css = str_replace( '{PRIMARY_COLOR}' , $corPrimaria , $css );
+            $css = str_replace( '{SECONDARY_COLOR}' , $corSecundaria , $css );
+
+            file_put_contents('../../widget/css/overlay/rh_overlay_'.sha1($idCLI).'.css',$css );
+
+            //da purge no cache com a cloudflare
+            $api = new cloudflare_api('moises.dourado@roihero.com.br','1404cc5e783d0287897bfb2ebf7faa9e87eb5');
+
+            $ident = $api->identificador('roihero.com.br');
+
+            $arquivos = [
+                'https://roihero.com.br/widget/css/overlay/rh_overlay_'.sha1($idCLI).'.css'
+            ];
+
+            $api->purgeArquivos($ident,$arquivos);
+		}
 	}
-
+		
 	switch ($operacao) {
 		case '1':
 			getData($conCad,$idCLI);
@@ -111,6 +111,4 @@
 			saveData($conCad,$idCLI,$data);
 			break;
 	}
-
-
 ?>
