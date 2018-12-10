@@ -130,7 +130,7 @@ if($_SESSION['idPlan'] == 42) {
 						</div>
 					</div>
 <?php
-// TODO Remover essa linha, quando liberar o Tagflag para uso geral
+// TODO Remover essa linha quando liberar o Tagflag para uso geral
 }
 ?>
 					<!-- BUSCA -->
@@ -303,7 +303,7 @@ if($_SESSION['idPlan'] == 42) {
                 	<div class="col-md-12">
                 		<div class="form-group">
 	                    	<label>Nome</label>
-	                    	<div class="eliabo-input-icon-right">
+	                    	<div class="rh-input-icon-right">
 	                    		<input id="nomeWidget" name="nome" class="form-control" type="text">
                                 <abbr title="Esse nome serve para identificação do seu bloco aqui dentro do Dashboard apenas, ele não irá aparecer na sua loja" class="info-abbr">
                                     <i class="icon-info"></i>
@@ -314,7 +314,7 @@ if($_SESSION['idPlan'] == 42) {
                 	<div class="col-md-12">
 	                    <div class="form-group">
 	                    	<label>Título Promocional</label>
-	                    	<div class="eliabo-input-icon-right">
+	                    	<div class="rh-input-icon-right">
 		                    	<input id="tituloWidget" name="titulo" class="form-control" type="text">
                                 <abbr title="Esse é o título do bloco que irá aparecer na sua loja" class="info-abbr">
                                     <i class="icon-info"></i>
@@ -325,7 +325,7 @@ if($_SESSION['idPlan'] == 42) {
                 	<div class="col-md-12">
 	                    <div class="form-group">
 	                    	<label>UTM</label>
-	                    	<div class="eliabo-input-icon-right">
+	                    	<div class="rh-input-icon-right">
 	                    		<input id="utmWidget" name="utm" class="form-control" type="text">
                                 <abbr title="Link por onde você pode fazer a analise de fluxo de dados via Google Analytics" class="info-abbr">
                                     <i class="icon-info"></i>
@@ -363,6 +363,29 @@ if($_SESSION['idPlan'] == 42) {
     </div>
 </div> 
 
+<!-- MODAL BUSCA -->
+<div id="modalConfiguraBusca" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title adic" id="titulo-modal-edit"><i class="ft ft-edit"></i>&nbsp;&nbsp;Configurar barra de busca</h4>
+				<span class="primary page-info" id="spec-inteligencia-modal-edit"></span>
+            </div>
+
+            <div class="modal-body">
+            </div>
+
+            <div class="modal-footer">
+            	<span class="rh-id-wid primary pull-left">ID: <span id="rhIdWid"></span></span>
+				<button type="button" class="btn btn-outline-warning" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+				<button id="btn-salva-busca" type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i> Salvar Alterações</button>
+			 </div>
+        </div>
+    </div>
+</div> 
+
 <!-- MODAL CONFIRMAR EXCLUSAO -->
 <div class="modal fade text-xs-left" id="modalConfirmaExclusao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel10" style="display: none;" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -386,4 +409,40 @@ if($_SESSION['idPlan'] == 42) {
 	</div>
 </div>
 <script type="text/javascript" src="assets/js/pages/minhas_recomendacoes/widget_edit.js"></script>
+<script>
+var rhPhoto = function (el) {
+	$(el).click( function(){
+		var path = this.dataset.target;
+
+		var modal = document.createElement('div');
+		modal.id = 'modalViewPhoto';
+		modal.classList = 'modal';
+
+		modal.innerHTML = `
+			<div class="modal-dialog modal-sm">
+				<div class="modal-content text-xs-center">
+					<div class="modal-header text-xs-left">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+						<h4 class="modal-title"><i class="ft-image"></i> Imagem</h4>							
+					</div>
+					<div class="modal-body">
+						<img src="${path}">
+					</div>
+				</div>
+			</div>
+		`;
+
+		$(modal).insertBefore($('body')[0].firstChild);
+		
+		$('#modalViewPhoto').modal();		
+		$('#modalEditarWidget').modal('hide');
+
+		$('#modalViewPhoto').on('hidden.bs.modal', function () {
+			$('#modalEditarWidget').modal('show');
+		});
+	});
+}	
+</script>
 

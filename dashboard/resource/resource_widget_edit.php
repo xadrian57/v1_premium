@@ -88,11 +88,11 @@
 		echo json_encode($widgets);
 	}
 
-	function carregaInfoWidget($conCad, $id){
+	function carregaInfoWidget($conCad, $id, $idCli){
 		global $conDados;
 		$query = 'SELECT WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id ='.$id.'';
 		$result = mysqli_query($conCad, $query);
-		$result = mysqli_fetch_array($result);
+		$result = $result->fetch_array(MYSQLI_ASSOC);
 
 		// CARREGA CONFIGURACOES WIDGETS
 		$queryWidConfig = 'SELECT * FROM widget_config WHERE WC_id_wid = '.$id.'';
@@ -120,10 +120,14 @@
 
 			$resultWidConfig['tx_negativa_pai'] = explode(",", $resultWidConfig['tx_negativa_pai']); 
 			$resultWidConfig['tx_negativa_filho'] = explode(",", $resultWidConfig['tx_negativa_filho']); 
-		}	
+		}
 		
+		// pega id template
+		$selectTemplate = 'SELECT CONF_template_overlay from config WHERE CONF_id_cli ='.$idCli;
+		$queryTemplate = mysqli_query($conCad, $selectTemplate);
+		$resultTemplate = $queryTemplate->fetch_array(MYSQLI_ASSOC);
 
-		$data = array_merge($result,$resultWidConfig);
+		$data = array_merge($result, $resultWidConfig, $resultTemplate);
 
 		if($data['WID_inteligencia'] == '9' && isset($data['WC_id_produto']) && $data['WC_id_produto'] != ''){
 			$idsProdutos = explode("," ,$data['WC_id_produto']);
@@ -152,8 +156,14 @@
 	}
 
 	// ATUALIZA AS INFORMAÇOES DO WIDGET NO BANCO COM O QUE FOI EDITADO
-	function atualizaWidget($conCad, $idWid, $info){ 
+	function atualizaWidget($conCad, $idWid, $post, $files){
 
+		// pega as chaves que vieram no post pra iterar e criar uma nova array
+		$info = array();
+		$names = array_keys($post);
+		foreach ($names as $name) {
+			$info[$name] = $post[$name];
+		}
 		$camposBDWID = array( // campos do widget
 			'nome'=>'WID_nome',
 			'titulo'=>'WID_texto',
@@ -186,15 +196,41 @@
 			'negativa_pai' => 'tx_negativa_pai',
 			'negativa_filho' => 'tx_negativa_filho',
 			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f',
-			'marca' => 'WC_marca'
+			'marca' => 'WC_marca',
+			'imagemBanner' => 'WC_banner',
+			'linkBannerOverlay' => 'WC_link_banner'
 		);
-		
-		foreach($info as $k1 => $v1)
-			foreach($v1 as $k => $v)
-				if($k == "produtosWidget")
-					unset($camposBDWIDCONFIG["bossChoiceProdId"]);
 
-/*
+		// imagem banner overlay
+		if (isset($files["imagemBanner"])) {
+			switch ($files["imagemBanner"]['type']) {
+				case "image/png":
+					$extension = 'png';
+					break;
+				case "image/jpg":
+					$extension = 'jpg';
+					break;
+				case "image/jpeg":
+					$extension = 'jpeg';
+					break;
+			}
+
+			$banner = "banner_overlay_".$idWid.'.'.$extension;
+
+			// echo readfile($_FILES["imagemBanner"]["tmp_name"]);
+			$sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
+			$targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
+			move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+
+			$info['imagemBanner'] = $banner;
+
+		} 
+		// caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
+		else {
+			unset($camposBDWIDCONFIG['imagemBanner']);
+		}
+		
+		/*
 		foreach($compreJunto as $campo => $valor){
 			$valor = implode(",", $valor);
 			$valor = strtoupper($valor);
@@ -236,84 +272,78 @@
 		$hides = "";
 		$shows = "";
 
-
-		foreach($info as $k1 => $v1){
-			foreach($v1 as $k => $v){
-				if($k == "widHide"){
-					if($primeiros[$k][0]){
-						$primeiros[$k][0] = false;
-						$primeiros[$k][1] = $k1;
-						$info[$k1]->$k = $v;
-					} else {
-						$info[$primeiros[$k][1]]->$k .= ",".$v;
-						$evitar[] = $k1;
-					}
+		foreach($info as $k => $v){
+			if($k == "widHide"){
+				if($primeiros[$k][0]){
+					$primeiros[$k][0] = false;
+					$primeiros[$k][1] = $k;
+				} else {
+					$info[$primeiros[$k][1]]->$k .= ",".$v;
+					$evitar[] = $k;
 				}
-
-				if($k == "widShow"){
-					if($primeiros[$k][0]){
-						$primeiros[$k][0] = false;
-						$primeiros[$k][1] = $k1;
-						$info[$k1]->$k = $v;
-					} else {
-						$info[$primeiros[$k][1]]->$k .= ",".$v;
-						$evitar[] = $k1;
-					}
-				}
-
-				if(in_array($k, $compreJunto)){
-					$v = strtoupper($v);
-					if($primeiros[$k][0]){
-						$primeiros[$k][0] = false;
-						$primeiros[$k][1] = $k1;
-						$info[$k1]->$k = $v;
-					} else {
-						$info[$primeiros[$k][1]]->$k .= ",".$v;
-						$evitar[] = $k1;
-					}
-				}
-
 			}
+
+			if($k == "widShow"){
+				if($primeiros[$k][0]){
+					$primeiros[$k][0] = false;
+					$primeiros[$k][1] = $k;
+				} else {
+					$info[$primeiros[$k][1]]->$k .= ",".$v;
+					$evitar[] = $k;
+				}
+			}
+
+			if(in_array($k, $compreJunto)){
+				$v = strtoupper($v);
+				if($primeiros[$k][0]){
+					$primeiros[$k][0] = false;
+					$primeiros[$k][1] = $k;
+				} else {
+					$info[$primeiros[$k][1]]->$k .= ",".$v;
+					$evitar[] = $k;
+				}
+			}	
 		}
 
 		// -- fim tratamentos
-
-		
-
-		for ($i=0; $i < count($info); $i++) {
-			if (in_array($i, $evitar))
-				continue;
-			foreach ($info[$i] as $key => $value) {
-				if($key == "widDiv" and $value == "")
-					continue;
-				if(in_array($key, $compreJunto))
-					$value = strtoupper($value);
-				if(isset($camposBDWID[$key])){
-					$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
-				} 
-				else if (isset($camposBDWIDCONFIG[$key])){
-					if($key == "palavrasPaiFilho"){
-						//$palavrasPaiFilho = str_replace(" ", "", $value);
-						$partes = explode(",", $value);
-						
-						$filhos = [];
-						$pais = [];
-						foreach($partes as $k => $parte){
-							$pai_filho = explode("->", $parte);
+		$i = 0;
+		foreach ($info as $key => $value) {			
+			if (is_array($info[$key])) {
+				foreach ($info[$key] as $key => $value) {
+					if($key == "widDiv" and $value == "")
+						continue;
+					if(in_array($key, $compreJunto))
+						$value = strtoupper($value);
+					if(isset($camposBDWID[$key])){
+						$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
+					} 
+					else if (isset($camposBDWIDCONFIG[$key])){
+						if($key == "palavrasPaiFilho"){
+							//$palavrasPaiFilho = str_replace(" ", "", $value);
+							$partes = explode(",", $value);
 							
-							$filhos[] = $pai_filho[1];
-							$pais[] = $pai_filho[0];
+							$filhos = [];
+							$pais = [];
+							foreach($partes as $k => $parte){
+								$pai_filho = explode("->", $parte);
+								
+								$filhos[] = $pai_filho[1];
+								$pais[] = $pai_filho[0];
+							}
+							
+							$pais = implode(",", $pais);
+							$filhos = implode(",", $filhos);
+	
+							$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
 						}
-						
-						$pais = implode(",", $pais);
-						$filhos = implode(",", $filhos);
-
-						$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
-					} else{
-						$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
 					}
 				}
+			} else{
+				if (isset($camposBDWIDCONFIG[$key])) { // checa se existe o campo de configuracao no wid
+					$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
+				}
 			}
+			$i++;
 		}
 
 		$updateWid = substr($updateWid,0,-2); // Remove a última vírgula
@@ -327,6 +357,8 @@
 			$updateWid = substr($updateWid,0,-2);
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
+
+			echo $queryWidConfig;
 		}		
 	}
 
@@ -354,14 +386,12 @@
 			break;
 		case '2': // CARREGA INFORMAÇÕES DO WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
-			carregaInfoWidget($conCad,$idWid);
+			$idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
+			carregaInfoWidget($conCad,$idWid,$idCli);
 			break;
 		case '3': // ATUALIZA INFORMAÇÕES DO WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
-			$infoWid = $_POST['widInfo'];
-			$infoWid = stripcslashes($infoWid); //removendo caracteres de escape
-			$infoWid = (array) json_decode($infoWid);
-			atualizaWidget($conCad, $idWid, $infoWid);
+			atualizaWidget($conCad, $idWid, $_POST, $_FILES);
 			break;
 		case '4': // ATIVA/DESATIVA WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);

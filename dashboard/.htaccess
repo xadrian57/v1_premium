@@ -24,6 +24,7 @@ RewriteRule ^widget_maker3$ php/widget_maker_vip.php [QSA,L,NC]
 
 RewriteRule ^minhas_recomendacoes$ php/widgets.php [QSA,L,NC]
 RewriteRule ^$ php/widgets.php [QSA,L,NC]
+RewriteRule ^template$ php/view_template.php [QSA,L,NC]
 
 RewriteRule ^editar_perfil$ php/editar_perfil.php [QSA,L,NC]
 RewriteRule ^layout$ php/layout.php [QSA,L,NC]

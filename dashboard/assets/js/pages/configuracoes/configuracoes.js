@@ -1,4 +1,13 @@
 'use strict';
+function hexToRgb(hex) {
+	var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	return result ? [
+		parseInt(result[1], 16),
+		parseInt(result[2], 16),
+		parseInt(result[3], 16)
+	 ] : null;
+}
+
 (function () {
 	window['idCli'] = $('#infsess').attr('data-cli');
 	$.ajax({
@@ -31,8 +40,19 @@
 
 		var cores = JSON.parse(dados.cores);
 
-		$('#corPrimaria').val('#' + (rgbToHex(cores.primary) || '#fff'));
-		$('#corSecundaria').val('#' + (rgbToHex(cores.secondary)  || '#fff'));
+		var p1 = new jscolor($('#corPrimaria')[0]);
+		var p2 = new jscolor($('#corSecundaria')[0]);
+
+		cores.secondary = cores.secondary.split(',');
+		cores.primary = cores.primary.split(',');
+
+		for (var i = 0; i < 2; i++) {
+			cores.secondary[i] = parseInt(cores.secondary[i]);
+			cores.primary[i] = parseInt(cores.primary[i]);
+		}
+
+		p1.fromRGB( cores.primary[0], cores.primary[1], cores.primary[2] );
+		p2.fromRGB( cores.secondary[0], cores.secondary[1], cores.secondary[2] );
 
 		if ($('#desconto').val() !== '') {
 			var valor = $('#desconto').val();
@@ -288,25 +308,36 @@
 			$('#inputPixel').val(pixel);
 		}
 
+		if (dados.templateOverlay == '0') {
+			$('#confTemplateOverlay').remove();
+		} else {
+			$('#confTemplateOverlay').show();
+			$('#modalViewOverlay').click( function(){
+				var primary = hexToRgb( $('#corPrimaria').val() )
+				var secondary = hexToRgb( $('#corSecundaria').val() );
+				var template = window['dados'].templateOverlay;
+		
+				primary = primary.join(',');
+				secondary = secondary.join(',');
+		
+				var url = 'template?id='+template+'&primary='+primary+'&secondary='+secondary;
+		
+				// reload no iframe
+				setTimeout(function() {
+					$('#frameOverlay').attr('src',url);
+				}, 200);
+			});
+
+			$('#changeTemplateOverlay').change(function(){
+				window['dados'].templateOverlay = this.value;
+			});
+		}		
 	}
 
 	$('#btnSalvaConfig').on('click', function () {
-		var desconto = $('#desconto').val().replace('%', '');
-		var numeroParcelas = $('#numeroParcelas').val();
-		var valorParcelas = $('#valorParcelas').val().replace('R$', '').trim();
-		var site = $('#site').val();
-		
-		function hexToRgb(hex) {
-			var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-			return result ? [
-				parseInt(result[1], 16),
-				parseInt(result[2], 16),
-				parseInt(result[3], 16)
-			 ] : null;
-		}
-		
 		var corPrimaria = hexToRgb( $('#corPrimaria').val() ).join(',');
 		var corSecundaria = hexToRgb( $('#corSecundaria').val() ).join(',');
+		var site = $('#site').val();
 
 		$.ajax({
 			type: 'post',
@@ -315,12 +346,9 @@
 				{
 					'id': idCli,
 					'op': 2,
-					'desconto': desconto,
-					'numeroParcelas': numeroParcelas,
-					'valorParcelas': valorParcelas,
-					'site': site,
 					'corPrimaria': corPrimaria,
-					'corSecundaria': corSecundaria
+					'corSecundaria': corSecundaria,
+					'site': site,
 				},
 			success: function (response) {
 				console.log(response);
@@ -334,6 +362,7 @@
 		});
 	});
 
+	
 	var errorActiveTrustvox = false;
 	$(document).ready(function () {
 		// Função para controlar alterações no estado do componente
