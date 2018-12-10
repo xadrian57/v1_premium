@@ -1029,8 +1029,15 @@
             float: none;
             margin: 10px 0 0 0;
         }
-    }    
-    
+    } 
+
+    @media screen and (max-width: 768px) {
+        #btnExcluirXml,
+        #btnEditarXml { 
+            display: none;
+        }
+    }
+
     /* Botões do calendário datepicker do dashboard */
     .range_inputs button {
         display: inline;
