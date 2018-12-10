@@ -16,11 +16,12 @@
 
     // substitui informacoes
     $css = str_replace('{PRIMARY_COLOR}', $corPrimaria, $css);
-    $css = str_replace('{SECONDARY_COLOR}', $corPrimaria, $css);
+    $css = str_replace('{SECONDARY_COLOR}', $corSecundaria, $css);
 
     function setOverlay( $overlaySaida ) {
 
         $overlaySaida = str_replace('{TITLE_BLOCK}', 'Título do bloco exemplo', $overlaySaida);
+        $overlaySaida = str_replace('{SUBTITLE_BLOCK}', 'Subtítulo do bloco exemplo', $overlaySaida);
         $overlaySaida = str_replace('{PRODUCT_URL}', '#', $overlaySaida);
         $overlaySaida = str_replace('{PRODUCT_DISCOUNT}', '15', $overlaySaida);
         $overlaySaida = str_replace('{PRODUCT_IMG}', 'assets/images/app/hero.jpg', $overlaySaida);
@@ -36,6 +37,7 @@
     function setOfertaLimitada( $ofertaLimitada ) {
 
         $ofertaLimitada = str_replace('{TITLE_BLOCK_0}', 'Título do bloco exemplo', $ofertaLimitada);
+        $overlaySaida = str_replace('{SUBTITLE_BLOCK_0}', 'Subtítulo do bloco exemplo', $ofertaLimitada);
         $ofertaLimitada = str_replace('{PRODUCT_URL_0}', '#', $ofertaLimitada);
         $ofertaLimitada = str_replace('{PRODUCT_DISCOUNT_0}', '15', $ofertaLimitada);
         $ofertaLimitada = str_replace('{PRODUCT_IMG_0}', 'assets/images/app/hero.jpg', $ofertaLimitada);
@@ -53,7 +55,7 @@
     
 ?>
 <!doctype html>
-<html>
+<html style="overflow:hidden;">
     <head>
         <title>Visualizar Template</title>
         <script>rhClientId = 0;</script>
@@ -66,7 +68,13 @@
         </style>
     </head>
     <body>
+        <h4 style="position: absolute; width: 100%;font-family: verdana, arial, sans-serif;top: 45%;text-align:center;color: #333;">
+            COLOQUE O MOUSE PARA FORA DO MODAL PARA APARECER O OVERLAY DE SAÍDA
+        </h4>
+
         <div id="containerOverlays">
+
+
             <?= $overlaySaida ?>
             <script>
                 var list = document.querySelector('.rh-product-overlay-list');

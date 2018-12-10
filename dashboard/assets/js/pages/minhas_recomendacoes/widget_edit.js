@@ -153,11 +153,11 @@ $(document).ready(function(){
 			carregaBusca : function(){
 				var widgetsBusca = document.getElementById('widgetsBusca');
 				widgetsBusca.innerHTML = "";
-				__busca.forEach(function(wid){
+				__busca.forEach(function(wid){					
+					// '<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
 					widgetsBusca.innerHTML = widgetsBusca.innerHTML +
 					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
-							'<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
 							'<span class="pull-right primary">ID: '+wid.id+'</span>'+
 				         '</div>'+
 					'</li>';
@@ -1387,10 +1387,10 @@ $(document).ready(function(){
 					});
 				});
 
-				$('.btn-configura-busca').click(function() {
-					$('#modalConfiguraBusca').modal('show');
-					$('.rh-id-wid')
-				});
+				// $('.btn-configura-busca').click(function() {
+				// 	$('#modalConfiguraBusca').modal('show');
+				// 	$('#modalConfiguraBusca .rh-id-wid').html();
+				// });
 
 				// BOTOESAPAGAR
 				$('button[data-delete-wid]').off('click');
