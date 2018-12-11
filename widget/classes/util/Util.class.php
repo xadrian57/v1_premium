@@ -258,7 +258,7 @@ class Util {
             $html = str_replace('{SUB_TITLE}', $subTitulo, $html);
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
-            $html = str_replace('{BANNER_BLOCK}', $banner, $html);
+            $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 
