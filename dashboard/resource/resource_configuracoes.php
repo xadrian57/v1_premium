@@ -50,6 +50,7 @@
 		// cor primária e secundária
 		$corPrimaria = mysqli_real_escape_string($conCad,$data['corPrimaria']);
 		$corSecundaria = mysqli_real_escape_string($conCad,$data['corSecundaria']);
+		$site = mysqli_real_escape_string($conCad,$data['site']);
 
 		$selectPegaCor = 'SELECT CONF_cor from config WHERE CONF_id_cli = '.$idCLI;
 		$queryPegaCor = mysqli_query($conCad, $selectPegaCor);
@@ -101,14 +102,31 @@
             $api->purgeArquivos($ident,$arquivos);
 		}
 	}
+
+	function updateTemplate($conCad,$idCLI,$data) {
+		$template = mysqli_real_escape_string($conCad,$data['template']);
+		
+		$updateAtualiza = "UPDATE config SET CONF_template_overlay = '$template' WHERE CONF_id_cli = '$idCLI'";
+		$queryAtualiza = mysqli_query($conCad, $updateAtualiza);
+
+		if ($queryAtualiza) {
+			echo "1";
+		} else {
+			echo "0";
+		}
+	}
 		
 	switch ($operacao) {
 		case '1':
 			getData($conCad,$idCLI);
 			break;
+		// update configuracoes
 		case '2':
-			$data = $_POST;
-			saveData($conCad,$idCLI,$data);
+			saveData($conCad,$idCLI,$_POST);
+			break;
+		// update template
+		case '3':
+			updateTemplate($conCad,$idCLI,$_POST);
 			break;
 	}
 ?>

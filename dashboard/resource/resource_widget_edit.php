@@ -174,7 +174,9 @@
 			'widShow' => 'WID_show',
 			'UpDown' => 'WID_updown',
 			'widHide' => 'WID_hide',
-			'formatoWidget' => 'WID_formato'
+			'formatoWidget' => 'WID_formato',			
+			'imagemBanner' => 'WID_banner',
+			'linkBannerOverlay' => 'WID_link_banner'
 			// 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
 		);
 
@@ -196,9 +198,7 @@
 			'negativa_pai' => 'tx_negativa_pai',
 			'negativa_filho' => 'tx_negativa_filho',
 			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f',
-			'marca' => 'WC_marca',
-			'imagemBanner' => 'WC_banner',
-			'linkBannerOverlay' => 'WC_link_banner'
+			'marca' => 'WC_marca'
 		);
 
 		// imagem banner overlay

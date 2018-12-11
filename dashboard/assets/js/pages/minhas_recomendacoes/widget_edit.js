@@ -153,9 +153,11 @@ $(document).ready(function(){
 			carregaBusca : function(){
 				var widgetsBusca = document.getElementById('widgetsBusca');
 				widgetsBusca.innerHTML = "";
-				__busca.forEach(function(wid){					
-					// '<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
+				__busca.forEach(function(wid){
 					widgetsBusca.innerHTML = widgetsBusca.innerHTML +
+					
+					// '<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
+
 					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 							'<span class="pull-right primary">ID: '+wid.id+'</span>'+
@@ -954,11 +956,11 @@ $(document).ready(function(){
 												'<div class="rh-input-icon-right">'+
 													'<div class="media">'+
 														'<div class="media-left">'+
-															'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WC_banner+'">'+
+															'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WID_banner+'">'+
 														'</div>'+
 														'<div class="media-body">'+
 															'<div class="form-group">'+
-																'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WC_banner+'">Visualizar <i class="ft-eye"></i></button>'+
+																'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WID_banner+'">Visualizar <i class="ft-eye"></i></button>'+
 															'</div>'+
 															'<div class="form-group">'+
 																'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>'+	
@@ -1387,10 +1389,21 @@ $(document).ready(function(){
 					});
 				});
 
-				// $('.btn-configura-busca').click(function() {
-				// 	$('#modalConfiguraBusca').modal('show');
-				// 	$('#modalConfiguraBusca .rh-id-wid').html();
-				// });
+				$('.btn-configura-busca').click(function() {
+					var id = this.parentElement.parentElement.getAttribute('wid-id');
+					$.ajax({
+						type: 'POST',
+						url: 'resource/resource_widget_edit.php',
+						data: {'idCli': idCli, 'op': 2, idWid : id},
+						success: function(result){
+							var dados = JSON.parse(result);
+							console.log(dados);
+
+							$('#modalConfiguraBusca').modal('show');
+							$('#modalConfiguraBusca .rh-id-wid').html();
+						}
+					});					
+				});
 
 				// BOTOESAPAGAR
 				$('button[data-delete-wid]').off('click');
