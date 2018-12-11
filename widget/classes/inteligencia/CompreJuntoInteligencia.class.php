@@ -102,7 +102,7 @@ class CompreJuntoInteligencia extends AbstractInteligencia {
                                FROM XML_".$this->widget->getIdCli()."
                                WHERE XML_link != '" . $this->widget->getUrl() . "'
                                AND XML_availability = '1'
-                               AND MATCH(XML_type_upper) AGAINST(\"" . strtoupper($this->arrayFilho[$index]) ."\" IN BOOLEAN MODE) "
+                               AND MATCH(XML_type_upper) AGAINST(\"+" . strtoupper(str_replace(' ', ' +', $this->arrayFilho[$index])) ."\" IN BOOLEAN MODE) "
                                . $this->arrayNegativaFilho[$index] . " " . $this->arrayParamFilho[$index]."
                                GROUP BY XML_link
                                HAVING COUNT(1) = 1
@@ -122,13 +122,13 @@ class CompreJuntoInteligencia extends AbstractInteligencia {
                         $this->arrayNegativaFilho[$index] = "";
                     }
                     
-                    $this->arrayFilho[$index] = str_replace(" ", "%", $this->arrayFilho[$index]);
+                    //$this->arrayFilho[$index] = str_replace(" ", "%", $this->arrayFilho[$index]);
                     
                     $select = "SELECT " . $this->XML_select . "
                                FROM XML_".$this->widget->getIdCli()."
                                WHERE XML_link != '" . $this->widget->getUrl() . "'
                                AND XML_availability = '1'
-                               AND MATCH(XML_titulo_upper) AGAINST(\"" . strtoupper($this->arrayFilho[$index]) ."\" IN BOOLEAN MODE) "
+                               AND MATCH(XML_titulo_upper) AGAINST(\"+" . strtoupper(str_replace(' ', ' +', $this->arrayFilho[$index])) ."\" IN BOOLEAN MODE) "
                                . $this->arrayNegativaFilho[$index] . " " . $this->arrayParamFilho[$index]."
                                GROUP BY XML_link
                                HAVING COUNT(1) = 1
@@ -252,7 +252,9 @@ class CompreJuntoInteligencia extends AbstractInteligencia {
                                 $tamanhoString,
                                 SORT_DESC,
                                 $this->arrayPai,
-                                $this->arrayFilho );
+                                $this->arrayFilho,
+                                $this->arrayTipoPai,
+                                $this->arrayTipoFilho);
             }
         }
     }
