@@ -26,7 +26,7 @@ function hexToRgb(hex) {
 		$('#numeroParcelas').val(dados.numeroParcelas);
 		$('#valorParcelas').val((dados.valorParcelas));
 		$('#site').val(dados.site);
-
+		$('#changeTemplateOverlay').val(dados.templateOverlay);
 
 		function componentToHex(c) {
 			var hex = c.toString(16);
@@ -362,6 +362,28 @@ function hexToRgb(hex) {
 		});
 	});
 
+	$('#btnAtualizaTemplate').click(function() {
+		var template = $('#changeTemplateOverlay').val();
+		$.ajax({
+			type: 'post',
+			url: 'resource/resource_configuracoes.php',
+			data:
+				{
+					'id': idCli,
+					'op': 3,
+					'template': template,
+				},
+			success: function (response) {
+				console.log(response);
+				if (response === '1') {
+					toastr['success']('Suas informações foram atualizadas com sucesso');
+				} else {
+					toastr['error']('Não foi possível atualizar as suas informações, verique a sua conexão com a internet');
+				}
+
+			}
+		});
+	});
 	
 	var errorActiveTrustvox = false;
 	$(document).ready(function () {

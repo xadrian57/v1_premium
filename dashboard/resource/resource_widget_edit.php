@@ -90,7 +90,7 @@
 
 	function carregaInfoWidget($conCad, $id, $idCli){
 		global $conDados;
-		$query = 'SELECT WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id ='.$id.'';
+		$query = 'SELECT WID_banner, WID_link_banner, WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id ='.$id.'';
 		$result = mysqli_query($conCad, $query);
 		$result = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -102,7 +102,7 @@
 		if (mysqli_num_rows($resultWidConfig) == 0){
 			$resultWidConfig = [];
 		} else {
-			$resultWidConfig = mysqli_fetch_array($resultWidConfig);
+			$resultWidConfig = $resultWidConfig->fetch_array(MYSQLI_ASSOC);
 			
 			$result['WID_div_type'] = strtoupper($result['WID_div_type']);	
 
@@ -174,7 +174,9 @@
 			'widShow' => 'WID_show',
 			'UpDown' => 'WID_updown',
 			'widHide' => 'WID_hide',
-			'formatoWidget' => 'WID_formato'
+			'formatoWidget' => 'WID_formato',			
+			'imagemBanner' => 'WID_banner',
+			'linkBannerOverlay' => 'WID_link_banner'
 			// 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
 		);
 
@@ -196,9 +198,7 @@
 			'negativa_pai' => 'tx_negativa_pai',
 			'negativa_filho' => 'tx_negativa_filho',
 			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f',
-			'marca' => 'WC_marca',
-			'imagemBanner' => 'WC_banner',
-			'linkBannerOverlay' => 'WC_link_banner'
+			'marca' => 'WC_marca'
 		);
 
 		// imagem banner overlay
@@ -227,7 +227,7 @@
 		} 
 		// caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
 		else {
-			unset($camposBDWIDCONFIG['imagemBanner']);
+			unset($camposBDWID['imagemBanner']);
 		}
 		
 		/*
@@ -308,39 +308,35 @@
 		// -- fim tratamentos
 		$i = 0;
 		foreach ($info as $key => $value) {			
-			if (is_array($info[$key])) {
-				foreach ($info[$key] as $key => $value) {
-					if($key == "widDiv" and $value == "")
-						continue;
-					if(in_array($key, $compreJunto))
-						$value = strtoupper($value);
-					if(isset($camposBDWID[$key])){
-						$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
-					} 
-					else if (isset($camposBDWIDCONFIG[$key])){
-						if($key == "palavrasPaiFilho"){
-							//$palavrasPaiFilho = str_replace(" ", "", $value);
-							$partes = explode(",", $value);
+				if($key == "widDiv" and $value == "")
+					continue;
+				if(in_array($key, $compreJunto))
+					$value = strtoupper($value);
+				if(isset($camposBDWID[$key])){
+					$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
+				} 
+				else if (isset($camposBDWIDCONFIG[$key])){
+					if($key == "palavrasPaiFilho"){
+						//$palavrasPaiFilho = str_replace(" ", "", $value);
+						$partes = explode(",", $value);
+						
+						$filhos = [];
+						$pais = [];
+						foreach($partes as $k => $parte){
+							$pai_filho = explode("->", $parte);
 							
-							$filhos = [];
-							$pais = [];
-							foreach($partes as $k => $parte){
-								$pai_filho = explode("->", $parte);
-								
-								$filhos[] = $pai_filho[1];
-								$pais[] = $pai_filho[0];
-							}
-							
-							$pais = implode(",", $pais);
-							$filhos = implode(",", $filhos);
-	
-							$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
+							$filhos[] = $pai_filho[1];
+							$pais[] = $pai_filho[0];
 						}
+						
+						$pais = implode(",", $pais);
+						$filhos = implode(",", $filhos);
+
+						$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
 					}
-				}
-			} else{
-				if (isset($camposBDWIDCONFIG[$key])) { // checa se existe o campo de configuracao no wid
-					$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
+				} else{
+					if (isset($camposBDWIDCONFIG[$key])) { // checa se existe o campo de configuracao no wid
+						$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
 				}
 			}
 			$i++;
@@ -358,7 +354,6 @@
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
 
-			echo $queryWidConfig;
 		}		
 	}
 

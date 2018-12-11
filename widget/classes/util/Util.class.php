@@ -200,6 +200,8 @@ class Util {
         $template = $arrayConfig['CONF_template'];
         $templateOverlay = $arrayConfig['CONF_template_overlay'];
         $moeda = $arrayConfig['CONF_moeda'];
+        $linkBanner = $arrayWidgets['WID_link_banner'];
+        $banner = $arrayWidgets['WID_banner'];
         $idCli = $arrayWidgets['WID_id_cli'];
         $formato = $arrayWidgets['WID_formato'];
         $titulo = $arrayWidgets['WID_texto'];
@@ -255,6 +257,8 @@ class Util {
             $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
             $html = str_replace('{SUB_TITLE}', $subTitulo, $html);
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
+            $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
+            $html = str_replace('{BANNER_BLOCK}', $banner, $html);
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 

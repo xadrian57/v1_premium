@@ -313,6 +313,12 @@
         display: none !important;
     }
 
+    @media screen and (max-width: 1024px) {
+        #modalViewOverlay {
+            display: none;
+        }
+    }
+
 /* PÁGINA OVERVIEW */
     .card-produto{
         height: 300px;
