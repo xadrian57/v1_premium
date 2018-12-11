@@ -375,6 +375,9 @@ if($_SESSION['idPlan'] == 42) {
             </div>
 
             <div class="modal-body">
+				<div class="form-control">
+					<label>Sinônimos</label>
+				</div>
             </div>
 
             <div class="modal-footer">
