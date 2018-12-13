@@ -113,12 +113,12 @@
 			        if($usaFonetico)
 			        {
 			        	$post = scoreFonetico(fonetizar($termo), $posts);
-			        	$post = score($termo, $post);
-			        	$post = geraProdsFonetico($post, $idcli, $conDados);
+			        	$post = score($termo, $post);			        	
 
 			        	if(count($post) > 0)
 			        	{
 				        	$post = array_slice($post, 0, $limite, true);
+				        	$post = geraProdsFonetico($post, $idcli, $conDados);
 				        }
 			        }
 			        else
@@ -503,7 +503,8 @@
 			$idcli_cryp == '52fdb9f68c503e11d168fe52035901864c0a4861' ||
 			$idcli_cryp == '3d7b4f23b8f853910e4c64f09cdf897a59db524a' ||
 			$idcli_cryp == '18c85e8f2c6d60773372ef600c979ff3874a91db' ||
-			$idcli_cryp == '5e540d008531ea36696020361b9ea6561f1f5307')
+			$idcli_cryp == '5e540d008531ea36696020361b9ea6561f1f5307' ||
+			$idcli_cryp == '62f6479a5eca39725798b1ee300bd8d5de3a4ae3')
 		{
 			return true;
 		}
@@ -526,4 +527,4 @@
 	    
 	    return implode($arrayPalavrasAux, ' ');
 	}
-?>
+?>-
