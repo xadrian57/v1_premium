@@ -74,7 +74,12 @@
 				}
 			}
 		}
-			
+		
+		// Checase é busca
+		// se for, pega no banco se é back end ou front end
+		$select = 'SELECT CONF_busca_be FROM config WHere CONF_id_cli = '.$idCli;
+		$query = mysqli_query($conCad, $select);
+		$r = $query->fetch_array(MYSQLI_ASSOC);
 
 		$widgets = array(
 			'widgetsHome' => $widgetsHome, 
@@ -84,6 +89,7 @@
 			'widgetsCarrinho' => $widgetsCarrinho,
 			'widgetsBasicos' => $widgetsBasicos,
 			'widgetsBusca' => $widgetsBusca,
+			'busca_be' => $r['CONF_busca_be']
 		);
 		echo json_encode($widgets);
 	}
@@ -357,6 +363,55 @@
 		}		
 	}
 
+	// CARREGA INFORMACOES WIDGET DE BUSCA
+	function carregaInfoBusca($conCad, $id, $idCli){
+		// sinonimos
+		$select = 'SELECT tx_pesquisado, tx_retornado FROM busca WHERE id_cli = '.$idCli;
+		$query = mysqli_query($conCad, $select);
+
+		$synonyms = [];
+		if (mysqli_num_rows($query) > 0) {
+			while ($result = $query->fetch_array(MYSQLI_ASSOC)) {
+				array_push(
+					$synonyms,
+					array(
+						'word' => $result['tx_pesquisado'],
+						'syn' => $result['tx_retornado'],
+						
+					)
+				);
+			}
+		}
+
+		$data = array(
+			'synonyms' => $synonyms
+		);
+
+		echo json_encode($data);
+	}
+
+	function atualizaInfoBusca($conCad, $idWid, $idCli, $data){
+		$data = mysqli_real_escape_string($conCad, $data);
+		$data = str_replace("\\","",$data);
+		$data = json_decode($data, true);
+		$synonyms = $data['synonyms'];
+
+		// APAGA TODOS OS SINONIMOS DO BANCO PARA DEPOIS CADASTRAR OS NOVOS
+		$delete = 'DELETE FROM busca WHERE id_cli ='.$idCli;
+		$query = mysqli_query($conCad, $delete);
+
+		// salva os sinonimos
+		foreach($synonyms as $synonym) {
+			$word = $synonym['word'];
+			$syn = $synonym['syn'];
+
+			$insert = 'INSERT INTO busca (tx_pesquisado, tx_retornado, id_cli) VALUES ("'.$word.'", "'.$syn.'", '.$idCli.')';
+			mysqli_query($conCad, $insert);
+
+			echo $insert;
+		}
+	};
+
 	// ATIVA/DESATIVA WIDGET
 	function toggleWidget($conCad, $id, $t){
 		echo $t;
@@ -365,13 +420,13 @@
 		} else {
 			$query = 'UPDATE widget SET WID_status = 0 WHERE WID_id = "'.$id.'"';
 		}
-		mysqli_query($conCad,$query) or print(mysqli_error($conCad));
+		mysqli_query($conCad,$query);
 	}
 
 	// SETA O STATUS DO WIDGET PRA 2(APAGADO)
 	function deleteWidget($conCad, $id){
 		$query = 'UPDATE widget SET WID_status = 2 WHERE WID_id = "'.$id.'"';
-		mysqli_query($conCad,$query) or print(mysqli_error($conCad));
+		mysqli_query($conCad,$query);
 	}
 
 	$operacao = mysqli_real_escape_string($conCad, $_POST['op']);
@@ -396,6 +451,16 @@
 		case '5': // APAGA WIDGET
 			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
 			deleteWidget($conCad, $idWid);
+			break;
+		case '6': // CARREGA BUSCA
+			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
+			$idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
+			carregaInfoBusca($conCad,$idWid,$idCli);
+			break;
+		case '7': // ATUALIZA BUSCA
+			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
+			$idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
+			atualizaInfoBusca($conCad, $idWid, $idCli, $_POST['data']);
 			break;
 		default:
 			break;
