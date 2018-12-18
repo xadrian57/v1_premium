@@ -1627,7 +1627,8 @@ var searchbarCfg = {
 			$(this).parent().parent().remove();
 
 			$('#cfgSbWord').val(word);
-			$('#cfgSbSyn').val(syn);				
+			$('#cfgSbSyn').val(syn);
+			$('#btnAddSyn').removeAttr('disabled');
 		});
 
 		// botão remover
