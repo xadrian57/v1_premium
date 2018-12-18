@@ -261,8 +261,6 @@
 
 
 		$primeiros = array(
-			'widHide' => [true, 0],
-			'widShow' => [true, 0],
 			'p_chave_pai' => [true, 0],
 			'p_chave_filho'=> [true, 0],
 			'tp_chave_pai'=> [true, 0],
@@ -278,27 +276,7 @@
 		$hides = "";
 		$shows = "";
 
-		foreach($info as $k => $v){
-			if($k == "widHide"){
-				if($primeiros[$k][0]){
-					$primeiros[$k][0] = false;
-					$primeiros[$k][1] = $k;
-				} else {
-					$info[$primeiros[$k][1]]->$k .= ",".$v;
-					$evitar[] = $k;
-				}
-			}
-
-			if($k == "widShow"){
-				if($primeiros[$k][0]){
-					$primeiros[$k][0] = false;
-					$primeiros[$k][1] = $k;
-				} else {
-					$info[$primeiros[$k][1]]->$k .= ",".$v;
-					$evitar[] = $k;
-				}
-			}
-
+		foreach($info as $k => $v){			
 			if(in_array($k, $compreJunto)){
 				$v = strtoupper($v);
 				if($primeiros[$k][0]){
@@ -314,37 +292,38 @@
 		// -- fim tratamentos
 		$i = 0;
 		foreach ($info as $key => $value) {			
-				if($key == "widDiv" and $value == "")
-					continue;
-				if(in_array($key, $compreJunto))
-					$value = strtoupper($value);
-				if(isset($camposBDWID[$key])){
-					$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
-				} 
-				else if (isset($camposBDWIDCONFIG[$key])){
-					if($key == "palavrasPaiFilho"){
-						//$palavrasPaiFilho = str_replace(" ", "", $value);
-						$partes = explode(",", $value);
-						
-						$filhos = [];
-						$pais = [];
-						foreach($partes as $k => $parte){
-							$pai_filho = explode("->", $parte);
-							
-							$filhos[] = $pai_filho[1];
-							$pais[] = $pai_filho[0];
-						}
-						
-						$pais = implode(",", $pais);
-						$filhos = implode(",", $filhos);
-
-						$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
-					}
-				} else{
-					if (isset($camposBDWIDCONFIG[$key])) { // checa se existe o campo de configuracao no wid
-						$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
-				}
+			if($key == "widDiv" and $value == "") {
+				continue;
 			}
+			if(in_array($key, $compreJunto)) {
+				$value = strtoupper($value);
+			}
+			if(isset($camposBDWID[$key])){
+				$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
+			} 
+			else if (isset($camposBDWIDCONFIG[$key])){
+				if($key == "palavrasPaiFilho"){
+					//$palavrasPaiFilho = str_replace(" ", "", $value);
+					$partes = explode(",", $value);
+					
+					$filhos = [];
+					$pais = [];
+					foreach($partes as $k => $parte){
+						$pai_filho = explode("->", $parte);
+						
+						$filhos[] = $pai_filho[1];
+						$pais[] = $pai_filho[0];
+					}
+					
+					$pais = implode(",", $pais);
+					$filhos = implode(",", $filhos);
+
+					$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
+				}
+				else { // checa se existe o campo de configuracao no wid
+					$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';			
+				}
+			} 
 			$i++;
 		}
 
@@ -359,7 +338,6 @@
 			$updateWid = substr($updateWid,0,-2);
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
-
 		}		
 	}
 

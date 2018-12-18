@@ -838,7 +838,7 @@ $(document).ready(function(){
 											itemText: 'text',
 										});
 
-										var prodTitulos = String(widget.WC_titulos_produtos).split(",");
+										var prodTitulos = String(widget.tx_param_pai).split(",");
 										var prodIds = String(widget.WC_id_produto).split(",");
 
 										for (i = 0; i < prodTitulos.length; i++) { 
@@ -880,7 +880,7 @@ $(document).ready(function(){
 												toastr['error']('Você pode cadastrar no máximo 24 produtos');
 												return false;
 											}
-											if ($('#produtoManual').val().trim() != bossChoiceProdTitulo.trim()) {
+											if ($('#produtoManual').val().trim().length != bossChoiceProdTitulo.trim().length) {
 												toastr['error']('Você precisa escolher um dos produtos da lista');
 												$('#produtoManual').focus();
 												return false;
@@ -1452,6 +1452,25 @@ $(document).ready(function(){
 						
 						formData.append(key, val);
 					}
+
+					formData.delete('widShow');
+					formData.delete('widHide');
+					var widShow = [];
+					var widHide = [];
+
+					var widS = $('input[name="widShow"]');
+					var widH = $('input[name="widHide"]');
+
+					for (var i = 0; i < widS.length; i++) {
+						widShow.push(widS[0].value);
+					};
+					for (var i = 0; i < widH.length; i++) {
+						widHide.push(widH[0].value);
+					};
+
+					formData.append('widShow', widShow);
+					formData.append('widHide', widHide);
+
 					// PEGA O VALOR DE TODOS OS SELECTS
 					for (var i = 0; i < selects.length; i++) {
 						var key = selects[i].name;
@@ -1470,6 +1489,20 @@ $(document).ready(function(){
 						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
 					}				
 
+					// bosschoice
+					if ( $('#inputProdutos')[0] ) { // checa se existe o input de produtos
+						var produtos = $('#inputProdutos').tagsinput('items');
+						var p = [];
+
+						for (var i = 0; i < produtos.length; i++) {
+							var item = produtos[i];
+							p.push(item.text);
+						}
+
+						p = p.join(',');
+
+						formData.append('bossChoiceProdTitulo', p);
+					}
 
 					$.ajax({
 						type: 'POST',
