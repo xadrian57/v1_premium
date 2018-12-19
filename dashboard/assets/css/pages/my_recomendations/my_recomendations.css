@@ -49,6 +49,21 @@
 	max-width: 100%;
 }
 
+.container-btn-add-synounm {
+	text-align: left;
+}
+
+#tableSyn {
+	max-height: 409px;
+	overflow-y: scroll;
+}
+
+.table.table-sm th, .table.table-sm td {
+	padding: 0.6rem 2rem; }
+  
+  .table.table-xs th, .table.table-xs td {
+	padding: 0.4rem 2rem; }
+
 @media screen and (max-width: 1024px) {	
 
 	.list-group-item > span {
@@ -61,6 +76,12 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.container-btn-add-synounm {
+		text-align: right;
 	}
 }
 

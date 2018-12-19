@@ -375,13 +375,50 @@ if($_SESSION['idPlan'] == 42) {
             </div>
 
             <div class="modal-body">
-				<div class="form-control">
-					<label>Sinônimos</label>
-				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div id="searchbarCfgMsgs"></div>
+						<h4 class="card-title">Sinônimos</h4>
+						<div class="row">
+							<div class="col-md-4 col-sm-12">
+								<label>Palavra</label>
+								<div class="form-group">
+									<input id="cfgSbWord" type="text" class="form-control">
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-9">
+								<label>Sinônimo</label>
+								<div class="form-group">
+									<input id="cfgSbSyn" type="text" class="form-control">
+								</div>
+							</div>
+							<div class="col-md-4 col-sm-3">
+								<label class="hidden-sm" style="visibility: hidden;opacity: 0;">space</label>
+								<div class="form-group container-btn-add-synounm">
+									<button id="btnAddSyn" class="btn btn-info" disabled><i class="fa fa-plus"></i> Adicionar</button>
+								</div>
+							</div>
+							<div id="tableSyn" class="col-md-12 col-sm-12">
+								<table class="table table-sm">
+									<thead>
+										<tr>
+											<th>Palavra</th>
+											<th>Sinônimo</th>
+											<th class="text-xs-center">Editar</th>
+											<th class="text-xs-center">Excluir</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>				
             </div>
 
             <div class="modal-footer">
-            	<span class="rh-id-wid primary pull-left">ID: <span id="rhIdWid"></span></span>
+            	<span class="rh-id-wid primary pull-left">ID: <span id="rhIdWidBusca"></span></span>
 				<button type="button" class="btn btn-outline-warning" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
 				<button id="btn-salva-busca" type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i> Salvar Alterações</button>
 			 </div>
@@ -446,6 +483,6 @@ var rhPhoto = function (el) {
 			$('#modalEditarWidget').modal('show');
 		});
 	});
-}	
+}
 </script>
 

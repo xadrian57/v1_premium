@@ -19,6 +19,8 @@
     $css = str_replace('{SECONDARY_COLOR}', $corSecundaria, $css);
 
     function setOverlay( $overlaySaida ) {
+        $overlaySaida = str_replace('{LINK_BANNER_BLOCK}', '#', $overlaySaida);
+        $overlaySaida = str_replace('{BANNER_BLOCK}', '../widget/images/overlay/banner_overlay_default.png', $overlaySaida);
 
         $overlaySaida = str_replace('{TITLE_BLOCK}', 'Título do bloco exemplo', $overlaySaida);
         $overlaySaida = str_replace('{SUBTITLE_BLOCK}', 'Subtítulo do bloco exemplo', $overlaySaida);
