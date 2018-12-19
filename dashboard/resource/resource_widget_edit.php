@@ -204,8 +204,27 @@
 			'negativa_pai' => 'tx_negativa_pai',
 			'negativa_filho' => 'tx_negativa_filho',
 			'palavrasPaiFilho' => 'WC_cj_p, WC_cj_f',
-			'marca' => 'WC_marca'
+			'marca' => 'WC_marca',
+
+			'tx_rel1' => 'tx_tipo_pai',
+			'tx_rel2' => 'tx_tipo_filho'
 		);
+
+		// gambiarra a pedido do paulo
+		// é preciso que pra cada relação que os produtos relacionados salve sejam salvos 0's, separados por vírgula
+		if (isset($post['palavrasPaiFilho'])) {
+			$arr = explode(',', $post['palavrasPaiFilho']);
+			$tx_tipo = [];
+
+			foreach ($arr as $key => $value) {
+				array_push($tx_tipo, '0');
+			}
+
+			$tx_tipo = implode(',',$tx_tipo);
+
+			$info['tx_rel1'] = $tx_tipo;
+			$info['tx_rel2'] = $tx_tipo;
+		}
 
 		// imagem banner overlay
 		if (isset($files["imagemBanner"])) {
@@ -338,6 +357,8 @@
 			$updateWid = substr($updateWid,0,-2);
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
+
+			echo $queryWidConfig;
 		}		
 	}
 
