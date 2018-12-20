@@ -282,7 +282,7 @@
             $ident = $api->identificador('roihero.com.br');
 
             $arquivos = [
-                'https://roihero.com.br/widget/css/overlay/images/overlay/'.$banner
+                'https://roihero.com.br/widget/images/overlay/'.$banner
             ];
 
             $api->purgeArquivos($ident,$arquivos);
