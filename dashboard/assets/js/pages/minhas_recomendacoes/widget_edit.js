@@ -841,8 +841,10 @@ $(document).ready(function(){
 										var prodTitulos = String(widget.tx_param_pai).split(",");
 										var prodIds = String(widget.WC_id_produto).split(",");
 
-										for (i = 0; i < prodTitulos.length; i++) { 
-											$('#inputProdutos').tagsinput('add', {value: prodIds[i], text: prodTitulos[i]});
+										for (i = 0; i < prodTitulos.length; i++) {
+											if (prodTitulos[i] != '') {
+												$('#inputProdutos').tagsinput('add', {value: prodIds[i], text: prodTitulos[i]});
+											}
 										}
 										//$('#inputProdutos').tagsinput('add', {value: widget.WC_id_produto, text: textoo});
 
@@ -1071,7 +1073,6 @@ $(document).ready(function(){
 										'</div>' +
 									'</div>';
 									
-
 									if (palavrasPaiFilho.replace('->','').trim() !== '') {
 										console.log(palavrasPaiFilho.replace('->','').trim());
 										$('#palavrasPaiFilho').tagsinput('add', palavrasPaiFilho);
