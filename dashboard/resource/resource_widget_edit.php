@@ -347,7 +347,7 @@
 
 		// -- fim tratamentos
 		$i = 0;
-		foreach ($info as $key => $value) {			
+		foreach ($info as $key => $value) {
 			if($key == "widDiv" and $value == "") {
 				continue;
 			}

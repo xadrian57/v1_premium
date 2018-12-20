@@ -1454,6 +1454,7 @@ $(document).ready(function(){
 						formData.append(key, val);
 					}
 
+					// tratamento widshow e widhide para salvar mais de 1 pagina
 					formData.delete('widShow');
 					formData.delete('widHide');
 					var widShow = [];
@@ -1504,6 +1505,81 @@ $(document).ready(function(){
 
 						formData.append('bossChoiceProdTitulo', p);
 					}
+
+					// COMPRE JUNTO
+					formData.delete('p_chave_pai');
+					formData.delete('p_chave_filho');
+					formData.delete('tp_chave_pai');
+					formData.delete('tp_chave_filho');
+
+					formData.delete('parametro_pai');
+					formData.delete('parametro_filho');
+					formData.delete('tp_parametro_pai');
+					formData.delete('tp_parametro_filho');
+
+					formData.delete('negativa_pai');
+					formData.delete('negativa_filho');
+
+					var palavraChavePai = document.getElementsByName('p_chave_pai');
+					var palavraChaveFilho = document.getElementsByName('p_chave_filho');
+					var tipoPalavraChavePai = document.getElementsByName('tp_chave_pai');
+					var tipoPalavraChaveFilho = document.getElementsByName('tp_chave_filho');
+					var parametroPai = document.getElementsByName('parametro_pai');
+					var parametroFilho = document.getElementsByName('parametro_filho');
+					var tipoParametroPai = document.getElementsByName('tp_parametro_pai');
+					var tipoParametroFilho = document.getElementsByName('tp_parametro_filho');
+					var negativaPai = document.getElementsByName('negativa_pai');
+					var negativaFilho = document.getElementsByName('negativa_filho');
+
+					var p_chave_pai = [];
+					var p_chave_filho = [];
+					var tp_chave_pai = [];
+					var tp_chave_filho = [];
+					var parametro_pai = [];
+					var parametro_filho = [];
+					var tp_parametro_pai = [];
+					var tp_parametro_filho = [];
+					var negativa_pai = [];
+					var negativa_filho = [];
+
+					for (var i = 0; i < palavraChavePai.length; i++) {
+						p_chave_pai.push( palavraChavePai[i].value );
+						p_chave_filho.push( palavraChaveFilho[i].value );
+						tp_chave_pai.push( tipoPalavraChavePai[i].value );
+						tp_chave_filho.push( tipoPalavraChaveFilho[i].value );
+
+						parametro_pai.push( parametroPai[i].value );
+						parametro_filho.push( parametroFilho[i].value );
+						tp_parametro_pai.push( tipoParametroPai[i].value );
+						tp_parametro_filho.push( tipoParametroFilho[i].value );
+
+						negativa_pai.push( negativaPai[i].value );
+						negativa_filho.push( negativaFilho[i].value );
+					}
+
+					p_chave_pai = p_chave_pai.join(',');
+					p_chave_filho = p_chave_filho.join(',');
+					tp_chave_pai = tp_chave_pai.join(',');
+					tp_chave_filho = tp_chave_filho.join(',');
+					parametro_pai = parametro_pai.join(',');
+					parametro_filho = parametro_filho.join(',');
+					tp_parametro_pai = tp_parametro_pai.join(',');
+					tp_parametro_filho = tp_parametro_filho.join(',');
+					negativa_pai = negativa_pai.join(',');
+					negativa_filho = negativa_filho.join(',');
+
+					formData.append('p_chave_pai',p_chave_pai);
+					formData.append('p_chave_filho',p_chave_filho);
+					formData.append('tp_chave_pai',tp_chave_pai);
+					formData.append('tp_chave_filho',tp_chave_filho);
+
+					formData.append('parametro_pai',parametro_pai);
+					formData.append('parametro_filho',parametro_filho);
+					formData.append('tp_parametro_pai',tp_parametro_pai);
+					formData.append('tp_parametro_filho',tp_parametro_filho);
+
+					formData.append('negativa_pai',negativa_pai);
+					formData.append('negativa_filho',negativa_filho);
 
 					$.ajax({
 						type: 'POST',
