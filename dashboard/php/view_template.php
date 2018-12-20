@@ -22,12 +22,12 @@
         $overlaySaida = str_replace('{LINK_BANNER_BLOCK}', '#', $overlaySaida);
         $overlaySaida = str_replace('{BANNER_BLOCK}', '../widget/images/overlay/banner_overlay_default.png', $overlaySaida);
 
-        $overlaySaida = str_replace('{TITLE_BLOCK}', 'Título do bloco exemplo', $overlaySaida);
-        $overlaySaida = str_replace('{SUBTITLE_BLOCK}', 'Subtítulo do bloco exemplo', $overlaySaida);
+        $overlaySaida = str_replace('{TITLE_BLOCK}', 'Título do bloco', $overlaySaida);
+        $overlaySaida = str_replace('{SUBTITLE_BLOCK}', 'Subtítulo do bloco', $overlaySaida);
         $overlaySaida = str_replace('{PRODUCT_URL}', '#', $overlaySaida);
         $overlaySaida = str_replace('{PRODUCT_DISCOUNT}', '15', $overlaySaida);
-        $overlaySaida = str_replace('{PRODUCT_IMG}', 'assets/images/app/hero.jpg', $overlaySaida);
-        $overlaySaida = str_replace('{PRODUCT_NAME}', 'Nome produto exemplo nome produto exemplo', $overlaySaida);
+        $overlaySaida = str_replace('{PRODUCT_IMG}', 'assets/images/app/prod.gif', $overlaySaida);
+        $overlaySaida = str_replace('{PRODUCT_NAME}', 'Nome do produto', $overlaySaida);
         $overlaySaida = str_replace('{VALUE_DE}', 'R$ 70,00', $overlaySaida);
         $overlaySaida = str_replace('{VALUE}', 'R$ 50,00', $overlaySaida);
         $overlaySaida = str_replace('{AMOUNT_PLOTS}', '15', $overlaySaida);
@@ -38,12 +38,12 @@
 
     function setOfertaLimitada( $ofertaLimitada ) {
 
-        $ofertaLimitada = str_replace('{TITLE_BLOCK_0}', 'Título do bloco exemplo', $ofertaLimitada);
-        $overlaySaida = str_replace('{SUBTITLE_BLOCK_0}', 'Subtítulo do bloco exemplo', $ofertaLimitada);
+        $ofertaLimitada = str_replace('{TITLE_BLOCK_0}', 'Título do bloco', $ofertaLimitada);
+        $overlaySaida = str_replace('{SUBTITLE_BLOCK_0}', 'Subtítulo do bloco', $ofertaLimitada);
         $ofertaLimitada = str_replace('{PRODUCT_URL_0}', '#', $ofertaLimitada);
         $ofertaLimitada = str_replace('{PRODUCT_DISCOUNT_0}', '15', $ofertaLimitada);
-        $ofertaLimitada = str_replace('{PRODUCT_IMG_0}', 'assets/images/app/hero.jpg', $ofertaLimitada);
-        $ofertaLimitada = str_replace('{PRODUCT_NAME_0}', 'Nome produto exemplo nome produto exemplo', $ofertaLimitada);
+        $ofertaLimitada = str_replace('{PRODUCT_IMG_0}', 'assets/images/app/prod.gif', $ofertaLimitada);
+        $ofertaLimitada = str_replace('{PRODUCT_NAME_0}', 'Nome do produto', $ofertaLimitada);
         $ofertaLimitada = str_replace('{VALUE_DE_0}', 'R$ 70,00', $ofertaLimitada);
         $ofertaLimitada = str_replace('{VALUE_0}', 'R$ 50,00', $ofertaLimitada);
         $ofertaLimitada = str_replace('{AMOUNT_PLOTS_0}', '15', $ofertaLimitada);
