@@ -228,6 +228,24 @@
 
 		// imagem banner overlay
 		if (isset($files["imagemBanner"])) {
+			// deleta o arquivo de banner atual
+			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".jpeg")) {
+				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".jpeg");
+			}
+			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".jpg")) {
+				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".jpg");
+			}
+			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".png")) {
+				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".png");
+			}
+			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".gif")) {
+				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".gif");
+			}
+			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".bmp")) {
+				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".bmp");
+			}
+
+			// verifica o tipo do arquivo
 			switch ($files["imagemBanner"]['type']) {
 				case "image/png":
 					$extension = 'png';
@@ -235,8 +253,14 @@
 				case "image/jpg":
 					$extension = 'jpg';
 					break;
+				case "image/gif":
+					$extension = 'gif';
+					break;
 				case "image/jpeg":
 					$extension = 'jpeg';
+					break;
+				case "image/bmp":
+					$extension = 'bmp';
 					break;
 			}
 
@@ -249,6 +273,19 @@
 
 			$info['imagemBanner'] = $banner;
 
+			
+			//inclui o objeto de comunicação com a api cloudflare
+			include 'api_cloudflare.class.php';
+			//da purge no cache com a cloudflare
+            $api = new cloudflare_api('moises.dourado@roihero.com.br','1404cc5e783d0287897bfb2ebf7faa9e87eb5');
+
+            $ident = $api->identificador('roihero.com.br');
+
+            $arquivos = [
+                'https://roihero.com.br/widget/css/overlay/images/overlay/'.$banner
+            ];
+
+            $api->purgeArquivos($ident,$arquivos);
 		} 
 		// caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
 		else {
