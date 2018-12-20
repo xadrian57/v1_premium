@@ -989,7 +989,7 @@ $(document).ready(function(){
 											'<div class="form-group">'+
 												'<label for="linkBannerOverlay">Link do Banner</label>'+
 												'<div class="rh-input-icon-right">'+
-													'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WC_link_banner+'">'+
+													'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WID_link_banner+'">'+
 													'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
 														'<i class="icon-info"></i>'+
 													'</abbr>'+
