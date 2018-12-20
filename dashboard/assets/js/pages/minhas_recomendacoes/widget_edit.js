@@ -1113,7 +1113,7 @@ $(document).ready(function(){
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
 											'<div class="rh-input-icon-right">'+
-												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<input name="marca" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -1127,7 +1127,7 @@ $(document).ready(function(){
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
 											'<div class="rh-input-icon-right">'+
-												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<input name="marca" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
