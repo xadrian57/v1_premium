@@ -173,6 +173,7 @@
 		$camposBDWID = array( // campos do widget
 			'nome'=>'WID_nome',
 			'titulo'=>'WID_texto',
+			'subtitulo'=>'WID_sub_titulo ',
 			'utm'=>'WID_utm',
 			'inteligenciaWidget' => 'WID_inteligencia',
 			'widDiv' => 'WID_div',
@@ -394,6 +395,8 @@
 			$updateWid = substr($updateWid,0,-2);
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
+
+			echo ($queryWidConfig);
 		}		
 	}
 

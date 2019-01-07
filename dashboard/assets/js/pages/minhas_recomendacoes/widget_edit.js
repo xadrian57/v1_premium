@@ -752,7 +752,9 @@ $(document).ready(function(){
 								    '</div>';
 
 									break;
-								case '9':
+								case '9': // oferta limitada manual
+
+									console.log(window['bossChoiceProdTitulo'])
 									if(widget.WID_formato == 6){
 										camposAdicionais.innerHTML+=
 											'<div class="form-group">'+
@@ -769,7 +771,7 @@ $(document).ready(function(){
 											'<div class="rh-input-icon-right">'+
 												'<input name="manualOfertaLimitada" id="manualOfertaLimitadaInput" class="form-control" type="text"';
 												htmlManualOfertaLimitada+= 
-												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false">' +
+												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false" title="'+widget.tx_param_pai+'">' +
 												'<abbr title="Digite o nome do produto que está no seu XML" class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -780,7 +782,9 @@ $(document).ready(function(){
 										camposAdicionais.innerHTML+= htmlManualOfertaLimitada;
 
 										// preenche nome produto
-										preencheCampoAutoOfertaLimitada(widget.WC_titulos_produtos, 1);
+										preencheCampoAutoOfertaLimitada(widget.tx_param_pai[0], widget.WC_id_produto);
+
+										console.log(widget.WC_id_produto)
 
 										camposAdicionais.getElementsByTagName('select')[0].addEventListener('click',function(){
 											if (this.value === '9'){
@@ -957,6 +961,8 @@ $(document).ready(function(){
 									});
 									break;
 								case '13':
+									$('#inputSubtitulo').show();
+									
 									if (widget.CONF_template_overlay != 0) {
 										camposAdicionais.innerHTML+=
 										'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
@@ -1478,18 +1484,7 @@ $(document).ready(function(){
 						var key = selects[i].name;
 						var val = selects[i].value;
 						formData.append(key, val);
-					};
-
-					// esses dados soh sao enviados para o oferta limitada manual
-					if ($('#manualOfertaLimitada').length > 0) {
-						var key = "bossChoiceProdId";
-						var val = bossChoiceProdId;
-						formData.append("bossChoiceProdId", bossChoiceProdId);
-						
-						var key = "bossChoiceProdTitulo";
-						var val = bossChoiceProdTitulo;
-						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
-					}				
+					};			
 
 					// bosschoice
 					if ( $('#inputProdutos')[0] ) { // checa se existe o input de produtos
@@ -1581,6 +1576,21 @@ $(document).ready(function(){
 					formData.append('negativa_pai',negativa_pai);
 					formData.append('negativa_filho',negativa_filho);
 
+
+
+					// esses dados soh sao enviados para o oferta limitada manual
+					if ($('#manualOfertaLimitada').length > 0) {
+						formData.delete('tx_param_pai');
+
+						var key = "bossChoiceProdId";
+						var val = bossChoiceProdId;
+						formData.append("bossChoiceProdId", bossChoiceProdId);
+						
+						var key = "bossChoiceProdTitulo";
+						var val = bossChoiceProdTitulo;
+						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
+					}	
+
 					$.ajax({
 						type: 'POST',
 						url: 'resource/resource_widget_edit.php',
@@ -1597,6 +1607,11 @@ $(document).ready(function(){
 				});
 			}
 		}
+
+	// sempre q fechar o modal, esconde o campo
+	$('#modalEditarWidget').on('hidden.bs.modal', function () {
+		$('#inputSubtitulo').hide(); // esconde campo subtitulo
+	})
 
 	$('#btnConfirmaExclusao').on('click', function(){
 		var id = $(this).attr('id-wid');
@@ -1939,6 +1954,11 @@ function preencheCampoAutoOfertaLimitada(titulo, id){
 	bossChoiceProdTitulo = titulo.replace(",", ".");
 	$('#listaProdutosAutocomplete').fadeOut();
 	$('#listaProdutosAutocomplete').html("");
+
+	window['prodManualOl'] = {
+		'id': id,
+		'titulo': titulo.replace(",", ".")
+	}
 }
 
 function preencheCampoAuto(titulo, id, formato){
@@ -1954,5 +1974,5 @@ function preencheCampoAuto(titulo, id, formato){
 	bossChoiceProdId = id;
 	bossChoiceProdTitulo = titulo.replace(",", ".");
 	$(nomeDiv).fadeOut();
-	$(nomeDiv).html("");	
+	$(nomeDiv).html("");
 }
