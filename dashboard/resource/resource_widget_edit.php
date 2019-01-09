@@ -395,8 +395,6 @@
 			$updateWid = substr($updateWid,0,-2);
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
-
-			echo ($queryWidConfig);
 		}		
 	}
 
