@@ -1501,14 +1501,29 @@ $(document).ready(function(){
 						formData.append('bossChoiceProdTitulo', p);
 					}
 
-					// paginas widgets
+					// paginas inclusao widgets
 					formData.delete('widShow');
 					var widShowValue = '';
 					var widShow = document.getElementsByName('widShow');
 					for (var i = 0; i < widShow.length;i++) {
-						widShowValue = (i === 0) ? widShow[i].value : widShowValue+','+widShow[i].value;
+						var value = widShow[i].value.trim();
+						if (value !== '') {
+							widShowValue = (i === 0) ? value : widShowValue+','+value;
+						}
 					}
 					formData.append('widShow',widShowValue);
+
+					// paginas exclusao widgets
+					formData.delete('widHide');
+					var widHideValue = '';
+					var widHide = document.getElementsByName('widHide');
+					for (var i = 0; i < widHide.length;i++) {
+						var value = widHide[i].value.trim();
+						if (value !== '') {
+							widHideValue = (i === 0) ? value : widHideValue+','+value;
+						}
+					}
+					formData.append('widHide',widHideValue);
 
 					// COMPRE JUNTO
 					formData.delete('p_chave_pai');
