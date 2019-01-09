@@ -1501,6 +1501,15 @@ $(document).ready(function(){
 						formData.append('bossChoiceProdTitulo', p);
 					}
 
+					// paginas widgets
+					formData.delete('widShow');
+					var widShowValue = '';
+					var widShow = document.getElementsByName('widShow');
+					for (var i = 0; i < widShow.length;i++) {
+						widShowValue = (i === 0) ? widShow[i].value : widShowValue+','+widShow[i].value;
+					}
+					formData.append('widShow',widShowValue);
+
 					// COMPRE JUNTO
 					formData.delete('p_chave_pai');
 					formData.delete('p_chave_filho');
