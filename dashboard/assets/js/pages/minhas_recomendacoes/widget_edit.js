@@ -752,7 +752,9 @@ $(document).ready(function(){
 								    '</div>';
 
 									break;
-								case '9':
+								case '9': // oferta limitada manual
+
+									console.log(window['bossChoiceProdTitulo'])
 									if(widget.WID_formato == 6){
 										camposAdicionais.innerHTML+=
 											'<div class="form-group">'+
@@ -769,7 +771,7 @@ $(document).ready(function(){
 											'<div class="rh-input-icon-right">'+
 												'<input name="manualOfertaLimitada" id="manualOfertaLimitadaInput" class="form-control" type="text"';
 												htmlManualOfertaLimitada+= 
-												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false">' +
+												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false" title="'+widget.tx_param_pai+'">' +
 												'<abbr title="Digite o nome do produto que está no seu XML" class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -780,7 +782,9 @@ $(document).ready(function(){
 										camposAdicionais.innerHTML+= htmlManualOfertaLimitada;
 
 										// preenche nome produto
-										preencheCampoAutoOfertaLimitada(widget.WC_titulos_produtos, 1);
+										preencheCampoAutoOfertaLimitada(widget.tx_param_pai[0], widget.WC_id_produto);
+
+										console.log(widget.WC_id_produto)
 
 										camposAdicionais.getElementsByTagName('select')[0].addEventListener('click',function(){
 											if (this.value === '9'){
@@ -841,8 +845,10 @@ $(document).ready(function(){
 										var prodTitulos = String(widget.tx_param_pai).split(",");
 										var prodIds = String(widget.WC_id_produto).split(",");
 
-										for (i = 0; i < prodTitulos.length; i++) { 
-											$('#inputProdutos').tagsinput('add', {value: prodIds[i], text: prodTitulos[i]});
+										for (i = 0; i < prodTitulos.length; i++) {
+											if (prodTitulos[i] != '') {
+												$('#inputProdutos').tagsinput('add', {value: prodIds[i], text: prodTitulos[i]});
+											}
 										}
 										//$('#inputProdutos').tagsinput('add', {value: widget.WC_id_produto, text: textoo});
 
@@ -955,6 +961,8 @@ $(document).ready(function(){
 									});
 									break;
 								case '13':
+									$('#inputSubtitulo').show();
+									
 									if (widget.CONF_template_overlay != 0) {
 										camposAdicionais.innerHTML+=
 										'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
@@ -989,7 +997,7 @@ $(document).ready(function(){
 											'<div class="form-group">'+
 												'<label for="linkBannerOverlay">Link do Banner</label>'+
 												'<div class="rh-input-icon-right">'+
-													'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WC_link_banner+'">'+
+													'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WID_link_banner+'">'+
 													'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
 														'<i class="icon-info"></i>'+
 													'</abbr>'+
@@ -1071,7 +1079,6 @@ $(document).ready(function(){
 										'</div>' +
 									'</div>';
 									
-
 									if (palavrasPaiFilho.replace('->','').trim() !== '') {
 										console.log(palavrasPaiFilho.replace('->','').trim());
 										$('#palavrasPaiFilho').tagsinput('add', palavrasPaiFilho);
@@ -1112,7 +1119,7 @@ $(document).ready(function(){
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
 											'<div class="rh-input-icon-right">'+
-												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<input name="marca" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -1126,7 +1133,7 @@ $(document).ready(function(){
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
 											'<div class="rh-input-icon-right">'+
-												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<input name="marca" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -1453,6 +1460,7 @@ $(document).ready(function(){
 						formData.append(key, val);
 					}
 
+					// tratamento widshow e widhide para salvar mais de 1 pagina
 					formData.delete('widShow');
 					formData.delete('widHide');
 					var widShow = [];
@@ -1476,18 +1484,7 @@ $(document).ready(function(){
 						var key = selects[i].name;
 						var val = selects[i].value;
 						formData.append(key, val);
-					};
-
-					// esses dados soh sao enviados para o oferta limitada manual
-					if ($('#manualOfertaLimitada').length > 0) {
-						var key = "bossChoiceProdId";
-						var val = bossChoiceProdId;
-						formData.append("bossChoiceProdId", bossChoiceProdId);
-						
-						var key = "bossChoiceProdTitulo";
-						var val = bossChoiceProdTitulo;
-						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
-					}				
+					};			
 
 					// bosschoice
 					if ( $('#inputProdutos')[0] ) { // checa se existe o input de produtos
@@ -1503,6 +1500,120 @@ $(document).ready(function(){
 
 						formData.append('bossChoiceProdTitulo', p);
 					}
+
+					// paginas inclusao widgets
+					formData.delete('widShow');
+					var widShowValue = '';
+					var widShow = document.getElementsByName('widShow');
+					for (var i = 0; i < widShow.length;i++) {
+						var value = widShow[i].value.trim();
+						if (value !== '') {
+							widShowValue = (i === 0) ? value : widShowValue+','+value;
+						}
+					}
+					formData.append('widShow',widShowValue);
+
+					// paginas exclusao widgets
+					formData.delete('widHide');
+					var widHideValue = '';
+					var widHide = document.getElementsByName('widHide');
+					for (var i = 0; i < widHide.length;i++) {
+						var value = widHide[i].value.trim();
+						if (value !== '') {
+							widHideValue = (i === 0) ? value : widHideValue+','+value;
+						}
+					}
+					formData.append('widHide',widHideValue);
+
+					// COMPRE JUNTO
+					formData.delete('p_chave_pai');
+					formData.delete('p_chave_filho');
+					formData.delete('tp_chave_pai');
+					formData.delete('tp_chave_filho');
+
+					formData.delete('parametro_pai');
+					formData.delete('parametro_filho');
+					formData.delete('tp_parametro_pai');
+					formData.delete('tp_parametro_filho');
+
+					formData.delete('negativa_pai');
+					formData.delete('negativa_filho');
+
+					var palavraChavePai = document.getElementsByName('p_chave_pai');
+					var palavraChaveFilho = document.getElementsByName('p_chave_filho');
+					var tipoPalavraChavePai = document.getElementsByName('tp_chave_pai');
+					var tipoPalavraChaveFilho = document.getElementsByName('tp_chave_filho');
+					var parametroPai = document.getElementsByName('parametro_pai');
+					var parametroFilho = document.getElementsByName('parametro_filho');
+					var tipoParametroPai = document.getElementsByName('tp_parametro_pai');
+					var tipoParametroFilho = document.getElementsByName('tp_parametro_filho');
+					var negativaPai = document.getElementsByName('negativa_pai');
+					var negativaFilho = document.getElementsByName('negativa_filho');
+
+					var p_chave_pai = [];
+					var p_chave_filho = [];
+					var tp_chave_pai = [];
+					var tp_chave_filho = [];
+					var parametro_pai = [];
+					var parametro_filho = [];
+					var tp_parametro_pai = [];
+					var tp_parametro_filho = [];
+					var negativa_pai = [];
+					var negativa_filho = [];
+
+					for (var i = 0; i < palavraChavePai.length; i++) {
+						p_chave_pai.push( palavraChavePai[i].value );
+						p_chave_filho.push( palavraChaveFilho[i].value );
+						tp_chave_pai.push( tipoPalavraChavePai[i].value );
+						tp_chave_filho.push( tipoPalavraChaveFilho[i].value );
+
+						parametro_pai.push( parametroPai[i].value );
+						parametro_filho.push( parametroFilho[i].value );
+						tp_parametro_pai.push( tipoParametroPai[i].value );
+						tp_parametro_filho.push( tipoParametroFilho[i].value );
+
+						negativa_pai.push( negativaPai[i].value );
+						negativa_filho.push( negativaFilho[i].value );
+					}
+
+					p_chave_pai = p_chave_pai.join(',');
+					p_chave_filho = p_chave_filho.join(',');
+					tp_chave_pai = tp_chave_pai.join(',');
+					tp_chave_filho = tp_chave_filho.join(',');
+					parametro_pai = parametro_pai.join(',');
+					parametro_filho = parametro_filho.join(',');
+					tp_parametro_pai = tp_parametro_pai.join(',');
+					tp_parametro_filho = tp_parametro_filho.join(',');
+					negativa_pai = negativa_pai.join(',');
+					negativa_filho = negativa_filho.join(',');
+
+					formData.append('p_chave_pai',p_chave_pai);
+					formData.append('p_chave_filho',p_chave_filho);
+					formData.append('tp_chave_pai',tp_chave_pai);
+					formData.append('tp_chave_filho',tp_chave_filho);
+
+					formData.append('parametro_pai',parametro_pai);
+					formData.append('parametro_filho',parametro_filho);
+					formData.append('tp_parametro_pai',tp_parametro_pai);
+					formData.append('tp_parametro_filho',tp_parametro_filho);
+
+					formData.append('negativa_pai',negativa_pai);
+					formData.append('negativa_filho',negativa_filho);
+
+
+
+					// esses dados soh sao enviados para o oferta limitada manual
+					if ($('#manualOfertaLimitada').length > 0) {
+						formData.delete('tx_param_pai');
+
+						var key = "bossChoiceProdId";
+						var val = bossChoiceProdId;
+						formData.append("bossChoiceProdId", bossChoiceProdId);
+						
+						var key = "bossChoiceProdTitulo";
+						var val = bossChoiceProdTitulo;
+						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
+					}	
 
 					$.ajax({
 						type: 'POST',
@@ -1520,6 +1631,11 @@ $(document).ready(function(){
 				});
 			}
 		}
+
+	// sempre q fechar o modal, esconde o campo
+	$('#modalEditarWidget').on('hidden.bs.modal', function () {
+		$('#inputSubtitulo').hide(); // esconde campo subtitulo
+	})
 
 	$('#btnConfirmaExclusao').on('click', function(){
 		var id = $(this).attr('id-wid');
@@ -1862,6 +1978,11 @@ function preencheCampoAutoOfertaLimitada(titulo, id){
 	bossChoiceProdTitulo = titulo.replace(",", ".");
 	$('#listaProdutosAutocomplete').fadeOut();
 	$('#listaProdutosAutocomplete').html("");
+
+	window['prodManualOl'] = {
+		'id': id,
+		'titulo': titulo.replace(",", ".")
+	}
 }
 
 function preencheCampoAuto(titulo, id, formato){
@@ -1877,5 +1998,5 @@ function preencheCampoAuto(titulo, id, formato){
 	bossChoiceProdId = id;
 	bossChoiceProdTitulo = titulo.replace(",", ".");
 	$(nomeDiv).fadeOut();
-	$(nomeDiv).html("");	
+	$(nomeDiv).html("");
 }

@@ -322,6 +322,19 @@ if($_SESSION['idPlan'] == 42) {
 	                        </div>
 	                    </div>
 	                </div>
+
+                	<div id="inputSubtitulo" class="col-md-12" style="display: none">
+	                    <div class="form-group">
+	                    	<label>Subtítulo Promocional</label>
+	                    	<div class="rh-input-icon-right">
+		                    	<input id="subtitulo" name="subtitulo" class="form-control" type="text">
+                                <abbr title="Esse é o título do bloco que irá aparecer na sua loja" class="info-abbr">
+                                    <i class="icon-info"></i>
+                                </abbr>
+	                        </div>
+	                    </div>
+	                </div>
+
                 	<div class="col-md-12">
 	                    <div class="form-group">
 	                    	<label>UTM</label>
