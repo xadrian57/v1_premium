@@ -39,7 +39,8 @@ $(document).ready(function(){
 						window['__categoria'] = JSON.parse(result)['widgetsCategoria'];
 						window['__carrinho'] = JSON.parse(result)['widgetsCarrinho'];
 						window['__basicos'] = JSON.parse(result)['widgetsBasicos'];
-						window['__busca'] = JSON.parse(result)['widgetsBusca'];
+						window['__busca'] = JSON.parse(result)['widgetsBusca'];						
+						window['busca_be'] = JSON.parse(result)['busca_be'];
 
 						// INICIA AS FUNÇÕES PRINCIPAIS
 						widgets.checaPlano();
@@ -154,15 +155,24 @@ $(document).ready(function(){
 				var widgetsBusca = document.getElementById('widgetsBusca');
 				widgetsBusca.innerHTML = "";
 				__busca.forEach(function(wid){
-					widgetsBusca.innerHTML = widgetsBusca.innerHTML +
-					
-					// '<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
 
-					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
-						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
-							'<span class="pull-right primary">ID: '+wid.id+'</span>'+
-				         '</div>'+
-					'</li>';
+					if (busca_be == '1') {
+						widgetsBusca.innerHTML = widgetsBusca.innerHTML +
+						'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
+							'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
+								'<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
+							'</div>'+
+						'</li>';
+					} else {
+						widgetsBusca.innerHTML = widgetsBusca.innerHTML +
+						'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
+							'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
+								'<span class="pull-right primary">ID: 22104</span>';
+							'</div>'+
+						'</li>';
+					}
+
+					
 				});
 			},
 
@@ -742,7 +752,9 @@ $(document).ready(function(){
 								    '</div>';
 
 									break;
-								case '9':
+								case '9': // oferta limitada manual
+
+									console.log(window['bossChoiceProdTitulo'])
 									if(widget.WID_formato == 6){
 										camposAdicionais.innerHTML+=
 											'<div class="form-group">'+
@@ -759,7 +771,7 @@ $(document).ready(function(){
 											'<div class="rh-input-icon-right">'+
 												'<input name="manualOfertaLimitada" id="manualOfertaLimitadaInput" class="form-control" type="text"';
 												htmlManualOfertaLimitada+= 
-												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false">' +
+												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false" title="'+widget.tx_param_pai+'">' +
 												'<abbr title="Digite o nome do produto que está no seu XML" class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -770,7 +782,9 @@ $(document).ready(function(){
 										camposAdicionais.innerHTML+= htmlManualOfertaLimitada;
 
 										// preenche nome produto
-										preencheCampoAutoOfertaLimitada(widget.WC_titulos_produtos, 1);
+										preencheCampoAutoOfertaLimitada(widget.tx_param_pai[0], widget.WC_id_produto);
+
+										console.log(widget.WC_id_produto)
 
 										camposAdicionais.getElementsByTagName('select')[0].addEventListener('click',function(){
 											if (this.value === '9'){
@@ -828,11 +842,13 @@ $(document).ready(function(){
 											itemText: 'text',
 										});
 
-										var prodTitulos = String(widget.WC_titulos_produtos).split(",");
+										var prodTitulos = String(widget.tx_param_pai).split(",");
 										var prodIds = String(widget.WC_id_produto).split(",");
 
-										for (i = 0; i < prodTitulos.length; i++) { 
-											$('#inputProdutos').tagsinput('add', {value: prodIds[i], text: prodTitulos[i]});
+										for (i = 0; i < prodTitulos.length; i++) {
+											if (prodTitulos[i] != '') {
+												$('#inputProdutos').tagsinput('add', {value: prodIds[i], text: prodTitulos[i]});
+											}
 										}
 										//$('#inputProdutos').tagsinput('add', {value: widget.WC_id_produto, text: textoo});
 
@@ -870,7 +886,7 @@ $(document).ready(function(){
 												toastr['error']('Você pode cadastrar no máximo 24 produtos');
 												return false;
 											}
-											if ($('#produtoManual').val().trim() != bossChoiceProdTitulo.trim()) {
+											if ($('#produtoManual').val().trim().length != bossChoiceProdTitulo.trim().length) {
 												toastr['error']('Você precisa escolher um dos produtos da lista');
 												$('#produtoManual').focus();
 												return false;
@@ -945,6 +961,8 @@ $(document).ready(function(){
 									});
 									break;
 								case '13':
+									$('#inputSubtitulo').show();
+									
 									if (widget.CONF_template_overlay != 0) {
 										camposAdicionais.innerHTML+=
 										'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
@@ -979,7 +997,7 @@ $(document).ready(function(){
 											'<div class="form-group">'+
 												'<label for="linkBannerOverlay">Link do Banner</label>'+
 												'<div class="rh-input-icon-right">'+
-													'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WC_link_banner+'">'+
+													'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WID_link_banner+'">'+
 													'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
 														'<i class="icon-info"></i>'+
 													'</abbr>'+
@@ -1061,7 +1079,6 @@ $(document).ready(function(){
 										'</div>' +
 									'</div>';
 									
-
 									if (palavrasPaiFilho.replace('->','').trim() !== '') {
 										console.log(palavrasPaiFilho.replace('->','').trim());
 										$('#palavrasPaiFilho').tagsinput('add', palavrasPaiFilho);
@@ -1102,7 +1119,7 @@ $(document).ready(function(){
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
 											'<div class="rh-input-icon-right">'+
-												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<input name="marca" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -1116,7 +1133,7 @@ $(document).ready(function(){
 										'<div class="form-group">'+
 											'<label>Marca</label>'+
 											'<div class="rh-input-icon-right">'+
-												'<input name="parametro_pai" class="form-control" type="text" value="'+widget.WC_marca+'">'+
+												'<input name="marca" class="form-control" type="text" value="'+widget.WC_marca+'">'+
 												'<abbr title="A marca do produto servirá como parâmetro para o bloco." class="info-abbr">'+
 													'<i class="icon-info"></i>'+
 												'</abbr>'+
@@ -1391,13 +1408,17 @@ $(document).ready(function(){
 
 				$('.btn-configura-busca').click(function() {
 					var id = this.parentElement.parentElement.getAttribute('wid-id');
+					$('#rhIdWidBusca').html(id);
+
 					$.ajax({
 						type: 'POST',
 						url: 'resource/resource_widget_edit.php',
-						data: {'idCli': idCli, 'op': 2, idWid : id},
+						data: {'idCli': idCli, 'op': 6, idWid : id},
 						success: function(result){
 							var dados = JSON.parse(result);
-							console.log(dados);
+
+							// carrega sinonimos
+							searchbarCfg.loadSynonyms( dados.synonyms );
 
 							$('#modalConfiguraBusca').modal('show');
 							$('#modalConfiguraBusca .rh-id-wid').html();
@@ -1438,15 +1459,153 @@ $(document).ready(function(){
 						
 						formData.append(key, val);
 					}
+
+					// tratamento widshow e widhide para salvar mais de 1 pagina
+					formData.delete('widShow');
+					formData.delete('widHide');
+					var widShow = [];
+					var widHide = [];
+
+					var widS = $('input[name="widShow"]');
+					var widH = $('input[name="widHide"]');
+
+					for (var i = 0; i < widS.length; i++) {
+						widShow.push(widS[0].value);
+					};
+					for (var i = 0; i < widH.length; i++) {
+						widHide.push(widH[0].value);
+					};
+
+					formData.append('widShow', widShow);
+					formData.append('widHide', widHide);
+
 					// PEGA O VALOR DE TODOS OS SELECTS
 					for (var i = 0; i < selects.length; i++) {
 						var key = selects[i].name;
 						var val = selects[i].value;
 						formData.append(key, val);
-					};
+					};			
+
+					// bosschoice
+					if ( $('#inputProdutos')[0] ) { // checa se existe o input de produtos
+						var produtos = $('#inputProdutos').tagsinput('items');
+						var p = [];
+
+						for (var i = 0; i < produtos.length; i++) {
+							var item = produtos[i];
+							p.push(item.text);
+						}
+
+						p = p.join(',');
+
+						formData.append('bossChoiceProdTitulo', p);
+					}
+
+					// paginas inclusao widgets
+					formData.delete('widShow');
+					var widShowValue = '';
+					var widShow = document.getElementsByName('widShow');
+					for (var i = 0; i < widShow.length;i++) {
+						var value = widShow[i].value.trim();
+						if (value !== '') {
+							widShowValue = (i === 0) ? value : widShowValue+','+value;
+						}
+					}
+					formData.append('widShow',widShowValue);
+
+					// paginas exclusao widgets
+					formData.delete('widHide');
+					var widHideValue = '';
+					var widHide = document.getElementsByName('widHide');
+					for (var i = 0; i < widHide.length;i++) {
+						var value = widHide[i].value.trim();
+						if (value !== '') {
+							widHideValue = (i === 0) ? value : widHideValue+','+value;
+						}
+					}
+					formData.append('widHide',widHideValue);
+
+					// COMPRE JUNTO
+					formData.delete('p_chave_pai');
+					formData.delete('p_chave_filho');
+					formData.delete('tp_chave_pai');
+					formData.delete('tp_chave_filho');
+
+					formData.delete('parametro_pai');
+					formData.delete('parametro_filho');
+					formData.delete('tp_parametro_pai');
+					formData.delete('tp_parametro_filho');
+
+					formData.delete('negativa_pai');
+					formData.delete('negativa_filho');
+
+					var palavraChavePai = document.getElementsByName('p_chave_pai');
+					var palavraChaveFilho = document.getElementsByName('p_chave_filho');
+					var tipoPalavraChavePai = document.getElementsByName('tp_chave_pai');
+					var tipoPalavraChaveFilho = document.getElementsByName('tp_chave_filho');
+					var parametroPai = document.getElementsByName('parametro_pai');
+					var parametroFilho = document.getElementsByName('parametro_filho');
+					var tipoParametroPai = document.getElementsByName('tp_parametro_pai');
+					var tipoParametroFilho = document.getElementsByName('tp_parametro_filho');
+					var negativaPai = document.getElementsByName('negativa_pai');
+					var negativaFilho = document.getElementsByName('negativa_filho');
+
+					var p_chave_pai = [];
+					var p_chave_filho = [];
+					var tp_chave_pai = [];
+					var tp_chave_filho = [];
+					var parametro_pai = [];
+					var parametro_filho = [];
+					var tp_parametro_pai = [];
+					var tp_parametro_filho = [];
+					var negativa_pai = [];
+					var negativa_filho = [];
+
+					for (var i = 0; i < palavraChavePai.length; i++) {
+						p_chave_pai.push( palavraChavePai[i].value );
+						p_chave_filho.push( palavraChaveFilho[i].value );
+						tp_chave_pai.push( tipoPalavraChavePai[i].value );
+						tp_chave_filho.push( tipoPalavraChaveFilho[i].value );
+
+						parametro_pai.push( parametroPai[i].value );
+						parametro_filho.push( parametroFilho[i].value );
+						tp_parametro_pai.push( tipoParametroPai[i].value );
+						tp_parametro_filho.push( tipoParametroFilho[i].value );
+
+						negativa_pai.push( negativaPai[i].value );
+						negativa_filho.push( negativaFilho[i].value );
+					}
+
+					p_chave_pai = p_chave_pai.join(',');
+					p_chave_filho = p_chave_filho.join(',');
+					tp_chave_pai = tp_chave_pai.join(',');
+					tp_chave_filho = tp_chave_filho.join(',');
+					parametro_pai = parametro_pai.join(',');
+					parametro_filho = parametro_filho.join(',');
+					tp_parametro_pai = tp_parametro_pai.join(',');
+					tp_parametro_filho = tp_parametro_filho.join(',');
+					negativa_pai = negativa_pai.join(',');
+					negativa_filho = negativa_filho.join(',');
+
+					formData.append('p_chave_pai',p_chave_pai);
+					formData.append('p_chave_filho',p_chave_filho);
+					formData.append('tp_chave_pai',tp_chave_pai);
+					formData.append('tp_chave_filho',tp_chave_filho);
+
+					formData.append('parametro_pai',parametro_pai);
+					formData.append('parametro_filho',parametro_filho);
+					formData.append('tp_parametro_pai',tp_parametro_pai);
+					formData.append('tp_parametro_filho',tp_parametro_filho);
+
+					formData.append('negativa_pai',negativa_pai);
+					formData.append('negativa_filho',negativa_filho);
+
+
 
 					// esses dados soh sao enviados para o oferta limitada manual
 					if ($('#manualOfertaLimitada').length > 0) {
+						formData.delete('tx_param_pai');
+
 						var key = "bossChoiceProdId";
 						var val = bossChoiceProdId;
 						formData.append("bossChoiceProdId", bossChoiceProdId);
@@ -1454,8 +1613,7 @@ $(document).ready(function(){
 						var key = "bossChoiceProdTitulo";
 						var val = bossChoiceProdTitulo;
 						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
-					}				
-
+					}	
 
 					$.ajax({
 						type: 'POST',
@@ -1473,6 +1631,11 @@ $(document).ready(function(){
 				});
 			}
 		}
+
+	// sempre q fechar o modal, esconde o campo
+	$('#modalEditarWidget').on('hidden.bs.modal', function () {
+		$('#inputSubtitulo').hide(); // esconde campo subtitulo
+	})
 
 	$('#btnConfirmaExclusao').on('click', function(){
 		var id = $(this).attr('id-wid');
@@ -1547,7 +1710,230 @@ $(document).ready(function(){
 	    });
 	}
 
+
+
 });
+
+// modal configuracao busca
+var searchbarCfg = {
+	getSyns: function() {
+		var synonyms = [];
+		var qtd = $('#tableSyn .word').length;
+		for (let i = 0; i < qtd; i++) {
+			var word = $('#tableSyn .word')[i];
+			var syn = $('#tableSyn .syn')[i];
+
+			synonyms.push({
+				'word':word,
+				'synonym':syn
+			});
+		}
+
+		return synonyms;
+	},
+
+	bindListeners: function() {
+		// botao editar
+		$('.btn-edit-syn').off('click');
+		$('.btn-edit-syn').click(function(){
+			var word = $(this).parent().parent().find('.sb-word').html();
+			var syn = $(this).parent().parent().find('.sb-syn').html();
+
+			// exclui a linha
+			$(this).parent().parent().remove();
+
+			$('#cfgSbWord').val(word);
+			$('#cfgSbSyn').val(syn);
+			$('#btnAddSyn').removeAttr('disabled');
+		});
+
+		// botão remover
+		$('.btn-remove-syn').off('click');
+		$('.btn-remove-syn').click(function(){
+			// exclui a linha
+			$(this).parent().parent().remove();
+		});
+
+		// campos
+		$('#cfgSbWord').off('keyup');
+		$('#cfgSbWord').off('keydown');
+		$('#cfgSbSyn').off('keyup');
+		$('#cfgSbSyn').off('keydown');
+
+		$('#cfgSbWord').keyup(function() {
+			if ($('#cfgSbWord').val().trim() != '' && $('#cfgSbSyn').val().trim() != '') {
+				$('#btnAddSyn').removeAttr('disabled');
+			} else {
+				$('#btnAddSyn').attr('disabled','true');
+			}
+		});
+
+		$('#cfgSbSyn').keyup(function() {
+			if ($('#cfgSbWord').val().trim() != '' && $('#cfgSbSyn').val().trim() != '') {
+				$('#btnAddSyn').removeAttr('disabled');
+			} else {
+				$('#btnAddSyn').attr('disabled','true');
+			}
+		});
+
+		$('#cfgSbSyn').keydown(function(e) {
+			if (e.key == 'Enter') {
+				$('#btnAddSyn').click();
+			}
+		});
+		$('#cfgSbWord').keydown(function(e) {
+			if (e.key == 'Enter') {
+				$('#btnAddSyn').click();
+			}
+		});
+
+		// botao adicionar
+		$('#btnAddSyn').off('click');
+		$('#btnAddSyn').click(function(){
+			var w = searchbarCfg.getValues(); // pega os valores para checar se ja estao cadastrados
+			var words = [];
+			for (var i = 0; i < w.length; i++) {
+				words.push(w[i].word);
+			}
+
+			// checa se uma das palavras está vazia
+			if ($('#cfgSbWord').val().trim() == '' || $('#cfgSbSyn').val().trim() == '') {	
+				// só exibe o alerta se ja n estiver exibindo
+				if ($('#msgSearchBarCfg').length == 0) {
+					$('#searchbarCfgMsgs').html(
+						'<div id="msgSearchBarCfg" class="alert alert-danger alert-dismissible fade in mb-2" role="alert">'+
+							'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+								'<span aria-hidden="true">×</span>'+
+							'</button>'+
+							'Você deve cadastrar a <strong>palavra</strong> e o <strong>sinônimo</strong> antes de clicar em adicionar.'+
+						'</div>'
+					);
+
+					setTimeout(function(){						
+						$('#msgSearchBarCfg').alert('close');
+						window['isAboutToClose'] = false;
+					}, 3000);
+				}		
+				return false;
+			}
+			// checa se a palavra já esta cadastrada
+			else if (words.includes( $('#cfgSbWord').val().trim().toLocaleLowerCase() )  ) {
+				// só exibe o alerta se ja n estiver exibindo
+				if ($('#msgSearchBarCfg').length == 0) {
+					$('#searchbarCfgMsgs').html(
+						'<div id="msgSearchBarCfg" class="alert alert-danger alert-dismissible fade in mb-2" role="alert">'+
+							'<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+								'<span aria-hidden="true">×</span>'+
+							'</button>'+
+							'A <strong>palavra</strong> que você está tentando cadastrar já foi cadastrada.'+
+						'</div>'
+					);
+
+					setTimeout(function(){						
+						$('#msgSearchBarCfg').alert('close');
+						window['isAboutToClose'] = false;
+					}, 3000);
+				}		
+				return false;
+			}
+			
+			var html =
+			'<tr>'+
+				'<td class="sb-word">' +$('#cfgSbWord').val().toLocaleLowerCase()+ '</td>'+
+				'<td class="sb-syn">' +$('#cfgSbSyn').val().toLocaleLowerCase()+ '</td>'+
+				'<td class="text-xs-center">'+
+					'<button class="btn btn-sm btn-info white btn-edit-syn"><i class="fa fa-pencil"></i></button>'+
+				'</td>'+
+				'<td class="text-xs-center">'+
+					'<button class="btn btn-sm btn-danger white btn-remove-syn"><i class="fa fa-trash"></i></button>'+
+				'</td>'+
+			'</tr>';
+
+			// limpa campos
+			$('#cfgSbWord').val('');
+			$('#cfgSbSyn').val('');
+
+			// foca no primeiro campo
+			$('#cfgSbWord').focus();
+
+			// atualiza valores
+			$('#tableSyn tbody').html(
+				$('#tableSyn tbody').html()+html
+			);
+
+			// desabilita botao adicionar				
+			$('#btnAddSyn').attr('disabled','true');
+
+			// Adiciona os listeners novamente
+			searchbarCfg.bindListeners();
+		});
+	},
+
+	init: function() {
+		this.bindListeners();
+	},
+
+	getValues: function(){
+		var data = [];
+
+		// sinonimos
+		var syn = $('#tableSyn tbody .sb-syn');
+		var word = $('#tableSyn tbody .sb-word');
+		data.synonyms = [];
+
+		for (var i = 0; i < syn.length; i++) {
+			data.push({
+				'word': $(word)[i].innerHTML,
+				'syn': $(syn)[i].innerHTML,
+			});
+		}
+
+		return data;
+	},
+
+	loadSynonyms: function( syn ){
+		var html = '';
+		// sinonimos
+		for (var i = 0; i < syn.length; i++) {
+			html+=
+			'<tr>'+
+				'<td class="sb-word">' +syn[i].word+ '</td>'+
+				'<td class="sb-syn">' +syn[i].syn+ '</td>'+
+				'<td class="text-xs-center">'+
+					'<button class="btn btn-sm btn-info white btn-edit-syn"><i class="fa fa-pencil"></i></button>'+
+				'</td>'+
+				'<td class="text-xs-center">'+
+					'<button class="btn btn-sm btn-danger white btn-remove-syn"><i class="fa fa-trash"></i></button>'+
+				'</td>'+
+			'</tr>';				
+		}
+		$('#tableSyn tbody').html(html);
+		searchbarCfg.bindListeners();
+	}
+};
+
+// BOTAO SALVAR 
+$('#btn-salva-busca').click(function() {
+	var idWid = $('#rhIdWidBusca').html();
+
+	var data = {};
+
+	data.synonyms = searchbarCfg.getValues();
+
+	data = JSON.stringify(data);
+
+	$.ajax({
+		'type': 'post',
+		'url': 'resource/resource_widget_edit.php',
+		'data': {'idCli': idCli, 'op': 7, 'idWid' : idWid, data},
+		'success': function(response) {
+			$('#modalConfiguraBusca').modal('hide');
+			toastr['success']('As configurações da sua barra foram atualizadas!');
+		}
+	});
+});
+
+searchbarCfg.init();
 
 validaProdutos = function(){
 	// produtos manuais
@@ -1592,6 +1978,11 @@ function preencheCampoAutoOfertaLimitada(titulo, id){
 	bossChoiceProdTitulo = titulo.replace(",", ".");
 	$('#listaProdutosAutocomplete').fadeOut();
 	$('#listaProdutosAutocomplete').html("");
+
+	window['prodManualOl'] = {
+		'id': id,
+		'titulo': titulo.replace(",", ".")
+	}
 }
 
 function preencheCampoAuto(titulo, id, formato){
@@ -1607,5 +1998,5 @@ function preencheCampoAuto(titulo, id, formato){
 	bossChoiceProdId = id;
 	bossChoiceProdTitulo = titulo.replace(",", ".");
 	$(nomeDiv).fadeOut();
-	$(nomeDiv).html("");	
+	$(nomeDiv).html("");
 }

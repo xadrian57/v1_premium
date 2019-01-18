@@ -832,26 +832,51 @@ rhSearchBar = function(cfg,idCli,idWid){
                             }
                         }
 
-                        resultadoString+='<a href="'+prod.link+'">'+
-                                            '<figure class="rh_lite_searchbar_results_figure">'+
-                                                '<img src="'+prod.link_image+'">'+
-                                                tag+
-                                            '</figure>'+
-                                            '<div class="rh_lite_searchbar_results_infoprod">'+
-                                                '<span class="rh_lite_searchbar_results_nomeprod">'+
-                                                    prod.title+
-                                                '</span>'+
-                                                '<span class="rh_lite_searchbar_results_precon">'+
-                                                    prod.price+
-                                                '</span>'+
-                                                '<span class="rh_lite_searchbar_results_precop">'+
-                                                    prod.sale_price+
-                                                '</span>'+
-                                                '<span class="rh_lite_searchbar_results_parcelamento">'+
-                                                    prod.months+
-                                                '</span>'+
-                                            '</div>'+
-                                       '</a>';
+                        if (prod.in_stock < 1) {
+                            resultadoString+='<a href="'+prod.link+'" class="rh-out-of-stock">'+
+                                                '<figure class="rh_lite_searchbar_results_figure">'+
+                                                    '<img src="'+prod.link_image+'">'+
+                                                    tag+
+                                                '</figure>'+
+                                                '<div class="rh_lite_searchbar_results_infoprod">'+
+                                                    '<span class="rh_lite_searchbar_results_nomeprod">'+
+                                                        prod.title+
+                                                    '</span>'+
+                                                    '<span class="rh_lite_searchbar_results_precon">'+
+                                                        prod.price+
+                                                    '</span>'+
+                                                    '<span class="rh_lite_searchbar_results_precop">'+
+                                                        prod.sale_price+
+                                                    '</span>'+
+                                                    '<span class="rh_lite_searchbar_results_parcelamento">'+
+                                                        prod.months+
+                                                    '</span>'+
+                                                '</div>'+
+                                            '</a>';
+                        } else {
+                            resultadoString+='<a href="'+prod.link+'" class="rh-out-of-stock">'+
+                                                '<figure class="rh_lite_searchbar_results_figure">'+
+                                                    '<img src="'+prod.link_image+'">'+
+                                                    tag+
+                                                '</figure>'+
+                                                '<div class="rh_lite_searchbar_results_infoprod">'+
+                                                    '<span class="rh_lite_searchbar_results_nomeprod">'+
+                                                        prod.title+
+                                                    '</span>'+
+                                                    '<span class="rh_lite_searchbar_results_precon">'+
+                                                        prod.price+
+                                                    '</span>'+
+                                                    '<span class="rh_lite_searchbar_results_precop">'+
+                                                        prod.sale_price+
+                                                    '</span>'+
+                                                    '<span class="rh_lite_searchbar_results_parcelamento">'+
+                                                        prod.months+
+                                                    '</span>'+
+                                                '</div>'+
+                                        '</a>';
+                        }
+
+                        
                         
                     }
                     resultado.innerHTML = resultadoString;
@@ -867,8 +892,6 @@ rhSearchBar = function(cfg,idCli,idWid){
                         console.log('_______________________________________');
                         console.log('Tempo da busca: '+((Date.now() - window['__time__']) / 1000 )+'s');
                     },100);
-
-                    console.log(result)
 
                     resultados_busca = result;
                 } else {
@@ -1283,7 +1306,8 @@ rhSearchBar = function(cfg,idCli,idWid){
                 }
             }
 
-            listaProdutos+='<div class="rh_lite_produto_bus">'+
+            if (produtos[x].in_stock < 1) {
+                listaProdutos+='<div class="rh_lite_produto_bus" class="rh-out-of-stock">'+
                                     '<figure class="rh_lite_figure_bus">'+
                                         '<a href="'+produtos[x].link+'">'+
                                             '<img class="rh_lite_imagem_bus" src="'+produtos[x].link_image+'" alt="'+produtos[x].nome+'">'+
@@ -1321,6 +1345,47 @@ rhSearchBar = function(cfg,idCli,idWid){
                                     '</div>'+
                                 '</div>'+
                             '</div>';
+            } else {
+                listaProdutos+='<div class="rh_lite_produto_bus">'+
+                                    '<figure class="rh_lite_figure_bus">'+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            '<img class="rh_lite_imagem_bus" src="'+produtos[x].link_image+'" alt="'+produtos[x].nome+'">'+
+                                            tag+
+                                        '</a>'+
+                                    '</figure>'+
+                                    '<p class="rh_lite_nomeproduto_bus">'+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].title+
+                                        '</a>'+
+                                    '</p>'+
+                                    '<div class="rh_lite_precon_bus">'+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].price+
+                                        '</a>'+
+                                    '</div>'+
+                                    '<div class="rh_lite_precop_bus">'+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].sale_price+
+                                        '</a>'+
+                                    '</div>'+
+                                    '<div class="rh_lite_parcelamento_bus">'+
+                                        '<a href="'+produtos[x].link+'">'+
+                                            produtos[x].months+
+                                        '</a>'+
+                                    '</div>'+
+                                    '<div class="rh_lite_btn_bus">'+
+                                    '<a href="'+produtos[x].link+'">'+
+                                        '<button class="rh_lite_button_bus">'+
+                                            '<strong>'+
+                                                '<span>COMPRAR</span>'+
+                                            '</strong>'+
+                                        '</button>'+
+                                    '</a>'+
+                                    '</div>'+
+                                '</div>'+
+                            '</div>';
+            }
+            
             if (x === 14) { break; }
         }
 

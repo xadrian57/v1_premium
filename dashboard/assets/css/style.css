@@ -9,7 +9,7 @@
       background: #ffda68; /* WebKit/Blink Browsers */
       color:#21a2e2;
     }
-
+    
     .app-content.content.container-fluid{
         min-height: 90vh;
     }
@@ -149,6 +149,12 @@
 
     .padding0{
         padding: 0;
+    }
+
+    @media screen and (max-width: 767px) {
+        .hidden-sm {
+            display: none;
+        }
     }
 
 /* FONTES */
