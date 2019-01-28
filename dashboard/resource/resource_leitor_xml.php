@@ -284,7 +284,7 @@ if(!empty($id))
 
                                     if($buscaBackEnd)
                                     {  
-                                        $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom5')");
+                                        $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '$custom5')");
                                         $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
                                     }
                                 }
@@ -292,7 +292,7 @@ if(!empty($id))
                                 {
                                     if($buscaBackEnd)
                                     {  
-                                        $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '$custom5' WHERE id = '$idprod'";
+                                        $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '$custom5', custom_2 = '$custom4' WHERE id = '$idprod'";
                                         $resultadoBusca = mysqli_query($conBusca, $updateBusca);
 
                                         if(mysqli_affected_rows($conBusca) < 1)
