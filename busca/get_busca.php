@@ -509,6 +509,7 @@
 			$idcli_cryp == 'bda09ba2c0046773a13bfac20bf620d2317adbf6' ||
 			$idcli_cryp == '204d1b68ca70c70e17417076588df954f47da0da' ||
 			$idcli_cryp == '4ad4b85c23b825eafbeec5dcf84ff9b11c3b1c78')
+			$idcli_cryp == '37d89723e7d94e8f2c213f09507236fbc7563096')
 		{
 			return true;
 		}
