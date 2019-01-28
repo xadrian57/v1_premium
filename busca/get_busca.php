@@ -417,7 +417,7 @@
 		}
 		else
 		{
-			return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) OR id = '". $busca ."' ";
+			return " OR custom_1 = '" . $busca . "' OR custom_2 = '" . $busca . "' OR id = '". $busca ."' ";
 		}
 	}
 
@@ -505,6 +505,10 @@
 			$idcli_cryp == '18c85e8f2c6d60773372ef600c979ff3874a91db' ||
 			$idcli_cryp == '5e540d008531ea36696020361b9ea6561f1f5307' ||
 			$idcli_cryp == '62f6479a5eca39725798b1ee300bd8d5de3a4ae3' ||
+			$idcli_cryp == '37d89723e7d94e8f2c213f09507236fbc7563096' ||
+			$idcli_cryp == 'bda09ba2c0046773a13bfac20bf620d2317adbf6' ||
+			$idcli_cryp == '204d1b68ca70c70e17417076588df954f47da0da' ||
+			$idcli_cryp == '4ad4b85c23b825eafbeec5dcf84ff9b11c3b1c78')
 			$idcli_cryp == '37d89723e7d94e8f2c213f09507236fbc7563096')
 		{
 			return true;
