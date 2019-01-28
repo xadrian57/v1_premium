@@ -490,9 +490,7 @@
 
 	function usaFonetico($idcli_cryp)
 	{
-
 		return true;
-
 	}
 
 	function fonetizar($titulo)
