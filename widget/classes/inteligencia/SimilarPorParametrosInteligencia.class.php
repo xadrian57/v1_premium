@@ -33,13 +33,19 @@ class SimilarPorParametrosInteligencia extends AbstractInteligencia {
 
         $paramPai = $this->widget->getParametroXML($linha['tx_param_pai']);
         $paramFilho = $this->widget->getParametroXML($linha['tx_param_filho']);
+
+        $paramPai = strtoupper($paramPai);
+        $paramPai = str_replace(' ', ' +', $paramPai);
+
+        $paramFilho = strtoupper($paramFilho);
+        $paramFilho = str_replace(' ', ' +', $paramFilho);
         
         $select = "SELECT ".$this->XML_select."
                    FROM XML_". $this->widget->getIdCli() ."
                    WHERE XML_id != '" . $this->widget->getProdId() . "'
                    AND XML_availability = 1
-                   AND XML_". $linha['tx_param_pai'] ." = '". $paramPai ."'
-                   AND XML_". $linha['tx_param_filho'] ." = '". $paramFilho ."'
+                   AND MATCH(XML_". $linha['tx_param_pai'] .") AGAINST(\"+" . $paramPai . "\" IN BOOLEAN MODE)
+                   AND MATCH(XML_". $linha['tx_param_filho'] .") AGAINST(\"+" . $paramFilho . "\" IN BOOLEAN MODE)
                    GROUP BY XML_link
                    ORDER BY ". $paramOrder ." DESC 
                    LIMIT " . $this->numMaxProdutos;
@@ -70,7 +76,7 @@ class SimilarPorParametrosInteligencia extends AbstractInteligencia {
                    FROM XML_". $this->widget->getIdCli() ."
                    WHERE XML_id != '" . $this->widget->getProdId() . "'
                    AND XML_availability = 1
-                   AND XML_". $linha['tx_param_pai'] ." = '". $paramPai ."'
+                   AND MATCH(XML_". $linha['tx_param_pai'] .") AGAINST(\"+" . $paramPai . "\" IN BOOLEAN MODE)
                    GROUP BY XML_link
                    ORDER BY ". $paramOrder ." DESC 
                    LIMIT " . $this->numMaxProdutos;
