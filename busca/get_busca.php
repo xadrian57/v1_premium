@@ -490,33 +490,7 @@
 
 	function usaFonetico($idcli_cryp)
 	{
-		if($idcli_cryp == 'f754e904dfc75ae544977f3f441a1d1b486392cc' || 
-			$idcli_cryp == '85d0662ad5825ba33f4259d0d06ac035abac67bf' ||
-			$idcli_cryp == '91eb375e8e71d9ce2f7cde8b0a757f66c94c998a' ||
-			$idcli_cryp == '683e725c03a87baaad2623231644e944e537acab' ||
-			$idcli_cryp == '4a4ab45448022f0c738fe9e310148ea1eb7f856b' ||
-			$idcli_cryp == '85f1002bf139bebdb7f0d07b31fa14155aea9dfc' ||
-			$idcli_cryp == '7c7b84eeaec18233e982d101637ab2a4033c6fb0' ||
-			$idcli_cryp == 'b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f' ||
-			$idcli_cryp == '2ad96cc16e625017327b9aa877bbddfb3532a718' ||
-			$idcli_cryp == '5b17adc969018b102b802193f65ffebc07494a2c' ||
-			$idcli_cryp == '52fdb9f68c503e11d168fe52035901864c0a4861' ||
-			$idcli_cryp == '3d7b4f23b8f853910e4c64f09cdf897a59db524a' ||
-			$idcli_cryp == '18c85e8f2c6d60773372ef600c979ff3874a91db' ||
-			$idcli_cryp == '5e540d008531ea36696020361b9ea6561f1f5307' ||
-			$idcli_cryp == '62f6479a5eca39725798b1ee300bd8d5de3a4ae3' ||
-			$idcli_cryp == '37d89723e7d94e8f2c213f09507236fbc7563096' ||
-			$idcli_cryp == 'bda09ba2c0046773a13bfac20bf620d2317adbf6' ||
-			$idcli_cryp == '204d1b68ca70c70e17417076588df954f47da0da' ||
-			$idcli_cryp == '4ad4b85c23b825eafbeec5dcf84ff9b11c3b1c78')
-			$idcli_cryp == '37d89723e7d94e8f2c213f09507236fbc7563096')
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+		return true;
 	}
 
 	function fonetizar($titulo)
