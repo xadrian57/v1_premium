@@ -53,17 +53,7 @@
 
     		$termo = $busca;
 
-    		$usaFonetico = usaFonetico($idcli_cryp);
-
-    		// if(strlen($busca) < 6)
-    		// {
-    		// 	$usaFonetico = false;
-    		// }    
-
-		    if($usaFonetico)
-		    {
-		    	$busca = fonetizar($busca);
-		    }
+		    $busca = fonetizar($busca);
 
 			if($busca != '')
 		    {
@@ -74,32 +64,19 @@
 
 	            if(!empty($busca))
 	            {
-	                if($usaFonetico)
-	                {
-	                	$select = "SELECT id, titulo_fonetico, click, titulo
-	                           FROM BUSCA_".$idcli."
-	                           WHERE ". consulta($busca, $usaFonetico, str_replace(' ', '* ', $termo)) ."
-	                           ". usarCustom($idcli, $termo);
-	                
-	                	$result = mysqli_query($conBusca, $select);
-	                }
-	                else
-	                {
-	                	$select = "SELECT ". campos($usaFonetico) ."
-	                           FROM XML_".$idcli."
-	                           WHERE XML_availability = 1
-	                           ". consulta($busca, $usaFonetico) ."
-	                           ". usarCustom($idcli, $busca);
-	                
-	                	$result = mysqli_query($conDados, $select);
-	                }
+                	$select = "SELECT id, titulo_fonetico, click, titulo
+                           FROM BUSCA_".$idcli."
+                           WHERE ". consulta($busca, str_replace(' ', '* ', $termo)) ."
+                           ". usarCustom($idcli, $termo);
+                
+                	$result = mysqli_query($conBusca, $select);
 	                
 	        
 	                if($result && mysqli_num_rows ($result) > 0 )
 	                {
 	                    while($linha = mysqli_fetch_array($result))
 	                    {
-		                   	$posts[] = geraArray($linha, $usaFonetico);
+		                   	$posts[] = geraArray($linha);
 	                    }
 	                }
 	            }
@@ -110,21 +87,13 @@
 
 		        if(count($posts))
 		        {
-			        if($usaFonetico)
-			        {
-			        	$post = scoreFonetico(fonetizar($termo), $posts);
-			        	$post = score($termo, $post);			        	
+		        	$post = scoreFonetico(fonetizar($termo), $posts);
+		        	$post = score($termo, $post);			        	
 
-			        	if(count($post) > 0)
-			        	{
-				        	$post = array_slice($post, 0, $limite, true);
-				        	$post = geraProdsFonetico($post, $idcli, $conDados);
-				        }
-			        }
-			        else
-			        {
-			        	$post = score($termo, $posts);
+		        	if(count($post) > 0)
+		        	{
 			        	$post = array_slice($post, 0, $limite, true);
+			        	$post = geraProdsFonetico($post, $idcli, $conDados);
 			        }
 			        
 			        if(count($post) > 0)
@@ -334,37 +303,15 @@
 	    return $array;
 	}
 
-	function geraArray($linha, $fonetico=false, $score=0)
+	function geraArray($linha, $score=0)
 	{
-		if($fonetico)
-		{
-			return array(
-    					'id'=>$linha['id'], 
-    					'fonetic_title'=>$linha['titulo_fonetico'],
-    					'title'=>$linha['titulo'],
-    					'venda' => intval($linha['click']),
-        				'score' => 0
-        			);
-		}
-		else
-		{
-			return array(
-    					'id'=> strval($linha['XML_id']), 
-    					'sku'=> $linha['XML_sku'], 
-    					'title'=> urlencode($linha['XML_titulo']),
-    					'in_stock'=> $linha['XML_availability'], 
-        				'price'=> floatval($linha['XML_price']), 
-        				'sale_price'=> floatval($linha['XML_sale_price']), 
-        				'link'=> urlencode($linha['XML_link']), 
-        				'link_image'=> urlencode($linha['XML_image_link']), 
-        				'type'=> urlencode($linha['XML_type']), 
-        				'amount'=> floatval($linha['XML_vparcela']), 
-        				'months'=> intval($linha['XML_nparcelas']), 
-        				'venda' => intval($linha['XML_click_7']),
-        				'desconto' => $linha['XML_desconto'],
-        				'score' => $score
-        			);
-		}
+		return array(
+					'id'=>$linha['id'], 
+					'fonetic_title'=>$linha['titulo_fonetico'],
+					'title'=>$linha['titulo'],
+					'venda' => intval($linha['click']),
+    				'score' => 0
+    			);
 	}
 
 	function geraProdsFonetico($post, $idcli, $conDados)
@@ -396,7 +343,7 @@
             		}
             	}
 
-               	$posts[] = geraArray($linha, false, $auxScore);
+               	$posts[] = geraArray($linha, $auxScore);
             }
         }
 
@@ -421,19 +368,11 @@
 		}
 	}
 
-	function consulta($busca, $fonetico, $termo=NULL)
+	function consulta($busca, $termo=NULL)
 	{
-		if($fonetico)
-		{
-			return "MATCH(titulo) AGAINST(\"+ " . $termo . "*\" IN BOOLEAN MODE)
-					OR MATCH(titulo) AGAINST(\"+ " . trataPlural($busca) . "*\" IN BOOLEAN MODE)
-					OR MATCH(titulo_fonetico) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE)";
-		}
-		else
-		{
-			//return "AND XML_titulo_upper LIKE '%". $busca ."%'";
-			return "AND MATCH(XML_titulo_upper) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE)";
-		}
+		return "MATCH(titulo) AGAINST(\"+ " . $termo . "*\" IN BOOLEAN MODE)
+				OR MATCH(titulo) AGAINST(\"+ " . trataPlural($termo) . "*\" IN BOOLEAN MODE)
+				OR MATCH(titulo_fonetico) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE)";
 	}
 
 	function campos($fonetico=false)
@@ -486,11 +425,6 @@
 		}
 
 		return implode(' ', $arrayPalavras);
-	}
-
-	function usaFonetico($idcli_cryp)
-	{
-		return true;
 	}
 
 	function fonetizar($titulo)
