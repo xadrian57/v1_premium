@@ -27,6 +27,8 @@ abstract class AbstractWidget {
     protected $JSON_widgets;
     
     protected $obj = [];
+
+    protected $descBoleto;
     
     protected $idcli;
     protected $idWid;
@@ -156,6 +158,10 @@ abstract class AbstractWidget {
     
     public function getIdCli() {
         return $this->idcli;
+    }
+
+    public function getDescBoleto() {
+        return $this->descBoleto;
     }
     
     public function getConDados() {

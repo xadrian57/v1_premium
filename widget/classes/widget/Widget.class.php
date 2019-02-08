@@ -104,6 +104,13 @@ class Widget extends AbstractWidget {
                         
                         if(Util::showHide($this->url, $widgetProps) && !$estoque)
                         {
+                            $selectConfig = "SELECT CONF_moeda, CONF_desc_boleto FROM config WHERE CONF_id_cli = '$this->idcli'";
+                            $resultConfig = mysqli_query($this->conCad, $selectConfig);
+                            
+                            $arrayConfig = mysqli_fetch_array($resultConfig);
+
+                            $this->descBoleto = $arrayConfig['CONF_desc_boleto'];
+
                             $this->idWid = $widgetProps['WID_id'];
                             $widInteligencia = $widgetProps['WID_inteligencia'];
                             
@@ -124,12 +131,6 @@ class Widget extends AbstractWidget {
                             if($inteligencia) {
                                 $inteligencia->processar();
                             }
-
-                            // SELECT MOEDA
-                            $selectConfig = "SELECT CONF_moeda FROM config WHERE CONF_id_cli = '$this->idcli'";
-                            $resultConfig = mysqli_query($this->conCad, $selectConfig);
-                            
-                            $arrayConfig = mysqli_fetch_array($resultConfig);
                             
                             $this->obj = Util::formatValues($this->obj, $arrayConfig['CONF_moeda']);
                             
