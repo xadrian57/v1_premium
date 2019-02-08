@@ -57,6 +57,13 @@ abstract class AbstractInteligencia implements IInteligencia {
                 return false;
             }
         }
+
+        $descBoleto = $this->widget->getDescBoleto();
+
+        if($descBoleto != '0' && empty($descBoleto))
+        {
+            $array['XML_sale_price'] = $array['XML_sale_price'] - ($array['XML_sale_price'] * ($descBoleto / 100));
+        }        
         
         if(strval($index) == null) {
             $index = count($obj);
