@@ -51,6 +51,8 @@
 
     		$busca = retornaSinonimo($idcli, $busca, $conCad);
 
+    		$descBoleto = descBoleto($idcli, $conCad);
+
     		$termo = $busca;
 
     		$usaFonetico = usaFonetico($idcli_cryp);
@@ -154,6 +156,16 @@
 	else
 	{
 		echo '{"erro":"Id do cliente vazio."}';
+	}
+
+	function descBoleto($idcli, $conCad)
+	{
+		$select = "SELECT CONF_desc_boleto FROM config WHERE CONF_id_cli = '$idcli'";
+		$result = mysqli_query($conCad, $select);
+
+		$arrayConf = mysqli_fetch_array($result);
+
+		return $arrayConf['CONF_desc_boleto'];
 	}
 
 	function retornaSinonimo($id, $busca, $conCad)
@@ -348,6 +360,13 @@
 		}
 		else
 		{
+			global $descBoleto;
+
+			if($descBoleto != '0' && !empty($descBoleto))
+	        {
+	            $linha['XML_sale_price'] = $linha['XML_sale_price'] - ($linha['XML_sale_price'] * ($descBoleto / 100));
+	        }
+
 			return array(
     					'id'=> strval($linha['XML_id']), 
     					'sku'=> $linha['XML_sku'], 
