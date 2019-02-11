@@ -45,7 +45,7 @@ class SimilarPorParametrosInteligencia extends AbstractInteligencia {
                  WHERE XML_id != '" . $this->widget->getProdId() . "'
                  AND XML_availability = 1
                  AND MATCH(XML_". $linha['tx_param_pai'] .") AGAINST(\"+" . $paramPai . "\" IN BOOLEAN MODE)
-                 ". checkFilho($linha['tx_param_filho'], $paramFilho) ."
+                 ". $this->checkFilho($linha['tx_param_filho'], $paramFilho) ."
                  GROUP BY XML_link
                  ORDER BY ". $paramOrder ." DESC 
                  LIMIT " . $this->numMaxProdutos;
