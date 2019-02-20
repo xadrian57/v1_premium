@@ -215,71 +215,71 @@ abstract class AbstractInteligencia implements IInteligencia {
         $getInt = 'rh_int=';
         switch ($idInteligencia) {
             case '1':
-                $getInt =. 'md';
+                $getInt .= 'md';
                 break;
             case '2':
-                $getInt =. 'mv';
+                $getInt .= 'mv';
                 break;
             case '3':
-                $getInt =. 'mvc';
+                $getInt .= 'mvc';
                 break;
             case '4':
-                $getInt =. 'rmkt';
+                $getInt .= 'rmkt';
                 break;
             case '5':
-                $getInt =. 'sp';
+                $getInt .= 'sp';
                 break;
             case '6':
-                $getInt =. 'liquid';
+                $getInt .= 'liquid';
                 break;
             case '7':
-                $getInt =. 'col';
+                $getInt .= 'col';
                 break;
             case '9':
-                $getInt =. 'man';
+                $getInt .= 'man';
                 break;
             case '10':
-                $getInt =. 'ol';
+                $getInt .= 'ol';
                 break;
             case '12':
-                $getInt =. 'ic';
+                $getInt .= 'ic';
                 break;
             case '13':
-                $getInt =. 'os';
+                $getInt .= 'os';
                 break;
             case '14':
-                $getInt =. 'bp';
+                $getInt .= 'bp';
                 break;
             case '15':
-                $getInt =. 'lanc';
+                $getInt .= 'lanc';
                 break;
             case '22':
-                $getInt =. 'search';
+                $getInt .= 'search';
                 break;
             case '24':
-                $getInt =. 'mvcm';
+                $getInt .= 'mvcm';
                 break;
             case '25':
-                $getInt =. 'pc';
+                $getInt .= 'pc';
                 break;
             case '34':
-                $getInt =. 'pr';
+                $getInt .= 'pr';
                 break;
             case '36':
-                $getInt =. 'sh';
+                $getInt .= 'sh';
                 break;
             case '38':
-                $getInt =. 'mvmm';
+                $getInt .= 'mvmm';
                 break;
             case '39':
-                $getInt =. 'spp';
+                $getInt .= 'spp';
                 break;
             case '40':
-                $getInt =. 'lancm';
+                $getInt .= 'lancm';
                 break;
             
             default:
-                $getInt =. '';
+                $getInt .= '';
                 break;
         }
 
