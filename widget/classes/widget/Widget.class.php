@@ -112,7 +112,7 @@ class Widget extends AbstractWidget {
                             $this->descBoleto = $arrayConfig['CONF_desc_boleto'];
 
                             $this->idWid = $widgetProps['WID_id'];
-                            $widInteligencia = $widgetProps['WID_inteligencia'];
+                            $this->$widInteligencia = $widgetProps['WID_inteligencia'];
                             
                             // SELECT WIDGET_CONFIG
                             $selectWidgetConfig = "SELECT WC_collection FROM widget_config WHERE WC_id_wid = ".$this->idWid;
@@ -127,7 +127,7 @@ class Widget extends AbstractWidget {
                                 $widgetConfig['WC_collection'] = '';
                             }
                             
-                            $inteligencia = FactoryInteligencia::getInteligencia($widInteligencia, $this, $widgetProps, $widgetConfig);
+                            $inteligencia = FactoryInteligencia::getInteligencia($this->$widInteligencia, $this, $widgetProps, $widgetConfig);
                             if($inteligencia) {
                                 $inteligencia->processar();
                             }
