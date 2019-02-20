@@ -32,6 +32,7 @@ abstract class AbstractWidget {
     
     protected $idcli;
     protected $idWid;
+    protected $widInteligencia;
     protected $overlayNaoExibido = 0;
     
     // Só fornecido no fluxo do tagflag
@@ -283,6 +284,10 @@ abstract class AbstractWidget {
     
     public function getIdWid() {
         return $this->idWid;
+    }
+
+    public function getWidInteligencia() {
+        return $this->widInteligencia;
     }
     
     public function getUrl() {

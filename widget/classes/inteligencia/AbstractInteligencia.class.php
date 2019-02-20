@@ -47,18 +47,20 @@ abstract class AbstractInteligencia implements IInteligencia {
     protected function setOBJ($idWid, $array, $utm, $index=null)
     {
         $obj = $this->widget->getObj();
+
+        $nomeInteligenciaGA = $this->getNomeInteligenciaGA($this->widget->getWidInteligencia());
         
         foreach ($obj as $key => $value)
         {
             // Impede que retorne produtos repetidos
             // Verifica se o link já foi adicionado
-            if($value['link'] == $array['XML_link']."?rhWid=".$idWid."&".$utm)
+            if($value['link'] == $array['XML_link']."?rhWid=".$idWid."&".$nomeInteligenciaGA."&".$utm)
             {
                 return false;
             }
         }
 
-        $descBoleto = $this->widget->getDescBoleto();
+        $descBoleto = $this->widget->getDescBoleto();        
 
         if($descBoleto != '0' && !empty($descBoleto))
         {
@@ -76,7 +78,7 @@ abstract class AbstractInteligencia implements IInteligencia {
         $obj[$index]['sale_price'] = $array['XML_sale_price'];
         $obj[$index]['link_image'] = $array['XML_image_link'];
         $obj[$index]['link_image_2'] = $array['XML_image_link2'];
-        $obj[$index]['link'] = $array['XML_link']."?rhWid=".$idWid."&".$utm;
+        $obj[$index]['link'] = $array['XML_link']."?rhWid=".$idWid."&".$nomeInteligenciaGA."&".$utm;
         $obj[$index]['description'] = $array['XML_descricao'];
         $obj[$index]['mount'] = $array['XML_nparcelas'];
         $obj[$index]['amount'] = $array['XML_vparcela'];
@@ -200,6 +202,88 @@ abstract class AbstractInteligencia implements IInteligencia {
         {
             return '';
         }
-    }    
+    }
+
+    /**
+     * Este método retorna o nome da inteligencia para captura no GA
+     *
+     * @return string
+     * @param string
+     */
+    protected function getNomeInteligenciaGA($idInteligencia) 
+    {
+        $getInt = 'rh_int=';
+        switch ($idInteligencia) {
+            case '1':
+                $getInt =. 'md';
+                break;
+            case '2':
+                $getInt =. 'mv';
+                break;
+            case '3':
+                $getInt =. 'mvc';
+                break;
+            case '4':
+                $getInt =. 'rmkt';
+                break;
+            case '5':
+                $getInt =. 'sp';
+                break;
+            case '6':
+                $getInt =. 'liquid';
+                break;
+            case '7':
+                $getInt =. 'col';
+                break;
+            case '9':
+                $getInt =. 'man';
+                break;
+            case '10':
+                $getInt =. 'ol';
+                break;
+            case '12':
+                $getInt =. 'ic';
+                break;
+            case '13':
+                $getInt =. 'os';
+                break;
+            case '14':
+                $getInt =. 'bp';
+                break;
+            case '15':
+                $getInt =. 'lanc';
+                break;
+            case '22':
+                $getInt =. 'search';
+                break;
+            case '24':
+                $getInt =. 'mvcm';
+                break;
+            case '25':
+                $getInt =. 'pc';
+                break;
+            case '34':
+                $getInt =. 'pr';
+                break;
+            case '36':
+                $getInt =. 'sh';
+                break;
+            case '38':
+                $getInt =. 'mvmm';
+                break;
+            case '39':
+                $getInt =. 'spp';
+                break;
+            case '40':
+                $getInt =. 'lancm';
+                break;
+            
+            default:
+                $getInt =. '';
+                break;
+        }
+
+        return $getInt;
+    }
 }
 ?>
