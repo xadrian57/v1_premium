@@ -161,13 +161,18 @@ $(document).ready(function(){
 						'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 							'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 								'<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
+								'<a class="white btn btn-info pull-right mr-1 ml-1" href="/dashboard/php/get_relatorio_busca.php/?id='+idCli+'">'+
+									'<i class="fa fa-table mr-1"></i>'+
+									'Baixar relatório'+
+									'</a>'+
+								'</button>'+
 							'</div>'+
 						'</li>';
 					} else {
 						widgetsBusca.innerHTML = widgetsBusca.innerHTML +
 						'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 							'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
-								'<span class="pull-right primary">ID: 22104</span>';
+								'<span class="pull-right primary">ID: 22104</span>'+
 							'</div>'+
 						'</li>';
 					}
