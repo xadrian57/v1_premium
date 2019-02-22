@@ -2,7 +2,7 @@
 include '../../bd/conexao_bd_dados.php';
 include '../../bd/conexao_bd_cadastro.php';
 
-$id = mysqli_escape_string($conCad, $_GET['id']);
+$id = mysqli_real_escape_string($conCad, $_GET['id']);
 
 $select = 'SELECT CLI_nome FROM cliente WHERE CLI_id = '.$id;
 $query = mysqli_query($conCad, $select);

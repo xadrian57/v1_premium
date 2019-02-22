@@ -91,10 +91,7 @@ if($_SESSION['idPlan'] == 42) {
 		<div class="content-body"><!-- LISTA WIDGETS -->
 			<section id="basic-listgroup">
 				<div class="row match-height">
-<?php
-// TODO Remover esse if, quando liberar o Tagflag para uso geral
-if($_SESSION['idPlan'] == 42) {
-?>
+
 					<div class="col-lg-12 col-md-12">
 						<div class="borderdiv card">
 							<div class="card-header">
@@ -129,10 +126,6 @@ if($_SESSION['idPlan'] == 42) {
 							</div>
 						</div>
 					</div>
-<?php
-// TODO Remover essa linha quando liberar o Tagflag para uso geral
-}
-?>
 					<!-- BUSCA -->
 					<div class="col-lg-12 col-md-12">
 						<div class="card">
