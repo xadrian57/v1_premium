@@ -106,7 +106,7 @@ if($_SESSION['idPlan'] == 42) {
 									<div class="col-lg-6 col-md-6" height="500px">
 									<h3 style="color:#416d94 ; font-size: 30px ; font-weight: 600">HORAS DE TRABALHO 
 										<p style=" font-size: 30px; color:#416d94">REDUZIDAS EM SEGUNDOS!</h5></p>
-										<p style="font-size: 18px">O Tag Flag é uma ferramenta que faz com que você insira todos seus blocos de recomendações em sua loja com um clique, é fácil, simples e rápido de usar, e o mais importante: sem precisar saber nada de programação! 
+										<p style="font-size: 18px">O Tag Flag é uma ferramenta que faz com que você insira todos seus blocos de recomendações em sua loja com um clique. É fácil, simples e rápido de usar, e o mais importante: sem precisar saber nada de programação! 
 										</p>
 										<p style="font-size: 18px">Assista o vídeo ao lado e aprenda a usar o Tag Flag!</p>
 					<?php if ($isTagflagAvailable){?>
