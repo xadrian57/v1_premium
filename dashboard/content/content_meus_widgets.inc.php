@@ -93,7 +93,7 @@ if($_SESSION['idPlan'] == 42) {
 				<div class="row match-height">
 
 					<div class="col-lg-12 col-md-12">
-						<div class="borderdiv card">
+						<div class="borderdiv card" style="display: block;">
 							<div class="card-header">
 								<h1 class="card-title">TAG FLAG</h4><div class="heading-elements">
 									<ul class="list-inline mb-0">
@@ -119,7 +119,7 @@ if($_SESSION['idPlan'] == 42) {
 									</div>
 									<div class="col-lg-6 col-md-6">
 										<center>
-											<iframe width="480px" height="270px" src="https://www.youtube.com/embed/PTxN7wiaVdk" frameborder="0" allowfullscreen></iframe>
+											<iframe width="480px" height="270px" src="https://www.youtube.com/embed/t8PQ-AQidBs" frameborder="0" allowfullscreen></iframe>
 										</center>										
 									</div>
 								</div>
