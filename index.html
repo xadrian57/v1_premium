@@ -1,119 +1,812 @@
-<!doctype html>
-<html class="no-js" lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1" />
-        <!-- title -->
-        <title>ROI Hero</title>
-        <meta name="description" content="Experiência de Compra que Converte!" />
-        <meta name="keywords" content="Experiência de Compra que Converte!" />
-        <meta name="author" content="ROI Hero">
-        <!-- favicon -->
-        <link rel="shortcut icon" href="images/ico/hero_login.png">
-        <!-- animation -->
-        <link rel="stylesheet" href="css/animate.css" />
-        <!-- bootstrap -->
-        <link rel="stylesheet" href="css/bootstrap.min.css" />
-        <!-- font-awesome icon -->
-        <link rel="stylesheet" href="css/font-awesome.min.css" />
-        <!-- themify-icons -->
-        <link rel="stylesheet" href="css/themify-icons.css" />
-        <!-- owl carousel -->
-        <link rel="stylesheet" href="css/owl.transitions.css" />
-        <link rel="stylesheet" href="css/owl.carousel.css" /> 
-        <!-- magnific popup -->
-        <link rel="stylesheet" href="css/magnific-popup.css" /> 
-        <!-- base -->
-        <link rel="stylesheet" href="css/base.css" /> 
-        <!-- elements -->
-        <link rel="stylesheet" href="css/elements.css" />
-        <!-- responsive -->
-        <link rel="stylesheet" href="css/responsive.css" />
-        <!--[if IE 9]>
-        <link rel="stylesheet" type="text/css" href="css/ie.css" />
-        <![endif]-->
-        <!--[if IE]>
-            <script src="js/html5shiv.min.js"></script>
-        <![endif]-->
-    </head>
-    <body>
-        
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="App Landing Page">
+    <meta name="author" content="">
+    <title>ROI Hero - Smart Recommendation</title>
 
-        <div id="page" class="page">
-            
-            <section class="no-padding cover-background tz-builder-bg-image border-none header-style25" id="hero-section20" data-img-size="(W)1920px X (H)900px" style="background-color: #073763; padding-top: 0px; padding-bottom: 0px;">
-                <div class="container one-fourth-screen sm-height-auto position-relative">
-                    <div class="slider-typography text-center sm-position-relative">
-                        <div class="slider-text-middle-main">
-                            <div class="slider-text-middle text-left sm-padding-nineteen sm-no-padding-lr xs-text-center">
-                                <!-- slider text -->
-                                <div class="col-md-6 col-sm-12 col-xs-12 sm-text-center xs-no-padding-lr">
-                                    <img src="images/uploads/logo_roihero.png" data-img-size="(W)250px X (H)61px" alt="" class="margin-fifteen-bottom sm-margin-five-bottom xs-margin-nine-bottom" id="ui-id-12" style="border-radius: 0px; border-color: rgb(112, 112, 112); border-style: none; border-width: 1px !important;">
-                                    <h1 class="title-extra-large-4 md-title-extra-large-3 font-weight-100 line-height-65 sm-title-extra-large xs-title-extra-large text-white margin-eight-bottom sm-margin-four-bottom tz-text">Experiência de compra que converte!</h1>
-                                    <div class="text-white title-small line-height-34 font-weight-100 width-100 xs-text-extra-large tz-text margin-thirteen-bottom sm-margin-six-bottom xs-margin-eleven-bottom sm-margin-nine-bottom"><p>Conheça nossas soluções para aumentar suas vendas, conversão e retenção dos seus clientes.</p></div>
-                                   
+    <!---------------------------------------------------------------------------------------------- STYLESHEETS -->
+    <link rel="icon" href="images/favicon.ico">                                <!-- Browser Tab Icon -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">                    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/font-awesome.min.css">                 <!-- Font-Awesome Icons -->
+    <link rel="stylesheet" href="css/icomoon.min.css">                      <!-- iconmoon Icons -->
+    <link rel="stylesheet" href="css/swiper.min.css">                       <!-- Carousel slider -->
+    <link rel="stylesheet" href="css/style.css">                            <!-- Template CSS -->
+    <link rel="stylesheet" href="css/animate.css">							<!-- Wow Animation CSS -->
+     <link rel="stylesheet" href="css/style-star-background.css">			<!-- Star Background CSS -->
+    
+    <link rel="stylesheet" href="css/google-fonts.css">                     <!-- Google font (Poppins) font face -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">		<!-- Google font (Poppins)  -->
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+</head>
+<body>
+
+<!-- STATIC BANNER -->
+<!-- WRAPPER -->    <!-- Preloader -->
+<div class="wrapper preloader" id="site-home">
+   <!-- NAVIGATION AND SLIDER HOLDER -->
+    <section class="site-holder" role="banner">
+
+        <!-- HEADER -->
+        <header class="site-header">
+
+            <!-- STICKY HEADER -->
+            <div class="sticky-header home-bg" id="sticky-header">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-8 col-sm-3">
+
+                            <!-- LOGO -->
+                            <div class="site-logo">
+                                <a href="index.html">
+                                    <img src="images/logo.png" alt="Logo">
+                                </a>
+                            </div>
+                            <!-- END LOGO -->
+
+                        </div>
+                        <div class="col-xs-4 col-sm-9">
+
+                           <!-- NAVIGATION -->
+                            <nav class="site-nav" id="site-nav" role="navigation">
+                                <!-- MOBILE VIEW BUTTON -->
+                                <div class="nav-mobile">
+                                    <i class="fa fa-bars show"></i>
+                                    <i class="fa fa-close hide"></i>
                                 </div>
-                                <!-- end slider text -->
-                                <!-- image -->
-                                <div class="col-md-6 col-sm-12 col-xs-12 text-center outside-image sm-position-relative xs-no-padding-lr">
-                                    <div class="outside-image-sub height-80 margin-twenty-three-top">
-                                        <img src="images/uploads/hero_login.png" data-img-size="(W)1420px X (H)793px" alt="" class="sm-width-100" id="ui-id-13" style="border-radius: 0px; border-color: rgb(112, 112, 112); border-style: none; border-width: 1px !important;">
+                                <!-- LINKS -->
+                                <ul class="nav-off-canvas">
+                                    <!-- ACTIVE ITEM -->
+                                    <li ><a href="index.html">Home</a></li>
+                                    <li><a href="smart_recommendation.html">Smart Recommendation</a></li>
+                                    <li><a href="smart_search.html">Smart Search</a></li>
+                                    <li><a href="smart_recovery.html">Smart Recovery</a></li>
+                                   <!-- <li><a href="cases.html">Cases</a></li> 
+                                    <li><a href="preços.html">Preço</a></li> -->
+                                    <li><a href="#quick-support">Contato</a></li>
+                                    
+                                </ul>
+                            </nav>
+                            <!-- END NAVIGATION -->
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+                <div class="static-banner">
+                    <div class="star-bg">
+                        <div id='stars'></div>
+                        <div id='stars2'></div>
+                        <div id='stars3'></div>
+                    </div>
+
+                    <div class="container">
+                        <div class="static-content">
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <!-- Caption -->
+                                <div class="banner-caption">
+
+                                    <!-- H1 Heading -->
+                                    <h1>Turbine suas vendas!</h1>
+
+                                    <!-- H2 Heading -->
+                                    <h2>99% dos seus visitantes deixam sua loja virtual sem comprar nada.</h2>
+
+
+                                    <!-- Buttons -->
+                                    <a href="#quick-support" class="slide-button slide-button-active">Mude essa realidade!</a>
+
+                                    <!-- Button -->
+                                    <a href="#right-content-section" class="slide-button">Saber Mais</a>
+
+                            </div>
+                        </div>
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                <div class="static-banner-image">
+
+                                </div>
+
+                                <div class="static-banner-image" style="display:none">
+                                    <img src="images/heroi_roihero.png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </header>
+            <!-- END HEADER -->
+
+        </section>
+
+
+        <!-- START SLIDER - display none -->
+            <div id="header-slider" class="header-slider color-gredient" style="display:none;">
+                <ul class="seq-canvas">
+
+                    <!-- SLIDE 1 -->
+                    <li class="step1 slides">
+
+                        <!-- MAIN IMAGE -->
+                        <div class="bg-img" style="background-image: url(images/header-slide-1.png)"></div>
+
+                        <!-- Caption -->
+                        <div class="slide-caption">
+
+                            <!-- H1 Heading -->
+                            <h1>Smart</h1>
+
+                            <!-- H2 Heading -->
+                            <h2>Ready to showcase your app</h2>
+
+                            <!-- Paragraph -->
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                indus orem Ipsum has been the industry's standard dummy text
+                                ever since the when an own printer took a galley
+                            </p>
+
+                            <!-- Buttons -->
+                            <a href="#" class="slide-button slide-button-active">Download</a>
+
+                            <!-- Button -->
+                            <a href="#" class="slide-button">Learn more</a>
+
+                        </div>
+
+                    </li>
+
+                    <!-- SLIDE 2 -->
+                    <li class="step2 slides">
+
+                        <!-- MAIN IMAGE -->
+                        <div class="bg-img" style="background-image: url(images/header-slide-2.png)"></div>
+
+                        <!-- Caption -->
+                        <div class="slide-caption">
+
+                            <!-- H1 Heading -->
+                            <h1>Smart</h1>
+
+                            <!-- H2 Heading -->
+                            <h2>Ready to showcase your app</h2>
+
+                            <!-- Paragraph -->
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                indus orem Ipsum has been the industry's standard dummy text
+                                ever since the when an own printer took a galley
+                            </p>
+
+
+                            <!-- Buttons -->
+                            <a href="#" class="slide-button slide-button-active">Download </a>
+
+                            <!-- Button -->
+                            <a href="#" class="slide-button">Learn more</a>
+
+                        </div>
+
+                    </li>
+
+                    <!-- SLIDE 3 -->
+                    <li class="step3 slides">
+
+                        <!-- MAIN IMAGE -->
+                        <div class="bg-img" style="background-image: url(images/header-slide-1.png)"></div>
+
+                        <!-- Caption -->
+                        <div class="slide-caption">
+
+                            <!-- H1 Heading -->
+                            <h1>Smart</h1>
+
+                            <!-- H2 Heading -->
+                            <h2>Ready to showcase your app</h2>
+
+                            <!-- Paragraph -->
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting
+                                indus orem Ipsum has been the industry's standard dummy text
+                                ever since the when an own printer took a galley
+                            </p>
+
+
+                            <!-- Buttons -->
+                            <a href="#" class="slide-button slide-button-active">Download </a>
+
+                            <!-- Button -->
+                            <a href="#" class="slide-button">Learn more</a>
+
+                        </div>
+
+                    </li>
+
+                    <!-- SLIDE 4 -->
+                    <li class="step4 slides">
+
+                        <!-- MAIN IMAGE -->
+                        <div class="bg-img" style="background-image: url(images/header-slide-2.png)"></div>
+
+                        <!-- Caption -->
+                        <div class="slide-caption">
+
+                            <!-- H1 Heading -->
+                            <h1>Smart</h1>
+
+                            <!-- H2 Heading -->
+                            <h2>Ready to showcase your app</h2>
+
+                            <!-- Paragraph -->
+                            <p>
+                                Lorem Ipsum is simply dummy text of the printing and typesetting indus orem 
+                                Ipsum has been the industry's standard dummy text ever since 
+                                the when an own printer took a galley
+                            </p>
+
+                            <!-- Buttons -->
+                            <a href="#" class="slide-button slide-button-active">Download now</a>
+
+                            <!-- Button -->
+                            <a href="#" class="slide-button">Learn more</a>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+                <!-- PAGINATION -->
+                <ul class="seq-pagination">
+                    <li>01</li>
+                    <li>02</li>
+                    <li>03</li>
+                    <li>04</li>
+                </ul>
+
+                <!-- NAVIGATION -->
+                <button type="button" class="seq-next"><span class="icon-play"></span></button>
+                <button type="button" class="seq-prev"><span class="icon-play-flip"></span></button>
+
+            </div>
+            
+          
+
+        <!-- SMART Recommendation -->
+        <section id="right-content-section" class="site-amazing-features left-heading two-colom-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-6">
+                        <div class="half-colom-left-section half-colom-padding">
+                            <!-- H1 HEADING -->
+                           <h1>Smart Recommendation</h1>    
+                            <div class="two-colom-content">
+                                <p>Personalize a experiência de compra em sua loja virtual com vitrines que recomendam produtos de maneira inteligente. Dê adeus ao trabalho de gerenciar manualmente as suas vitrines da página inicial e das suas páginas de produtos.</p>
+                            </div>
+
+                            <a href="smart_recommendation.html"><strong>Saiba Mais</strong></a>   
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-pull-7 ">
+                        <div class="half-colom-right-section wow fadeInLeft" data-wow-duration="0.5s">
+                            <img src="images/roihero-smart-recommendation.png" alt="leftimage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+            <!-- Smart Search -->
+        <section id="right-content-section" class="section-grey site-amazing-features left-heading two-colom-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6">
+                        <div class="half-colom-left-section half-colom-padding">
+                            <!-- H1 HEADING -->
+                           <h1>Smart Search</h1>    
+                            <div class="two-colom-content">
+                                <p>Transforme a experiência de busca da sua loja com a Smart Search da ROI Hero. Facilite a vida do seu cliente e traga mais encontrabilidade para seus produtos!</p>
+                            </div>
+                            
+                             <a href="smart_search.html"><strong>Saiba Mais</strong></a> 
+                             
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-1">
+                        <div class="half-colom-right-section wow fadeInLeft" data-wow-duration="0.5s">
+                            <img src="images/roihero-smart-search.png" alt="leftimage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+            <!-- Smart Sales Recovery -->
+        <section id="right-content-section" class="site-amazing-features left-heading two-colom-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-6">
+                        <div class="half-colom-left-section half-colom-padding">
+                            <!-- H1 HEADING -->
+                           <h1>Smart Sales Recovery</h1>    
+                            <div class="two-colom-content">
+                                <p>Ferramenta especializada em recuperar carrinhos e boletos perdidos da sua loja virtual. Recupere 20% ou mais dos visitantes que adicionam produtos ao carrinho e deixam o site sem finalizar a compra ou pagar boletos. Funcionalidade exclusiva para plataforma VTEX.</p>
+                            </div>
+
+                                <a href="smart_recovery.html"><strong>Saiba Mais</strong></a> 
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-pull-7 ">
+                        <div class="half-colom-right-section wow fadeInLeft" data-wow-duration="0.5s">
+                            <img src="images/roihero-smart-recovery.png" alt="leftimage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- LEFT IMAGE & RIGHT  CONTENT -->
+        <section id="right-content-section" class="section-grey site-amazing-features left-heading two-colom-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-push-6">
+                        <div class="half-colom-left-section half-colom-padding">
+                            <!-- H1 HEADING -->
+                           <h1>Acreditamos na Experiência de compra que converte! </h1>    
+                            <div class="two-colom-content">
+                                <p>
+                                <strong class="highlited-text">Acreditamos que a boa experiência gera a recorrência.</strong> Acreditamos que com muita tecnologia e gente boa trabalhando podemos mudar a experiência de compra do e-commerce brasileiro e impactar os principais indicadores de faturamento e comportamento dos nossos lojistas.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-md-pull-6 ">
+                        <div class="half-colom-right-section wow fadeInLeft" data-wow-duration="0.5s">
+                            <img src="images/roihero-experiencia-de-compra-que-converte.png" alt="leftimage">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- STATISTIC -->
+        <section class="site-statistic section-white" id="site-statistic" style="display:none">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
+                        <!-- number -->
+                        <div class="site-number">
+                            <!-- icon -->
+                            <div class="stat-icon"> <img src="images/cloud.png" alt="cloud"></div>
+                            <!-- h5 heading -->
+                            <h5 class="counter-count">200 <span>K</span></h5>
+                            <!-- paragraph -->
+                            <p>Recomendações por dia</p>
+                        </div>
+                        <!-- end -->
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
+                        <!-- number -->
+                        <div class="site-number">
+                            <!-- icon -->
+                            <div class="stat-icon"> <img src="images/thumbsup.png" alt="thumbsup"></div>
+                            <!-- h5 heading -->
+                            <h5 class="counter-count">50 <span>K</span></h5>
+                            <!-- paragraph -->
+                            <p>Buscas por dia</p>
+                        </div>
+                        <!-- end -->
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
+                        <!-- number -->
+                        <div class="site-number">
+                            <!-- icon -->
+                            <div class="stat-icon"> <img src="images/users.png" alt="users"></div>
+                            <!-- h5 heading -->
+                            <h5 class="counter-count">95 <span>%</span></h5>
+                            <!-- paragraph -->
+                            <p>Em vendas</p>
+                        </div>
+                        <!-- end -->
+                    </div>
+                    <div class="col-xs-12 col-sm-5 col-sm-offset-1 col-md-3 col-md-offset-0">
+                        <!-- number -->
+                        <div class="site-number">
+                            <!-- icon -->
+                            <div class="stat-icon"> <img src="images/star.png" alt="star"></div>
+                            <!-- h5 heading -->
+                            <h5 class="counter-count">10 <span>+</span></h5>
+                            <!-- paragraph -->
+                            <p>Aumento de Conversão</p>
+                        </div>
+                        <!-- end -->
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIAL
+        <section class="site-testimonial section-grey" id="site-testimonial">
+            <div class="container-fluid wide">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <!-- H1 HEADING 
+                        <h1>Mais de 1.700 lojistas confiam</h1>
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                            <div class="main-heading-text">
+                            <p>Hoje a ROI Hero é um dos sistemas de recomendação que mais cresce no Brasil pela qualidade no serviço prestado e atendimento próximo dos nossos lojistas.
+                            </p>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                        </div>
+
+                        <div class="clearfix"> </div>
+                        <!-- Slider main container 
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                    <div class="swiper-container" id="testimonial-slider">
+
+                                        <!-- Additional required wrapper 
+                                        <ul class="swiper-wrapper">
+
+                                            <!-- slide 1 
+                                            <li class="swiper-slide">
+                                                <div class="swiper-slide-box">
+                                                    <!-- image 
+                                                    <figure>
+                                                        <img src="images/testimonial-user.png" alt="User">
+                                                    </figure>
+                                                    <!-- user name 
+                                                    <h5>Mr. Jhon Due</h5>
+                                                    <span class="testimonial-degignation">Founder at Smart Technologies</span>
+
+                                                    <!-- paragraph 
+                                                    <p>
+                                                        Lorem Ipsum is simply dummy text of the printing and
+                                                        typeseing industry Lorem Ipsum has been the industry 
+                                                        standard dummy text Lorem is simply.
+                                                    </p>
+
+                                                </div>
+                                                <div class="swiper-slide-back-box">
+                                                </div>
+                                            </li>
+                                            <!-- slide 2 
+                                            <li class="swiper-slide">
+                                                <div class="swiper-slide-box">
+                                                    <!-- image 
+                                                    <figure>
+                                                        <img src="images/testimonial-user2.png" alt="User">
+                                                    </figure>
+                                                    <!-- user name 
+                                                    <h5>Devil Shohe</h5>
+                                                    <span class="testimonial-degignation">Founder at Smart Technologies</span>
+
+                                                    <!-- paragraph 
+                                                    <p>
+                                                        Lorem Ipsum is simply dummy text of the printing and
+                                                        typeseing industry Lorem Ipsum has been the industry 
+                                                        standard dummy text Lorem is simply.
+                                                    </p>
+
+
+                                                </div>
+                                                <div class="swiper-slide-back-box">
+                                                </div>
+                                            </li>
+                                            <!-- slide 3 
+                                            <li class="swiper-slide">
+                                                <div class="swiper-slide-box">
+                                                    <!-- image
+                                                    <figure>
+                                                        <img src="images/testimonial-user.png" alt="User">
+                                                    </figure>
+                                                    <!-- user name 
+                                                    <h5>Devil Shohe</h5>
+                                                    <span class="testimonial-degignation">Founder at Smart Technologies</span>
+
+                                                    <!-- paragraph 
+                                                    <p>
+                                                        Lorem Ipsum is simply dummy text of the printing and
+                                                        typeseing industry Lorem Ipsum has been the industry 
+                                                        standard dummy text Lorem is simply.
+                                                    </p>
+
+                                                </div>
+                                                <div class="swiper-slide-back-box">
+                                                </div>
+                                            </li>
+
+                                        </ul>
                                     </div>
                                 </div>
-                                <!-- end image -->
-                            </div>                                
+                                <div class="col-xs-12 col-sm-12 col-md-2 col-lg-2">
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- If we need navigation buttons 
+                        <div id="testimonial-prev" class="swiper-button-prev hidden-lg"><span class="icon-play-flip"></span></div>
+                        <div id="testimonial-next" class="swiper-button-next hidden-lg"><span class="icon-play"></span></div>
+
+                        <!-- If we need pagination 
+                        <div id="testimonial-paging" class="swiper-pagination"></div>
+
                     </div>
                 </div>
-            </section>
-            
-            
-            <section class="padding-60px-tb bg-sky-blue-dark builder-bg border-none" id="callto-action2" style="padding: 60px 0px; border-color: rgb(112, 112, 112); background-color: rgb(7, 55, 99) !important;">
-                <div class="container">
-                    <div class="row equalize">
-                        <div class="col-md-12 col-sm-12 col-xs-12 text-center" style="">
-                            <div class="display-inline-block sm-display-block vertical-align-middle margin-five-right sm-no-margin-right sm-margin-ten-bottom tz-text alt-font text-white title-medium sm-title-medium">Nosso Novo Site Está Em Construção!</div>
-                            <a class="btn-large btn text-white highlight-button-white-border btn-circle" href="form.html"><span class="tz-text">Entre em Contato</span><i class="fa fa-long-arrow-right icon-extra-small tz-icon-color"></i></a>
+            </div>
+        </section> -->
+
+
+        <!-- Materias Ricos -->
+        <section class="latest-blog section-grey" id="latest-blog">
+            <div class="container-fluid wide">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <!-- H1 HEADING -->
+                        <h1>Materiais Gratuitos</h1>
+                        <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
                         </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        </div>
+
+                            <!--- blog post 1 -->
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="blog-post-box">
+                                    <!--- image -->
+                                    <figure> 
+                                        <a href="http://go.roihero.com.br/ecommerce-ferramenta">
+                                            <img src="images/cat_ferramentas_de_marketing.png" alt="blogpostimage">
+                                        </a>
+                                    </figure>
+                                    <div class="blog-post-content">
+                                        <!--- admin details -->
+
+                                        <!--- title -->
+                                        <a href="http://go.roihero.com.br/ecommerce-ferramenta">
+                                        <h4>Ferramentas de Marketing para o seu e-commerce </h4>
+                                        </a>
+                                        <!--- date -->
+                                        <span> </span>
+                                        <!--- paragraph -->
+                                        <p>Uma planilha com as melhores ferramentas para o seu e-commerce decolar! Faça o download da planilha, ela pode te ajudar a conhecer melhor o ecossistema do e-commerce.</p>
+                                    </div>
+                                </div>
+                                <a class="blog-more-button" href="http://go.roihero.com.br/ecommerce-ferramenta">Download Grátis </a>
+                            </div>
+
+                            <!--- blog post 2 -->
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="blog-post-box">
+                                    <!--- image -->
+                                    <figure>
+                                        <a href="http://go.roihero.com.br/ebook-user-experience">
+                                            <img src="images/cta_guia_da_ux.png" alt="blogpostimage">
+                                        </a>
+                                    </figure>
+                                    <div class="blog-post-content">
+
+                                        <!--- title -->
+                                        <a href="http://go.roihero.com.br/ebook-user-experience">
+                                        <h4>Guia definitivo da experiência do usuário </h4>
+                                        </a>
+                                        <!--- date -->
+                                        <span> </span>
+                                        <!--- paragraph -->
+                                        <p>Experiência do usuário é a principal fonte de receita recorrente, que garante solidez e consistência a um negócio. Baie agora um guia sobre dicas para melhorar a experiência on-site. </p>
+                                    </div>
+                                </div>
+                                <a class="blog-more-button" href="http://go.roihero.com.br/ebook-user-experience">Download Grátis </a>
+                            </div>
+
+                            <!--- blog post 3 -->
+                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                <div class="blog-post-box">
+                                    <!--- image -->
+                                    <figure> 
+                                        <a href="http://go.roihero.com.br/conversao-para-ecommerces">
+                                            <img src="images/cta_cro.png" alt="blogpostimage">
+                                        </a>    
+                                    </figure>
+                                    <div class="blog-post-content">
+
+                                        <!--- title -->
+                                        <a href="http://go.roihero.com.br/conversao-para-ecommerces">
+                                        <h4>Guia completo para otimizar a conversão do seu e-commerce. </h4>
+                                        </a>
+                                        <!--- date -->
+                                        <span> </span>
+                                        <!--- paragraph -->
+                                        <p>Sua conversão não só pode ser medida, como pode ser otimizada! Saiba como com este guia prática de ações pontuais que você pode realizar em sua loja virtual. </p>
+                                    </div>
+                                </div>
+                                <a class="blog-more-button" href="http://go.roihero.com.br/conversao-para-ecommerces">Download Grátis </a>
+                            </div>
                     </div>
                 </div>
-            </section>
-            
-           </div><!-- /#page -->
+            </div>
+        </section>
 
+    <!-- FOOTER -->
+        <!-- QUICK SUPPORT -->
+        <section id="quick-support" class="site-quick-support section-white">
+            <div class="container">
+                <div class="contact-box color-gredient">
+                    <div class="col-xs-12">
+                        <div class="box">
 
-        <!-- javascript libraries -->
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.appear.js"></script>
-        <script type="text/javascript" src="js/smooth-scroll.js"></script>
-        <script type="text/javascript" src="js/bootstrap.min.js"></script>
-        <!-- wow animation -->
-        <script type="text/javascript" src="js/wow.min.js"></script>
-        <!-- owl carousel -->
-        <script type="text/javascript" src="js/owl.carousel.min.js"></script>        
-        <!-- images loaded -->
-        <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script>
-        <!-- isotope -->
-        <script type="text/javascript" src="js/jquery.isotope.min.js"></script> 
-        <!-- magnific popup -->
-        <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-        <!-- navigation -->
-        <script type="text/javascript" src="js/jquery.nav.js"></script>
-        <!-- equalize -->
-        <script type="text/javascript" src="js/equalize.min.js"></script>
-        <!-- fit videos -->
-        <script type="text/javascript" src="js/jquery.fitvids.js"></script>
-        <!-- number counter -->
-        <script type="text/javascript" src="js/jquery.countTo.js"></script>
-        <!-- time counter  -->
-        <script type="text/javascript" src="js/counter.js"></script>
-        <!-- twitter Fetcher  -->
-        <script type="text/javascript" src="js/twitterFetcher_min.js"></script>
-        <!-- main -->
-        <script type="text/javascript" src="js/main.js"></script>
+                        <!-- INFO -->
+                        <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5">
+                            <div class="site-info">
+                            <h5> Entre em contato</h5>
+                            <p>Será um prazer mostrar como nós podemos alavancar a experiência e a conversão da sua loja virtual.
+                            </p>
+
+                        <!-- BOX -->
+                        <a href="tel:+911234567890" class="site-box-row">
+                            <!-- ICON -->
+                            <h6><i class="fa fa-phone"></i> Telefone </h6>
+                            <!-- PARAGRAPH -->
+                            <p>19 989320478</p>
+                        </a>
+
+                        <!-- BOX -->
+                        <a href="mailto:support@gmail.com" class="site-box-row last">
+                            <!-- ICON -->
+                            <h6><i class="fa fa-envelope"></i> Email </h6>
+                            <!-- Mail -->
+                            <p>davi.bernardes@roihero.com.br</p>
+                        </a>
+                        
+                        <!-- BOX -->
+                        <a target="_blank" href="http://maps.google.com/?q=Location,125BusinessEvenue,Huston,USA" class="site-box-row">
+                            <!-- ICON -->
+                            <h6><i class="fa fa-map-marker"></i> Escritório</h6>
+                            <!-- ADDRESS -->
+                            <address>Avenida Doutor Alfredo Ferraz de Abreu, 1355 - 2º andar - Centro, Limeira-SP</address>
+                        </a>
+
+                        </div>
+                        </div>
+
+                        <!-- CONTACT FORM -->
+                        <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
+                            <div class="site-info form">
+                                <h5> Envie uma mensagem </h5>
+                                <form action="php/contato.php" method="post" class="site-contact-form" id="myForm">
+                                    <label>
+                                        <input class="app-btn value-clear" type="text" name="nome" placeholder="Nome" required="required" >
+                                    </label>
+
+                                    <label>
+                                        <input class="app-btn value-clear" type="email" name="email" placeholder="Email" required="required">
+                                    </label>
+
+                                    <label>
+                                        <input class="app-btn value-clear" type="tel" name="telefone" placeholder="Celular" required="required">
+                                    </label>
+
+                                    <label>
+                                        <input class="app-btn value-clear" type="url" name="site" placeholder="URL da Loja">
+                                    </label>                        
+                                    
+                                    <label>
+                                        <input class="app-btn value-clear" type="text" name="plataforma" placeholder="Plataforma de E-commerce">
+                                    </label>
+
+                                    <label class="last">
+                                        <textarea class="app-btn value-clear" name="mensagem" placeholder="Escreva aqui sua mensagem" required></textarea>
+                                    </label>
+
+                                    <label class="move">
+                                        <button id="form-submit-btn" class="app-btn" type="submit">Submit <i class="fa fa-spin fa-spinner"></i></button>
+                                    </label>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer section-blue">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+
+                        <!-- SOCIAL ICONS -->
+                        <div class="site-social-icons">
+                            <a href="https://www.facebook.com/curtaroihero/"><i class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/roihero/"><i class="fa fa-instagram"></i></a>
+                            <a href="https://www.youtube.com/channel/UCmYOnEu3kY7BedIxaCNRsIA"><i class="fa fa-youtube"></i></a>
+                        </div>
+                        <!-- END SOCIAL ICONS -->
+
+                        <!-- COPYRIGHT -->
+                        <div class="site-copyright">
+                            <p>© Copyright 2017 ROI Hero. Feito com ❤ via Home Office pelo Brasil.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- END WRAPPER -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-93457397-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-93457397-3');
+</script>
     
-
+    <!-- Hotjar Tracking Code for www.roihero.com.br -->
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:841871,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+    <!-------------------------------------------------------------------------- SCRIPTS -->
+   <script src="js/jquery-1.12.4.min.js"></script>                         <!-- JQuery -->
+<script src="js/loadingoverlay.min.js"></script>                        <!-- Preloader -->
+<script src="js/swiper.jquery.min.js"></script>                         <!-- Carousel slider -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>        <!-- Custom scroll bar -->
+<script src="js/modernizr-custom.min.js"></script>                      <!-- Modernizr -->
+<script src="js/imagesloaded.pkgd.min.js"></script>                     <!-- Header Slider -->
+<script src="js/hammer.min.js"></script>                                <!-- Header Slider -->
+<script src="js/sequence.min.js"></script>                              <!-- Header Slider -->
+<script src="js/tweetie.min.js"></script>                               <!-- Twitter Feed -->
+<script src="js/jquery.countimator.min.js"></script>                    <!-- Counter -->
+<script src="js/bootstrap.min.js"></script>                             <!-- Bootstrap -->
+<script src="js/jquery.sticky.min.js"></script>                         <!-- Sticky Header -->
+<script src="js/jquery.scrollUp.min.js"></script>                       <!-- scroll top -->
+<script src="js/style.js"></script>                                     <!-- Template Changeable Plugin Options -->
+<script src="js/wow.min.js"></script>									<!--Wow animation js -->
     </body>
-</html>
-        
+    </html>
