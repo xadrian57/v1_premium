@@ -34,40 +34,40 @@
 			for ($i=0; $i < count($idWidget); $i++) {
 
 				if ($inteligenciaWidget[$i] == 22) {
-					array_push($widgetsBusca, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+					array_push($widgetsBusca, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 				} else {
 					switch ($paginaWidget[$i]) {
 						case '1': // pagina de busca
 							if (ehWidgetBasico($formatoWidget[$i])){
-								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							} else {
-								array_push($widgetsHome, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsHome, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							}
 							break;
 						case '2': // pagina de produto
 							if (ehWidgetBasico($formatoWidget[$i])){
-								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							} else {
-								array_push($widgetsProduto, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsProduto, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							}
 							break;
 						case '4': // pagina de categoria
 							if (ehWidgetBasico($formatoWidget[$i])){
-								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							} else {
-								array_push($widgetsCategoria, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsCategoria, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							}
 							break;
 						case '5': // pagina de carrinho
 							if (ehWidgetBasico($formatoWidget[$i])){
-								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							} else {
-								array_push($widgetsCarrinho, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsCarrinho, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							}
 							break;			
 						default:
 							if (ehWidgetBasico($formatoWidget[$i])){
-								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i]));
+								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							} 
 							break;
 					}
@@ -443,7 +443,55 @@
 			$insert = 'INSERT INTO busca (tx_pesquisado, tx_retornado, id_cli) VALUES ("'.$word.'", "'.$syn.'", '.$idCli.')';
 			mysqli_query($conCad, $insert);
 		}
-	};
+	}
+
+	function duplicaWid($conCad, $idWid, $idCli) {
+		// pega o wid no bd
+		$select = 'SELECT * FROM widget WHERE WID_id = '.$idWid.' AND WID_id_cli = '.$idCli;
+		$exec = mysqli_query($conCad, $select);
+		$result = mysqli_fetch_assoc($exec);
+
+		unset($result['WID_id']); // apaga id chave primaria
+		
+		// adiciona '2' ao final
+		$result['WID_nome'].= ' 2';
+
+		$insertFields = [];
+		$insertValues = [];
+		foreach($result as $key => $value) {
+			array_push($insertFields, $key);
+			array_push($insertValues, '"'.$value.'"');
+		}
+
+		$insert = 'INSERT INTO widget ('.implode($insertFields, ',').') VALUES ('.implode($insertValues, ',').')';
+		$exec = mysqli_query($conCad, $insert) or print(mysqli_error($conCad));
+
+		// pega ultimo id
+		$lastId = $conCad->insert_id;
+
+		// agora duplica o config
+		$select = 'SELECT * FROM widget_config WHERE WC_id_wid = '.$idWid;
+		$exec = mysqli_query($conCad, $select);
+		$result = mysqli_fetch_assoc($exec);
+
+		unset($result['WC_id']); // apaga id chave primaria
+
+		$insertFields = [];
+		$insertValues = [];
+		foreach($result as $key => $value) {			
+			array_push($insertFields, $key);
+			
+			if ($key === 'WC_id_wid') {
+				$v = $lastId;
+				array_push($insertValues, '"'.$v.'"');
+			} else {
+				array_push($insertValues, '"'.$value.'"');
+			}
+		}
+
+		$insert = 'INSERT INTO widget_config ('.implode($insertFields, ',').') VALUES ('.implode($insertValues, ',').')';
+		$exec = mysqli_query($conCad, $insert);
+	}
 
 	// ATIVA/DESATIVA WIDGET
 	function toggleWidget($conCad, $id, $t){
@@ -495,6 +543,10 @@
 			$idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
 			atualizaInfoBusca($conCad, $idWid, $idCli, $_POST['data']);
 			break;
+		case '8': // DUPLICA WID
+			$idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
+			$idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
+			duplicaWid($conCad, $idWid, $idCli);
 		default:
 			break;
 	}

@@ -122,11 +122,23 @@ $(document).ready(function(){
 				widgetsHome.innerHTML = "";
 
 				__home.forEach(function(wid){
+					var btn = '';
+
+					if (wid.inteligencia == 40 || // lançamentos da marca
+						wid.inteligencia == 38 || // mais vendidos da marca manual
+						wid.inteligencia == 25 || // palavra chave
+						wid.inteligencia == 24 || // mais vendidos da categoria manual
+						wid.inteligencia == 9)    // manual
+					{
+						btn = '<button class="btn-duplica-wid btn btn-primary mr-1" data-int="'+wid.inteligencia+'"><i class="fa fa-plus"></i> Duplicar</button>';
+					}
+
 					var ativo = (wid.ativo === '1') ? 'checked' : '';
 					widgetsHome.innerHTML = widgetsHome.innerHTML +
 					'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 							'<!-- <button class="btn btn-danger pull-right" data-delete-wid='+wid.id+'><i class="ft-x"></i> Deletar</button> -->'+
+							btn+
 							'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>'+
 				            '<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always '+ativo+'/>'+
 				         '</div>'+
@@ -161,13 +173,18 @@ $(document).ready(function(){
 						'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 							'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
 								'<button class="btn btn-info pull-right mr-1 ml-1 btn-configura-busca"><i class="ft-cog"></i> Configurações</button>'+
+								'<a class="white btn btn-info pull-right mr-1 ml-1" href="/dashboard/php/get_relatorio_busca.php/?id='+idCli+'">'+
+									'<i class="fa fa-table mr-1"></i>'+
+									'Baixar relatório'+
+									'</a>'+
+								'</button>'+
 							'</div>'+
 						'</li>';
 					} else {
 						widgetsBusca.innerHTML = widgetsBusca.innerHTML +
 						'<li class="list-group-item" wid-id="'+wid.id+'"><span>'+wid.nome+'</span>'+
 							'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">'+
-								'<span class="pull-right primary">ID: 22104</span>';
+								'<span class="pull-right primary">ID: 22104</span>'+
 							'</div>'+
 						'</li>';
 					}
@@ -1405,7 +1422,7 @@ $(document).ready(function(){
 						}
 					});
 				});
-
+				
 				$('.btn-configura-busca').click(function() {
 					var id = this.parentElement.parentElement.getAttribute('wid-id');
 					$('#rhIdWidBusca').html(id);
@@ -1436,6 +1453,22 @@ $(document).ready(function(){
 			},
 
 			botoesSalvar: function(){
+				// BTNS DUPLICAR WID
+				$('.btn-duplica-wid').off('click');
+				$('.btn-duplica-wid').click(function() {
+					var id = this.parentElement.parentElement.getAttribute('wid-id');
+
+					$.ajax({
+						type: 'POST',
+						url: 'resource/resource_widget_edit.php',
+						data: {'idCli': idCli, 'op': 8, idWid : id},
+						success: function(result){
+							console.log(result);
+							widgets.inicia();
+						}
+					});
+				});
+
 				// BOTOES SALVAR WIDGET
 				$('#btn-salva-wid').off('click')
 				$('#btn-salva-wid').on('click', function(){
