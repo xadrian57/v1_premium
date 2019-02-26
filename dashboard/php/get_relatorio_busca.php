@@ -45,7 +45,7 @@ else {
 	}
 }
 
-$arquivo = 'relatorio_busca_'.$cliente['nome'].'_'.date("d-m-Y").'.xls';
+$arquivo = 'relatorio_busca_'.$cliente['nome'].'_'.date("d-m-Y").'.xlsx';
 
 header("Content-Disposition: attachment; filename=\"".$arquivo."\"");
 header("Content-Type: application/vnd.ms-excel;");
@@ -57,7 +57,7 @@ header("Expires: 0");
 $html = '';
 $html .= '<table>';
 $html .= '<tr>';
-$html .= '<td colspan="2">RELATÓRIO DE TERMOS DA BUSCA</tr>';
+$html .= '<td colspan="2">RELATORIO DE TERMOS DA BUSCA</tr>';
 $html .= '</tr>';
 $html .= '<tr>';
 $html .= '<td><b>TERMO</b></td>';
