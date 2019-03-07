@@ -898,7 +898,7 @@ rhSearchBar = function(cfg,idCli,idWid){
                     console.log('Nenhum resultado encontrado');
                     cfg.searchbarResults.classList.add('active'); // MOSTRANDO OS RESULTADOS
                     cfg.searchbarResults.classList.remove('loading'); 
-                    resultado.innerHTML = '<b class="rh-no-results-found" style="margin:10px;">Nehum resultado encontrado.</b>'
+                    resultado.innerHTML = '<b class="rh-no-results-found" style="margin:10px;">Nenhum resultado encontrado.</b>'
                 }
 
 
