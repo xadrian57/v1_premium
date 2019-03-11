@@ -37,12 +37,6 @@ class CarrinhoComplementarInteligencia extends AbstractInteligenciaComposta {
             }
             
             $this->ordenarObjetos();
-
-            if($this->widget->getObjNumItens() < 4)
-            {
-                $obj = [];
-                $this->widget->setObj($obj);
-            }
         }
     }
     
