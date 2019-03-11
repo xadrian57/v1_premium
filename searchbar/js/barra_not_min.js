@@ -24,7 +24,6 @@ window['rhSearchBarSendReq'] = function(idCli,idWid){
         };
     } else {
         css.onload = function () {
-            console.log('carregou');
             window['rh_sb_css_ready'] = true;
         };
     };
@@ -79,8 +78,8 @@ window['rhSearchBarSendReq'] = function(idCli,idWid){
                     rh_lite_termos[1].termo = decodeURIComponent(rh_lite_termos[1].termo);
                     rh_lite_termos[1].titulo = decodeURIComponent(rh_lite_termos[1].titulo);
 
-                    console.log('Termos/conteudo:');
-                    console.log(rh_lite_termos);
+                    // console.log('Termos/conteudo:');
+                    // console.log(rh_lite_termos);
 
                     // CHECK DE SEGURANÇA
                     // CASO N TENHA NENHUM RANK DE PRODUTOS MAIS BUSCADOS AINDA NO BANCO, RECEBE VAZIO
@@ -289,8 +288,8 @@ rhSearchBar = function(cfg,idCli,idWid){
                 }
 
 
-                console.log('Produtos:');
-                console.log(rh_lite_obj);
+                console.log('Produtos carregados no browser.');
+                // console.log(rh_lite_obj);
             }
         }
         req2.send(formData);
