@@ -227,7 +227,7 @@ class Util {
             }
 
             // esconde blocos com menos de 4 produtos
-            if(($formato == 1 && count($obj) < 4) || ($formato == 11 && count($obj) < 4))
+            if(($formato == 1 && count($obj) < 4) || ($formato == 14 && count($obj) < 4))
             {
                 return '';
             }
