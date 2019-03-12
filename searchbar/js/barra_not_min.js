@@ -790,7 +790,7 @@ rhSearchBar = function(cfg,idCli,idWid){
 
                             // DECODIFICANDO OS NOMES E OS LINKS
                             result[x].title = decodeURIComponent(result[x].title.replace(/\+/g, ' '));
-                            result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utm='+utm;
+                            result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utmi_medium=roihero&utmi_content=roihero&rh_int=search';
                             result[x].link_image = decodeURIComponent(result[x].link_image);
                             result[x].type = decodeURIComponent(result[x].type).replace(/\+/g, ' ');
                         // -------------------
