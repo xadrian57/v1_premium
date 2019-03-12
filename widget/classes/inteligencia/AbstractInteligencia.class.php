@@ -235,11 +235,17 @@ abstract class AbstractInteligencia implements IInteligencia {
             case '7':
                 $getInt .= 'col';
                 break;
+            case '8':
+                $getInt .= 'cj';
+                break;
             case '9':
                 $getInt .= 'man';
                 break;
             case '10':
                 $getInt .= 'ol';
+                break;
+            case '11':
+                $getInt .= 'cart';
                 break;
             case '12':
                 $getInt .= 'ic';

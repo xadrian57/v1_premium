@@ -61,6 +61,8 @@ abstract class AbstractInteligenciaComposta extends AbstractInteligencia {
             $maxColum = $this->getNumMaxColunas();
             $pos = 0;
             $numProdsAdicionados = 0;
+
+            $nomeInteligenciaGA = $this->getNomeInteligenciaGA($this->widget->getWidInteligencia());
             
             for($i = 0; $i < count($this->listaObjs); $i++)
             {
@@ -76,7 +78,7 @@ abstract class AbstractInteligenciaComposta extends AbstractInteligencia {
                     $newObj[$numProdsAdicionados]['sale_price'] = $array['sale_price'];
                     $newObj[$numProdsAdicionados]['link_image'] = $array['link_image'];
                     $newObj[$numProdsAdicionados]['link_image_2'] = $array['link_image_2'];
-                    $newObj[$numProdsAdicionados]['link'] = $array['link']."?rhWid=". $this->widget->getIdWid() . "&" . $this->widgetProps['WID_utm'];
+                    $newObj[$numProdsAdicionados]['link'] = $array['link']."?rhWid=". $this->widget->getIdWid() . "&" . $nomeInteligenciaGA . "&" . $this->widgetProps['WID_utm'];
                     $newObj[$numProdsAdicionados]['description'] = $array['description'];
                     $newObj[$numProdsAdicionados]['mount'] = $array['mount'];
                     $newObj[$numProdsAdicionados]['amount'] = $array['amount'];
@@ -148,7 +150,9 @@ abstract class AbstractInteligenciaComposta extends AbstractInteligencia {
      */
     protected function getOBJ($idWid, $array, $utm)
     {
-        $linkCompleto = $array['XML_link']."?rhWid=".$idWid."&".$utm;
+        $nomeInteligenciaGA = $this->getNomeInteligenciaGA($this->widget->getWidInteligencia());
+
+        $linkCompleto = $array['XML_link']."?rhWid=".$idWid."&".$nomeInteligenciaGA."&".$utm;
         
         // Verifica se o produto já foi adicionado
         if($this->linkJaAdicionadoAoRetorno($linkCompleto)) {
@@ -220,6 +224,94 @@ abstract class AbstractInteligenciaComposta extends AbstractInteligencia {
             }
         }
         $this->listaObjs[] = $arrayObj;
+    }
+
+    /**
+     * Este método retorna o nome da inteligencia para captura no GA
+     *
+     * @return string
+     * @param string
+     */
+    protected function getNomeInteligenciaGA($idInteligencia) 
+    {
+        $getInt = 'rh_int=';
+        switch ($idInteligencia) {
+            case '1':
+                $getInt .= 'md';
+                break;
+            case '2':
+                $getInt .= 'mv';
+                break;
+            case '3':
+                $getInt .= 'mvc';
+                break;
+            case '4':
+                $getInt .= 'rmkt';
+                break;
+            case '5':
+                $getInt .= 'sp';
+                break;
+            case '6':
+                $getInt .= 'liquid';
+                break;
+            case '7':
+                $getInt .= 'col';
+                break;
+            case '8':
+                $getInt .= 'cj';
+                break;
+            case '9':
+                $getInt .= 'man';
+                break;
+            case '10':
+                $getInt .= 'ol';
+                break;
+            case '11':
+                $getInt .= 'cart';
+                break;
+            case '12':
+                $getInt .= 'ic';
+                break;
+            case '13':
+                $getInt .= 'os';
+                break;
+            case '14':
+                $getInt .= 'bp';
+                break;
+            case '15':
+                $getInt .= 'lanc';
+                break;
+            case '22':
+                $getInt .= 'search';
+                break;
+            case '24':
+                $getInt .= 'mvcm';
+                break;
+            case '25':
+                $getInt .= 'pc';
+                break;
+            case '34':
+                $getInt .= 'pr';
+                break;
+            case '36':
+                $getInt .= 'sh';
+                break;
+            case '38':
+                $getInt .= 'mvmm';
+                break;
+            case '39':
+                $getInt .= 'spp';
+                break;
+            case '40':
+                $getInt .= 'lancm';
+                break;
+            
+            default:
+                $getInt .= '';
+                break;
+        }
+
+        return $getInt;
     }
 }
 ?>
