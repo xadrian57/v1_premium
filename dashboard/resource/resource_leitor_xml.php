@@ -641,7 +641,7 @@ function geraEstoque($availability, $idCli)
     //        $availability = 1;          
            
 
-    if((strtolower(trim($availability)) != 'in stock') && (trim($availability) != '1') && (trim($availability) != 'disponível') && ($idCli != '756') && ($idCli != '859'))
+    if((strtolower(trim($availability)) != 'Em estoque') && (strtolower(trim($availability)) != 'in stock') && (trim($availability) != '1') && (trim($availability) != 'disponível') && ($idCli != '756') && ($idCli != '859'))
     {
         $availability = 0;
     }
