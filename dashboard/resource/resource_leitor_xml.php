@@ -270,75 +270,74 @@ if(!empty($id))
                                 $checkCreateXML = true;
                             }
 
-                            if(verificaProd($arrayIdsProd, $arrayEstoqueProd, $idprod, $availability))
+                            $availability = verificaProd($arrayIdsProd, $arrayEstoqueProd, $idprod, $availability);
+                            
+                            $arrayIdsProd[] = $idprod;
+                            $arrayEstoqueProd[] = $availability;
+                            if($id == 116)
                             {
-                                $arrayIdsProd[] = $idprod;
-                                $arrayEstoqueProd[] = $availability;
-                                if($id == 116)
-                                {
-                                    $arrayCustom[$idprod][] = $custom5;
-                                }
-                                else
-                                {
-                                    $arrayCustom[$idprod][0] = $custom5;
-                                }
+                                $arrayCustom[$idprod][] = $custom5;
+                            }
+                            else
+                            {
+                                $arrayCustom[$idprod][0] = $custom5;
+                            }
 
-                                $update ="UPDATE XML_".$id." SET XML_time='$time', XML_titulo='" . htmlspecialchars($titulo) . "', XML_descricao = '$descricao', XML_titulo_upper=UPPER('" .  $titulo . "'), XML_sku='$sku', XML_price = '$PRICE', XML_sale_price = '$SALE_PRICE', XML_desconto = '$desconto', XML_availability = '$availability', XML_link = '$link',XML_type ='" . htmlspecialchars($type) . "',XML_type_upper=UPPER('" .  $type . "'),  XML_image_link = '$image_link', XML_vparcela = '$AMOUNT', XML_nparcelas = '$months', XML_brand = '$brand', XML_custom1 = '$custom1', XML_custom2 = '$custom2', XML_custom3 = '$custom3', XML_custom4 = '$custom4', XML_custom5 = '$custom5' WHERE XML_id = '$idprod'";
-                                $resultado = mysqli_query($conDados, $update);
-                                
-                                if(mysqli_affected_rows($conDados) < 1)
-                                {
-                                    $insere=("INSERT INTO XML_".$id." (XML_descricao, XML_time, XML_time_insert, XML_titulo, XML_titulo_upper, XML_id, XML_sku, XML_price, XML_sale_price, XML_desconto, XML_availability, XML_link, XML_type, XML_type_upper, XML_image_link, XML_vparcela, XML_nparcelas, XML_brand, XML_custom1, XML_custom2, XML_custom3, XML_custom4, XML_custom5) VALUES ('$descricao', '$time', '$time', '" . htmlspecialchars($titulo) . "',UPPER('" .  $titulo . "'), '$idprod', '$sku', '$PRICE', '$SALE_PRICE','$desconto', '$availability', '$link','" . htmlspecialchars($type) . "',UPPER('" .  $type . "'),'$image_link', '$AMOUNT', '$months', '$brand', '$custom1', '$custom2', '$custom3', '$custom4', '$custom5')");
-                                    $resultadoInsere = mysqli_query($conDados, $insere);
+                            $update ="UPDATE XML_".$id." SET XML_time='$time', XML_titulo='" . htmlspecialchars($titulo) . "', XML_descricao = '$descricao', XML_titulo_upper=UPPER('" .  $titulo . "'), XML_sku='$sku', XML_price = '$PRICE', XML_sale_price = '$SALE_PRICE', XML_desconto = '$desconto', XML_availability = '$availability', XML_link = '$link',XML_type ='" . htmlspecialchars($type) . "',XML_type_upper=UPPER('" .  $type . "'),  XML_image_link = '$image_link', XML_vparcela = '$AMOUNT', XML_nparcelas = '$months', XML_brand = '$brand', XML_custom1 = '$custom1', XML_custom2 = '$custom2', XML_custom3 = '$custom3', XML_custom4 = '$custom4', XML_custom5 = '$custom5' WHERE XML_id = '$idprod'";
+                            $resultado = mysqli_query($conDados, $update);
+                            
+                            if(mysqli_affected_rows($conDados) < 1)
+                            {
+                                $insere=("INSERT INTO XML_".$id." (XML_descricao, XML_time, XML_time_insert, XML_titulo, XML_titulo_upper, XML_id, XML_sku, XML_price, XML_sale_price, XML_desconto, XML_availability, XML_link, XML_type, XML_type_upper, XML_image_link, XML_vparcela, XML_nparcelas, XML_brand, XML_custom1, XML_custom2, XML_custom3, XML_custom4, XML_custom5) VALUES ('$descricao', '$time', '$time', '" . htmlspecialchars($titulo) . "',UPPER('" .  $titulo . "'), '$idprod', '$sku', '$PRICE', '$SALE_PRICE','$desconto', '$availability', '$link','" . htmlspecialchars($type) . "',UPPER('" .  $type . "'),'$image_link', '$AMOUNT', '$months', '$brand', '$custom1', '$custom2', '$custom3', '$custom4', '$custom5')");
+                                $resultadoInsere = mysqli_query($conDados, $insere);
 
-                                    if($buscaBackEnd)
-                                    {  
+                                if($buscaBackEnd)
+                                {  
+                                    $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
+                                    $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
+                                }
+                            }
+                            else
+                            {
+                                if($buscaBackEnd)
+                                {  
+                                    $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '". implode(',', $arrayCustom[$idprod]) ."', custom_2 = '$custom4' WHERE id = '$idprod'";
+                                    $resultadoBusca = mysqli_query($conBusca, $updateBusca);
+
+                                    if(mysqli_affected_rows($conBusca) < 1)
+                                    {
                                         $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
                                         $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
                                     }
                                 }
-                                else
-                                {
-                                    if($buscaBackEnd)
-                                    {  
-                                        $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '". implode(',', $arrayCustom[$idprod]) ."', custom_2 = '$custom4' WHERE id = '$idprod'";
-                                        $resultadoBusca = mysqli_query($conBusca, $updateBusca);
+                            }
 
-                                        if(mysqli_affected_rows($conBusca) < 1)
-                                        {
-                                            $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
-                                            $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
-                                        }
-                                    }
-                                }
+                            $select = "SELECT XML_click_7 FROM XML_".$id." WHERE XML_id = '$idprod'";
+                            $querySelect = mysqli_query($conDados, $select);
+                            
+                            $arraySelect = mysqli_fetch_array($querySelect);
 
-                                $select = "SELECT XML_click_7 FROM XML_".$id." WHERE XML_id = '$idprod'";
-                                $querySelect = mysqli_query($conDados, $select);
-                                
-                                $arraySelect = mysqli_fetch_array($querySelect);
+                            $posJSON = atualizaProdJSON($posts, $idprod);
 
-                                $posJSON = atualizaProdJSON($posts, $idprod);
+                            if($posJSON != false)
+                            {
+                                $posts[$posJSON] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
+                                'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
+                                'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_click_7'],
+                                'desconto' => $desconto, 'productReference' => $custom5);
+                            }
+                            else
+                            {
+                                $posts[] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
+                                'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
+                                'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_click_7'],
+                                'desconto' => $desconto, 'productReference' => $custom5);
+                            }
 
-                                if($posJSON != false)
-                                {
-                                    $posts[$posJSON] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
-                                    'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
-                                    'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_click_7'],
-                                    'desconto' => $desconto, 'productReference' => $custom5);
-                                }
-                                else
-                                {
-                                    $posts[] = array('id'=> strval($idprod), 'sku'=> $sku, 'title'=> urlencode($titulo), 'in_stock'=> $availability, 
-                                    'price'=> $PRICE, 'sale_price'=> $SALE_PRICE, 'link'=> urlencode($link), 'link_image'=> urlencode($image_link), 
-                                    'type'=> urlencode($type), 'amount'=> $AMOUNT, 'months'=> $months, 'venda' => $arraySelect['XML_click_7'],
-                                    'desconto' => $desconto, 'productReference' => $custom5);
-                                }
-
-                                if($buscaBackEnd)
-                                {                                
-                                    $updateBusca ="UPDATE BUSCA_".$id." SET click = '". $arraySelect['XML_click_7'] ."' WHERE id = '$idprod'";
-                                    $resultadoBusca = mysqli_query($conBusca, $updateBusca);
-                                }
+                            if($buscaBackEnd)
+                            {                                
+                                $updateBusca ="UPDATE BUSCA_".$id." SET click = '". $arraySelect['XML_click_7'] ."' WHERE id = '$idprod'";
+                                $resultadoBusca = mysqli_query($conBusca, $updateBusca);
                             }
                         }
                         else
@@ -670,12 +669,12 @@ function verificaProd($arrayIdsProd, $arrayEstoqueProd, $idProd, $estoqueProd)
         {
             if($arrayEstoqueProd[$i] == 1)
             {
-                return false;
+                return 1;
             }
         }
     }
 
-    return true;
+    return $estoqueProd;
 }
 
 function atualizaProdJSON($posts, $idprod)
