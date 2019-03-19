@@ -853,7 +853,7 @@ rhSearchBar = function(cfg,idCli,idWid){
                                                 '</div>'+
                                             '</a>';
                         } else {
-                            resultadoString+='<a href="'+prod.link+'" class="rh-out-of-stock">'+
+                            resultadoString+='<a href="'+prod.link+'">'+
                                                 '<figure class="rh_lite_searchbar_results_figure">'+
                                                     '<img src="'+prod.link_image+'">'+
                                                     tag+
