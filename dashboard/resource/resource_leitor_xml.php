@@ -132,6 +132,7 @@ if(!empty($id))
     $posts = [];
 
     $arrayIdsProd = [];
+    $arrayCustom = [];
     $arrayEstoqueProd = [];
 
     $buscaBackEnd = $arrayAPIOrXML['CONF_busca_be'];
@@ -273,6 +274,14 @@ if(!empty($id))
                             {
                                 $arrayIdsProd[] = $idprod;
                                 $arrayEstoqueProd[] = $availability;
+                                if($id == 116)
+                                {
+                                    $arrayCustom[$idprod][] = $custom5;
+                                }
+                                else
+                                {
+                                    $arrayCustom[$idprod][0] = $custom5;
+                                }
 
                                 $update ="UPDATE XML_".$id." SET XML_time='$time', XML_titulo='" . htmlspecialchars($titulo) . "', XML_descricao = '$descricao', XML_titulo_upper=UPPER('" .  $titulo . "'), XML_sku='$sku', XML_price = '$PRICE', XML_sale_price = '$SALE_PRICE', XML_desconto = '$desconto', XML_availability = '$availability', XML_link = '$link',XML_type ='" . htmlspecialchars($type) . "',XML_type_upper=UPPER('" .  $type . "'),  XML_image_link = '$image_link', XML_vparcela = '$AMOUNT', XML_nparcelas = '$months', XML_brand = '$brand', XML_custom1 = '$custom1', XML_custom2 = '$custom2', XML_custom3 = '$custom3', XML_custom4 = '$custom4', XML_custom5 = '$custom5' WHERE XML_id = '$idprod'";
                                 $resultado = mysqli_query($conDados, $update);
@@ -284,7 +293,7 @@ if(!empty($id))
 
                                     if($buscaBackEnd)
                                     {  
-                                        $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '$custom5')");
+                                        $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
                                         $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
                                     }
                                 }
@@ -292,12 +301,12 @@ if(!empty($id))
                                 {
                                     if($buscaBackEnd)
                                     {  
-                                        $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '$custom5', custom_2 = '$custom4' WHERE id = '$idprod'";
+                                        $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '". implode(',', $arrayCustom[$idprod]) ."', custom_2 = '$custom4' WHERE id = '$idprod'";
                                         $resultadoBusca = mysqli_query($conBusca, $updateBusca);
 
                                         if(mysqli_affected_rows($conBusca) < 1)
                                         {
-                                            $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod')");
+                                            $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
                                             $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
                                         }
                                     }
