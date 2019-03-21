@@ -356,7 +356,7 @@ if(!empty($id))
         $atualiza = "UPDATE config SET CONF_XML = '$url', CONF_at_xml = CURRENT_TIMESTAMP() WHERE CONF_id_cli = '$id'";
         $insert3 = mysqli_query($conCad, $atualiza);
         
-        $updatestats ="UPDATE XML_".$id." SET XML_availability = 0 WHERE XML_time != '$time' OR XML_time IS NULL";
+        $updatestats ="UPDATE XML_".$id." SET XML_availability = 2 WHERE XML_time != '$time' OR XML_time IS NULL";
         $resultadostats = mysqli_query($conDados, $updatestats);
 
         notificaXML($id, $conCad);
