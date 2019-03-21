@@ -435,7 +435,7 @@
 		{
 			return " OR id = '". $busca ."' ";
 		}
-		else if($idcli == 116)
+		else if($idcli == 116 || $idcli == 1880)
 		{
 			return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) OR id = '". $busca ."' ";
 		}
