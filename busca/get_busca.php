@@ -397,7 +397,8 @@
 
 		$select = "SELECT ". campos() ."
            FROM XML_".$idcli."
-           WHERE XML_id IN ('". $ids ."')";	
+           WHERE (XML_availability = 1 OR XML_availability = 0)
+           AND XML_id IN ('". $ids ."')";	
     
     	$result = mysqli_query($conDados, $select);
 
