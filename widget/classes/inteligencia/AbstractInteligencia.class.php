@@ -283,6 +283,9 @@ abstract class AbstractInteligencia implements IInteligencia {
             case '40':
                 $getInt .= 'lancm';
                 break;
+            case '41':
+                $getInt .= 'll';
+                break;
             
             default:
                 $getInt .= '';
