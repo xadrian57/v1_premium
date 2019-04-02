@@ -1,4 +1,4 @@
-<?php
+l<?php
 /*
  * Olá amigo desenvolvedor.
  * Caso, você receba a missão de desenvolver uma nova inteligência.

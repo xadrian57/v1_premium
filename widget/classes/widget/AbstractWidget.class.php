@@ -94,7 +94,12 @@ abstract class AbstractWidget {
             
             $arrayConfig = mysqli_fetch_array($resultConfig);
             
-            $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
+            if (Util::LOJA_LATERAL == $arrayWidgets ['WID_formato']) {
+                $html = Util::get_HTML_Loja_Lateral ($this,$arrayConfig,$arrayWidgets);
+            }else{
+                $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
+            }   
+
             $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
         }
         else

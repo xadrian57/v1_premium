@@ -39,7 +39,8 @@ class FactoryInteligencia {
     const COMPRE_JUNTO_COMPLEMENTAR                   = 37;
     const MAIS_VENDIDOS_MARCA_MANUAL                  = 38;
     const SIMILAR_POR_PARAMETROS                      = 39; 
-    const NOVIDADE_MARCA_MANUAL                       = 40;  
+    const NOVIDADE_MARCA_MANUAL                       = 40;
+    const LOJA_LATERAL                                = 41;  
 
     
     /**
@@ -186,7 +187,13 @@ class FactoryInteligencia {
             case self::NOVIDADE_MARCA_MANUAL:
                 
                 $inteligencia = new NovidadeMarcaManualInteligencia();
-                break;              
+                break;      
+
+            case self::LOJA_LATERAL:
+                
+                $inteligencia = new LojaLateralInteligencia();
+                break;
+                     
         }
         
         // Se populada corretamente, então seta os valores
