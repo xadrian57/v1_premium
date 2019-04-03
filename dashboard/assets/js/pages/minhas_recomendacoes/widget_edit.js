@@ -392,6 +392,7 @@ $(document).ready(function(){
 							//esconder campos de acordo com a inteligência
 							let $tituloWidget = $('#tituloWidget').parent().parent()
 							let $subtituloWidget = $('#inputSubtitulo')
+							$tituloWidget.show()
 							switch(widget.WID_inteligencia){
 								case '7': // Collection
 									camposAdicionais.innerHTML+=
@@ -1195,8 +1196,6 @@ $(document).ready(function(){
 									case '41':
 										$tituloWidget.hide()
 										$subtituloWidget.hide()
-										let $formatoWidget = $('[name=formatoWidget]').parent().parent()
-										$formatoWidget.hide()
 
 										if (widget.CONF_template_overlay != 0) {
 											camposAdicionais.innerHTML+=
@@ -1276,9 +1275,6 @@ $(document).ready(function(){
 
 								default:
 									camposAdicionais.innerHTML = '';
-									$tituloWidget.show()
-									$subtituloWidget.show()
-									$formatoWidget.show()
 									break;
 							}
 
@@ -1487,7 +1483,7 @@ $(document).ready(function(){
 
 
 
-							if(widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5){ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
+							if(widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5 && widget.WID_formato != 41){ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
 								containerID +=
 									//1 - Prateleira ;    2 - Dupla   ; 3 - Carrossel;      11 - Totem;     8 - Vitrine
 									'<div class="form-group">'+
@@ -1841,6 +1837,7 @@ $(document).ready(function(){
 	// sempre q fechar o modal, esconde o campo
 	$('#modalEditarWidget').on('hidden.bs.modal', function () {
 		$('#inputSubtitulo').hide(); // esconde campo subtitulo
+		$('#tituloWidget').parent().parent().show()
 	})
 
 	$('#btnConfirmaExclusao').on('click', function(){
