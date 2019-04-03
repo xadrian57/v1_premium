@@ -314,13 +314,13 @@ $(document).ready(function(){
 					$subtituloWidget = $('#inputSubtitulo')
 					$formatoWidget = $('[name=formatoWidget]').parent().parent()
 					if([41].indexOf(parseInt(id)) > -1){
-							$tituloWidget.hide()
-							$subtituloWidget.hide()
-							$formatoWidget.hide()
+						$tituloWidget.hide()
+						$subtituloWidget.hide()
+						$formatoWidget.hide()
 					} else {
 						$tituloWidget.show()
 						$subtituloWidget.show()
-						$formatoWidget.show()	
+						$formatoWidget.show()
 					}
 
 					$.ajax({
