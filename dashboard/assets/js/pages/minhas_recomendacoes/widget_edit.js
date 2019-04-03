@@ -1209,7 +1209,7 @@ $(document).ready(function(){
 																	'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WID_banner+'">Visualizar <i class="ft-eye"></i></button>'+
 																'</div>'+
 																'<div class="form-group">'+
-																	'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>'+
+																	'<button class="btn btn-primary" id="btnEditBannerLojaLateral">Alterar <i class="ft-upload"></i></button>'+
 																'</div>'+
 															'</div>'+
 														'</div>'+
@@ -1250,6 +1250,12 @@ $(document).ready(function(){
 									$('#imagemBanner')[0].focus();
 									$('#imagemBanner')[0].click();
 								});
+
+								$('#btnEditBannerLojaLateral').click( function() {
+									$('#imagemBannerLojaLateral')[0].focus();
+									$('#imagemBannerLojaLateral')[0].click();
+								});
+
 
 								$('#imagemBanner').change( function(){
 
