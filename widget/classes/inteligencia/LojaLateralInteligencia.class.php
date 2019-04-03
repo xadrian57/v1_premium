@@ -1,13 +1,11 @@
 <?php
 
 namespace roihero\widget\inteligencia;
-require_once "config/config.inc.php";
 
 /**
  * 
  * @author Nolasco
  */
-
 
 class LojaLateralInteligencia extends AbstractInteligencia {
 	/**

@@ -991,6 +991,9 @@ class Util {
             case 16:
                 $formato = 'compre_junto_dinamico';
                 break;
+            case 41:
+                $formato = 'loja_lateral';
+                break;
         }
         
         return $formato;
@@ -1121,7 +1124,6 @@ class Util {
         $titulo = $arrayWidgets['WID_texto'];
         $subtitulo = $arrayWidgets['WID_sub_titulo'];
         $idWid = $arrayWidgets['WID_id'];
-        $logo = $fullObj->getLogoUrl();
         
         if(!empty($obj[0]['link']))
         {
@@ -1139,7 +1141,6 @@ class Util {
             
             $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
             $html = str_replace('{SUBTITLE_BLOCK}', $subtitulo, $html);
-            $html = str_replace('{LOGO_BLOCK}', $logo, $html);
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
