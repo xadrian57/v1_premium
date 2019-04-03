@@ -309,6 +309,20 @@ $(document).ready(function(){
 					var form = document.getElementById('campos-wid-edit');
 					form.setAttribute('id-wid',id);
 
+					//esconder campos de acordo com a inteligência
+					$tituloWidget = $('#tituloWidget').parent().parent()
+					$subtituloWidget = $('#inputSubtitulo')
+					$formatoWidget = $('[name=formatoWidget]').parent().parent()
+					if([41].indexOf(parseInt(id)) > -1){
+							$tituloWidget.hide()
+							$subtituloWidget.hide()
+							$formatoWidget.hide()
+					} else {
+						$tituloWidget.show()
+						$subtituloWidget.show()
+						$formatoWidget.show()	
+					}
+
 					$.ajax({
 						type: 'POST',
 						url: 'resource/resource_widget_edit.php',
@@ -1232,6 +1246,36 @@ $(document).ready(function(){
 													'</div>'+
 												'</div>'+
 											'</div>';
+
+											camposAdicionais.innerHTML+=
+											'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
+												'<label>Thumb Atual:</label>'+
+												'<div class="form-control">'+
+													'<abbr title="Esta é a foto que vai aparecer no ícone do overlay." class="info-abbr">'+
+														'<i class="icon-info"></i>'+
+													'</abbr>'+
+													'<div class="rh-input-icon-right">'+
+														'<div class="media">'+
+															'<div class="media-left">'+
+																'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WID_thumb+'">'+
+															'</div>'+
+															'<div class="media-body">'+
+																'<div class="form-group">'+
+																	'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WID_thumb+'">Visualizar <i class="ft-eye"></i></button>'+
+																'</div>'+
+																'<div class="form-group">'+
+																	'<button class="btn btn-primary" id="btnEditThumb">Alterar <i class="ft-upload"></i></button>'+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+													'</div>'+
+												'</div>'+
+												'<div class="form-group">'+
+													'<div class="rh-input-icon-right">'+
+														'<input id="thumbnail" name="thumbnail" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+
+													'</div>'+
+												'</div>'+
+											'</div>';
 										} else {
 											camposAdicionais.innerHTML = '';
 										}
@@ -1254,6 +1298,12 @@ $(document).ready(function(){
 								$('#btnEditBannerLojaLateral').click( function() {
 									$('#imagemBannerLojaLateral')[0].focus();
 									$('#imagemBannerLojaLateral')[0].click();
+								});
+
+
+								$('#btnEditThumb').click( function() {
+										$('#thumbnail')[0].focus();
+										$('#thumbnail')[0].click();
 								});
 
 
@@ -1307,6 +1357,36 @@ $(document).ready(function(){
 											if (img.width != 400 && img.height != 300) {
 												toastr['error']('As dimensões da imagem devem ser de exatamente 400px de largura por 300px de altura.');
 												$('#imagemBannerLojaLateral').val('');
+											} else {
+												$('.img-banner-small').attr('src', f.target.result);
+											}
+											desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
+										}
+
+									}
+
+									reader.readAsDataURL(file);
+								})
+								$('#thumbnail').change( function(){
+
+									bloqueiaElemento($('#containerAlteraImagemForm')[0]);
+
+									var file = this.files[0];
+									var reader = new FileReader();
+									reader.onload = function(f) {
+
+										// pega dimensoes da imagem
+										var img = new Image;
+										img.src = f.target.result;
+
+										img.onload = function() {
+											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' ) {
+												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
+												$('#thumbnail').val('');
+											}
+											if (img.width != 80 && img.height != 80) {
+												toastr['error']('As dimensões da imagem devem ser de exatamente 80px de largura por 80px de altura.');
+												$('#thumbnail').val('');
 											} else {
 												$('.img-banner-small').attr('src', f.target.result);
 											}

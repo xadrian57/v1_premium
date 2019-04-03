@@ -183,6 +183,7 @@
 			'widHide' => 'WID_hide',
 			'formatoWidget' => 'WID_formato',
 			'imagemBanner' => 'WID_banner',
+			'thumbnail' => 'WID_thumb',
 			'linkBannerOverlay' => 'WID_link_banner'
 			// 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
 		);
@@ -227,50 +228,73 @@
 			$info['tx_rel2'] = $tx_tipo;
 		}
 
+		// verifica o tipo do arquivo
+		switch ($files["imagemBanner"]['type']) {
+			case "image/png":
+				$extension = 'png';
+				break;
+			case "image/jpg":
+				$extension = 'jpg';
+				break;
+			case "image/gif":
+				$extension = 'gif';
+				break;
+			case "image/jpeg":
+				$extension = 'jpeg';
+				break;
+			case "image/bmp":
+				$extension = 'bmp';
+				break;
+		}
+
 		// imagem banner overlay
 		if (isset($files["imagemBanner"])) {
-			// deleta o arquivo de banner atual
-			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".jpeg")) {
-				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".jpeg");
-			}
-			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".jpg")) {
-				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".jpg");
-			}
-			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".png")) {
-				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".png");
-			}
-			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".gif")) {
-				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".gif");
-			}
-			if (file_exists("../../widget/images/overlay/banner_overlay_".$idWid.".bmp")) {
-				unlink("../../widget/images/overlay/banner_overlay_".$idWid.".bmp");
-			}
+			//se a inteligência for loja lateral, salvar banner e thumbnail
+			if($idWid == 41){
 
-			// verifica o tipo do arquivo
-			switch ($files["imagemBanner"]['type']) {
-				case "image/png":
-					$extension = 'png';
-					break;
-				case "image/jpg":
-					$extension = 'jpg';
-					break;
-				case "image/gif":
-					$extension = 'gif';
-					break;
-				case "image/jpeg":
-					$extension = 'jpeg';
-					break;
-				case "image/bmp":
-					$extension = 'bmp';
-					break;
+				//salvar banner loja lateral
+				$banner = "ll_banner_overlay_".$idWid.'.'.$extension;
+
+				// deleta o arquivo de banner atual
+				foreach(['png','jpg','gif','jpeg','bmp'] as $ext){
+					if (file_exists("../../widget/images/overlay/ll_banner_overlay_$idWid.$ext")) {
+						unlink("../../widget/images/overlay/ll_banner_overlay_$idWid.$ext");
+					}
+				}
+
+				if(isset($files["thumbnail"])){
+					//salvar thumbnail loja lateral
+					$thumb = "thumb_overlay_".$idWid.'.'.$extension;
+
+					// deleta o arquivo de banner atual
+					foreach(['png','jpg','gif','jpeg','bmp'] as $ext){
+						if (file_exists("../../widget/images/overlay/thumb_overlay_$idWid.$ext")) {
+							unlink("../../widget/images/overlay/thumb_overlay_$idWid.$ext");
+						}
+					}
+				}
+			} else {
+				$banner = "banner_overlay_".$idWid.'.'.$extension;
+
+				// deleta o arquivo de banner atual
+				foreach(['png','jpg','gif','jpeg','bmp'] as $ext){
+					if (file_exists("../../widget/images/overlay/banner_overlay_$idWid.$ext")) {
+						unlink("../../widget/images/overlay/banner_overlay_$idWid.$ext");
+					}
+				}
+
 			}
-
-			$banner = "banner_overlay_".$idWid.'.'.$extension;
-
-			// echo readfile($_FILES["imagemBanner"]["tmp_name"]);
 			$sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
 			$targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
 			move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+
+			if(isset($thumb) && $thumb){
+				$sourcePath = $files['thumbnail']['tmp_name']; // Storing source path of the file in a variable
+				$targetPath = "../../widget/images/overlay/".$thumb; // Target path where file is to be stored
+				move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+
+				$info['thumbnail'] = $thumb;
+			}
 
 			$info['imagemBanner'] = $banner;
 
@@ -285,6 +309,9 @@
             $arquivos = [
                 'https://roihero.com.br/widget/images/overlay/'.$banner
             ];
+
+						if(isset($thumb) && $thumb)
+							array_push($arquivos, 'https://roihero.com.br/widget/images/overlay/'.$thumb)
 
             $api->purgeArquivos($ident,$arquivos);
 		}
