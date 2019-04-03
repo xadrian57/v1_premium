@@ -67,9 +67,7 @@ abstract class AbstractSearch
 		{
 			$arrayBusca = explode(' ', $this->termo);
 
-			$arrayResultado = mysqli_fetch_array($result);
-
-			return Util::retornaSinonimo($arrayBusca, $arrayResultado);
+			return Util::retornaSinonimo($arrayBusca, $result);
 		}
 		else
 		{

@@ -15,7 +15,7 @@ class Util
 		return mb_convert_case($str, MB_CASE_UPPER, $encoding);
     }
 
-    public static function retornaSinonimo($arrayBusca, $arrayResultado)
+    public static function retornaSinonimo($arrayBusca, $result)
 	{
 		while($arrayResultado = mysqli_fetch_array($result)) 
 		{
@@ -34,9 +34,6 @@ class Util
 
 	public function fonetizar($titulo)
 	{
-		//FONETIZAR
-		require_once '../../../../pt_metaphone/portuguese_metaphone.php';
-
 	    $arrayPalavras = explode(' ', $titulo);
 
 	    $arrayPalavrasAux = [];
