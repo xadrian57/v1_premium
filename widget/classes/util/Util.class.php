@@ -1124,20 +1124,21 @@ class Util {
         $titulo = $arrayWidgets['WID_texto'];
         $subtitulo = $arrayWidgets['WID_sub_titulo'];
         $idWid = $arrayWidgets['WID_id'];
+        $templateOverlay = $arrayConfig['CONF_template_overlay'];
+        $template = $arrayConfig['CONF_template'];
         
         if(!empty($obj[0]['link']))
         {
             $sumValue = 0.00;
             $sumValueDe = 0.00;
-             
-            $path = $_SERVER['DOCUMENT_ROOT'] . '/../';
-            if(ENV_PROD) {
-                $path .= '../';
+                    
+            
+            $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/loja_lateral.html");
+
+            if(empty($html))
+            {
+                $html = file_get_contents("templates/kit_".$template."/loja_lateral.html");
             }
-            
-            $path .= "templates/kit_".$template."/loja_lateral.html";
-            
-            $html = file_get_contents($path);
             
             $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
             $html = str_replace('{SUBTITLE_BLOCK}', $subtitulo, $html);
