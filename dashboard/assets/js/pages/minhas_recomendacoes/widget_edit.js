@@ -310,9 +310,9 @@ $(document).ready(function(){
 					form.setAttribute('id-wid',id);
 
 					//esconder campos de acordo com a inteligência
-					$tituloWidget = $('#tituloWidget').parent().parent()
-					$subtituloWidget = $('#inputSubtitulo')
-					$formatoWidget = $('[name=formatoWidget]').parent().parent()
+					let $tituloWidget = $('#tituloWidget').parent().parent()
+					let $subtituloWidget = $('#inputSubtitulo')
+					let $formatoWidget = $('[name=formatoWidget]').parent().parent()
 					if([41].indexOf(parseInt(id)) > -1){
 						$tituloWidget.hide()
 						$subtituloWidget.hide()
