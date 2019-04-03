@@ -311,7 +311,7 @@
             ];
 
 						if(isset($thumb) && $thumb)
-							array_push($arquivos, 'https://roihero.com.br/widget/images/overlay/'.$thumb)
+							array_push($arquivos, 'https://roihero.com.br/widget/images/overlay/'.$thumb);
 
             $api->purgeArquivos($ident,$arquivos);
 		}
