@@ -20,14 +20,14 @@
 
 		// VERIFICA SE É UM WIDGET BÁSICO
 		function ehWidgetBasico($formato){
-			return ($formato == 6 || $formato == 5);
+			return in_array($formato, [5,6,41,44]);
 		}
 
 		$widgetsBasicos = [];
-		$widgetsHome = []; 
-		$widgetsProduto = []; 
-		$widgetsBusca = []; 
-		$widgetsCategoria = []; 
+		$widgetsHome = [];
+		$widgetsProduto = [];
+		$widgetsBusca = [];
+		$widgetsCategoria = [];
 		$widgetsCarrinho = [];
 
 		if (isset($idWidget)){
@@ -64,17 +64,17 @@
 							} else {
 								array_push($widgetsCarrinho, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
 							}
-							break;			
+							break;
 						default:
 							if (ehWidgetBasico($formatoWidget[$i])){
 								array_push($widgetsBasicos, array('nome' => $nomeWidget[$i], 'id' => $idWidget[$i], 'ativo' => $widAtivo[$i], 'inteligencia' => $inteligenciaWidget[$i]));
-							} 
+							}
 							break;
 					}
 				}
 			}
 		}
-		
+
 		// Checase é busca
 		// se for, pega no banco se é back end ou front end
 		$select = 'SELECT CONF_busca_be FROM config WHere CONF_id_cli = '.$idCli;
@@ -82,9 +82,9 @@
 		$r = $query->fetch_array(MYSQLI_ASSOC);
 
 		$widgets = array(
-			'widgetsHome' => $widgetsHome, 
-			'widgetsProduto' => $widgetsProduto, 
-			'widgetsBusca' => $widgetsBusca, 
+			'widgetsHome' => $widgetsHome,
+			'widgetsProduto' => $widgetsProduto,
+			'widgetsBusca' => $widgetsBusca,
 			'widgetsCategoria' => $widgetsCategoria,
 			'widgetsCarrinho' => $widgetsCarrinho,
 			'widgetsBasicos' => $widgetsBasicos,
@@ -102,32 +102,32 @@
 
 		// CARREGA CONFIGURACOES WIDGETS
 		$queryWidConfig = 'SELECT * FROM widget_config WHERE WC_id_wid = '.$id.'';
-		$resultWidConfig = mysqli_query($conCad, $queryWidConfig);		
+		$resultWidConfig = mysqli_query($conCad, $queryWidConfig);
 
 		// CASO Ñ EXISTA O CAMPO CONFIG, INSERE NA TABELA
 		if (mysqli_num_rows($resultWidConfig) == 0){
 			$resultWidConfig = [];
 		} else {
 			$resultWidConfig = $resultWidConfig->fetch_array(MYSQLI_ASSOC);
-			
-			$result['WID_div_type'] = strtoupper($result['WID_div_type']);	
 
-			$resultWidConfig['WC_cj_p'] = explode(",", $resultWidConfig['WC_cj_p']); 
-			$resultWidConfig['WC_cj_f'] = explode(",", $resultWidConfig['WC_cj_f']); 
+			$result['WID_div_type'] = strtoupper($result['WID_div_type']);
 
-			$resultWidConfig['tx_tipo_pai'] = explode(",", $resultWidConfig['tx_tipo_pai']); 
-			$resultWidConfig['tx_tipo_filho'] = explode(",", $resultWidConfig['tx_tipo_filho']); 
+			$resultWidConfig['WC_cj_p'] = explode(",", $resultWidConfig['WC_cj_p']);
+			$resultWidConfig['WC_cj_f'] = explode(",", $resultWidConfig['WC_cj_f']);
 
-			$resultWidConfig['tx_param_pai'] = explode(",", $resultWidConfig['tx_param_pai']); 
-			$resultWidConfig['tx_param_filho'] = explode(",", $resultWidConfig['tx_param_filho']); 
+			$resultWidConfig['tx_tipo_pai'] = explode(",", $resultWidConfig['tx_tipo_pai']);
+			$resultWidConfig['tx_tipo_filho'] = explode(",", $resultWidConfig['tx_tipo_filho']);
 
-			$resultWidConfig['tx_tipo_param_pai'] = explode(",", $resultWidConfig['tx_tipo_param_pai']); 
-			$resultWidConfig['tx_tipo_param_filho'] = explode(",", $resultWidConfig['tx_tipo_param_filho']); 
+			$resultWidConfig['tx_param_pai'] = explode(",", $resultWidConfig['tx_param_pai']);
+			$resultWidConfig['tx_param_filho'] = explode(",", $resultWidConfig['tx_param_filho']);
 
-			$resultWidConfig['tx_negativa_pai'] = explode(",", $resultWidConfig['tx_negativa_pai']); 
-			$resultWidConfig['tx_negativa_filho'] = explode(",", $resultWidConfig['tx_negativa_filho']); 
+			$resultWidConfig['tx_tipo_param_pai'] = explode(",", $resultWidConfig['tx_tipo_param_pai']);
+			$resultWidConfig['tx_tipo_param_filho'] = explode(",", $resultWidConfig['tx_tipo_param_filho']);
+
+			$resultWidConfig['tx_negativa_pai'] = explode(",", $resultWidConfig['tx_negativa_pai']);
+			$resultWidConfig['tx_negativa_filho'] = explode(",", $resultWidConfig['tx_negativa_filho']);
 		}
-		
+
 		// pega id template
 		$selectTemplate = 'SELECT CONF_template_overlay from config WHERE CONF_id_cli ='.$idCli;
 		$queryTemplate = mysqli_query($conCad, $selectTemplate);
@@ -138,7 +138,7 @@
 		if($data['WID_inteligencia'] == '9' && isset($data['WC_id_produto']) && $data['WC_id_produto'] != ''){
 			$idsProdutos = explode("," ,$data['WC_id_produto']);
 			$idsProdutos = implode(" or XML_id = ", $idsProdutos);
-			
+
 			$selectTitulos = "Select XML_titulo from XML_22 WHERE XML_id = ". $idsProdutos;
 
 			$resultSelectTitulos = mysqli_query($conDados, $selectTitulos);
@@ -181,7 +181,7 @@
 			'widShow' => 'WID_show',
 			'UpDown' => 'WID_updown',
 			'widHide' => 'WID_hide',
-			'formatoWidget' => 'WID_formato',			
+			'formatoWidget' => 'WID_formato',
 			'imagemBanner' => 'WID_banner',
 			'linkBannerOverlay' => 'WID_link_banner'
 			// 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
@@ -274,7 +274,7 @@
 
 			$info['imagemBanner'] = $banner;
 
-			
+
 			//inclui o objeto de comunicação com a api cloudflare
 			include 'api_cloudflare.class.php';
 			//da purge no cache com a cloudflare
@@ -287,12 +287,12 @@
             ];
 
             $api->purgeArquivos($ident,$arquivos);
-		} 
+		}
 		// caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
 		else {
 			unset($camposBDWID['imagemBanner']);
 		}
-		
+
 		/*
 		foreach($compreJunto as $campo => $valor){
 			$valor = implode(",", $valor);
@@ -333,7 +333,7 @@
 		$hides = "";
 		$shows = "";
 
-		foreach($info as $k => $v){			
+		foreach($info as $k => $v){
 			if(in_array($k, $compreJunto)){
 				$v = strtoupper($v);
 				if($primeiros[$k][0]){
@@ -343,7 +343,7 @@
 					$info[$primeiros[$k][1]]->$k .= ",".$v;
 					$evitar[] = $k;
 				}
-			}	
+			}
 		}
 
 		// -- fim tratamentos
@@ -357,30 +357,30 @@
 			}
 			if(isset($camposBDWID[$key])){
 				$updateWid = $updateWid.$camposBDWID[$key].' = "'.$value.'", ';
-			} 
+			}
 			else if (isset($camposBDWIDCONFIG[$key])){
 				if($key == "palavrasPaiFilho"){
 					//$palavrasPaiFilho = str_replace(" ", "", $value);
 					$partes = explode(",", $value);
-					
+
 					$filhos = [];
 					$pais = [];
 					foreach($partes as $k => $parte){
 						$pai_filho = explode("->", $parte);
-						
+
 						$filhos[] = $pai_filho[1];
 						$pais[] = $pai_filho[0];
 					}
-					
+
 					$pais = implode(",", $pais);
 					$filhos = implode(",", $filhos);
 
 					$updateWidConfig = 'WC_cj_p = "'.$pais.'", WC_cj_f = "'.$filhos.'", ';
 				}
 				else { // checa se existe o campo de configuracao no wid
-					$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';			
+					$updateWidConfig = $updateWidConfig.$camposBDWIDCONFIG[$key].' = "'.$value.'", ';
 				}
-			} 
+			}
 			$i++;
 		}
 
@@ -395,7 +395,7 @@
 			$updateWid = substr($updateWid,0,-2);
 			$queryWidConfig = 'UPDATE widget_config SET '.$updateWidConfig.' WHERE WC_id_wid = "'.$idWid.'"';
 			$executa = mysqli_query($conCad, $queryWidConfig);
-		}		
+		}
 	}
 
 	// CARREGA INFORMACOES WIDGET DE BUSCA
@@ -412,7 +412,7 @@
 					array(
 						'word' => $result['tx_pesquisado'],
 						'syn' => $result['tx_retornado'],
-						
+
 					)
 				);
 			}
@@ -452,7 +452,7 @@
 		$result = mysqli_fetch_assoc($exec);
 
 		unset($result['WID_id']); // apaga id chave primaria
-		
+
 		// adiciona '2' ao final
 		$result['WID_nome'].= ' 2';
 
@@ -478,9 +478,9 @@
 
 		$insertFields = [];
 		$insertValues = [];
-		foreach($result as $key => $value) {			
+		foreach($result as $key => $value) {
 			array_push($insertFields, $key);
-			
+
 			if ($key === 'WC_id_wid') {
 				$v = $lastId;
 				array_push($insertValues, '"'.$v.'"');
@@ -550,5 +550,5 @@
 		default:
 			break;
 	}
-	
+
 ?>
