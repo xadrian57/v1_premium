@@ -388,6 +388,11 @@ $(document).ready(function(){
 							// campos adicionais
 							var camposAdicionais = document.getElementById('widedit-opcoes-adicionais');
 							camposAdicionais.innerHTML = '<h4>Configurações Específicas</h4>';
+
+							//esconder campos de acordo com a inteligência
+							let $tituloWidget = $('#tituloWidget').parent().parent()
+							let $subtituloWidget = $('#inputSubtitulo')
+							$tituloWidget.show()
 							switch(widget.WID_inteligencia){
 								case '7': // Collection
 									camposAdicionais.innerHTML+=
@@ -1189,7 +1194,8 @@ $(document).ready(function(){
 									break;
 
 									case '41':
-										$('#inputSubtitulo').show();
+										$tituloWidget.hide()
+										$subtituloWidget.hide()
 
 										if (widget.CONF_template_overlay != 0) {
 											camposAdicionais.innerHTML+=
@@ -1232,6 +1238,36 @@ $(document).ready(function(){
 													'</div>'+
 												'</div>'+
 											'</div>';
+
+											camposAdicionais.innerHTML+=
+											'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
+												'<label>Thumb Atual:</label>'+
+												'<div class="form-control">'+
+													'<abbr title="Esta é a foto que vai aparecer no ícone do overlay." class="info-abbr">'+
+														'<i class="icon-info"></i>'+
+													'</abbr>'+
+													'<div class="rh-input-icon-right">'+
+														'<div class="media">'+
+															'<div class="media-left">'+
+																'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WID_thumb+'">'+
+															'</div>'+
+															'<div class="media-body">'+
+																'<div class="form-group">'+
+																	'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WID_thumb+'">Visualizar <i class="ft-eye"></i></button>'+
+																'</div>'+
+																'<div class="form-group">'+
+																	'<button class="btn btn-primary" id="btnEditThumb">Alterar <i class="ft-upload"></i></button>'+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+													'</div>'+
+												'</div>'+
+												'<div class="form-group">'+
+													'<div class="rh-input-icon-right">'+
+														'<input id="thumbnail" name="thumbnail" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+
+													'</div>'+
+												'</div>'+
+											'</div>';
 										} else {
 											camposAdicionais.innerHTML = '';
 										}
@@ -1254,6 +1290,12 @@ $(document).ready(function(){
 								$('#btnEditBannerLojaLateral').click( function() {
 									$('#imagemBannerLojaLateral')[0].focus();
 									$('#imagemBannerLojaLateral')[0].click();
+								});
+
+
+								$('#btnEditThumb').click( function() {
+										$('#thumbnail')[0].focus();
+										$('#thumbnail')[0].click();
 								});
 
 
@@ -1307,6 +1349,36 @@ $(document).ready(function(){
 											if (img.width != 400 && img.height != 300) {
 												toastr['error']('As dimensões da imagem devem ser de exatamente 400px de largura por 300px de altura.');
 												$('#imagemBannerLojaLateral').val('');
+											} else {
+												$('.img-banner-small').attr('src', f.target.result);
+											}
+											desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
+										}
+
+									}
+
+									reader.readAsDataURL(file);
+								})
+								$('#thumbnail').change( function(){
+
+									bloqueiaElemento($('#containerAlteraImagemForm')[0]);
+
+									var file = this.files[0];
+									var reader = new FileReader();
+									reader.onload = function(f) {
+
+										// pega dimensoes da imagem
+										var img = new Image;
+										img.src = f.target.result;
+
+										img.onload = function() {
+											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' ) {
+												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
+												$('#thumbnail').val('');
+											}
+											if (img.width != 80 && img.height != 80) {
+												toastr['error']('As dimensões da imagem devem ser de exatamente 80px de largura por 80px de altura.');
+												$('#thumbnail').val('');
 											} else {
 												$('.img-banner-small').attr('src', f.target.result);
 											}
@@ -1411,7 +1483,7 @@ $(document).ready(function(){
 
 
 
-							if(widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5){ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
+							if(widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5 && widget.WID_inteligencia != 41){ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
 								containerID +=
 									//1 - Prateleira ;    2 - Dupla   ; 3 - Carrossel;      11 - Totem;     8 - Vitrine
 									'<div class="form-group">'+
@@ -1765,6 +1837,7 @@ $(document).ready(function(){
 	// sempre q fechar o modal, esconde o campo
 	$('#modalEditarWidget').on('hidden.bs.modal', function () {
 		$('#inputSubtitulo').hide(); // esconde campo subtitulo
+		$('#tituloWidget').parent().parent().show()
 	})
 
 	$('#btnConfirmaExclusao').on('click', function(){
