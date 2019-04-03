@@ -309,20 +309,6 @@ $(document).ready(function(){
 					var form = document.getElementById('campos-wid-edit');
 					form.setAttribute('id-wid',id);
 
-					//esconder campos de acordo com a inteligência
-					let $tituloWidget = $('#tituloWidget').parent().parent()
-					let $subtituloWidget = $('#inputSubtitulo')
-					let $formatoWidget = $('[name=formatoWidget]').parent().parent()
-					if([41].indexOf(parseInt(id)) > -1){
-						$tituloWidget.hide()
-						$subtituloWidget.hide()
-						$formatoWidget.hide()
-					} else {
-						$tituloWidget.show()
-						$subtituloWidget.show()
-						$formatoWidget.show()
-					}
-
 					$.ajax({
 						type: 'POST',
 						url: 'resource/resource_widget_edit.php',
@@ -402,6 +388,11 @@ $(document).ready(function(){
 							// campos adicionais
 							var camposAdicionais = document.getElementById('widedit-opcoes-adicionais');
 							camposAdicionais.innerHTML = '<h4>Configurações Específicas</h4>';
+
+							//esconder campos de acordo com a inteligência
+							let $tituloWidget = $('#tituloWidget').parent().parent()
+							let $subtituloWidget = $('#inputSubtitulo')
+							let $formatoWidget = $('[name=formatoWidget]').parent().parent()
 							switch(widget.WID_inteligencia){
 								case '7': // Collection
 									camposAdicionais.innerHTML+=
@@ -1203,7 +1194,9 @@ $(document).ready(function(){
 									break;
 
 									case '41':
-										$('#inputSubtitulo').show();
+										$tituloWidget.hide()
+										$subtituloWidget.hide()
+										$formatoWidget.hide()
 
 										if (widget.CONF_template_overlay != 0) {
 											camposAdicionais.innerHTML+=
@@ -1283,6 +1276,9 @@ $(document).ready(function(){
 
 								default:
 									camposAdicionais.innerHTML = '';
+									$tituloWidget.show()
+									$subtituloWidget.show()
+									$formatoWidget.show()
 									break;
 							}
 
