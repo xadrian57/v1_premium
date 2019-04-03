@@ -32,7 +32,7 @@ class Util
 		return implode(' ', $arrayBusca);
 	}
 
-	public function fonetizar($titulo)
+	public static function fonetizar($titulo)
 	{
 	    $arrayPalavras = explode(' ', $titulo);
 
@@ -46,7 +46,7 @@ class Util
 	    return implode($arrayPalavrasAux, ' ');
 	}
 
-	public function trataPlural($busca)
+	public static function trataPlural($busca)
 	{
 		$arrayPalavras = explode(' ', $busca);
 
@@ -61,7 +61,7 @@ class Util
 		return implode(' ', $arrayPalavras);
 	}
 
-	public function array_multi_sort($array,$on1,$on2,$order=SORT_DESC) 
+	public static function array_multi_sort($array,$on1,$on2,$order=SORT_DESC) 
 	{
         if(count($array) > 0)
         {
@@ -76,7 +76,7 @@ class Util
 	    return $array;
 	}	
 
-	public function scoreFonetico($termo, $result)
+	public static function scoreFonetico($termo, $result)
 	{
 		//$termo = strtolower( $termo );
 		for($i = 0; $i < count($result); $i++) {
@@ -137,7 +137,7 @@ class Util
 		return $result;
 	}
 
-	public function score($termo, $result)
+	public static function score($termo, $result)
 	{
 		for($i = 0; $i < count($result); $i++) {
 			
@@ -199,7 +199,7 @@ class Util
 		return $result;
 	}
 
-	public function geraArray($linha, $score=0)
+	public static function geraArray($linha, $score=0)
 	{
 		return array(
 				'id'=>$linha['id'], 
@@ -210,7 +210,7 @@ class Util
 			);		
 	}
 
-	public function geraArraryXML($linha, $score=0)
+	public static function geraArraryXML($linha, $score=0)
 	{
 		$descBoleto = $this->search->getDescBoleto();
 
