@@ -39,7 +39,7 @@ $(document).ready(function(){
 						window['__categoria'] = JSON.parse(result)['widgetsCategoria'];
 						window['__carrinho'] = JSON.parse(result)['widgetsCarrinho'];
 						window['__basicos'] = JSON.parse(result)['widgetsBasicos'];
-						window['__busca'] = JSON.parse(result)['widgetsBusca'];						
+						window['__busca'] = JSON.parse(result)['widgetsBusca'];
 						window['busca_be'] = JSON.parse(result)['busca_be'];
 
 						// INICIA AS FUNÇÕES PRINCIPAIS
@@ -67,7 +67,7 @@ $(document).ready(function(){
 						console.log('-------- Widgets Busca -------');
 						console.log(__busca);
 					}
-				});				
+				});
 			},
 
 			checaPlano : function(){
@@ -189,7 +189,7 @@ $(document).ready(function(){
 						'</li>';
 					}
 
-					
+
 				});
 			},
 
@@ -360,7 +360,8 @@ $(document).ready(function(){
 								37:"Compre Junto Complementar",
 								38:"Mais Desejados da Marca",
 								39:"Similares por Parâmetros",
-								40:"Lançamentos da Marca"
+								40:"Lançamentos da Marca",
+								41:"Loja Lateral"
 							};
 
 							//document.getElementById("titulo-modal-edit").innerHTML='<i class="ft ft-edit"></i>&nbsp;&nbsp;Editar Bloco \'' + intels[widget.WID_inteligencia] + '\'';
@@ -376,9 +377,9 @@ $(document).ready(function(){
 							var child = document.getElementById('titulo-modal-edit');
 							//child.parentNode.insertBefore(text, child.nextSibling);
 
-							var btn = document.createElement("span");  
+							var btn = document.createElement("span");
 							btn.className = "breadcrumb-item";
-							btn.appendChild(text);                              
+							btn.appendChild(text);
 							child.parentNode.insertBefore(btn, child.nextSibling); */
 
 							widget.WID_hide = widget.WID_hide ? widget.WID_hide.split(',') : '';
@@ -412,17 +413,17 @@ $(document).ready(function(){
 
 									$('#btnAddPalavraChaveCollection').click(function(){
 										$('#inputCollection').tagsinput('add', $('#palavraChaveCollection').val());
-										
-										$('#palavraChaveCollection').val(''); 
-										
+
+										$('#palavraChaveCollection').val('');
+
 										return false;
 									})
 									break;
 								case '8': // Compre Junto
-									
+
 									var i = 0; //iterador da quantidade de grupos
 
-									htmlCfgCompreJunto= 
+									htmlCfgCompreJunto=
 									'<div class="col-md-12 config-group mb-1">'+
 										'<div class="panel-group">'+
 											'<div class="panel panel-default">'+
@@ -569,7 +570,7 @@ $(document).ready(function(){
 
 									while(i < widget.WC_cj_f.length){
 										if (i == 0) {
-											htmlInicio 	+= 
+											htmlInicio 	+=
 											'<div class="col-md-12 config-group mb-1">'+
 												'<div class="panel-group">'+
 													'<div class="panel panel-default">'+
@@ -585,7 +586,7 @@ $(document).ready(function(){
 															'</h5>'+
 														'</div>';
 										} else {
-											htmlInicio 	+= 
+											htmlInicio 	+=
 											'<div class="col-md-12 config-group mb-1">'+
 												'<div class="panel-group">'+
 													'<div class="panel panel-default">'+
@@ -599,7 +600,7 @@ $(document).ready(function(){
 														'</div>'+
 													'<span class="btn-remove-panel-group"><i class="fa fa-trash red"></i></span>';
 										}
-										htmlInicio 	+= 
+										htmlInicio 	+=
 													'<div id="collapse#index#" class="panel-collapse collapse">'+
 														'<div class="panel-body mt-1">'+
 															'<div class="col-md-6 pd-l-0">'+
@@ -755,8 +756,8 @@ $(document).ready(function(){
 
 
 									}
-									
-									
+
+
 
 									camposAdicionais.innerHTML+= // PALAVRA CHAVE PAI
 									'<div class="form-group">'+
@@ -781,13 +782,13 @@ $(document).ready(function(){
 													'<option value="10">Automático</option>'+
 												'</select>'+
 											'</div>';
-										var htmlManualOfertaLimitada = 
-										
+										var htmlManualOfertaLimitada =
+
 										'<div id="manualOfertaLimitada" class="form-group">'+
 											'<label>Nome do Produto</label>'+
 											'<div class="rh-input-icon-right">'+
 												'<input name="manualOfertaLimitada" id="manualOfertaLimitadaInput" class="form-control" type="text"';
-												htmlManualOfertaLimitada+= 
+												htmlManualOfertaLimitada+=
 												' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false" title="'+widget.tx_param_pai+'">' +
 												'<abbr title="Digite o nome do produto que está no seu XML" class="info-abbr">'+
 													'<i class="icon-info"></i>'+
@@ -795,7 +796,7 @@ $(document).ready(function(){
 											'</div>'+
 											'<div id="listaProdutosAutocompleteOfertaManual" class="form-control autocomplete-overlay"></div>'+
 										'</div>';
-	
+
 										camposAdicionais.innerHTML+= htmlManualOfertaLimitada;
 
 										// preenche nome produto
@@ -823,7 +824,7 @@ $(document).ready(function(){
 													success:function(data){
 														$('#listaProdutosAutocompleteOfertaManual').fadeIn();
 														$('#listaProdutosAutocompleteOfertaManual').html(data);
-														
+
 													}
 												})
 											} else {
@@ -831,7 +832,7 @@ $(document).ready(function(){
 												$('#listaProdutosAutocompleteOfertaManual').html("");
 											}
 										});
-										
+
 									} else {
 
 										camposAdicionais.innerHTML+=
@@ -881,7 +882,7 @@ $(document).ready(function(){
 													success:function(data){
 														$('#listaProdutosAutocomplete').fadeIn();
 														$('#listaProdutosAutocomplete').html(data);
-														
+
 													}
 												})
 											} else {
@@ -896,9 +897,9 @@ $(document).ready(function(){
 												$('#produtoManual').focus();
 												return false;
 											}
-										
+
 											var tamanho = $('#inputProdutos').val().split(',').length;
-										
+
 											if (tamanho >= 24){
 												toastr['error']('Você pode cadastrar no máximo 24 produtos');
 												return false;
@@ -909,8 +910,8 @@ $(document).ready(function(){
 												return false;
 											}
 											$('#inputProdutos').tagsinput('add', {value: bossChoiceProdId, text: bossChoiceProdTitulo});
-											$('#produtoManual').val(''); 
-										
+											$('#produtoManual').val('');
+
 											if (tamanho < 24){
 												$('#produtoManual').focus();
 											}
@@ -928,8 +929,8 @@ $(document).ready(function(){
 				                    		'<option value="10" selected>Automático</option>'+
 			                    		'</select>'+
 									'</div>';
-									var htmlManualOfertaLimitada = 
-									
+									var htmlManualOfertaLimitada =
+
 									'<div id="manualOfertaLimitada" class="form-group" style="display:none;">'+
 										'<label>Nome do Produto</label>'+
 										'<div class="rh-input-icon-right">'+
@@ -937,7 +938,7 @@ $(document).ready(function(){
 											if (typeof widget.WC_titulos_produtos != 'undefined' && widget.WC_titulos_produtos.lenght > 1){
 												htmlManualOfertaLimitada+= ' value="'+widget.WC_titulos_produtos+'"';
 											}
-											htmlManualOfertaLimitada+= 
+											htmlManualOfertaLimitada+=
 											' placeholder="Digite o nome do produto que está no seu XML" aria-invalid="false">' +
 											'<abbr title="Digite o nome do produto que está no seu XML" class="info-abbr">'+
 												'<i class="icon-info"></i>'+
@@ -968,7 +969,7 @@ $(document).ready(function(){
 												success:function(data){
 													$('#listaProdutosAutocompleteOfertaManual').fadeIn();
 													$('#listaProdutosAutocompleteOfertaManual').html(data);
-													
+
 												}
 											})
 										} else {
@@ -979,7 +980,7 @@ $(document).ready(function(){
 									break;
 								case '13':
 									$('#inputSubtitulo').show();
-									
+
 									if (widget.CONF_template_overlay != 0) {
 										camposAdicionais.innerHTML+=
 										'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
@@ -998,15 +999,15 @@ $(document).ready(function(){
 																'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WID_banner+'">Visualizar <i class="ft-eye"></i></button>'+
 															'</div>'+
 															'<div class="form-group">'+
-																'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>'+	
+																'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>'+
 															'</div>'+
-														'</div>'+													
+														'</div>'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
 											'<div class="form-group">'+
 												'<div class="rh-input-icon-right">'+
-													'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+													
+													'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+
 												'</div>'+
 											'</div>'+
 										'</div>'+
@@ -1023,7 +1024,7 @@ $(document).ready(function(){
 										'</div>';
 									} else {
 										camposAdicionais.innerHTML = '';
-									}									
+									}
 									break;
 								case '24':
 									camposAdicionais.innerHTML+= // NOME DA CATEGORIA
@@ -1063,7 +1064,7 @@ $(document).ready(function(){
 									var palavrasFilho = String(widget.WC_cj_f).split(",");
 									var palavrasPaiFilho = [];
 
-									for (i = 0; i < palavrasPai.length; i++) { 
+									for (i = 0; i < palavrasPai.length; i++) {
 										var valor = palavrasPai[i] + "->" + palavrasFilho[i];
 										palavrasPaiFilho.push(valor);
 									}
@@ -1071,7 +1072,7 @@ $(document).ready(function(){
 
 									camposAdicionais.innerHTML+=
 										'<div id="cadastrarRelacionados" style="">'+
-										'<div class="div-add">' + 
+										'<div class="div-add">' +
 											'<div class="col-md-6">' +
 												'<div class="form-group validate">' +
 													'<label>Visualizando algum produto contendo:</label>' +
@@ -1087,7 +1088,7 @@ $(document).ready(function(){
 											'</div>' +
 											'<div class="col-md-12">' +
 												'<label>Pares de termos cadastrados:</label>' +
-												'<div id="divTagsProdutosRelacionados" class="form-control">' +                     
+												'<div id="divTagsProdutosRelacionados" class="form-control">' +
 													'<div  class="controls">' +
 														'<input name="palavrasPaiFilho" id="palavrasPaiFilho" type="text" value="'+palavrasPaiFilho+'" data-role="tagsinput" class="form-control typeahead-tags" onchange="$(\'#produtosWidget\').val(this.value);validaProdutos();" data-validation-required-message="Cadastre as palavras chave" hidden="" required="" style="display: none;" readonly>' +
 													'</div>' +
@@ -1095,7 +1096,7 @@ $(document).ready(function(){
 											'</div>' +
 										'</div>' +
 									'</div>';
-									
+
 									if (palavrasPaiFilho.replace('->','').trim() !== '') {
 										console.log(palavrasPaiFilho.replace('->','').trim());
 										$('#palavrasPaiFilho').tagsinput('add', palavrasPaiFilho);
@@ -1187,6 +1188,55 @@ $(document).ready(function(){
 										'</div>';
 									break;
 
+									case '41':
+										$('#inputSubtitulo').show();
+
+										if (widget.CONF_template_overlay != 0) {
+											camposAdicionais.innerHTML+=
+											'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">'+
+												'<label>Imagem Atual:</label>'+
+												'<div class="form-control">'+
+													'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">'+
+														'<i class="icon-info"></i>'+
+													'</abbr>'+
+													'<div class="rh-input-icon-right">'+
+														'<div class="media">'+
+															'<div class="media-left">'+
+																'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WID_banner+'">'+
+															'</div>'+
+															'<div class="media-body">'+
+																'<div class="form-group">'+
+																	'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/'+widget.WID_banner+'">Visualizar <i class="ft-eye"></i></button>'+
+																'</div>'+
+																'<div class="form-group">'+
+																	'<button class="btn btn-primary" id="btnEditBannerLojaLateral">Alterar <i class="ft-upload"></i></button>'+
+																'</div>'+
+															'</div>'+
+														'</div>'+
+													'</div>'+
+												'</div>'+
+												'<div class="form-group">'+
+													'<div class="rh-input-icon-right">'+
+														'<input id="imagemBannerLojaLateral" name="imagemBannerLojaLateral" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+
+													'</div>'+
+												'</div>'+
+											'</div>'+
+											'<div class="col-md-6 pd-l-0">'+
+												'<div class="form-group">'+
+													'<label for="linkBannerOverlay">Link do Banner</label>'+
+													'<div class="rh-input-icon-right">'+
+														'<input id="linkBannerOverlay" name="linkBannerOverlay" class="form-control" type="text" value="'+widget.WID_link_banner+'">'+
+														'<abbr title="O banner do seu overlay de saída irá redirecionar para esse link." class="info-abbr">'+
+															'<i class="icon-info"></i>'+
+														'</abbr>'+
+													'</div>'+
+												'</div>'+
+											'</div>';
+										} else {
+											camposAdicionais.innerHTML = '';
+										}
+										break;
+
 								default:
 									camposAdicionais.innerHTML = '';
 									break;
@@ -1196,10 +1246,16 @@ $(document).ready(function(){
 							if ($('#btnViewBanner').length > 0) {
 								rhPhoto($('#btnViewBanner'));
 
-								$('#btnEditBanner').click( function() {									
+								$('#btnEditBanner').click( function() {
 									$('#imagemBanner')[0].focus();
 									$('#imagemBanner')[0].click();
 								});
+
+								$('#btnEditBannerLojaLateral').click( function() {
+									$('#imagemBannerLojaLateral')[0].focus();
+									$('#imagemBannerLojaLateral')[0].click();
+								});
+
 
 								$('#imagemBanner').change( function(){
 
@@ -1221,11 +1277,41 @@ $(document).ready(function(){
 											if (img.width != 350 && img.height != 500) {
 												toastr['error']('As dimensões da imagem devem ser de exatamente 350px de largura por 500px de altura.');
 												$('#imagemBanner').val('');
-											} else {											
+											} else {
 												$('.img-banner-small').attr('src', f.target.result);
 											}
 											desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
-										}										
+										}
+
+									}
+
+									reader.readAsDataURL(file);
+								})
+								$('#imagemBannerLojaLateral').change( function(){
+
+									bloqueiaElemento($('#containerAlteraImagemForm')[0]);
+
+									var file = this.files[0];
+									var reader = new FileReader();
+									reader.onload = function(f) {
+
+										// pega dimensoes da imagem
+										var img = new Image;
+										img.src = f.target.result;
+
+										img.onload = function() {
+											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' ) {
+												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
+												$('#imagemBannerLojaLateral').val('');
+											}
+											if (img.width != 400 && img.height != 300) {
+												toastr['error']('As dimensões da imagem devem ser de exatamente 400px de largura por 300px de altura.');
+												$('#imagemBannerLojaLateral').val('');
+											} else {
+												$('.img-banner-small').attr('src', f.target.result);
+											}
+											desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
+										}
 
 									}
 
@@ -1278,7 +1364,7 @@ $(document).ready(function(){
 							selectUpDown+= '</select>';
 							//-------------------
 
-							var containerID = 
+							var containerID =
 							'<div class="form-group">'+
 								'<div class="row">'+
 									'<div class="col-xs-3">'+
@@ -1289,7 +1375,7 @@ $(document).ready(function(){
 												if(widget.WID_div_type == 'id' || widget.WID_div_type == 'ID')
 													containerID += 'selected ';
 												containerID += 'value="id">ID</option>'+
-												'<option id="2"'; 
+												'<option id="2"';
 												if(widget.WID_div_type == 'class' || widget.WID_div_type == 'CLASS')
 													containerID += 'selected ';
 												containerID += 'value="class">CLASS</option>'+
@@ -1313,7 +1399,7 @@ $(document).ready(function(){
 												if(parseInt(widget.WID_updown) == 1)
 													containerID += 'selected ';
 												containerID += 'value="1">Acima</option>'+
-												'<option id="2" '; 
+												'<option id="2" ';
 												if(parseInt(widget.WID_updown) == 0)
 													containerID += 'selected ';
 												containerID += 'value="0">Abaixo</option>'+
@@ -1322,7 +1408,7 @@ $(document).ready(function(){
 									'</div>'+
 								'</div>'+
 							'</div>';
-							
+
 
 
 							if(widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5){ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
@@ -1338,7 +1424,7 @@ $(document).ready(function(){
 										'</div>'+
 									'</div>'
 							}
-							
+
 
 							htmlHide = '<div class="form-group exceptions">'+
 									'<div class="rh-input-icon-right">'+
@@ -1347,7 +1433,7 @@ $(document).ready(function(){
 									'</div>'+
 								'</div>';
 
-							htmlShow = 
+							htmlShow =
 									'<div class="form-group inclusions">'+
 										'<div class="rh-input-icon-right">'+
 											'<input name="widShow" class="form-control" type="url" value="">'+
@@ -1396,7 +1482,7 @@ $(document).ready(function(){
 									'</div>'+
 								'</div>'
 							);
-						
+
 							// tooltips
 							iniciaTooltip();
 
@@ -1422,7 +1508,7 @@ $(document).ready(function(){
 						}
 					});
 				});
-				
+
 				$('.btn-configura-busca').click(function() {
 					var id = this.parentElement.parentElement.getAttribute('wid-id');
 					$('#rhIdWidBusca').html(id);
@@ -1440,7 +1526,7 @@ $(document).ready(function(){
 							$('#modalConfiguraBusca').modal('show');
 							$('#modalConfiguraBusca .rh-id-wid').html();
 						}
-					});					
+					});
 				});
 
 				// BOTOESAPAGAR
@@ -1489,7 +1575,7 @@ $(document).ready(function(){
 						} else {
 							var val = inputs[i].value;
 						}
-						
+
 						formData.append(key, val);
 					}
 
@@ -1517,7 +1603,7 @@ $(document).ready(function(){
 						var key = selects[i].name;
 						var val = selects[i].value;
 						formData.append(key, val);
-					};			
+					};
 
 					// bosschoice
 					if ( $('#inputProdutos')[0] ) { // checa se existe o input de produtos
@@ -1642,7 +1728,7 @@ $(document).ready(function(){
 						formData.append('negativa_filho',negativa_filho);
 					}
 
-					
+
 
 
 
@@ -1653,11 +1739,11 @@ $(document).ready(function(){
 						var key = "bossChoiceProdId";
 						var val = bossChoiceProdId;
 						formData.append("bossChoiceProdId", bossChoiceProdId);
-						
+
 						var key = "bossChoiceProdTitulo";
 						var val = bossChoiceProdTitulo;
 						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
-					}	
+					}
 
 					$.ajax({
 						type: 'POST',
@@ -1841,7 +1927,7 @@ var searchbarCfg = {
 			}
 
 			// checa se uma das palavras está vazia
-			if ($('#cfgSbWord').val().trim() == '' || $('#cfgSbSyn').val().trim() == '') {	
+			if ($('#cfgSbWord').val().trim() == '' || $('#cfgSbSyn').val().trim() == '') {
 				// só exibe o alerta se ja n estiver exibindo
 				if ($('#msgSearchBarCfg').length == 0) {
 					$('#searchbarCfgMsgs').html(
@@ -1853,11 +1939,11 @@ var searchbarCfg = {
 						'</div>'
 					);
 
-					setTimeout(function(){						
+					setTimeout(function(){
 						$('#msgSearchBarCfg').alert('close');
 						window['isAboutToClose'] = false;
 					}, 3000);
-				}		
+				}
 				return false;
 			}
 			// checa se a palavra já esta cadastrada
@@ -1873,14 +1959,14 @@ var searchbarCfg = {
 						'</div>'
 					);
 
-					setTimeout(function(){						
+					setTimeout(function(){
 						$('#msgSearchBarCfg').alert('close');
 						window['isAboutToClose'] = false;
 					}, 3000);
-				}		
+				}
 				return false;
 			}
-			
+
 			var html =
 			'<tr>'+
 				'<td class="sb-word">' +$('#cfgSbWord').val().toLocaleLowerCase()+ '</td>'+
@@ -1905,7 +1991,7 @@ var searchbarCfg = {
 				$('#tableSyn tbody').html()+html
 			);
 
-			// desabilita botao adicionar				
+			// desabilita botao adicionar
 			$('#btnAddSyn').attr('disabled','true');
 
 			// Adiciona os listeners novamente
@@ -1949,14 +2035,14 @@ var searchbarCfg = {
 				'<td class="text-xs-center">'+
 					'<button class="btn btn-sm btn-danger white btn-remove-syn"><i class="fa fa-trash"></i></button>'+
 				'</td>'+
-			'</tr>';				
+			'</tr>';
 		}
 		$('#tableSyn tbody').html(html);
 		searchbarCfg.bindListeners();
 	}
 };
 
-// BOTAO SALVAR 
+// BOTAO SALVAR
 $('#btn-salva-busca').click(function() {
 	var idWid = $('#rhIdWidBusca').html();
 
@@ -1982,11 +2068,11 @@ searchbarCfg.init();
 validaProdutos = function(){
 	// produtos manuais
 	if ($('#inputProdutos').parent().is(':visible') && $('#inputProdutos').val().split(',').length < 4) {
-		if (!$('#divTagsProdutos').next().hasClass('help-block')){ 
+		if (!$('#divTagsProdutos').next().hasClass('help-block')){
 			$('#divTagsProdutos').css('border-color', '#FF7588'); // BORDA VERMELHRA
 			$('#divTagsProdutos').after('<div style="color: #FF7588 !important;" class="help-block"><ul role="alert"><li>Adicione pelo menos quatro produtos</li></ul></div>');
 		}
-	} else {		
+	} else {
 		$('#divTagsProdutos').css('border-color', '#16D39A'); // BORDA VERMELHRA
 		if ($('#divTagsProdutos').next().hasClass('help-block')){
 			$('#divTagsProdutos').next().remove();
@@ -2008,7 +2094,7 @@ adicionaProdutos = function(){
 		return false;
 	}
 	$('#inputProdutos').tagsinput('add', $('#produto').val());
-	$('#produto').val(''); 
+	$('#produto').val('');
 
 	if (tamanho < 24){
 		$('#produto').focus();
@@ -2036,8 +2122,8 @@ function preencheCampoAuto(titulo, id, formato){
 	if (formato == 6){
 		nomeInput = '#manualOfertaLimitadaInput';
 		nomeDiv = '#listaProdutosAutocompleteOfertaManual';
-	} 
-		
+	}
+
 	$(nomeInput).val(titulo);
 	bossChoiceProdId = id;
 	bossChoiceProdTitulo = titulo.replace(",", ".");
