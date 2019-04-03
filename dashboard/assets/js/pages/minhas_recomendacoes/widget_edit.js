@@ -392,7 +392,6 @@ $(document).ready(function(){
 							//esconder campos de acordo com a inteligência
 							let $tituloWidget = $('#tituloWidget').parent().parent()
 							let $subtituloWidget = $('#inputSubtitulo')
-							let $formatoWidget = $('[name=formatoWidget]').parent().parent()
 							switch(widget.WID_inteligencia){
 								case '7': // Collection
 									camposAdicionais.innerHTML+=
@@ -1196,6 +1195,7 @@ $(document).ready(function(){
 									case '41':
 										$tituloWidget.hide()
 										$subtituloWidget.hide()
+										let $formatoWidget = $('[name=formatoWidget]').parent().parent()
 										$formatoWidget.hide()
 
 										if (widget.CONF_template_overlay != 0) {
