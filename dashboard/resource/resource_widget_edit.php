@@ -78,7 +78,7 @@
 
         // Checase é busca
         // se for, pega no banco se é back end ou front end
-        $select = 'SELECT CONF_busca_be FROM config WHere CONF_id_cli = '.$idCli;
+        $select = 'SELECT CONF_busca_be, CONF_template FROM config WHere CONF_id_cli = '.$idCli;
         $query = mysqli_query($conCad, $select);
         $r = $query->fetch_array(MYSQLI_ASSOC);
 
@@ -90,8 +90,10 @@
             'widgetsCarrinho' => $widgetsCarrinho,
             'widgetsBasicos' => $widgetsBasicos,
             'widgetsBusca' => $widgetsBusca,
+            'template' => $r['CONF_template'],
             'busca_be' => $r['CONF_busca_be']
         );
+ 
         echo json_encode($widgets);
     }
 
@@ -266,7 +268,7 @@
             case "image/bmp":
                 $extensionThumb = 'bmp';
                 break;
-        	}
+            }
         }
 
         //inclui o objeto de comunicação com a api cloudflare
@@ -315,9 +317,9 @@
         // caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
         else {
             unset($camposBDWID['imagemBanner']);
-		}
-		
-		$query = 'SELECT WID_inteligencia FROM widget WHERE WID_id ='.$idWid.'';
+        }
+        
+        $query = 'SELECT WID_inteligencia FROM widget WHERE WID_id ='.$idWid.'';
         $result = mysqli_query($conCad, $query);
         $result = $result->fetch_array(MYSQLI_ASSOC);
 
