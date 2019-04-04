@@ -1223,7 +1223,7 @@ $(document).ready(function(){
 												'</div>'+
 												'<div class="form-group">'+
 													'<div class="rh-input-icon-right">'+
-														'<input id="imagemBannerLojaLateral" name="imagemBannerLojaLateral" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+
+														'<input id="imagemBannerLojaLateral" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>'+
 													'</div>'+
 												'</div>'+
 											'</div>'+
