@@ -1249,7 +1249,7 @@ $(document).ready(function(){
 													'<div class="rh-input-icon-right">'+
 														'<div class="media">'+
 															'<div class="media-left">'+
-																'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WID_thumb+'">'+
+																'<img class="img-thumb-small" width="100px" src="..\/widget\/images\/overlay\/'+widget.WID_thumb+'">'+
 															'</div>'+
 															'<div class="media-body">'+
 																'<div class="form-group">'+
@@ -1380,7 +1380,7 @@ $(document).ready(function(){
 												toastr['error']('As dimensões da imagem devem ser de exatamente 80px de largura por 80px de altura.');
 												$('#thumbnail').val('');
 											} else {
-												$('.img-banner-small').attr('src', f.target.result);
+												$('.img-thumb-small').attr('src', f.target.result);
 											}
 											desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
 										}
