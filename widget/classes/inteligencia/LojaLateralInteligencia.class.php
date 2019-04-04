@@ -72,41 +72,17 @@ class LojaLateralInteligencia extends AbstractInteligencia {
             }                
         }
 
-        if($this->widget->getObjNumItens() < 4)
-        {
-            $obj = [];
-            $this->widget->setObj($obj);
+        $obj = $this->widget->getObj();
+        $qtdObj = count($obj);
+        if($qtdObj < $maxProd){
+            $numProdCat = $this->executarCategoria($obj[$x]['id'], $qtdObj, $maxProd - $qtdObj);
         }
-        else
-        {               
-            $posIndex = 4;
 
-            $obj = $this->widget->getObj();
-
-            for($x = 0; $x < 3; $x++)
-            {    
-                $numProdCat = $this->executarCategoria($obj[$x]['id'], $posIndex, 4);
-                
-                if($numProdCat < 4)
-                {
-                    $this->executarMaisClicados($posIndex, 4);                       
-                }
-
-                $posIndex += 4;
-            }
-
-            $obj = $this->widget->getObj();
-
-            for($x = 5; $x <= 12; $x += 2)
-            {
-                $numProdComp = $this->executarComplementar($obj[$x - 1]['id'], $x, 1);
-
-                if($numProdComp < 1)
-                {
-                    $this->executarMaisClicados($x, 1);
-                }
-            }
-        }     
+        $obj = $this->widget->getObj();
+        $qtdObj = count($obj);
+        if($qtdObj < $maxProd){
+            $this->executarMaisClicados($qtdObj, $maxProd - $qtdObj) ;                           
+        }
     }
 
     /**
