@@ -78,7 +78,7 @@
 
         // Checase é busca
         // se for, pega no banco se é back end ou front end
-        $select = 'SELECT CONF_busca_be, CONF_template FROM config WHere CONF_id_cli = '.$idCli;
+        $select = 'SELECT CONF_busca_be, CONF_template_overlay FROM config WHere CONF_id_cli = '.$idCli;
         $query = mysqli_query($conCad, $select);
         $r = $query->fetch_array(MYSQLI_ASSOC);
 
@@ -90,7 +90,7 @@
             'widgetsCarrinho' => $widgetsCarrinho,
             'widgetsBasicos' => $widgetsBasicos,
             'widgetsBusca' => $widgetsBusca,
-            'template' => $r['CONF_template'],
+            'template' => $r['CONF_template_overlay'],
             'busca_be' => $r['CONF_busca_be']
         );
  
