@@ -38,6 +38,9 @@ abstract class AbstractWidget {
     // Só fornecido no fluxo do tagflag
     protected $tokenTagflag;
     protected $widgetId;
+
+    //Scroll Checkout
+    protected $viewsNow;
     
     /**
      * Seta todos os parâmetros usados no processamento
@@ -94,7 +97,7 @@ abstract class AbstractWidget {
             
             $arrayConfig = mysqli_fetch_array($resultConfig);
             
-            if (41 == $arrayWidgets ['WID_formato']) {
+            if ($arrayWidgets ['WID_formato'] == 41) {
                 $html = Util::get_HTML_Loja_Lateral ($this,$arrayConfig,$arrayWidgets);
             }else{
                 $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
@@ -310,6 +313,13 @@ abstract class AbstractWidget {
     public function getWidgetId() {
         return $this->widgetId;
     }
+
+    public function setViewsNow($views_now) {
+        $this->viewsNow = $views_now;
+    }
     
+    public function getViewsNow() {
+        return $this->viewsNow;
+    }
 }
 ?>

@@ -238,7 +238,7 @@ class Util {
             }
 
             //NOVOS OVERLAYS PADRÃO
-            if($formato == 5 || $formato == 6)
+            if($formato == 5 || $formato == 6 || $formato == 43)
             {
                 $formato = self::getFormatName($formato);
                 $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
@@ -993,6 +993,15 @@ class Util {
                 break;
             case 41:
                 $formato = 'loja_lateral';
+                break;
+            case 42:
+                $formato = 'autocomplete';
+                break;
+            case 43:
+                $formato = 'scroll_checkout';
+                break;
+            case 44:
+                $formato = 'rec_cart_onsite';
                 break;
         }
         

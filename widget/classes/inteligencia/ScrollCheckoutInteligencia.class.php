@@ -17,6 +17,11 @@ class ScrollCheckoutInteligencia extends AbstractInteligencia {
      */
 	public function processar() {
 
+		$select = "SELECT ".$this->XML_select.", XML_views_hour FROM XML_" . $this->widget->getIdCli() . "
+                   WHERE XML_id = '" . $this->widget->getProdId() . "';"
+        
+        $this->executeSelect($select);
+
 	}
 
 }
