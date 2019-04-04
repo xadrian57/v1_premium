@@ -1126,6 +1126,8 @@ class Util {
         $idWid = $arrayWidgets['WID_id'];
         $templateOverlay = $arrayConfig['CONF_template_overlay'];
         $template = $arrayConfig['CONF_template'];
+        $thumb_link = $arrayWidgets['WID_thumb'];
+        $banner_link = $arrayWidgets['WID_banner'];
         
         if(!empty($obj[0]['link']))
         {
@@ -1143,6 +1145,8 @@ class Util {
             $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
             $html = str_replace('{SUBTITLE_BLOCK}', $subtitulo, $html);
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
+            $html = str_replace('{BANNER_BLOCK}', $banner_link, $html);
+            $html = str_replace('{THUMB_BLOCK}', $thumb_link, $html);
             
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
             

@@ -42,5 +42,6 @@ require_once 'classes/inteligencia/MaisVendidosMarcaManualInteligencia.class.php
 require_once 'classes/inteligencia/SimilarPorParametrosInteligencia.class.php';
 require_once 'classes/inteligencia/NovidadeMarcaManualInteligencia.class.php';
 require_once 'classes/inteligencia/LojaLateralInteligencia.class.php';
+require_once 'classes/inteligencia/ScrollCheckoutInteligencia.class.php';
 
 ?>
