@@ -216,7 +216,7 @@ class Util {
             return $response;
         }
         
-        if(!empty($obj[0]['link']))
+        if(!empty($obj[0]['link']) || ($viewsNow != -1 && $formato == 43)
         {
             $sumValue = 0.00;
             $sumValueDe = 0.00;
