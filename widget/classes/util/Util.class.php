@@ -707,6 +707,34 @@ class Util {
         }
     }
 
+    public static function get_HTML_sc($obj, $arrayConfig, $arrayWidgets, $viewsNow){
+        $template = $arrayConfig['CONF_template'];
+        $templateOverlay = $arrayConfig['CONF_template_overlay'];
+        $formato = $arrayWidgets['WID_formato'];
+        $idWid = $arrayWidgets['WID_id'];
+
+        
+        if($viewsNow != -1 && $formato == 43){
+
+            $formato = self::getFormatName($formato);
+            $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
+
+            if(empty($html)){
+                $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
+            }
+                       
+
+            $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
+            $response = $html;
+
+            return $response;
+        }
+        else
+        {
+            return '';
+        }
+    }
+
     public static function get_HTML_cj_3($obj, $arrayConfig, $arrayWidgets)
     {
         $template = $arrayConfig['CONF_template'];
@@ -994,6 +1022,15 @@ class Util {
             case 41:
                 $formato = 'loja_lateral';
                 break;
+            case 42:
+                $formato = 'autocomplete';
+                break;
+            case 43:
+                $formato = 'scroll_checkout';
+                break;
+            case 44:
+                $formato = 'rec_cart_onsite';
+                break;
         }
         
         return $formato;
@@ -1126,6 +1163,8 @@ class Util {
         $idWid = $arrayWidgets['WID_id'];
         $templateOverlay = $arrayConfig['CONF_template_overlay'];
         $template = $arrayConfig['CONF_template'];
+        $thumb_link = $arrayWidgets['WID_thumb'];
+        $banner_link = $arrayWidgets['WID_banner'];
         
         if(!empty($obj[0]['link']))
         {
@@ -1143,6 +1182,8 @@ class Util {
             $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
             $html = str_replace('{SUBTITLE_BLOCK}', $subtitulo, $html);
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
+            $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/' . $banner_link, $html);
+            $html = str_replace('{THUMB_BLOCK}', 'https://roihero.com.br/widget/images/overlay/' . $thumb_link, $html);
             
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
             

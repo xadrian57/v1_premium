@@ -150,15 +150,15 @@ class Util
 			$nomeProd = trim( $nomeProd );
 			//$nomeProd = str_replace('_', ' ', $nomeProd);
 
-			if ($termo === $nomeProd || trataPlural($termo) === $nomeProd) { // se é exatamenten igual
+			if ($termo === $nomeProd || self::trataPlural($termo) === $nomeProd) { // se é exatamenten igual
 		        $score+=100;
 		    }
 
-		    if (strpos($nomeProd, $termo) === 0 || strpos($nomeProd, trataPlural($termo)) === 0) { // se o começo é exatamente igual
+		    if (strpos($nomeProd, $termo) === 0 || strpos($nomeProd, self::trataPlural($termo)) === 0) { // se o começo é exatamente igual
 		    	$score+=50;
 		    }
 
-		    if (strpos($nomeProd, $termo) > 0 || strpos($nomeProd, trataPlural($termo))) { // se possui tudo digitado
+		    if (strpos($nomeProd, $termo) > 0 || strpos($nomeProd, self::trataPlural($termo))) { // se possui tudo digitado
 		    	$score+=50;
 		    }
 
@@ -171,7 +171,7 @@ class Util
 		    $palavrasProd = explode(' ', $nomeProd);
 
 		    if (count($palavrasTermo) > 0) {
-		    	if ($palavrasTermo[0] === $palavrasProd[0] || trataPlural($palavrasTermo[0]) === $palavrasProd[0]) { // se a primeira palavra for idêntica
+		    	if ($palavrasTermo[0] === $palavrasProd[0] || self::trataPlural($palavrasTermo[0]) === $palavrasProd[0]) { // se a primeira palavra for idêntica
 		    		$score+=80;
 		    	}
 
@@ -210,10 +210,8 @@ class Util
 			);		
 	}
 
-	public static function geraArraryXML($linha, $score=0)
+	public static function geraArrayXML($linha, $descBoleto, $score=0)
 	{
-		$descBoleto = $this->search->getDescBoleto();
-
 		if($descBoleto != '0' && !empty($descBoleto))
         {
             $linha['XML_sale_price'] = $linha['XML_sale_price'] - ($linha['XML_sale_price'] * ($descBoleto / 100));

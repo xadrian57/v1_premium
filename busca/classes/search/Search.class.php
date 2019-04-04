@@ -43,7 +43,7 @@ class Search extends AbstractSearch {
                     if(!empty($busca))
                     {
                         $select = "SELECT id, titulo_fonetico, click, titulo
-                               FROM BUSCA_".$idcli."
+                               FROM BUSCA_". $this->idcli ."
                                WHERE ". $this->consulta() ."
                                ". $this->usarCustom();
                     
@@ -66,11 +66,14 @@ class Search extends AbstractSearch {
                         if(count($this->prodsBusca) > 0)
                         {
                             $this->prodsBusca = array_slice($this->prodsBusca, 0, $this->limite, true);
-                            $this->prodsBusca = $this->geraProdsFonetico();
+                            $arraySearch['search'] = $this->geraProdsFonetico($this->prodsBusca);
+                            $this->prodsBusca = $arraySearch;
                         }
                         
                         if(count($this->prodsBusca) > 0)
                         {
+                            // CHAMA AS INTELIGENCIAS
+
                             echo json_encode($this->prodsBusca);
                         }
                         else
