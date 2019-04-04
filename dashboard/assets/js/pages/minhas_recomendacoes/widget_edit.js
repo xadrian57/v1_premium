@@ -1817,6 +1817,12 @@ $(document).ready(function(){
 						formData.append("bossChoiceProdTitulo", bossChoiceProdTitulo);
 					}
 
+					if(!formData.get('imagemBanner'))
+						formaData.delete('imagemBanner')
+
+					if(!formData.get('thumbnail'))
+						formaData.delete('thumbnail')
+
 					$.ajax({
 						type: 'POST',
 						url: 'resource/resource_widget_edit.php',
