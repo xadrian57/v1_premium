@@ -6,7 +6,8 @@ namespace roihero\search\inteligencia;
  * 
  * @author moises
  */
-abstract class AbstractInteligencia implements IInteligencia {
+abstract class AbstractInteligencia implements IInteligencia 
+{
     
     protected $numMaxProdutos = 8;
 
@@ -76,7 +77,8 @@ abstract class AbstractInteligencia implements IInteligencia {
      * 
      * @param string $select
      */
-    protected function executeSelect($select) {
+    protected function executeSelect($select) 
+    {
         $result = mysqli_query($this->search->getConDados(), $select);
         
         $i = 0;
@@ -104,4 +106,3 @@ abstract class AbstractInteligencia implements IInteligencia {
     }
 
 }
-?>
