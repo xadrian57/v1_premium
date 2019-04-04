@@ -230,7 +230,8 @@
         }
 
         // verifica o tipo do arquivo
-        switch ($files["imagemBanner"]['type']) {
+        if (isset($files["imagemBanner"])) {
+            switch ($files["imagemBanner"]['type']) {
             case "image/png":
                 $extension = 'png';
                 break;
@@ -246,6 +247,26 @@
             case "image/bmp":
                 $extension = 'bmp';
                 break;
+            }
+        }
+        if (isset($files["thumbnail"])) {
+            switch ($files["thumbnail"]['type']) {
+            case "image/png":
+                $extensionThumb = 'png';
+                break;
+            case "image/jpg":
+                $extensionThumb = 'jpg';
+                break;
+            case "image/gif":
+                $extensionThumb = 'gif';
+                break;
+            case "image/jpeg":
+                $extensionThumb = 'jpeg';
+                break;
+            case "image/bmp":
+                $extensionThumb = 'bmp';
+                break;
+        	}
         }
 
         //inclui o objeto de comunicação com a api cloudflare
@@ -299,7 +320,7 @@
         if ($idWid == 41) {
             if (isset($files["thumbnail"])) {
                 //salvar thumbnail loja lateral
-                $thumb = "thumb_overlay_".$idWid.'.'.$extension;
+                $thumb = "thumb_overlay_".$idWid.'.'.$extensionThumb;
 
                 // deleta o arquivo de banner atual
                 foreach (['png','jpg','gif','jpeg','bmp'] as $ext) {
