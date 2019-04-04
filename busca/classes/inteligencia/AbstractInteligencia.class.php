@@ -11,9 +11,15 @@ abstract class AbstractInteligencia implements IInteligencia
     
     protected $numMaxProdutos = 8;
 
+    protected $search;
+
     //utmi_medium=roihero&utmi_content=roihero&rh_int=search
 
     protected $XML_select = "XML_id, XML_sku, XML_image_link, XML_image_link2, XML_titulo, XML_link, XML_type, XML_sale_price, XML_price, XML_type, XML_desconto, XML_nparcelas, XML_vparcela, XML_descricao, XML_brand, XML_custom1, XML_custom2, XML_custom3, XML_custom4, XML_custom5";
+
+    public function setSearch($search) {
+        $this->search = $search;
+    }
     
     public function setNumMaxProdutos($numMaxProdutos) {
         $this->numMaxProdutos = $numMaxProdutos;

@@ -14,7 +14,7 @@ class FactoryInteligencia {
     private function __construct() {
     }
     
-    public static function getInteligencia($nameInteligencia) {
+    public static function getInteligencia($nameInteligencia, $search) {
         $inteligencia = null;
         
         switch ($nameInteligencia) {
@@ -43,6 +43,11 @@ class FactoryInteligencia {
                 $inteligencia = new SimilarMarcaInteligencia();
                 break;
                      
+        }
+
+        // Se populada corretamente, então seta os valores
+        if($inteligencia) {
+            $inteligencia->setSearch($search);
         }
         
         return $inteligencia;
