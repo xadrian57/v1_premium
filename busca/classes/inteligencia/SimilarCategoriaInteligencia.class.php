@@ -16,11 +16,14 @@ class SimilarCategoriaInteligencia extends AbstractInteligencia {
      * @see \roihero\search\inteligencia\IInteligencia::processar()
      */
     public function processar() {
+
+      $cat = str_replace(' ', ' +', $this->search->getTypeProdSearch(0));
+      $cat = '+' . $cat;
       
       $select = "SELECT ".$this->XML_select."
                  FROM XML_". $this->search->getIdCli() ."
                  WHERE XML_availability = 1
-                 AND MATCH(XML_type) AGAINST(\"+ " . $this->search->getTypeProdSearch(0) . " *\" IN BOOLEAN MODE)
+                 AND MATCH(XML_type) AGAINST(\"" . $cat . "\" IN BOOLEAN MODE)
                  GROUP BY XML_link
                  ORDER BY XML_click_7 DESC 
                  LIMIT " . $this->numMaxProdutos;
