@@ -725,7 +725,7 @@ class Util {
             }            
 
             $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
-            $response = $html
+            $response = $html;
 
             return $response;
         }
