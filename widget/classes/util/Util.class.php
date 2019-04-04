@@ -195,7 +195,7 @@ class Util {
     }
     
     // Funções do HTML
-    public static function get_HTML($obj, $arrayConfig, $arrayWidgets)
+    public static function get_HTML($obj, $arrayConfig, $arrayWidgets, $viewsNow=-1)
     {
         $template = $arrayConfig['CONF_template'];
         $templateOverlay = $arrayConfig['CONF_template_overlay'];
@@ -259,6 +259,7 @@ class Util {
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
+            $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 

@@ -97,8 +97,10 @@ abstract class AbstractWidget {
             
             $arrayConfig = mysqli_fetch_array($resultConfig);
             
-            if ($arrayWidgets ['WID_formato'] == 41) {
+            if ($arrayWidgets['WID_formato'] == 41) {
                 $html = Util::get_HTML_Loja_Lateral ($this,$arrayConfig,$arrayWidgets);
+            }else if($arrayWidgets['WID_formato'] == 43){
+                $html = Util::get_HTML($this,$arrayConfig,$arrayWidgets, $this->widget->getViewsNow());
             }else{
                 $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
             }   
