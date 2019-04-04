@@ -19,13 +19,13 @@ class LojaLateralInteligencia extends AbstractInteligencia {
         // Recomendações
         $idprod = $this->widget->getCookieProd();
         if(!empty($idprod) && $idprod != null){
-            //$this->executarSmartHome(0,8, 1, $idprod);
+            $this->executarSmartHome(0,8, 1, $idprod);
         }else{
-            //$this->executarMaisVendidos(0,8);
+            $this->executarMaisVendidos(0,8);
         }
         
         // Histórico
-        //$this->executarRemarketingOnSite(8, 8);
+        $this->executarRemarketingOnSite(8, 8);
         
 
         // Melhores ofertas
