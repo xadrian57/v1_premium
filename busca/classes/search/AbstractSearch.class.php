@@ -166,7 +166,7 @@ abstract class AbstractSearch
             		}
             	}
 
-               	$posts[] = Util::geraArrayXML($linha, $this->getDescBoleto() $auxScore);
+               	$posts[] = Util::geraArrayXML($linha, $this->getDescBoleto(), $auxScore);
             }
         }
 
