@@ -1312,7 +1312,7 @@ $(document).ready(function(){
 										img.src = f.target.result;
 
 										img.onload = function() {
-											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' ) {
+											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif' ) {
 												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
 												$('#imagemBanner').val('');
 											}
@@ -1342,7 +1342,7 @@ $(document).ready(function(){
 										img.src = f.target.result;
 
 										img.onload = function() {
-											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' ) {
+											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif' ) {
 												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
 												$('#imagemBannerLojaLateral').val('');
 											}
@@ -1372,7 +1372,7 @@ $(document).ready(function(){
 										img.src = f.target.result;
 
 										img.onload = function() {
-											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' ) {
+											if ( file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif' ) {
 												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
 												$('#thumbnail').val('');
 											}
