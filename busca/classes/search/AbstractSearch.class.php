@@ -91,6 +91,11 @@ abstract class AbstractSearch
         return $this->prodsBusca['search'][$index]['type'];
     }
 
+    public function getBrandProdSearch($index)
+    {
+        return $this->prodsBusca['search'][$index]['brand'];
+    }
+
     public function getSinonimo()
     {
     	$select = "SELECT tx_pesquisado, tx_retornado FROM busca WHERE id_cli = '". $this->idcli ."'";
@@ -167,7 +172,8 @@ abstract class AbstractSearch
                 XML_sale_price, 
                 XML_link, 
                 XML_image_link, 
-                XML_type, 
+                XML_type,
+                XML_brand, 
                 XML_nparcelas, 
                 XML_vparcela, 
                 XML_click_7, 

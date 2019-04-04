@@ -227,6 +227,7 @@ class Util
     				'link'=> urlencode($linha['XML_link']), 
     				'link_image'=> urlencode($linha['XML_image_link']), 
     				'type'=> urlencode($linha['XML_type']), 
+    				'brand'=> urlencode($linha['XML_brand']), 
     				'amount'=> floatval($linha['XML_vparcela']), 
     				'months'=> intval($linha['XML_nparcelas']), 
     				'venda' => intval($linha['XML_click_7']),
