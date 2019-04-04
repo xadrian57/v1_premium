@@ -33,7 +33,11 @@ $(document).ready(function () {
 					data: { 'idCli': idCli, 'op': 1 },
 					success: function (result) {
 						//console.log(result);
-						var widgetInfo = JSON.parse(result);
+						var widgetInfo = null
+						if (typeof (result) === 'string')
+							widgetInfo = JSON.parse(result)
+						else
+							widgetInfo = result
 
 						window['__home'] = widgetInfo.widgetsHome;
 						window['__produto'] = widgetInfo.widgetsProduto;
