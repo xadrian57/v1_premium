@@ -210,10 +210,8 @@ class Util
 			);		
 	}
 
-	public static function geraArrayXML($linha, $score=0)
+	public static function geraArrayXML($linha, $descBoleto, $score=0)
 	{
-		$descBoleto = $this->search->getDescBoleto();
-
 		if($descBoleto != '0' && !empty($descBoleto))
         {
             $linha['XML_sale_price'] = $linha['XML_sale_price'] - ($linha['XML_sale_price'] * ($descBoleto / 100));
