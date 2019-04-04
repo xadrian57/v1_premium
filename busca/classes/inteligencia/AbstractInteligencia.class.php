@@ -86,7 +86,7 @@ abstract class AbstractInteligencia implements IInteligencia
         {
             while($linha = mysqli_fetch_array($result))
             {
-                if($this->setOBJ($linha, $this->search->getUtm())
+                if($this->setOBJ($linha, $this->search->getUtm()))
                 {
                     $i++;
                 }
