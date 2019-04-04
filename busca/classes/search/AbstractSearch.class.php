@@ -83,17 +83,17 @@ abstract class AbstractSearch
 
     public function getNameProdSearch($index)
     {
-        return $this->prodsBusca['search'][$index]['title'];
+        return urldecode($this->prodsBusca['search'][$index]['title']);
     }
 
     public function getTypeProdSearch($index)
     {
-        return $this->prodsBusca['search'][$index]['type'];
+        return urldecode($this->prodsBusca['search'][$index]['type']);
     }
 
     public function getBrandProdSearch($index)
     {
-        return $this->prodsBusca['search'][$index]['brand'];
+        return urldecode($this->prodsBusca['search'][$index]['brand']);
     }
 
     public function getSinonimo()
