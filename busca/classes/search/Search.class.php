@@ -75,7 +75,7 @@ class Search extends AbstractSearch {
                             // CHAMA AS INTELIGENCIAS
                             for($i=0; $i < count($this->inteligencia); $i++)
                             {
-                                $inteligencia = FactoryInteligencia::getInteligencia($this->inteligencia[$i]);
+                                $inteligencia = FactoryInteligencia::getInteligencia($this->inteligencia[$i], $this);
                                 if($inteligencia) {
                                     $inteligencia->processar();
                                 }
