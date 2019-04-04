@@ -25,11 +25,11 @@ class LojaLateralInteligencia extends AbstractInteligencia {
         }
         
         // Histórico
-        $this->executarRemarketingOnSite(8, 8);
+        //$this->executarRemarketingOnSite(8, 8);
         
 
         // Melhores ofertas
-        $this->executarLiquidacao(16, 8);
+        //$this->executarLiquidacao(16, 8);
         
     }
     
