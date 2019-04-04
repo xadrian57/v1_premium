@@ -67,7 +67,7 @@ class Search extends AbstractSearch {
                         {
                             $this->prodsBusca = array_slice($this->prodsBusca, 0, $this->limite, true);
                             $arraySearch['search'] = $this->geraProdsFonetico($this->prodsBusca);
-                            $this->prodsBusca = $arraySearch['search'];
+                            $this->prodsBusca = $arraySearch;
                         }
                         
                         if(count($this->prodsBusca) > 0)
