@@ -20,7 +20,8 @@ class ScrollCheckoutInteligencia extends AbstractInteligencia {
 		$select = "SELECT XML_views_hour FROM XML_" . $this->widget->getIdCli() . "
                    WHERE XML_id = '" . $this->widget->getProdId() . "'";
 
-        
+        echo($select . " - ");
+
         $result = mysqli_query($this->widget->getConDados(), $select);
         $linha = mysqli_fetch_array($result);
 
