@@ -1145,8 +1145,8 @@ class Util {
             $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
             $html = str_replace('{SUBTITLE_BLOCK}', $subtitulo, $html);
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
-            $html = str_replace('{BANNER_BLOCK}', $banner_link, $html);
-            $html = str_replace('{THUMB_BLOCK}', $thumb_link, $html);
+            $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/' . $banner_link, $html);
+            $html = str_replace('{THUMB_BLOCK}', 'https://roihero.com.br/widget/images/overlay/' . $thumb_link, $html);
             
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
             
