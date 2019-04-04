@@ -24,7 +24,8 @@ class ScrollCheckoutInteligencia extends AbstractInteligencia {
         $linha = mysqli_fetch_array($result);
 
 
-        $views_hour = explode(",", $linha[0]['XML_views_hour']);
+        echo $linha['XML_views_hour'];	
+        $views_hour = explode(",", $linha['XML_views_hour']);
         $viewNow = $views_hour[intval(date('H'))];
 
         $this->widget->setViewsNow($viewsNow);
