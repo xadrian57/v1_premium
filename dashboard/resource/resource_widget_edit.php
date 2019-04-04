@@ -315,9 +315,13 @@
         // caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
         else {
             unset($camposBDWID['imagemBanner']);
-        }
+		}
+		
+		$query = 'SELECT WID_inteligencia FROM widget WHERE WID_id ='.$idWid.'';
+        $result = mysqli_query($conCad, $query);
+        $result = $result->fetch_array(MYSQLI_ASSOC);
 
-        if ($idWid == 41) {
+        if ($result['WID_inteligencia'] == 41) {
             if (isset($files["thumbnail"])) {
                 //salvar thumbnail loja lateral
                 $thumb = "thumb_overlay_".$idWid.'.'.$extensionThumb;
