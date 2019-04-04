@@ -17,11 +17,17 @@ class ScrollCheckoutInteligencia extends AbstractInteligencia {
      */
 	public function processar() {
 
-		$select = "SELECT ".$this->XML_select.", XML_views_hour FROM XML_" . $this->widget->getIdCli() . "
-                   WHERE XML_id = '" . $this->widget->getProdId() . "';"
-        
-        $this->executeSelect($select);
+		$select = "SELECT XML_views_hour FROM XML_" . $this->widget->getIdCli() . "
+                   WHERE XML_id = '" . $this->widget->getProdId() . "'";
 
+        
+        $result = mysqli_query($this->widget->getConDados(), $select);
+        $linha = mysqli_fetch_array($result);
+
+        $views_hour = explode($linha['XML_views_hour'], ",");
+
+        $viewNow = $views_hour[strtoint(date('H'))];
+        $this->widget->setViewsNow($viewsNow);
 	}
 
 }
