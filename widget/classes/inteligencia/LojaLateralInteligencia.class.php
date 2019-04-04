@@ -97,10 +97,12 @@ class LojaLateralInteligencia extends AbstractInteligencia {
 
             $obj = $this->widget->getObj();
 
+            echo count($obj);
             for($x = 5; $x <= 12; $x += 2)
             {
                 $numProdComp = $this->executarComplementar($obj[$x - 1]['id'], $x, 1);
 
+                echo count($obj);
                 if($numProdComp < 1)
                 {
                     $this->executarMaisClicados($x, 1);
