@@ -13,7 +13,7 @@ $(document).ready(function () {
 					window.__busca = widgetInfo.widgetsBusca;
 
 					// INICIA AS FUNÇÕES PRINCIPAIS
-					widgets.carregaBusca();
+					widgets.loadSearch();
 				}
 			});
 		},
