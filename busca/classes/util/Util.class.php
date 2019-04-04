@@ -210,7 +210,7 @@ class Util
 			);		
 	}
 
-	public static function geraArraryXML($linha, $score=0)
+	public static function geraArrayXML($linha, $score=0)
 	{
 		$descBoleto = $this->search->getDescBoleto();
 
