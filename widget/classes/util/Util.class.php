@@ -195,7 +195,7 @@ class Util {
     }
     
     // Funções do HTML
-    public static function get_HTML($obj, $arrayConfig, $arrayWidgets, $viewsNow=-1)
+    public static function get_HTML($obj, $arrayConfig, $arrayWidgets)
     {
         $template = $arrayConfig['CONF_template'];
         $templateOverlay = $arrayConfig['CONF_template_overlay'];
@@ -216,7 +216,7 @@ class Util {
             return $response;
         }
         
-        if(!empty($obj[0]['link']) || ($viewsNow != -1 && $formato == 43))
+        if(!empty($obj[0]['link']))
         {
             $sumValue = 0.00;
             $sumValueDe = 0.00;
@@ -238,7 +238,7 @@ class Util {
             }
 
             //NOVOS OVERLAYS PADRÃO
-            if($formato == 5 || $formato == 6 || $formato == 43)
+            if($formato == 5 || $formato == 6)
             {
                 $formato = self::getFormatName($formato);
                 $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
@@ -259,7 +259,6 @@ class Util {
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
-            $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 
@@ -699,6 +698,34 @@ class Util {
             $response = str_replace('{VALUE_SUM}', $moeda.' '.number_format($sumValue, 2, $parmFormatOne, $parmFormatTwo), $response);
             $response = str_replace('{VALUE_SUM_DE}', $moeda.' '.number_format($sumValueDe, 2, $parmFormatOne, $parmFormatTwo), $response);
 
+
+            return $response;
+        }
+        else
+        {
+            return '';
+        }
+    }
+
+    public static function get_HTML_sc($obj, $arrayConfig, $arrayWidgets, $viewsNow){
+        $template = $arrayConfig['CONF_template'];
+        $templateOverlay = $arrayConfig['CONF_template_overlay'];
+        $formato = $arrayWidgets['WID_formato'];
+        $idWid = $arrayWidgets['WID_id'];
+
+        
+        if($viewsNow != -1 && $formato == 43){
+
+            $formato = self::getFormatName($formato);
+            $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
+
+            if(empty($html)){
+                $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
+            }
+            }            
+
+            $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
+            $response = $html
 
             return $response;
         }
