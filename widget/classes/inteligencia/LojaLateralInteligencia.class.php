@@ -83,7 +83,7 @@ class LojaLateralInteligencia extends AbstractInteligencia {
 
             $obj = $this->widget->getObj();
 
-            echo count($obj)
+            echo count($obj);
             for($x = 0; $x < 3; $x++)
             {    
                 $numProdCat = $this->executarCategoria($obj[$x]['id'], $posIndex, 4);
