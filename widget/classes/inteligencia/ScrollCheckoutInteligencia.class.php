@@ -21,6 +21,7 @@ class ScrollCheckoutInteligencia extends AbstractInteligencia {
                    WHERE XML_id = '" . $this->widget->getProdId() . "'";
 
         $result = mysqli_query($this->widget->getConDados(), $select);
+        echo mysqli_error($this->widget->getConDados());
         $linha = mysqli_fetch_array($result);
 
 
