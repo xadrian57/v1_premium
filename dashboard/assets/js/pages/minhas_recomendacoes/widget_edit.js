@@ -33,7 +33,11 @@ $(document).ready(function () {
 					data: { 'idCli': idCli, 'op': 1 },
 					success: function (result) {
 						//console.log(result);
-						var widgetInfo = JSON.parse(result);
+						var widgetInfo = null
+						if (typeof (result) === 'string')
+							widgetInfo = JSON.parse(result)
+						else
+							widgetInfo = result
 
 						window['__home'] = widgetInfo.widgetsHome;
 						window['__produto'] = widgetInfo.widgetsProduto;
@@ -1322,10 +1326,10 @@ $(document).ready(function () {
 												toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
 												$('#imagemBanner').val('');
 											}
-											if (window.template == 3 && img.width != 900 && img.height != 1500) {
-												toastr['error']('As dimensões da imagem devem ser de exatamente 900px de largura por 1500px de altura.');
+											if (window.template == 3 && img.width != 900 && img.height != 150) {
+												toastr['error']('As dimensões da imagem devem ser de exatamente 900px de largura por 150px de altura.');
 												$('#imagemBanner').val('');
-											} else if (img.width != 350 && img.height != 500) {
+											} else if (window.template != 3 && img.width != 350 && img.height != 500) {
 												toastr['error']('As dimensões da imagem devem ser de exatamente 350px de largura por 500px de altura.');
 												$('#imagemBanner').val('');
 											} else {
@@ -1827,10 +1831,10 @@ $(document).ready(function () {
 					}
 
 					if (!formData.get('imagemBanner'))
-						formaData.delete('imagemBanner')
+						formData.delete('imagemBanner')
 
 					if (!formData.get('thumbnail'))
-						formaData.delete('thumbnail')
+						formData.delete('thumbnail')
 
 					$.ajax({
 						type: 'POST',

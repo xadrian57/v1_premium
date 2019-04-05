@@ -1,8 +1,18 @@
 <?php
-include '../../bd/conexao_bd_dados.php';
-include '../../bd/conexao_bd_cadastro.php';
 
-$id = mysqli_real_escape_string($conCad, $_GET['id']);
+include '/home/roihero/public_html/bd/conexao_bd_cadastro.php';
+include '/home/roihero/public_html/bd/conexao_bd_dados.php';
+
+require 'spreadsheets/vendor/autoload.php';
+
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+$spreadsheet = new Spreadsheet();
+$sheet = $spreadsheet->getActiveSheet();
+$sheet->setCellValue('A1', 'Hello World !');
+
+$id = mysqli_real_escape_string($conCad, $_GET['id']); // id cliente
 
 $select = 'SELECT CLI_nome FROM cliente WHERE CLI_id = '.$id;
 $query = mysqli_query($conCad, $select);
@@ -22,6 +32,42 @@ $select = '
 	ORDER BY vezes DESC
 	';
 $data = [];
+$index = 2;
+
+$sheet->setCellValue('A1', 'TERMO');
+$sheet->setCellValue('B1', 'VEZES');
+
+
+$sheet->getRowDimension('1')->setRowHeight(18); // seta altura da linha
+
+
+$sheet->getStyle('A1')->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$sheet->getStyle('A1')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$sheet->getStyle('A1')->getBorders()->getLeft()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$sheet->getStyle('A1')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+$sheet->getStyle('B1')->getBorders()->getTop()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$sheet->getStyle('B1')->getBorders()->getBottom()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$sheet->getStyle('B1')->getBorders()->getLeft()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+$sheet->getStyle('B1')->getBorders()->getRight()->setBorderStyle(\PhpOffice\PhpSpreadsheet\Style\Border::BORDER_THIN);
+
+$sheet->getStyle('A1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('A1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+$sheet->getStyle('A1')->getFill()->getStartColor()->setARGB('0f9d58');
+$sheet->getStyle('A1')->getFont()->getColor()->setARGB('ffffff');
+$sheet->getStyle('A1')->getFont()->setSize(15);
+$sheet->getStyle('A1')->getFont()->setBold(600);
+
+$sheet->getStyle('B1')->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+$sheet->getStyle('B1')->getFill()->setFillType(\PhpOffice\PhpSpreadsheet\Style\Fill::FILL_SOLID);
+$sheet->getStyle('B1')->getFill()->getStartColor()->setARGB('0f9d58');
+$sheet->getStyle('B1')->getFont()->getColor()->setARGB('ffffff');
+$sheet->getStyle('B1')->getFont()->setSize(15);
+$sheet->getStyle('B1')->getFont()->setBold(600);
+
+$sheet->getColumnDimension('A')->setWidth(30);
+$sheet->getColumnDimension('B')->setWidth(30);
+
 $query = mysqli_query($conDados, $select);
 if (mysqli_error($conDados)) {
     // echo 'O cliente '.$cliente['nome'].'('.$cliente['id'].') não possui nenhuma instância na tabela.';
@@ -40,41 +86,31 @@ else {
 					'vezes' => $result['vezes']
 				)
 			);
+
+
+			$sheet->setCellValue('A'.$index, urldecode($result['termo']));
+			$sheet->setCellValue('B'.$index, $result['vezes']);
+
+			$sheet->getStyle('B'.$index)->getAlignment()->setHorizontal(\PhpOffice\PhpSpreadsheet\Style\Alignment::HORIZONTAL_CENTER);
+
+			$index++;
 		}
 		
 	}
 }
 
-$arquivo = 'relatorio_busca_'.$cliente['nome'].'_'.date("d-m-Y").'.xls';
+$writer = new Xlsx($spreadsheet);
+$arquivo = 'relatorio_busca_'.$cliente['nome'].'_'.date("d-m-Y").'.xlsx';
+$writer->save($arquivo);
 
-header("Content-Disposition: attachment; filename=\"".$arquivo."\"");
-header("Content-Type: application/vnd.ms-excel;");
-header("Pragma: no-cache");
-header("Charset: utf-8");
-header("Expires: 0");
-
-// Criamos uma tabela HTML com o formato da planilha
-$html = '';
-$html .= '<table>';
-$html .= '<tr>';
-$html .= '<td colspan="2">RELATÓRIO DE TERMOS DA BUSCA</tr>';
-$html .= '</tr>';
-$html .= '<tr>';
-$html .= '<td><b>TERMO</b></td>';
-$html .= '<td><b>VEZES</b></td>';
-$html .= '</tr>';
-
-foreach ($data as $item) {
-	$html .= '<tr>';
-	$html .= '<td>'.urldecode($item['termo']).'</td>';
-	$html .= '<td>'.$item['vezes'].'</td>';
-	$html .= '</tr>';
-}
-
-$html .= '</table>';
-
-// Envia o conteúdo do arquivo
-echo $html;
+header('Content-Type: application/octet-stream');
+header('Content-Disposition: attachment; filename='.basename($arquivo));
+header('Expires: 0');
+header('Cache-Control: must-revalidate');
+header('Pragma: public');
+header('Content-Length: ' . filesize($arquivo));
+readfile($arquivo);
+unlink($arquivo);
 exit;
 
 ?>

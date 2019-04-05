@@ -233,51 +233,20 @@
 
         // verifica o tipo do arquivo
         if (isset($files["imagemBanner"])) {
-            switch ($files["imagemBanner"]['type']) {
-            case "image/png":
-                $extension = 'png';
-                break;
-            case "image/jpg":
-                $extension = 'jpg';
-                break;
-            case "image/gif":
-                $extension = 'gif';
-                break;
-            case "image/jpeg":
-                $extension = 'jpeg';
-                break;
-            case "image/bmp":
-                $extension = 'bmp';
-                break;
-            }
+           $extension = str_ireplace('image/', '', $files['imagemBanner']['type']);
         }
         if (isset($files["thumbnail"])) {
-            switch ($files["thumbnail"]['type']) {
-            case "image/png":
-                $extensionThumb = 'png';
-                break;
-            case "image/jpg":
-                $extensionThumb = 'jpg';
-                break;
-            case "image/gif":
-                $extensionThumb = 'gif';
-                break;
-            case "image/jpeg":
-                $extensionThumb = 'jpeg';
-                break;
-            case "image/bmp":
-                $extensionThumb = 'bmp';
-                break;
-            }
+            $extensionThumb = str_ireplace('image/', '', $files['thumbnail']['type']);
         }
 
         //inclui o objeto de comunicação com a api cloudflare
-        include 'api_cloudflare.class.php';
+        include_once 'api_cloudflare.class.php';
         //da purge no cache com a cloudflare
         $api = new cloudflare_api('moises.dourado@roihero.com.br', '1404cc5e783d0287897bfb2ebf7faa9e87eb5');
         $ident = $api->identificador('roihero.com.br');
         
-        // imagem banner overlay
+        try{
+            // imagem banner overlay
         if (isset($files["imagemBanner"])) {
             //se a inteligência for loja lateral, salvar banner e thumbnail
             if ($idWid == 41) {
@@ -297,13 +266,19 @@
                 // deleta o arquivo de banner atual
                 foreach (['png','jpg','gif','jpeg','bmp'] as $ext) {
                     if (file_exists("../../widget/images/overlay/banner_overlay_$idWid.$ext")) {
-                        unlink("../../widget/images/overlay/banner_overlay_$idWid.$ext");
+                        if(!unlink("../../widget/images/overlay/banner_overlay_$idWid.$ext"))
+                        throw new \Exception("não foi possível deletar imagem ../../widget/images/overlay/banner_overlay_$idWid.$ext");
                     }
                 }
             }
-            $sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
-            $targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
-            move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+            try {
+                $sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
+                $targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
+                if(!move_uploaded_file($sourcePath, $targetPath))
+                    throw new \Exception('Não foi possível fazer o upload de imagemBanner');
+            } catch(\Exception $ex) {
+                die($ex->getMessage());
+            }
 
             $info['imagemBanner'] = $banner;
 
@@ -317,6 +292,9 @@
         // caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
         else {
             unset($camposBDWID['imagemBanner']);
+        }
+        } catch( \Exception $ex) {
+            die($ex->getMessage());
         }
         
         $query = 'SELECT WID_inteligencia FROM widget WHERE WID_id ='.$idWid.'';

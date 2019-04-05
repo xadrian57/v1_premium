@@ -73,6 +73,17 @@ class Search extends AbstractSearch {
                         if(count($this->prodsBusca) > 0)
                         {
                             // CHAMA AS INTELIGENCIAS
+                            for($i=0; $i < count($this->inteligencia); $i++)
+                            {
+                                $inteligencia = FactoryInteligencia::getInteligencia($this->inteligencia[$i], $this);
+                                if($inteligencia) {
+                                    $inteligencia->processar();
+                                }
+
+                                $this->prodsBusca[$this->inteligencia[$i]] = $this->obj;
+
+                                $this->obj = [];
+                            }
 
                             echo json_encode($this->prodsBusca);
                         }

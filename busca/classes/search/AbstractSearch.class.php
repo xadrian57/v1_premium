@@ -22,6 +22,9 @@ abstract class AbstractSearch
     protected $descBoleto;
     protected $termoSemFone;
 
+    protected $obj = [];
+    protected $utm = 'utmi_medium=roihero&utmi_content=roihero&rh_int=search';
+
     protected $prodsBusca = [];
 
     public function setParametros($arrayRequest)
@@ -58,6 +61,41 @@ abstract class AbstractSearch
         }
     }
 
+    protected function inject($arrayWidgets) {
+        $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
+    }
+
+    public function getObj() {
+        return $this->obj;
+    }
+    
+    public function setObj($obj) {
+        $this->obj = $obj;
+    }
+
+    public function getConDados() {
+        return $this->conDados;
+    }
+
+    public function getUtm() {
+        return $this->utm;
+    }
+
+    public function getNameProdSearch($index)
+    {
+        return urldecode($this->prodsBusca['search'][$index]['title']);
+    }
+
+    public function getTypeProdSearch($index)
+    {
+        return urldecode($this->prodsBusca['search'][$index]['type']);
+    }
+
+    public function getBrandProdSearch($index)
+    {
+        return urldecode($this->prodsBusca['search'][$index]['brand']);
+    }
+
     public function getSinonimo()
     {
     	$select = "SELECT tx_pesquisado, tx_retornado FROM busca WHERE id_cli = '". $this->idcli ."'";
@@ -88,6 +126,11 @@ abstract class AbstractSearch
     public function getDescBoleto()
     {
     	return $this->descBoleto;
+    }
+
+    public function getIdCli()
+    {
+        return $this->idcli;
     }
 
     public function consulta()
@@ -129,7 +172,8 @@ abstract class AbstractSearch
                 XML_sale_price, 
                 XML_link, 
                 XML_image_link, 
-                XML_type, 
+                XML_type,
+                XML_brand, 
                 XML_nparcelas, 
                 XML_vparcela, 
                 XML_click_7, 
