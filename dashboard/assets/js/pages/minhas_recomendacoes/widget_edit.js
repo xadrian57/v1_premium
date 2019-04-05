@@ -1831,10 +1831,10 @@ $(document).ready(function () {
 					}
 
 					if (!formData.get('imagemBanner'))
-						formaData.delete('imagemBanner')
+						formData.delete('imagemBanner')
 
 					if (!formData.get('thumbnail'))
-						formaData.delete('thumbnail')
+						formData.delete('thumbnail')
 
 					$.ajax({
 						type: 'POST',
