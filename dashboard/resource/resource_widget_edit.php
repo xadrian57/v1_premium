@@ -245,7 +245,8 @@
         $api = new cloudflare_api('moises.dourado@roihero.com.br', '1404cc5e783d0287897bfb2ebf7faa9e87eb5');
         $ident = $api->identificador('roihero.com.br');
         
-        // imagem banner overlay
+        try{
+            // imagem banner overlay
         if (isset($files["imagemBanner"])) {
             //se a inteligência for loja lateral, salvar banner e thumbnail
             if ($idWid == 41) {
@@ -265,7 +266,8 @@
                 // deleta o arquivo de banner atual
                 foreach (['png','jpg','gif','jpeg','bmp'] as $ext) {
                     if (file_exists("../../widget/images/overlay/banner_overlay_$idWid.$ext")) {
-                        unlink("../../widget/images/overlay/banner_overlay_$idWid.$ext");
+                        if(!unlink("../../widget/images/overlay/banner_overlay_$idWid.$ext"))
+                        throw new \Exception("não foi possível deletar imagem ../../widget/images/overlay/banner_overlay_$idWid.$ext");
                     }
                 }
             }
@@ -290,6 +292,9 @@
         // caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
         else {
             unset($camposBDWID['imagemBanner']);
+        }
+        } catch( \Exception $ex) {
+            die($ex->getMessage());
         }
         
         $query = 'SELECT WID_inteligencia FROM widget WHERE WID_id ='.$idWid.'';
