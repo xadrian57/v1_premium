@@ -233,42 +233,10 @@
 
         // verifica o tipo do arquivo
         if (isset($files["imagemBanner"])) {
-            switch ($files["imagemBanner"]['type']) {
-            case "image/png":
-                $extension = 'png';
-                break;
-            case "image/jpg":
-                $extension = 'jpg';
-                break;
-            case "image/gif":
-                $extension = 'gif';
-                break;
-            case "image/jpeg":
-                $extension = 'jpeg';
-                break;
-            case "image/bmp":
-                $extension = 'bmp';
-                break;
-            }
+           $extension = str_ireplace('image/', '', $files['imagemBanner']['type']);
         }
         if (isset($files["thumbnail"])) {
-            switch ($files["thumbnail"]['type']) {
-            case "image/png":
-                $extensionThumb = 'png';
-                break;
-            case "image/jpg":
-                $extensionThumb = 'jpg';
-                break;
-            case "image/gif":
-                $extensionThumb = 'gif';
-                break;
-            case "image/jpeg":
-                $extensionThumb = 'jpeg';
-                break;
-            case "image/bmp":
-                $extensionThumb = 'bmp';
-                break;
-            }
+            $extensionThumb = str_ireplace('image/', '', $files['thumbnail']['type']);
         }
 
         //inclui o objeto de comunicação com a api cloudflare
@@ -304,7 +272,8 @@
             try {
                 $sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
                 $targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
-                move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+                if(!move_uploaded_file($sourcePath, $targetPath))
+                    throw new \Exception('Não foi possível fazer o upload de imagemBanner');
             } catch(\Exception $ex) {
                 die($ex->getMessage());
             }
