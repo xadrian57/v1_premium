@@ -1329,7 +1329,7 @@ $(document).ready(function () {
 											if (window.template == 3 && img.width != 900 && img.height != 150) {
 												toastr['error']('As dimensões da imagem devem ser de exatamente 900px de largura por 150px de altura.');
 												$('#imagemBanner').val('');
-											} else if (img.width != 350 && img.height != 500) {
+											} else if (window.template != 3 && img.width != 350 && img.height != 500) {
 												toastr['error']('As dimensões da imagem devem ser de exatamente 350px de largura por 500px de altura.');
 												$('#imagemBanner').val('');
 											} else {
