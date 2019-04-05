@@ -272,7 +272,7 @@
         }
 
         //inclui o objeto de comunicação com a api cloudflare
-        include 'api_cloudflare.class.php';
+        include_once 'api_cloudflare.class.php';
         //da purge no cache com a cloudflare
         $api = new cloudflare_api('moises.dourado@roihero.com.br', '1404cc5e783d0287897bfb2ebf7faa9e87eb5');
         $ident = $api->identificador('roihero.com.br');
@@ -301,9 +301,13 @@
                     }
                 }
             }
-            $sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
-            $targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
-            move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+            try {
+                $sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
+                $targetPath = "../../widget/images/overlay/".$banner; // Target path where file is to be stored
+                move_uploaded_file($sourcePath, $targetPath); // Moving Uploaded file
+            } catch(\Exception $ex) {
+                die($ex->getMessage());
+            }
 
             $info['imagemBanner'] = $banner;
 
