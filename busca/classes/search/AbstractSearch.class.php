@@ -96,20 +96,20 @@ abstract class AbstractSearch
         return urldecode($this->prodsBusca['search'][$index]['brand']);
     }
 
-    public function getSinonimo()
+    public function getSinonimo($termo)
     {
     	$select = "SELECT tx_pesquisado, tx_retornado FROM busca WHERE id_cli = '". $this->idcli ."'";
 		$result = mysqli_query($this->conCad, $select);
 
 		if(mysqli_num_rows($result) > 0)
 		{
-			$arrayBusca = explode(' ', $this->termo);
+			$arrayBusca = explode(' ', $termo);
 
 			return Util::retornaSinonimo($arrayBusca, $result);
 		}
 		else
 		{
-			return $this->$termo;
+			return $termo;
 		}
     }
 

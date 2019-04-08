@@ -28,7 +28,7 @@ class Search extends AbstractSearch {
 
                 $this->idcli = $arrayCli['CLI_id'];
 
-                $this->termo = $this->getSinonimo();
+                $this->termo = $this->getSinonimo($this->termo);
 
                 $this->setDescBoleto();
 
