@@ -24,8 +24,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="562" column="66" selection-start-line="562" selection-start-column="66" selection-end-line="562" selection-end-column="66" />
+            <state relative-caret-position="455">
+              <caret line="610" column="73" lean-forward="true" selection-start-line="610" selection-start-column="73" selection-end-line="610" selection-end-column="73" />
               <folding>
                 <element signature="n#ehWidgetBasico#0;n#!!block;n#carregaWids#0;n#!!top" />
                 <element signature="n#carregaInfoWidget#0;n#!!top" />
@@ -170,12 +170,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554836350642</updated>
-      <workItem from="1554836351881" duration="4918000" />
+      <workItem from="1554836351881" duration="5044000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4918000" />
+    <option name="totallyTimeSpent" value="5044000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-2" width="1600" height="902" extended-state="6" />
@@ -228,8 +228,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="562" column="66" selection-start-line="562" selection-start-column="66" selection-end-line="562" selection-end-column="66" />
+        <state relative-caret-position="455">
+          <caret line="610" column="73" lean-forward="true" selection-start-line="610" selection-start-column="73" selection-end-line="610" selection-end-column="73" />
           <folding>
             <element signature="n#ehWidgetBasico#0;n#!!block;n#carregaWids#0;n#!!top" />
             <element signature="n#carregaInfoWidget#0;n#!!top" />

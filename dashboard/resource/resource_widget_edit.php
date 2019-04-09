@@ -560,8 +560,7 @@ function atualizaFormatoAutocomplete($conCad, $idCli, $formato)
         if (!in_array($formato, [1, 2]))
             throw new \Exception("Formato deve ser 1 ou 2");
 
-        $query = 'UPDATE CONFIG SET CONF_autocomplete_formato = ' . $formato . ' where CONF_id_cli = ' . $idCli;
-        mysqli_query($conCad, $query);
+        mysqli_query($conCad, ' UPDATE config SET CONF_autocomplete_formato = ' . $formato . ' where CONF_id_cli = ' . $idCli);
 
         $error = mysqli_error($conCad);
         if ($error) throw new \Exception($error);
@@ -610,6 +609,7 @@ switch ($operacao) {
         break;
     case '9':
         $formato = mysqli_real_escape_string($conCad, $_POST['formato']);
+        $idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
         atualizaFormatoAutocomplete($conCad, $idCli, $formato);
         break;
     default:
