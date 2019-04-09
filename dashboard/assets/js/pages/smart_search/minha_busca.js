@@ -29,8 +29,7 @@ $( document ).ready( function ()
       if ( window.buscaTipo == 1 )
         document.querySelector( '#cardAutocomplete' ).remove() // é BUSCA esconde o outro
       else if ( window.buscaTipo == 2 ) {
-        var $autocompleteFormato = $( '#autocompleteFormato' )[ 0 ]
-        if ( $autocompleteFormato ) $autocompleteFormato.val( parseInt( window.autocompleteFormato ) )
+        $( '#autocompleteFormato' ).val( parseInt( window.autocompleteFormato ) )
 
         document.querySelector( '#cardBusca' ).remove() // é AUTOCOMPLETE esconde o outro
       }
