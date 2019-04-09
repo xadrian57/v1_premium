@@ -607,7 +607,7 @@ switch ($operacao) {
         break;
     case '9':
         $formato = mysqli_real_escape_string($conCad, $_POST['formato']);
-        atualizaFormatoAutocomplete($conCad, $idCli);
+        atualizaFormatoAutocomplete($conCad, $idCli, $formato);
         break;
     default:
         break;
