@@ -1,271 +1,325 @@
 'use strict'
-$(document).ready(function () {
-	var widgets = {
-		init: function () {
-			$.ajax({
-				type: 'POST',
-				url: 'resource/resource_widget_edit.php',
-				data: { 'idCli': idCli, 'op': 1 },
-				success: function (result) {
-					//console.log(result);
-					var widgetInfo = JSON.parse(result);
+$( document ).ready( function ()
+{
+  var widgets = {
+    init: function ()
+    {
+      $.ajax( {
+        type: 'POST',
+        url: 'resource/resource_widget_edit.php',
+        data: { 'idCli': idCli, 'op': 1 },
+        success: function ( result )
+        {
+          //console.log(result);
+          var widgetInfo = JSON.parse( result )
 
-					window.__busca = widgetInfo.widgetsBusca;
+          window.__busca             = widgetInfo.widgetsBusca
+          window.buscaTipo           = widgetInfo.buscaTipo
+          window.autocompleteFormato = widgetInfo.autocompleteFormato
 
-					// INICIA AS FUNÇÕES PRINCIPAIS
-					widgets.loadSearch();
-				}
-			});
-		},
+          // INICIA AS FUNÇÕES PRINCIPAIS
+          widgets.loadSearch()
+        }
+      } )
+    },
 
-		loadSearch: function () {
-			var $widgetsBusca = document.getElementById('widgetsBusca');
-			var $widId = document.querySelector('.wid_id')
+    loadSearch: function ()
+    {
+      var $widgetsBusca = document.getElementById( 'widgetsBusca' )
 
-			var wid = __busca[0]
+      if ( window.buscaTipo == 1 )
+        document.querySelector( '#cardAutocomplete' ).remove() // é BUSCA esconde o outro
+      else if ( window.buscaTipo == 2 ) {
+        var $autocompleteFormato = document.getElementById( 'autocompleteFormato' )
+        if ( $autocompleteFormato ) $autocompleteFormato.value = window.autocompleteFormato
 
-			$widId.innerHTML = wid.id
-		},
-	}
+        document.querySelector( '#cardBusca' ).remove() // é AUTOCOMPLETE esconde o outro
+      }
 
-	$('.btn-configura-busca').click(function () {
-		var id = document.querySelector('.wid_id').innerHTML;
+      var $widId = document.querySelector( '.wid_id' )
 
-		$.ajax({
-			type: 'POST',
-			url: 'resource/resource_widget_edit.php',
-			data: { 'idCli': idCli, 'op': 6, idWid: id },
-			success: function (result) {
-				var dados = JSON.parse(result);
+      var wid = __busca[ 0 ]
 
-				// carrega sinonimos
-				searchbarCfg.loadSynonyms(dados.synonyms);
+      $widId.innerHTML = wid.id
+    },
 
-				$('#modalConfiguraBusca').modal('show');
-			}
-		});
-	});
+    saveFormat: function ()
+    {
+      //salvar formato de autocomplete
+      var $autocompleteFormato = document.getElementById( 'autocompleteFormato' )
+      $.ajax( {
+        type: 'POST',
+        url: 'resource/resource_widget_edit.php',
+        data: { 'idCli': idCli, 'op': 9, formato: $autocompleteFormato.value },
+        success: function ( result )
+        {
+          toastr[ 'success' ]( 'As configurações do seu autocomplete foram atualizadas!' )
+        }
+      } )
+    }
+  }
 
-	// modal configuracao busca
-	var searchbarCfg = {
-		getSyns: function () {
-			var synonyms = [];
-			var qtd = $('#tableSyn .word').length;
-			for (let i = 0; i < qtd; i++) {
-				var word = $('#tableSyn .word')[i];
-				var syn = $('#tableSyn .syn')[i];
+  $( '.btn-configura-busca' ).click( function ()
+  {
+    var id = document.querySelector( '.wid_id' ).innerHTML
 
-				synonyms.push({
-					'word': word,
-					'synonym': syn
-				});
-			}
+    $.ajax( {
+      type: 'POST',
+      url: 'resource/resource_widget_edit.php',
+      data: { 'idCli': idCli, 'op': 6, idWid: id },
+      success: function ( result )
+      {
+        var dados = JSON.parse( result )
 
-			return synonyms;
-		},
+        // carrega sinonimos
+        searchbarCfg.loadSynonyms( dados.synonyms )
 
-		bindListeners: function () {
-			// botao editar
-			$('.btn-edit-syn').off('click');
-			$('.btn-edit-syn').click(function () {
-				var word = $(this).parent().parent().find('.sb-word').html();
-				var syn = $(this).parent().parent().find('.sb-syn').html();
+        $( '#modalConfiguraBusca' ).modal( 'show' )
+      }
+    } )
+  } )
 
-				// exclui a linha
-				$(this).parent().parent().remove();
+  $( '.btn-configura-autocomplete' ).click( function ()
+  {
+    widgets.saveFormat()
+  } )
 
-				$('#cfgSbWord').val(word);
-				$('#cfgSbSyn').val(syn);
-				$('#btnAddSyn').removeAttr('disabled');
-			});
+  // modal configuracao busca
+  var searchbarCfg = {
+    getSyns: function ()
+    {
+      var synonyms = []
+      var qtd      = $( '#tableSyn .word' ).length
+      for ( let i = 0; i < qtd; i++ ) {
+        var word = $( '#tableSyn .word' )[ i ]
+        var syn  = $( '#tableSyn .syn' )[ i ]
 
-			// botão remover
-			$('.btn-remove-syn').off('click');
-			$('.btn-remove-syn').click(function () {
-				// exclui a linha
-				$(this).parent().parent().remove();
-			});
+        synonyms.push( {
+          'word': word,
+          'synonym': syn
+        } )
+      }
 
-			// campos
-			$('#cfgSbWord').off('keyup');
-			$('#cfgSbWord').off('keydown');
-			$('#cfgSbSyn').off('keyup');
-			$('#cfgSbSyn').off('keydown');
+      return synonyms
+    },
 
-			$('#cfgSbWord').keyup(function () {
-				if ($('#cfgSbWord').val().trim() != '' && $('#cfgSbSyn').val().trim() != '') {
-					$('#btnAddSyn').removeAttr('disabled');
-				} else {
-					$('#btnAddSyn').attr('disabled', 'true');
-				}
-			});
+    bindListeners: function ()
+    {
+      // botao editar
+      $( '.btn-edit-syn' ).off( 'click' )
+      $( '.btn-edit-syn' ).click( function ()
+      {
+        var word = $( this ).parent().parent().find( '.sb-word' ).html()
+        var syn  = $( this ).parent().parent().find( '.sb-syn' ).html()
 
-			$('#cfgSbSyn').keyup(function () {
-				if ($('#cfgSbWord').val().trim() != '' && $('#cfgSbSyn').val().trim() != '') {
-					$('#btnAddSyn').removeAttr('disabled');
-				} else {
-					$('#btnAddSyn').attr('disabled', 'true');
-				}
-			});
+        // exclui a linha
+        $( this ).parent().parent().remove()
 
-			$('#cfgSbSyn').keydown(function (e) {
-				if (e.key == 'Enter') {
-					$('#btnAddSyn').click();
-				}
-			});
-			$('#cfgSbWord').keydown(function (e) {
-				if (e.key == 'Enter') {
-					$('#btnAddSyn').click();
-				}
-			});
+        $( '#cfgSbWord' ).val( word )
+        $( '#cfgSbSyn' ).val( syn )
+        $( '#btnAddSyn' ).removeAttr( 'disabled' )
+      } )
 
-			// botao adicionar
-			$('#btnAddSyn').off('click');
-			$('#btnAddSyn').click(function () {
-				var w = searchbarCfg.getValues(); // pega os valores para checar se ja estao cadastrados
-				var words = [];
-				for (var i = 0; i < w.length; i++) {
-					words.push(w[i].word);
-				}
+      // botão remover
+      $( '.btn-remove-syn' ).off( 'click' )
+      $( '.btn-remove-syn' ).click( function ()
+      {
+        // exclui a linha
+        $( this ).parent().parent().remove()
+      } )
 
-				// checa se uma das palavras está vazia
-				if ($('#cfgSbWord').val().trim() == '' || $('#cfgSbSyn').val().trim() == '') {
-					// só exibe o alerta se ja n estiver exibindo
-					if ($('#msgSearchBarCfg').length == 0) {
-						$('#searchbarCfgMsgs').html(
-							'<div id="msgSearchBarCfg" class="alert alert-danger alert-dismissible fade in mb-2" role="alert">' +
-							'<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-							'<span aria-hidden="true">×</span>' +
-							'</button>' +
-							'Você deve cadastrar a <strong>palavra</strong> e o <strong>sinônimo</strong> antes de clicar em adicionar.' +
-							'</div>'
-						);
+      // campos
+      $( '#cfgSbWord' ).off( 'keyup' )
+      $( '#cfgSbWord' ).off( 'keydown' )
+      $( '#cfgSbSyn' ).off( 'keyup' )
+      $( '#cfgSbSyn' ).off( 'keydown' )
 
-						setTimeout(function () {
-							$('#msgSearchBarCfg').alert('close');
-							window['isAboutToClose'] = false;
-						}, 3000);
-					}
-					return false;
-				}
-				// checa se a palavra já esta cadastrada
-				else if (words.includes($('#cfgSbWord').val().trim().toLocaleLowerCase())) {
-					// só exibe o alerta se ja n estiver exibindo
-					if ($('#msgSearchBarCfg').length == 0) {
-						$('#searchbarCfgMsgs').html(
-							'<div id="msgSearchBarCfg" class="alert alert-danger alert-dismissible fade in mb-2" role="alert">' +
-							'<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
-							'<span aria-hidden="true">×</span>' +
-							'</button>' +
-							'A <strong>palavra</strong> que você está tentando cadastrar já foi cadastrada.' +
-							'</div>'
-						);
+      $( '#cfgSbWord' ).keyup( function ()
+      {
+        if ( $( '#cfgSbWord' ).val().trim() != '' && $( '#cfgSbSyn' ).val().trim() != '' ) {
+          $( '#btnAddSyn' ).removeAttr( 'disabled' )
+        } else {
+          $( '#btnAddSyn' ).attr( 'disabled', 'true' )
+        }
+      } )
 
-						setTimeout(function () {
-							$('#msgSearchBarCfg').alert('close');
-							window['isAboutToClose'] = false;
-						}, 3000);
-					}
-					return false;
-				}
+      $( '#cfgSbSyn' ).keyup( function ()
+      {
+        if ( $( '#cfgSbWord' ).val().trim() != '' && $( '#cfgSbSyn' ).val().trim() != '' ) {
+          $( '#btnAddSyn' ).removeAttr( 'disabled' )
+        } else {
+          $( '#btnAddSyn' ).attr( 'disabled', 'true' )
+        }
+      } )
 
-				var html =
-					'<tr>' +
-					'<td class="sb-word">' + $('#cfgSbWord').val().toLocaleLowerCase() + '</td>' +
-					'<td class="sb-syn">' + $('#cfgSbSyn').val().toLocaleLowerCase() + '</td>' +
-					'<td class="text-xs-center">' +
-					'<button class="btn btn-sm btn-info white btn-edit-syn"><i class="fa fa-pencil"></i></button>' +
-					'</td>' +
-					'<td class="text-xs-center">' +
-					'<button class="btn btn-sm btn-danger white btn-remove-syn"><i class="fa fa-trash"></i></button>' +
-					'</td>' +
-					'</tr>';
+      $( '#cfgSbSyn' ).keydown( function ( e )
+      {
+        if ( e.key == 'Enter' ) {
+          $( '#btnAddSyn' ).click()
+        }
+      } )
+      $( '#cfgSbWord' ).keydown( function ( e )
+      {
+        if ( e.key == 'Enter' ) {
+          $( '#btnAddSyn' ).click()
+        }
+      } )
 
-				// limpa campos
-				$('#cfgSbWord').val('');
-				$('#cfgSbSyn').val('');
+      // botao adicionar
+      $( '#btnAddSyn' ).off( 'click' )
+      $( '#btnAddSyn' ).click( function ()
+      {
+        var w     = searchbarCfg.getValues() // pega os valores para checar se ja estao cadastrados
+        var words = []
+        for ( var i = 0; i < w.length; i++ ) {
+          words.push( w[ i ].word )
+        }
 
-				// foca no primeiro campo
-				$('#cfgSbWord').focus();
+        // checa se uma das palavras está vazia
+        if ( $( '#cfgSbWord' ).val().trim() == '' || $( '#cfgSbSyn' ).val().trim() == '' ) {
+          // só exibe o alerta se ja n estiver exibindo
+          if ( $( '#msgSearchBarCfg' ).length == 0 ) {
+            $( '#searchbarCfgMsgs' ).html(
+              '<div id="msgSearchBarCfg" class="alert alert-danger alert-dismissible fade in mb-2" role="alert">' +
+              '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+              '<span aria-hidden="true">×</span>' +
+              '</button>' +
+              'Você deve cadastrar a <strong>palavra</strong> e o <strong>sinônimo</strong> antes de clicar em adicionar.' +
+              '</div>'
+            )
 
-				// atualiza valores
-				$('#tableSyn tbody').html(
-					$('#tableSyn tbody').html() + html
-				);
+            setTimeout( function ()
+            {
+              $( '#msgSearchBarCfg' ).alert( 'close' )
+              window[ 'isAboutToClose' ] = false
+            }, 3000 )
+          }
+          return false
+        }
+        // checa se a palavra já esta cadastrada
+        else if ( words.includes( $( '#cfgSbWord' ).val().trim().toLocaleLowerCase() ) ) {
+          // só exibe o alerta se ja n estiver exibindo
+          if ( $( '#msgSearchBarCfg' ).length == 0 ) {
+            $( '#searchbarCfgMsgs' ).html(
+              '<div id="msgSearchBarCfg" class="alert alert-danger alert-dismissible fade in mb-2" role="alert">' +
+              '<button type="button" class="close" data-dismiss="alert" aria-label="Close">' +
+              '<span aria-hidden="true">×</span>' +
+              '</button>' +
+              'A <strong>palavra</strong> que você está tentando cadastrar já foi cadastrada.' +
+              '</div>'
+            )
 
-				// desabilita botao adicionar
-				$('#btnAddSyn').attr('disabled', 'true');
+            setTimeout( function ()
+            {
+              $( '#msgSearchBarCfg' ).alert( 'close' )
+              window[ 'isAboutToClose' ] = false
+            }, 3000 )
+          }
+          return false
+        }
 
-				// Adiciona os listeners novamente
-				searchbarCfg.bindListeners();
-			});
-		},
+        var html =
+              '<tr>' +
+              '<td class="sb-word">' + $( '#cfgSbWord' ).val().toLocaleLowerCase() + '</td>' +
+              '<td class="sb-syn">' + $( '#cfgSbSyn' ).val().toLocaleLowerCase() + '</td>' +
+              '<td class="text-xs-center">' +
+              '<button class="btn btn-sm btn-info white btn-edit-syn"><i class="fa fa-pencil"></i></button>' +
+              '</td>' +
+              '<td class="text-xs-center">' +
+              '<button class="btn btn-sm btn-danger white btn-remove-syn"><i class="fa fa-trash"></i></button>' +
+              '</td>' +
+              '</tr>'
 
-		init: function () {
-			this.bindListeners();
-		},
+        // limpa campos
+        $( '#cfgSbWord' ).val( '' )
+        $( '#cfgSbSyn' ).val( '' )
 
-		getValues: function () {
-			var data = [];
+        // foca no primeiro campo
+        $( '#cfgSbWord' ).focus()
 
-			// sinonimos
-			var syn = $('#tableSyn tbody .sb-syn');
-			var word = $('#tableSyn tbody .sb-word');
-			data.synonyms = [];
+        // atualiza valores
+        $( '#tableSyn tbody' ).html(
+          $( '#tableSyn tbody' ).html() + html
+        )
 
-			for (var i = 0; i < syn.length; i++) {
-				data.push({
-					'word': $(word)[i].innerHTML,
-					'syn': $(syn)[i].innerHTML,
-				});
-			}
+        // desabilita botao adicionar
+        $( '#btnAddSyn' ).attr( 'disabled', 'true' )
 
-			return data;
-		},
+        // Adiciona os listeners novamente
+        searchbarCfg.bindListeners()
+      } )
+    },
 
-		loadSynonyms: function (syn) {
-			var html = '';
-			// sinonimos
-			for (var i = 0; i < syn.length; i++) {
-				html +=
-					'<tr>' +
-					'<td class="sb-word">' + syn[i].word + '</td>' +
-					'<td class="sb-syn">' + syn[i].syn + '</td>' +
-					'<td class="text-xs-center">' +
-					'<button class="btn btn-sm btn-info white btn-edit-syn"><i class="fa fa-pencil"></i></button>' +
-					'</td>' +
-					'<td class="text-xs-center">' +
-					'<button class="btn btn-sm btn-danger white btn-remove-syn"><i class="fa fa-trash"></i></button>' +
-					'</td>' +
-					'</tr>';
-			}
-			$('#tableSyn tbody').html(html);
-			searchbarCfg.bindListeners();
-		}
-	};
+    init: function ()
+    {
+      this.bindListeners()
+    },
 
-	// BOTAO SALVAR
-	$('#btn-salva-busca').click(function () {
-		var id = document.querySelector('.wid_id').innerHTML;
+    getValues: function ()
+    {
+      var data = []
 
-		var data = {};
+      // sinonimos
+      var syn       = $( '#tableSyn tbody .sb-syn' )
+      var word      = $( '#tableSyn tbody .sb-word' )
+      data.synonyms = []
 
-		data.synonyms = searchbarCfg.getValues();
+      for ( var i = 0; i < syn.length; i++ ) {
+        data.push( {
+          'word': $( word )[ i ].innerHTML,
+          'syn': $( syn )[ i ].innerHTML,
+        } )
+      }
 
-		data = JSON.stringify(data);
+      return data
+    },
 
-		$.ajax({
-			'type': 'post',
-			'url': 'resource/resource_widget_edit.php',
-			'data': { 'idCli': idCli, 'op': 7, 'idWid': id, data },
-			'success': function (response) {
-				$('#modalConfiguraBusca').modal('hide');
-				toastr['success']('As configurações da sua barra foram atualizadas!');
-			}
-		});
-	});
+    loadSynonyms: function ( syn )
+    {
+      var html = ''
+      // sinonimos
+      for ( var i = 0; i < syn.length; i++ ) {
+        html +=
+          '<tr>' +
+          '<td class="sb-word">' + syn[ i ].word + '</td>' +
+          '<td class="sb-syn">' + syn[ i ].syn + '</td>' +
+          '<td class="text-xs-center">' +
+          '<button class="btn btn-sm btn-info white btn-edit-syn"><i class="fa fa-pencil"></i></button>' +
+          '</td>' +
+          '<td class="text-xs-center">' +
+          '<button class="btn btn-sm btn-danger white btn-remove-syn"><i class="fa fa-trash"></i></button>' +
+          '</td>' +
+          '</tr>'
+      }
+      $( '#tableSyn tbody' ).html( html )
+      searchbarCfg.bindListeners()
+    }
+  }
 
-	searchbarCfg.init();
-	widgets.init()
+  // BOTAO SALVAR
+  $( '#btn-salva-busca' ).click( function ()
+  {
+    var id = document.querySelector( '.wid_id' ).innerHTML
 
-})
+    var data = {}
+
+    data.synonyms = searchbarCfg.getValues()
+
+    data = JSON.stringify( data )
+
+    $.ajax( {
+      'type': 'post',
+      'url': 'resource/resource_widget_edit.php',
+      'data': { 'idCli': idCli, 'op': 7, 'idWid': id, data },
+      'success': function ( response )
+      {
+        $( '#modalConfiguraBusca' ).modal( 'hide' )
+        toastr[ 'success' ]( 'As configurações da sua barra foram atualizadas!' )
+      }
+    } )
+  } )
+
+  searchbarCfg.init()
+  widgets.init()
+
+} )
