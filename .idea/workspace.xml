@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ebc6e84-d578-4f27-a1f9-0bc4dba12ae9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,30 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="308" column="13" lean-forward="true" selection-start-line="308" selection-start-column="13" selection-end-line="308" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="609" column="61" selection-start-line="609" selection-start-column="61" selection-end-line="609" selection-end-column="61" />
-              <folding>
-                <element signature="n#ehWidgetBasico#0;n#!!block;n#carregaWids#0;n#!!top" />
-                <element signature="n#carregaInfoWidget#0;n#!!top" />
-                <element signature="n#atualizaWidget#0;n#!!top" />
-                <element signature="n#carregaInfoBusca#0;n#!!top" />
-                <element signature="n#atualizaInfoBusca#0;n#!!top" />
-                <element signature="n#duplicaWid#0;n#!!top" />
-                <element signature="n#toggleWidget#0;n#!!top" />
-                <element signature="n#deleteWidget#0;n#!!top" />
-              </folding>
+            <state relative-caret-position="294">
+              <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -54,8 +35,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/dashboard/content/content_minha_busca.html" />
-        <option value="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" />
         <option value="$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php" />
+        <option value="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" />
       </list>
     </option>
   </component>
@@ -171,12 +152,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554836350642</updated>
-      <workItem from="1554836351881" duration="3905000" />
+      <workItem from="1554836351881" duration="4035000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3905000" />
+    <option name="totallyTimeSpent" value="4035000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-2" width="1600" height="902" extended-state="6" />
@@ -220,17 +201,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="308" column="13" lean-forward="true" selection-start-line="308" selection-start-column="13" selection-end-line="308" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="609" column="61" selection-start-line="609" selection-start-column="61" selection-end-line="609" selection-end-column="61" />
+        <state relative-caret-position="455">
+          <caret line="608" column="73" lean-forward="true" selection-start-line="608" selection-start-column="73" selection-end-line="608" selection-end-column="73" />
           <folding>
             <element signature="n#ehWidgetBasico#0;n#!!block;n#carregaWids#0;n#!!top" />
             <element signature="n#carregaInfoWidget#0;n#!!top" />
@@ -241,6 +215,13 @@
             <element signature="n#toggleWidget#0;n#!!top" />
             <element signature="n#deleteWidget#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="32" column="56" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
         </state>
       </provider>
     </entry>
