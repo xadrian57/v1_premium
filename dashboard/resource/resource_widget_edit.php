@@ -558,10 +558,13 @@ function atualizaFormatoAutocomplete($conCad, $idCli, $formato)
 
     try {
         if (!in_array($formato, [1, 2]))
-            throw new Exception("Formato deve ser 1 ou 2");
+            throw new \Exception("Formato deve ser 1 ou 2");
 
         $query = "UPDATE CONFIG SET CONF_autocomplete_formato = $formato where CONF_id_cli = $idCli";
         mysqli_query($conCad, $query);
+
+        $error = mysqli_error($conCad);
+        if ($error) throw new \Exception($error);
     } catch (\Exception $ex) {
         die($ex->getMessage());
     }
