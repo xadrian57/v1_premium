@@ -30,7 +30,7 @@ $( document ).ready( function ()
         document.querySelector( '#cardAutocomplete' ).remove() // é BUSCA esconde o outro
       else if ( window.buscaTipo == 2 ) {
         var $autocompleteFormato = $( '#autocompleteFormato' )
-        if ( $autocompleteFormato ) $autocompleteFormato.val( window.autocompleteFormato )
+        if ( $autocompleteFormato ) $autocompleteFormato.val( parseInt( window.autocompleteFormato ) )
 
         document.querySelector( '#cardBusca' ).remove() // é AUTOCOMPLETE esconde o outro
       }
