@@ -25,8 +25,7 @@ $( document ).ready( function ()
 
     loadSearch: function ()
     {
-      var $widgetsBusca = document.getElementById( 'widgetsBusca' )
-
+      $( '#buscaContent' ).show()
       if ( window.buscaTipo == 1 )
         document.querySelector( '#cardAutocomplete' ).remove() // é BUSCA esconde o outro
       else if ( window.buscaTipo == 2 ) {

@@ -93,7 +93,7 @@ function carregaWids($conCad)
         'template' => $r['CONF_template_overlay'],
         'busca_be' => $r['CONF_busca_be'],
         'buscaTipo' => $r['CONF_busca_tipo'],
-        'autocompleteFormat' => $r['CONF_autocomplete_formato']
+        'autocompleteFormato' => $r['CONF_autocomplete_formato']
     );
 
     echo json_encode($widgets);
