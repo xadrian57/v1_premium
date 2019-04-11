@@ -42,7 +42,7 @@
 
 					$posts[] = getHTML($idcli, $conCad);
 					
-					$posts[] = getCfg($id, $conCad);
+					$posts[] = getCfg($idcli, $conCad);
 	        		
 	        		echo $json_data = json_encode($posts);
 		        }
@@ -190,10 +190,7 @@
 
 		if ($query) {
 			$formato = mysqli_fetch_assoc($query)['CONF_autocomplete_formato'];
-		} else {
-			echo $select;
 		}
-
 		$cfg = array(
 			'formatoAutoComplete' => $formato
 		);
