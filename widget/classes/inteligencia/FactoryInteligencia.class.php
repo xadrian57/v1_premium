@@ -209,7 +209,7 @@ class FactoryInteligencia {
 
             case self::REC_CART_ONSITE:
                 
-                //$inteligencia = new LojaLateralInteligencia();
+                $inteligencia = new RecCartOnSiteInteligencia();
                 break;
                      
         }
