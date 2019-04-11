@@ -1289,7 +1289,7 @@ $(document).ready(function () {
 									
 									$tituloWidget.hide()
 									$subtituloWidget.hide()
-									$('#container-configuracoes').html('')
+									$('#widedit-opcoes-adicionais').html('')
 									
 									
 									break;
