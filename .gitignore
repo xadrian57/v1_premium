@@ -8,6 +8,7 @@ widget/images/**/*
 searchbar/templates/**/* 
 busca/templates/**/*
 busca/js/searchbar/searchbar.min.js
+busca/js/autocomplete/autocomplete.min.js
 error_log
 .buildpath
 .project
