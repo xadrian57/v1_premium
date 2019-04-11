@@ -40,7 +40,9 @@
 
 		        	$posts[] = termosWid($idwid, $conCad);
 
-		        	$posts[] = getHTML($idcli_cryp);	        		
+					$posts[] = getHTML($idcli);
+					
+					$posts[] = getCfg($id);
 	        		
 	        		echo $json_data = json_encode($posts);
 		        }
@@ -161,9 +163,40 @@
 
 	function getHTML($id)
 	{
-		$html = file_get_contents("templates/search_".$id."/searchbar/searchbar.html");
+		$idHash = SHA1($id);
+		$html = '';
+
+		// 1 = busca, 2 = autocomplete
+		$select = `SELECT CONF_busca_tipo from config WHERE CONF_id_cli = $id`;
+		$query = mysqli_query($conCad, $select);
+
+		if ($query) {
+			$tipo = mysqli_fetch_assoc($query)['CONF_busca_tipo'];
+
+			if ($tipo == 1) {
+				$html = file_get_contents("templates/search_".$idHash."/searchbar/searchbar.html");
+			} else {
+				$html = file_get_contents("templates/search_".$idHash."/autocomplete/autocomplete.html");
+			}
+		}		
             
         return array('html' => $html);
+	}
+
+	function getCfg($id) {
+		$select = `SELECT CONF_autocomplete_formato from config WHERE CONF_id_cli = $id`;
+		$query = mysqli_query($conCad, $select);
+		$formato = 1;
+
+		if ($query) {
+			$formato = mysqli_fetch_assoc($query)['CONF_autocomplete_formato'];
+		}
+
+		$cfg = array(
+			'formatoAutoComplete' => $formato
+		);
+
+		return $cfg;
 	}
 
 ?>
