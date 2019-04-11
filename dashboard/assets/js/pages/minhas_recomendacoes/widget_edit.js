@@ -1289,7 +1289,7 @@ $(document).ready(function () {
 									
 									$tituloWidget.hide()
 									$subtituloWidget.hide()
-									$('#widedit-opcoes-adicionais').html('')
+									$('#widedit-opcoes-adicionais').html('<style> #excessoesPaginas { display: none; } </style>')
 									
 									
 									break;
@@ -1546,7 +1546,7 @@ $(document).ready(function () {
 
 							$('#container-configuracoes').html(
 								containerID +
-								'<div class="row">' +
+								'<div class="row" id="excessoesPaginas">' +
 								'<div class="col-md-6">' +
 								'<div class="form-group exceptions">' +
 								'<label>Excessões de páginas</label>' +
