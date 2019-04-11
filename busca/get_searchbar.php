@@ -167,7 +167,7 @@
 		$html = '';
 
 		// 1 = busca, 2 = autocomplete
-		$select = `SELECT CONF_busca_tipo from config WHERE CONF_id_cli = $id`;
+		$select = 'SELECT CONF_busca_tipo from config WHERE CONF_id_cli = '.$id;
 		$query = mysqli_query($conCad, $select);
 
 		if ($query) {
