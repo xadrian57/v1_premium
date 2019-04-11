@@ -40,9 +40,9 @@
 
 		        	$posts[] = termosWid($idwid, $conCad);
 
-					$posts[] = getHTML($idcli);
+					$posts[] = getHTML($idcli, $conCad);
 					
-					$posts[] = getCfg($id);
+					$posts[] = getCfg($id, $conCad);
 	        		
 	        		echo $json_data = json_encode($posts);
 		        }
@@ -161,7 +161,7 @@
         }
 	}
 
-	function getHTML($id)
+	function getHTML($id, $conCad)
 	{
 		$idHash = SHA1($id);
 		$html = '';
@@ -183,7 +183,7 @@
         return array('html' => $html);
 	}
 
-	function getCfg($id) {
+	function getCfg($id, $conCad) {
 		$select = 'SELECT CONF_autocomplete_formato from config WHERE CONF_id_cli = '.$id;
 		$query = mysqli_query($conCad, $select);
 		$formato = 1;
