@@ -1512,7 +1512,7 @@ $(document).ready(function () {
 								&& widget.WID_formato != 6 
 								&& widget.WID_formato != 5 
 								&& widget.WID_inteligencia != 41
-								&& widget.WID_inteligencia != 44
+								&& widget.WID_inteligencia != 43
 							) 
 								{ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
 								containerID +=
