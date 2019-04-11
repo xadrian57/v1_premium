@@ -399,11 +399,9 @@ $(document).ready(function () {
 
 							//esconder campos de acordo com a inteligência
 							let $tituloWidget = $('#tituloWidget').parent().parent()
-							let $pagesCfg = $('#container-configuracoes');
 							let $subtituloWidget = $('#inputSubtitulo')
 							$tituloWidget.show()
 							$tituloWidget.show()
-							$pagesCfg.show()
 							switch (widget.WID_inteligencia) {
 								case '7': // Collection
 									camposAdicionais.innerHTML +=
@@ -1289,9 +1287,9 @@ $(document).ready(function () {
 
 								case '43':
 									
-									$pagesCfg.hide()
 									$tituloWidget.hide()
 									$subtituloWidget.hide()
+									$('#container-configuracoes').html('')
 									
 									
 									break;
