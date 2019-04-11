@@ -1507,7 +1507,14 @@ $(document).ready(function () {
 
 
 
-							if (widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5 && widget.WID_inteligencia != 41) { //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
+							if (widget.WID_inteligencia != 35 
+								&& widget.WID_inteligencia != 8 
+								&& widget.WID_formato != 6 
+								&& widget.WID_formato != 5 
+								&& widget.WID_inteligencia != 41
+								&& widget.WID_inteligencia != 44
+							) 
+								{ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
 								containerID +=
 									//1 - Prateleira ;    2 - Dupla   ; 3 - Carrossel;      11 - Totem;     8 - Vitrine
 									'<div class="form-group">' +
