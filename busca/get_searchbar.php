@@ -184,10 +184,7 @@
 	}
 
 	function getCfg($id) {
-		$select = `SELECT CONF_autocomplete_formato from config WHERE CONF_id_cli = $id`;
-
-		echo $select;
-
+		$select = 'SELECT CONF_autocomplete_formato from config WHERE CONF_id_cli = '.$id;
 		$query = mysqli_query($conCad, $select);
 		$formato = 1;
 
