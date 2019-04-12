@@ -208,6 +208,7 @@ class Util {
         $subTitulo = $arrayWidgets['WID_sub_titulo'];
         $numProd = $arrayWidgets['WID_num_prod'];
         $idWid = $arrayWidgets['WID_id'];
+        $cupom = $arrayWidgets['WID_cupom'];
 
         // caso seja um compre junto 3, chama a função especifica
         if($formato == 12)
@@ -216,7 +217,7 @@ class Util {
             return $response;
         }
         
-        if(!empty($obj[0]['link']))
+        if(!empty($obj[0]['link']) || $formato == 44)
         {
             $sumValue = 0.00;
             $sumValueDe = 0.00;
@@ -259,6 +260,7 @@ class Util {
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
+            $html = str_replace('{RCO_CUPOM_IMG}', 'https://roihero.com.br/widget/images/overlay/' . $cupom, $html);
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 
