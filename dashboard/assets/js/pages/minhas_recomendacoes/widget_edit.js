@@ -368,7 +368,8 @@ $(document).ready(function () {
 								38: "Mais Desejados da Marca",
 								39: "Similares por Parâmetros",
 								40: "Lançamentos da Marca",
-								41: "Loja Lateral"
+								41: "Loja Lateral",
+								43: "Scroll Checkout"
 							};
 
 							//document.getElementById("titulo-modal-edit").innerHTML='<i class="ft ft-edit"></i>&nbsp;&nbsp;Editar Bloco \'' + intels[widget.WID_inteligencia] + '\'';
@@ -399,6 +400,7 @@ $(document).ready(function () {
 							//esconder campos de acordo com a inteligência
 							let $tituloWidget = $('#tituloWidget').parent().parent()
 							let $subtituloWidget = $('#inputSubtitulo')
+							$tituloWidget.show()
 							$tituloWidget.show()
 							switch (widget.WID_inteligencia) {
 								case '7': // Collection
@@ -1283,6 +1285,15 @@ $(document).ready(function () {
 									}
 									break;
 
+								case '43':
+									
+									$tituloWidget.hide()
+									$subtituloWidget.hide()
+									$('#widedit-opcoes-adicionais').html('<style> #excessoesPaginas { display: none; } </style>')
+									
+									
+									break;
+
 								default:
 									camposAdicionais.innerHTML = '';
 									break;
@@ -1496,7 +1507,14 @@ $(document).ready(function () {
 
 
 
-							if (widget.WID_inteligencia != 35 && widget.WID_inteligencia != 8 && widget.WID_formato != 6 && widget.WID_formato != 5 && widget.WID_inteligencia != 41) { //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
+							if (widget.WID_inteligencia != 35 
+								&& widget.WID_inteligencia != 8 
+								&& widget.WID_formato != 6 
+								&& widget.WID_formato != 5 
+								&& widget.WID_inteligencia != 41
+								&& widget.WID_inteligencia != 43
+							) 
+								{ //diferente de remarketing navegação, compre junto (eles têm formato único), oferta limitada e overlay de saída
 								containerID +=
 									//1 - Prateleira ;    2 - Dupla   ; 3 - Carrossel;      11 - Totem;     8 - Vitrine
 									'<div class="form-group">' +
@@ -1528,7 +1546,7 @@ $(document).ready(function () {
 
 							$('#container-configuracoes').html(
 								containerID +
-								'<div class="row">' +
+								'<div class="row" id="excessoesPaginas">' +
 								'<div class="col-md-6">' +
 								'<div class="form-group exceptions">' +
 								'<label>Excessões de páginas</label>' +
