@@ -78,7 +78,7 @@ if($_SESSION['idPlan'] == 42) {
 				<div class="row breadcrumbs-top">
 					<div class="breadcrumb-wrapper col-xs-12">
 						<ol class="breadcrumb">
-							<li class="breadcrumb-item"><a href="widget_maker">Recomendações</a>
+							<li class="breadcrumb-item"><a href="widget_maker">Smart Recomendation</a>
 							</li>
 							<li class="breadcrumb-item"><a href="minhas_recomendacoes">Minhas Recomendações</a>
 							</li>
