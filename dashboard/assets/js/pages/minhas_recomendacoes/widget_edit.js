@@ -111,13 +111,15 @@ $(document).ready(function () {
 				var widgetsBasicos = document.getElementById('widgetsBasicos');
 				widgetsBasicos.innerHTML = "";
 
-				__basicos.forEach(function (wid) {
+				__basicos.forEach(function (wid) {					
 					var ativo = (wid.ativo === '1') ? 'checked' : '';
+					var btnEditar = wid.inteligencia == 43 ? '' : '<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>';
+
 					widgetsBasicos.innerHTML = widgetsBasicos.innerHTML +
 						'<li class="list-group-item" wid-id="' + wid.id + '"><span>' + wid.nome + '</span>' +
 						'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
 						'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.id + '><i class="ft-x"></i> Deletar</button> -->' +
-						'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
+						btnEditar +
 						'<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>' +
 						'</div>' +
 						'</li>';
