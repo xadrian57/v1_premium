@@ -152,7 +152,7 @@ $(document).ready(function() {
 	
 						$('#rhIdWid').html(widget.WID_id)
 	
-	
+						
 						var intels = {
 							44: "Recuperação de Carrinho On-site",
 							45: "Lembrete de Boleto"
@@ -170,12 +170,42 @@ $(document).ready(function() {
 						// campos adicionais
 						var camposAdicionais = document.getElementById('widedit-opcoes-adicionais');
 						camposAdicionais.innerHTML = '<h4>Configurações Específicas</h4>';
+					
 	
-						//esconder campos de acordo com a inteligência
-						let $tituloWidget = $('#tituloWidget').parent().parent()
-						let $subtituloWidget = $('#inputSubtitulo')
-						$tituloWidget.show()
-						$tituloWidget.show()
+						switch(widget.WID_inteligencia) {
+								case '44': // rec carrinho onsite
+								camposAdicionais.innerHTML +=
+								'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
+								'<label>Imagem Atual:</label>' +
+								'<div class="form-control">' +
+								'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">' +
+								'<i class="icon-info"></i>' +
+								'</abbr>' +
+								'<div class="rh-input-icon-right">' +
+								'<div class="media">' +
+								'<div class="media-left">' +
+								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
+								'</div>' +
+								'<div class="media-body">' +
+								'<div class="form-group">' +
+								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<div class="rh-input-icon-right">' +
+								'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>';
+								break;
+						}
 	
 						// ver imagem banner
 						if ($('#btnViewBanner').length > 0) {
@@ -359,6 +389,109 @@ $(document).ready(function() {
 	
 							$('input[name=widShow]')[index].value = val;
 						});
+						
+						if ($('#btnViewBanner').length > 0) {
+							rhPhoto($('#btnViewBanner'));
+						}
+					}			
+				});
+			});
+
+		},
+
+		botoesSalvar: function () {
+			// BOTOES SALVAR WIDGET
+			$('#btn-salva-wid').off('click')
+			$('#btn-salva-wid').on('click', function () {
+				var form = document.getElementById('campos-wid-edit');
+				var idWid = form.getAttribute('id-wid');
+				var inputs = $('#campos-wid-edit input');
+				var selects = $('#campos-wid-edit select');
+
+				var formData = new FormData();
+				formData.append('idWid', idWid);
+				formData.append('op', 3);
+
+				// PEGA O VALOR DE TODOS OS INPUTS
+				for (var i = 0; i < inputs.length; i++) {
+					var key = inputs[i].name;
+					if (inputs[i].type == 'file') {
+						var val = inputs[i].files[0];
+					} else {
+						var val = inputs[i].value;
+					}
+
+					formData.append(key, val);
+				}
+
+				// tratamento widshow e widhide para salvar mais de 1 pagina
+				formData.delete('widShow');
+				formData.delete('widHide');
+				var widShow = [];
+				var widHide = [];
+
+				var widS = $('input[name="widShow"]');
+				var widH = $('input[name="widHide"]');
+
+				for (var i = 0; i < widS.length; i++) {
+					widShow.push(widS[0].value);
+				};
+				for (var i = 0; i < widH.length; i++) {
+					widHide.push(widH[0].value);
+				};
+
+				formData.append('widShow', widShow);
+				formData.append('widHide', widHide);
+
+				// PEGA O VALOR DE TODOS OS SELECTS
+				for (var i = 0; i < selects.length; i++) {
+					var key = selects[i].name;
+					var val = selects[i].value;
+					formData.append(key, val);
+				};
+
+				// paginas inclusao widgets
+				formData.delete('widShow');
+				var widShowValue = '';
+				var widShow = document.getElementsByName('widShow');
+				for (var i = 0; i < widShow.length; i++) {
+					var value = widShow[i].value.trim();
+					if (value !== '') {
+						widShowValue = (i === 0) ? value : widShowValue + ',' + value;
+					}
+				}
+				formData.append('widShow', widShowValue);
+
+				// paginas exclusao widgets
+				formData.delete('widHide');
+				var widHideValue = '';
+				var widHide = document.getElementsByName('widHide');
+				for (var i = 0; i < widHide.length; i++) {
+					var value = widHide[i].value.trim();
+					if (value !== '') {
+						widHideValue = (i === 0) ? value : widHideValue + ',' + value;
+					}
+				}
+				formData.append('widHide', widHideValue);
+
+			
+				if (!formData.get('imagemBanner'))
+					formData.delete('imagemBanner')
+
+				if (!formData.get('thumbnail'))
+					formData.delete('thumbnail')
+
+				$.ajax({
+					type: 'POST',
+					url: 'resource/resource_widget_edit.php',
+					dataType: 'text',
+					cache: false,
+					contentType: false,
+					processData: false,
+					data: formData,
+					success: function (result) {
+						$('#modalEditarWidget').modal('hide');
+						toastr['success']('As informações do seu bloco de recomendação foram atualizadas!');
 					}
 				});
 			});
@@ -366,8 +499,6 @@ $(document).ready(function() {
 	}
 
 	widgets.init();
-
-
 
 	$(document).on('click', '#container-configuracoes .addHideField', function (event) {
 		var htmlHide = '<div class="form-group exceptions">' +
