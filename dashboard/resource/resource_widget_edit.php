@@ -219,7 +219,8 @@ function atualizaWidget($conCad, $idWid, $post, $files)
         'formatoWidget' => 'WID_formato',
         'imagemBanner' => 'WID_banner',
         'thumbnail' => 'WID_thumb',
-        'linkBannerOverlay' => 'WID_link_banner'
+        'linkBannerOverlay' => 'WID_link_banner',
+        'cupom' => 'WID_cupom'
         // 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
     );
 
