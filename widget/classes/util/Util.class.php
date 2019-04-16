@@ -260,7 +260,7 @@ class Util {
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
-            $html = str_replace('{RCO_CUPOM_IMG}', 'https://roihero.com.br/widget/images/overlay/' . $cupom, $html);
+            $html = str_replace('{RCO_CUPOM}', 'https://roihero.com.br/widget/images/overlay/' . $cupom, $html);
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 
