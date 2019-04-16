@@ -242,19 +242,19 @@ $(document).ready(function() {
 									img.src = f.target.result;
 	
 									img.onload = function () {
-										if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif') {
-											toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
-											$('#imagemBanner').val('');
-										}
-										if (window.template == 3 && img.width != 900 && img.height != 150) {
-											toastr['error']('As dimensões da imagem devem ser de exatamente 900px de largura por 150px de altura.');
-											$('#imagemBanner').val('');
-										} else if (window.template != 3 && img.width != 350 && img.height != 500) {
-											toastr['error']('As dimensões da imagem devem ser de exatamente 350px de largura por 500px de altura.');
-											$('#imagemBanner').val('');
-										} else {
-											$('.img-banner-small').attr('src', f.target.result);
-										}
+										// if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif') {
+										// 	toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
+										// 	$('#imagemBanner').val('');
+										// }
+										// if (window.template == 3 && img.width != 900 && img.height != 150) {
+										// 	toastr['error']('As dimensões da imagem devem ser de exatamente 900px de largura por 150px de altura.');
+										// 	$('#imagemBanner').val('');
+										// } else if (window.template != 3 && img.width != 350 && img.height != 500) {
+										// 	toastr['error']('As dimensões da imagem devem ser de exatamente 350px de largura por 500px de altura.');
+										// 	$('#imagemBanner').val('');
+										// } else {
+										 	$('.img-banner-small').attr('src', f.target.result);
+										// }
 										desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
 									}
 	
