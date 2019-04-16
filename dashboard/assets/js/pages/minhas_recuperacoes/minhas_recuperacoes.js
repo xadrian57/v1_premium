@@ -149,8 +149,8 @@ $(document).ready(function() {
 						$('#nomeWidget').val(widget.WID_nome);
 						$('#tituloWidget').val(widget.WID_texto);
 						$('#utmWidget').val(widget.WID_utm);
-	
-						$('#rhIdWid').html(widget.WID_id)
+						$('#cupomWidget').val(widget.WID_cupom);
+						$('#rhIdWid').html(widget.WID_id);
 	
 						
 						var intels = {
@@ -171,9 +171,10 @@ $(document).ready(function() {
 						var camposAdicionais = document.getElementById('widedit-opcoes-adicionais');
 						camposAdicionais.innerHTML = '<h4>Configurações Específicas</h4>';
 					
-	
+						$('#inputCupom').hide();
 						switch(widget.WID_inteligencia) {
 								case '44': // rec carrinho onsite
+									$('#inputCupom').show();
 									camposAdicionais.innerHTML +=
 									'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
 									'<label>Imagem Atual:</label>' +
