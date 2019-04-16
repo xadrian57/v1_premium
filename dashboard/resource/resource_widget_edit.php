@@ -169,7 +169,7 @@ function carregaInfoWidget($conCad, $id, $idCli)
 function carregaSmartRecovery($conCad, $idCli) {
     // 44 -> rec carrinho
     // 45 -> rec boleto
-    $select = "SELECT * FROM widget WHERE WID_inteligencia = 47 OR WID_inteligencia = 46 AND WID_id_cli = $idCli";
+    $select = "SELECT * FROM widget WHERE WID_inteligencia = 45 OR WID_inteligencia = 44 AND WID_id_cli = $idCli";
     $query = mysqli_query($conCad, $select);
     $data = [];    
 
