@@ -24,12 +24,12 @@ $(document).ready(function() {
 			var $list = document.getElementById('widgetsBoleto');
 			wids.innerHTML = "";
 			wids.forEach(function (wid) {
-				var ativo = (wid.ativo === '1') ? 'checked' : '';
+				var ativo = (wid.WID_status === '1') ? 'checked' : '';
 
 				$list.innerHTML = $list.innerHTML +
-					'<li class="list-group-item" wid-id="' + wid.id + '"><span>' + wid.nome + '</span>' +
+					'<li class="list-group-item" wid-id="' + wid.WID_id + '"><span>' + wid.WID_nome + '</span>' +
 					'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
-					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.id + '><i class="ft-x"></i> Deletar</button> -->' +
+					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.WID_id + '><i class="ft-x"></i> Deletar</button> -->' +
 					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
 					'<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>' +
 					'</div>' +
