@@ -238,15 +238,7 @@ $(document).ready(function() {
 							1: 'Acima',
 							0: 'Abaixo'
 						};
-	
-						Object.keys(dicionarioFormatos).forEach(function (id) { // id: id do formato
-							if (widget.WID_formato == id) {
-								select += '<option value="' + id + '" selected>' + dicionarioFormatos[id] + '</option>';
-							} else {
-								select += '<option value="' + id + '">' + dicionarioFormatos[id] + '</option>';
-							}
-						});
-	
+		
 						Object.keys(dicionarioUpDown).forEach(function (id) { // id: id upDown
 	
 							if (parseInt(widget.WID_updown) == id) {
@@ -259,7 +251,6 @@ $(document).ready(function() {
 							}
 						});
 	
-						select += '</select>';
 						selectUpDown += '</select>';
 						//-------------------
 	
