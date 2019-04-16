@@ -232,22 +232,7 @@ $(document).ready(function() {
 								reader.readAsDataURL(file);
 							})
 						}
-	
-						// nome produto manual ol
-						if (typeof widget.tx_param_pai != 'undefined') {
-							$('#manualOfertaLimitadaInput').val(widget.tx_param_pai[0]);
-						}
-	
-						// se nao for widget basico, mostra id e opcao de alterar o formato
-						// opcoes select formato
-						var select = '<select name="formatoWidget" class="form-control">';
-						var dicionarioFormatos = {
-							1: 'Prateleira',
-							3: 'Carrossel'
-							/*8:'Vitrine',
-							11:'Totem'*/
-						};
-	
+		
 						var selectUpDown = '<select name="UpDown" class="form-control">';
 						var dicionarioUpDown = {
 							1: 'Acima',
@@ -323,47 +308,61 @@ $(document).ready(function() {
 							'</div>' +
 							'</div>';
 						
+						htmlHide = '<div class="form-group exceptions">' +
+							'<div class="rh-input-icon-right">' +
+							'<input id="widHide" name="widHide" class="form-control" type="url" value="">' +
+							'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>' +
+							'</div>' +
+							'</div>';
+
+						htmlShow =
+							'<div class="form-group inclusions">' +
+							'<div class="rh-input-icon-right">' +
+							'<input name="widShow" class="form-control" type="url" value="">' +
+							'</div>' +
+							'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>' +
+							'</div>';
 							$('#container-configuracoes').html(
-								containerID +
-								'<div class="row" id="excessoesPaginas">' +
-								'<div class="col-md-6">' +
-								'<div class="form-group exceptions">' +
-								'<label>Excessões de páginas</label>' +
-								'<div class="rh-input-icon-right">' +
-								'<input id="widHide" name="widHide" class="form-control" type="url" value="">' +
-								'<abbr title="Informe o nome da página que deseja que o widget não seja executado" class="info-abbr">' +
-								'<i class="icon-info"></i>' +
-								'</abbr>' +
-								'</div>' +
-								'</div>' +
-								'<div class="form-group">' +
-								'<div class="rh-input-icon-right">' +
-								'<button class="btn btn-primary addHideField" title="Adicionar mais uma página de excessão">' +
-								'+' +
-								'</button>' +
-								'</div>' +
-								'</div>' +
-								'</div>' +
-								'<div class="col-md-6">' +
-								'<div class="form-group inclusions">' +
-								'<label>Inclusões de páginas</label>' +
-								'<div class="rh-input-icon-right">' +
-								'<input id="widShow" name="widShow" class="form-control" type="url" value="">' +
-								'<abbr title="Informe o nome da página que deseja que o widget seja executado" class="info-abbr">' +
-								'<i class="icon-info"></i>' +
-								'</abbr>' +
-								'</div>' +
-								'</div>' +
-								'<div class="form-group">' +
-								'<div class="rh-input-icon-right">' +
-								'<button class="btn btn-primary addShowField" title="Adicionar mais uma página de inclusão">' +
-								'+' +
-								'</button>' +
-								'</div>' +
-								'</div>' +
-								'</div>' +
-								'</div>'
-							);
+							containerID +
+							'<div class="row" id="excessoesPaginas">' +
+							'<div class="col-md-6">' +
+							'<div class="form-group exceptions">' +
+							'<label>Excessões de páginas</label>' +
+							'<div class="rh-input-icon-right">' +
+							'<input id="widHide" name="widHide" class="form-control" type="url" value="">' +
+							'<abbr title="Informe o nome da página que deseja que o widget não seja executado" class="info-abbr">' +
+							'<i class="icon-info"></i>' +
+							'</abbr>' +
+							'</div>' +
+							'</div>' +
+							'<div class="form-group">' +
+							'<div class="rh-input-icon-right">' +
+							'<button class="btn btn-primary addHideField" title="Adicionar mais uma página de excessão">' +
+							'+' +
+							'</button>' +
+							'</div>' +
+							'</div>' +
+							'</div>' +
+							'<div class="col-md-6">' +
+							'<div class="form-group inclusions">' +
+							'<label>Inclusões de páginas</label>' +
+							'<div class="rh-input-icon-right">' +
+							'<input id="widShow" name="widShow" class="form-control" type="url" value="">' +
+							'<abbr title="Informe o nome da página que deseja que o widget seja executado" class="info-abbr">' +
+							'<i class="icon-info"></i>' +
+							'</abbr>' +
+							'</div>' +
+							'</div>' +
+							'<div class="form-group">' +
+							'<div class="rh-input-icon-right">' +
+							'<button class="btn btn-primary addShowField" title="Adicionar mais uma página de inclusão">' +
+							'+' +
+							'</button>' +
+							'</div>' +
+							'</div>' +
+							'</div>' +
+							'</div>'
+						);
 
 						//Preenchendo campos WID_HIDE
 						$.each(widget.WID_hide, function (index, val) {
