@@ -129,6 +129,7 @@ $(document).ready(function() {
 			});
 
 		},
+
 		botoesEditar: function () {
 			// BOTOES EDITAR WIDGET
 			$('.btn-edita-wid').off('click');
@@ -230,66 +231,6 @@ $(document).ready(function() {
 	
 								reader.readAsDataURL(file);
 							})
-							$('#imagemBannerLojaLateral').change(function () {
-	
-								bloqueiaElemento($('#containerAlteraImagemForm')[0]);
-	
-								var file = this.files[0];
-								var reader = new FileReader();
-								reader.onload = function (f) {
-	
-									// pega dimensoes da imagem
-									var img = new Image;
-									img.src = f.target.result;
-	
-									img.onload = function () {
-										if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif') {
-											toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
-											$('#imagemBannerLojaLateral').val('');
-										}
-										if (img.width != 400 && img.height != 300) {
-											toastr['error']('As dimensões da imagem devem ser de exatamente 400px de largura por 300px de altura.');
-											$('#imagemBannerLojaLateral').val('');
-										} else {
-											$('.img-banner-small').attr('src', f.target.result);
-										}
-										desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
-									}
-	
-								}
-	
-								reader.readAsDataURL(file);
-							})
-							$('#thumbnail').change(function () {
-	
-								bloqueiaElemento($('#containerAlteraImagemForm')[0]);
-	
-								var file = this.files[0];
-								var reader = new FileReader();
-								reader.onload = function (f) {
-	
-									// pega dimensoes da imagem
-									var img = new Image;
-									img.src = f.target.result;
-	
-									img.onload = function () {
-										if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif') {
-											toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
-											$('#thumbnail').val('');
-										}
-										if (img.width != 80 && img.height != 80) {
-											toastr['error']('As dimensões da imagem devem ser de exatamente 80px de largura por 80px de altura.');
-											$('#thumbnail').val('');
-										} else {
-											$('.img-thumb-small').attr('src', f.target.result);
-										}
-										desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
-									}
-	
-								}
-	
-								reader.readAsDataURL(file);
-							})
 						}
 	
 						// nome produto manual ol
@@ -381,7 +322,49 @@ $(document).ready(function() {
 							'</div>' +
 							'</div>' +
 							'</div>';
-	
+						
+							$('#container-configuracoes').html(
+								containerID +
+								'<div class="row" id="excessoesPaginas">' +
+								'<div class="col-md-6">' +
+								'<div class="form-group exceptions">' +
+								'<label>Excessões de páginas</label>' +
+								'<div class="rh-input-icon-right">' +
+								'<input id="widHide" name="widHide" class="form-control" type="url" value="">' +
+								'<abbr title="Informe o nome da página que deseja que o widget não seja executado" class="info-abbr">' +
+								'<i class="icon-info"></i>' +
+								'</abbr>' +
+								'</div>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<div class="rh-input-icon-right">' +
+								'<button class="btn btn-primary addHideField" title="Adicionar mais uma página de excessão">' +
+								'+' +
+								'</button>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'<div class="col-md-6">' +
+								'<div class="form-group inclusions">' +
+								'<label>Inclusões de páginas</label>' +
+								'<div class="rh-input-icon-right">' +
+								'<input id="widShow" name="widShow" class="form-control" type="url" value="">' +
+								'<abbr title="Informe o nome da página que deseja que o widget seja executado" class="info-abbr">' +
+								'<i class="icon-info"></i>' +
+								'</abbr>' +
+								'</div>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<div class="rh-input-icon-right">' +
+								'<button class="btn btn-primary addShowField" title="Adicionar mais uma página de inclusão">' +
+								'+' +
+								'</button>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>'
+							);
+
 						//Preenchendo campos WID_HIDE
 						$.each(widget.WID_hide, function (index, val) {
 							if (index > 0) {
