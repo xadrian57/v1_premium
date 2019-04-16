@@ -7,7 +7,7 @@ $(document).ready(function() {
 			$.ajax( {
 				type: 'POST',
 				url: 'resource/resource_widget_edit.php',
-				data: { 'idCli': idCli, 'op': 1 },
+				data: { 'idCli': idCli, 'op': 10 },
 				success: function ( result )
 				{
 					var data = JSON.parse(result)
