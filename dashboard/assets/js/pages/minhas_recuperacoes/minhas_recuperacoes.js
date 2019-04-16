@@ -13,8 +13,8 @@ $(document).ready(function() {
 					var data = JSON.parse(result)
 					console.log(data);
 
-					this.loadRecBoleto(data.boleto)
-					this.loadRecCarrinho(data.carrinho)
+					widgets.loadRecBoleto(data.boleto)
+					widgets.loadRecCarrinho(data.carrinho)
 				}
 			})
 		
