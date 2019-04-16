@@ -529,8 +529,6 @@ $(document).ready(function() {
 	});
 
 	function addListenerBtnDeleteForm() {
-		$('.btn-remove-panel-group').off('click', removePanel);
-		$('.btn-remove-panel-group').on('click', removePanel);
 		$('.btn-delete-form-group').off('click', removeForm);
 		$('.btn-delete-form-group').on('click', removeForm);
 	}
