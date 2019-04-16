@@ -165,6 +165,36 @@ function carregaInfoWidget($conCad, $id, $idCli)
     echo json_encode($data);
 }
 
+// CARREGA BLOCOS SMART RECOVERY
+function carregaSmartRecovery($conCad, $idCli) {
+    // 44 -> rec carrinho
+    // 45 -> rec boleto
+    $select = "SELECT * FROM widget WHERE WID_inteligencia = 47 OR WID_inteligencia = 46 AND WID_id_cli = $idCli";
+    $query = mysqli_query($conCad, $select);
+    $data = [];    
+
+    $rec_boleto = [];
+    $rec_carrinho = [];
+
+    if ($query) {
+        $i = 0;
+        while ($result = mysqli_fetch_assoc($query)) {
+            if ($result['WID_inteligencia'] == 45) 
+                $rec_boleto[] = $result;
+            else
+                $rec_carrinho[] = $result;
+            $i++;
+        }
+    }
+
+    $data = array(
+        'boleto' => $rec_boleto,
+        'carrinho' => $rec_carrinho
+    );
+
+    echo json_encode($data);
+}
+
 // ATUALIZA AS INFORMAÇOES DO WIDGET NO BANCO COM O QUE FOI EDITADO
 function atualizaWidget($conCad, $idWid, $post, $files)
 {
@@ -611,6 +641,10 @@ switch ($operacao) {
         $formato = mysqli_real_escape_string($conCad, $_POST['formato']);
         $idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
         atualizaFormatoAutocomplete($conCad, $idCli, $formato);
+        break;
+    case '10':
+        $idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
+        carregaSmartRecovery($conCad, $_POST['idCli']);
         break;
     default:
         break;

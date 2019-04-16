@@ -1,0 +1,270 @@
+<div class="app-content content container-fluid">
+	<div class="content-wrapper">
+		<div class="content-header row">
+			<div class="content-header-left col-md-6 col-xs-12 mb-2">
+				<div class="row breadcrumbs-top">
+					<div class="breadcrumb-wrapper col-xs-12">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="widget_maker">Smart Recovery</a>
+							</li>
+							<li class="breadcrumb-item"><a href="minhas_recomendacoes">Minhas Recuperações</a>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<h3 class="content-header-title mb-0">Minhas Recuperações</h3>
+			</div>
+		</div>
+		<div class="content-body"><!-- LISTA WIDGETS -->
+			<section id="basic-listgroup">
+                
+				<div class="row match-height">
+					<div id="coluna-widgets-carrinho" class="col-lg-12 col-md-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">BOLETO</h4>
+								<a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
+								<div class="heading-elements">
+									<ul class="list-inline mb-0">
+										<li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+									</ul>
+								</div>
+							</div>
+							<div class="card-body collapse in">
+								<div class="card-block">
+									<ul class="list-group" id="widgetsBoleto">
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+                </div>
+
+				<div class="row match-height">
+                    <div id="coluna-widgets-carrinho" class="col-lg-12 col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title">CARRINHO</h4>
+                                <a class="heading-elements-toggle"><i class="fa fa-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                <div class="card-block">
+                                    <ul class="list-group" id="widgetsCarrinho">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+			</section>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="assets/js/pages/minhas_recuperacoes/minhas_recuperacoes.js"></script>
+
+<div id="modalEditarWidget" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+    <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title adic" id="titulo-modal-edit"><i class="ft ft-edit"></i>&nbsp;&nbsp;Editar Bloco de Recomendação</h4>
+				<span class="primary page-info" id="spec-inteligencia-modal-edit"></span>
+            </div>
+
+            <div class="modal-body">
+                <div id="campos-wid-edit" class="row">
+                	<div class="col-md-12">
+	                    <div class="form-group">
+	                    	<label>Título Promocional</label>
+	                    	<div class="rh-input-icon-right">
+		                    	<input id="tituloWidget" name="titulo" class="form-control" type="text">
+                                <abbr title="Esse é o título do bloco que irá aparecer na sua loja" class="info-abbr">
+                                    <i class="icon-info"></i>
+                                </abbr>
+	                        </div>
+	                    </div>
+	                </div>
+
+                	<div id="inputSubtitulo" class="col-md-12" style="display: none">
+	                    <div class="form-group">
+	                    	<label>Subtítulo Promocional</label>
+	                    	<div class="rh-input-icon-right">
+		                    	<input id="subtitulo" name="subtitulo" class="form-control" type="text">
+                                <abbr title="Esse é o título do bloco que irá aparecer na sua loja" class="info-abbr">
+                                    <i class="icon-info"></i>
+                                </abbr>
+	                        </div>
+	                    </div>
+	                </div>
+
+                	<div class="col-md-12">
+	                    <div class="form-group">
+	                    	<label>UTM</label>
+	                    	<div class="rh-input-icon-right">
+	                    		<input id="utmWidget" name="utm" class="form-control" type="text">
+                                <abbr title="Link por onde você pode fazer a analise de fluxo de dados via Google Analytics" class="info-abbr">
+                                    <i class="icon-info"></i>
+                                </abbr>
+	                        </div>	                    	
+	                    </div>
+	                </div>
+                	<div id="container-configuracoes" class="col-md-12">
+	                </div>
+                	<!-- 
+                	OPCAO DE ALTERAR PÁGINA DESABILITADA
+                	<div class="col-md-12">
+	                    <div class="form-group">
+	                    	<label>Página</label>
+	                    	<select id="paginaWidget" name="pagina" class="form-control">
+	                    		<option value="1">Home</option>
+	                    		<option value="2">Produto</option>
+	                    		<option value="3">Busca</option>
+	                    		<option value="4">Categoria</option>
+	                    		<option value="5">Carrinho</option>
+	                    	</select>
+	                    </div>
+	                </div> 
+	            	-->
+	            	<div id="widedit-opcoes-adicionais" class="col-md-12"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+            	<span class="rh-id-wid primary pull-left">ID: <span id="rhIdWid"></span></span>
+				<button type="button" class="btn btn-outline-warning" data-dismiss="modal"><i class="fa fa-times"></i> Cancelar</button>
+				<button id="btn-salva-wid" type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i> Salvar Alterações</button>
+			 </div>
+        </div>
+    </div>
+</div> 
+
+
+<style>
+.config-group {
+	border: 1px solid lightgrey;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.config-group .panel-heading .panel-title a {
+	display: block;
+	position: relative;
+}
+
+.tagflag {
+	border : 3px solid blue;
+	border-radius : 10px; 
+}
+.borderdiv {
+	display: none;
+	border-top : 5px solid #16D39A ; 
+	border-bottom : 5px solid #16D39A;
+}
+
+.form-group {
+	position: relative;
+}
+
+.btn-delete-form-group,
+.btn-remove-panel-group {
+	position: absolute;
+	right: 10px;
+	top: 5px;
+	font-size: 20px;
+	cursor: pointer;
+}
+.btn-remove-panel-group {
+	right: 30px;
+	top: 8px;
+}
+
+#divTagsProdutosRelacionados input {
+	display: none;
+}
+
+.modal-footer .rh-id-wid {
+	position: relative;
+	top: 15px;
+}
+
+#modalViewPhoto img{
+	max-width: 100%;
+}
+
+.container-btn-add-synounm {
+	text-align: left;
+}
+
+#tableSyn {
+	max-height: 409px;
+	overflow-y: scroll;
+}
+
+.table.table-sm th, .table.table-sm td {
+	padding: 0.6rem 2rem; }
+  
+  .table.table-xs th, .table.table-xs td {
+	padding: 0.4rem 2rem; }
+
+@media screen and (max-width: 1024px) {	
+
+	.list-group-item > span {
+		font-size: 12px;
+		max-width: 45%;
+		height: 21px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		display: inline-block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.container-btn-add-synounm {
+		text-align: right;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.list-group-item {
+		padding: 5px 10px;
+	}
+
+	.list-group-item > div {
+		width: 100% !important;
+		float: none !important;
+	}
+
+	.switch.btn-group a.btn,
+	.btn {
+		padding: 5px;
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 350px) {	
+	.switch.btn-group a.btn,
+	.btn {
+		padding: 5px;
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 350px) {	
+	.switch.btn-group a.btn,
+	.btn {
+		padding: 5px;
+		font-size: 12px;
+	}
+}
+
+</style>
