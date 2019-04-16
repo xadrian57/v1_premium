@@ -11,70 +11,11 @@ $(document).ready(function() {
 				success: function ( result )
 				{
 					var data = JSON.parse(result)
-					console.log(data);
 
-					widgets.loadRecBoleto(data.boleto)
-					widgets.loadRecCarrinho(data.carrinho)
+					widgets.loadRecBoleto(data.boleto);
+					widgets.loadRecCarrinho(data.carrinho);
 
-
-					// Switchery
-					var i = 0;
-					if (Array.prototype.forEach) {
-						var elems = $('.switchery');
-						$.each(elems, function (key, value) {
-							var $size = "", $color = "", $sizeClass = "", $colorCode = "";
-							$size = $(this).data('size');
-							var $sizes = {
-								'lg': "large",
-								'sm': "small",
-								'xs': "xsmall"
-							};
-							if ($(this).data('size') !== undefined) {
-								$sizeClass = "switchery switchery-" + $sizes[$size];
-							}
-							else {
-								$sizeClass = "switchery";
-							}
-
-							$color = $(this).data('color');
-							var $colors = {
-								'primary': "#967ADC",
-								'success': "#37BC9B",
-								'danger': "#DA4453",
-								'warning': "#F6BB42",
-								'info': "#3BAFDA"
-							};
-							if ($color !== undefined) {
-								$colorCode = $colors[$color];
-							}
-							else {
-								$colorCode = "#37BC9B";
-							}
-
-							var switchery = new Switchery($(this)[0], { className: $sizeClass, color: $colorCode });
-						});
-					} else {
-						var elems1 = document.querySelectorAll('.switchery');
-
-						for (i = 0; i < elems1.length; i++) {
-							var $size = elems1[i].data('size');
-							var $color = elems1[i].data('color');
-							var switchery = new Switchery(elems1[i], { color: '#37BC9B' });
-						}
-					}
-
-					$('.switch').change(function () {
-						var idWid = this.parentElement.parentElement.getAttribute('wid-id');
-						var val = this.checked;
-						$.ajax({
-							type: 'POST',
-							url: 'resource/resource_widget_edit.php',
-							data: { 'idWid': idWid, 'val': val, 'op': 4 },
-							success: function (result) {
-								console.log(result);
-							}
-						});
-					});
+					widgets.toggleSwitches();
 				}
 			})
 		
@@ -112,7 +53,81 @@ $(document).ready(function() {
 					'</div>' +
 					'</li>';
 			});
-		}
+		},
+
+		toggleSwitches: function () {
+			// SWITCHS
+			'use strict';
+
+			/*  Toggle Starts   */
+			$('.switch:checkbox').checkboxpicker();
+
+			$('#switch12').checkboxpicker({
+				html: true,
+				offLabel: '<span class="icon-remove">',
+				onLabel: '<span class="icon-ok">'
+			});
+
+			// Switchery
+			var i = 0;
+			if (Array.prototype.forEach) {
+				var elems = $('.switchery');
+				$.each(elems, function (key, value) {
+					var $size = "", $color = "", $sizeClass = "", $colorCode = "";
+					$size = $(this).data('size');
+					var $sizes = {
+						'lg': "large",
+						'sm': "small",
+						'xs': "xsmall"
+					};
+					if ($(this).data('size') !== undefined) {
+						$sizeClass = "switchery switchery-" + $sizes[$size];
+					}
+					else {
+						$sizeClass = "switchery";
+					}
+
+					$color = $(this).data('color');
+					var $colors = {
+						'primary': "#967ADC",
+						'success': "#37BC9B",
+						'danger': "#DA4453",
+						'warning': "#F6BB42",
+						'info': "#3BAFDA"
+					};
+					if ($color !== undefined) {
+						$colorCode = $colors[$color];
+					}
+					else {
+						$colorCode = "#37BC9B";
+					}
+
+					var switchery = new Switchery($(this)[0], { className: $sizeClass, color: $colorCode });
+				});
+			} else {
+				var elems1 = document.querySelectorAll('.switchery');
+
+				for (i = 0; i < elems1.length; i++) {
+					var $size = elems1[i].data('size');
+					var $color = elems1[i].data('color');
+					var switchery = new Switchery(elems1[i], { color: '#37BC9B' });
+				}
+			}
+
+			$('.switch').change(function () {
+				var idWid = this.parentElement.parentElement.getAttribute('wid-id');
+				var val = this.checked;
+				$.ajax({
+					type: 'POST',
+					url: 'resource/resource_widget_edit.php',
+					data: { 'idWid': idWid, 'val': val, 'op': 4 },
+					success: function (result) {
+						console.log(result);
+					}
+				});
+			});
+
+		},
 	}
 
 	widgets.init();
