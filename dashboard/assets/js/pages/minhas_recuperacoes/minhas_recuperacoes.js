@@ -524,13 +524,7 @@ $(document).ready(function() {
 						'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>' +
 						'</div>';
 		$(this).before(htmlShow);
-		addListenerBtnDeleteForm();
 		event.preventDefault();
 	});
-
-	function addListenerBtnDeleteForm() {
-		$('.btn-delete-form-group').off('click', removeForm);
-		$('.btn-delete-form-group').on('click', removeForm);
-	}
 
 });
