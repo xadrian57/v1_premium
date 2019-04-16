@@ -16,6 +16,8 @@ $(document).ready(function() {
 					widgets.loadRecCarrinho(data.carrinho);
 
 					widgets.toggleSwitches();
+
+					widgets.botoesEditar();
 				}
 			})
 		
@@ -122,7 +124,6 @@ $(document).ready(function() {
 					url: 'resource/resource_widget_edit.php',
 					data: { 'idWid': idWid, 'val': val, 'op': 4 },
 					success: function (result) {
-						console.log('Widget desativado');
 					}
 				});
 			});
