@@ -299,20 +299,6 @@ $(document).ready(function() {
 							'</div>' +
 							'</div>';
 						
-						htmlHide = '<div class="form-group exceptions">' +
-							'<div class="rh-input-icon-right">' +
-							'<input id="widHide" name="widHide" class="form-control" type="url" value="">' +
-							'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>' +
-							'</div>' +
-							'</div>';
-
-						htmlShow =
-							'<div class="form-group inclusions">' +
-							'<div class="rh-input-icon-right">' +
-							'<input name="widShow" class="form-control" type="url" value="">' +
-							'</div>' +
-							'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>' +
-							'</div>';
 							$('#container-configuracoes').html(
 							containerID +
 							'<div class="row" id="excessoesPaginas">' +
@@ -384,12 +370,25 @@ $(document).ready(function() {
 
 
 	$(document).on('click', '#container-configuracoes .addHideField', function (event) {
+		var htmlHide = '<div class="form-group exceptions">' +
+							'<div class="rh-input-icon-right">' +
+							'<input id="widHide" name="widHide" class="form-control" type="url" value="">' +
+							'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>' +
+							'</div>' +
+							'</div>';						
 		$(this).before(htmlHide);
 		addListenerBtnDeleteForm();
 		event.preventDefault();
 	});
 
 	$(document).on('click', '#container-configuracoes .addShowField', function (event) {
+		var htmlShow =
+						'<div class="form-group inclusions">' +
+						'<div class="rh-input-icon-right">' +
+						'<input name="widShow" class="form-control" type="url" value="">' +
+						'</div>' +
+						'<span class="btn-delete-form-group"><i class="fa fa-trash red"></i></span>' +
+						'</div>';
 		$(this).before(htmlShow);
 		addListenerBtnDeleteForm();
 		event.preventDefault();
