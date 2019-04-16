@@ -1,7 +1,7 @@
 <?php
 	// DADOS DA PÁGINA 
 	$pagina_nome = 'minha_busca';
-	$pagina_titulo = 'Minhas Buscas';
+	$pagina_titulo = 'Minhas Recuperações';
 
     require_once('../resource/resource_verifica_sessao.php');    
 	require_once('../content/content_header.html');
