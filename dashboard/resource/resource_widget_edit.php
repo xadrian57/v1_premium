@@ -102,7 +102,7 @@ function carregaWids($conCad)
 function carregaInfoWidget($conCad, $id, $idCli)
 {
     global $conDados;
-    $query = 'SELECT WID_banner, WID_link_banner, WID_thumb, WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id =' . $id . '';
+    $query = 'SELECT WID_cupom, WID_banner, WID_link_banner, WID_thumb, WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id =' . $id . '';
     $result = mysqli_query($conCad, $query);
     $result = $result->fetch_array(MYSQLI_ASSOC);
 
