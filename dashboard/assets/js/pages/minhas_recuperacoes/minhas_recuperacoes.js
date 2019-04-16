@@ -208,6 +208,39 @@ $(document).ready(function() {
 									'</div>' +
 									'</div>';
 									break;
+								case '45': // lembrete boleto
+									$('#inputCupom').show();
+									camposAdicionais.innerHTML +=
+									'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
+									'<label>Imagem Atual:</label>' +
+									'<div class="form-control">' +
+									'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">' +
+									'<i class="icon-info"></i>' +
+									'</abbr>' +
+									'<div class="rh-input-icon-right">' +
+									'<div class="media">' +
+									'<div class="media-left">' +
+									'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
+									'</div>' +
+									'<div class="media-body">' +
+									'<div class="form-group">' +
+									'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+									'</div>' +
+									'<div class="form-group">' +
+									'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
+									'</div>' +
+									'</div>' +
+									'</div>' +
+									'</div>' +
+									'</div>' +
+									'<div class="form-group">' +
+									'<div class="rh-input-icon-right">' +
+									'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>' +
+									'</div>' +
+									'</div>' +
+									'</div>' +
+									'</div>';
+									break;
 						}
 	
 						// ver imagem banner
@@ -244,19 +277,17 @@ $(document).ready(function() {
 									img.src = f.target.result;
 	
 									img.onload = function () {
-										// if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif') {
-										// 	toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
-										// 	$('#imagemBanner').val('');
-										// }
-										// if (window.template == 3 && img.width != 900 && img.height != 150) {
-										// 	toastr['error']('As dimensões da imagem devem ser de exatamente 900px de largura por 150px de altura.');
-										// 	$('#imagemBanner').val('');
-										// } else if (window.template != 3 && img.width != 350 && img.height != 500) {
-										// 	toastr['error']('As dimensões da imagem devem ser de exatamente 350px de largura por 500px de altura.');
-										// 	$('#imagemBanner').val('');
-										// } else {
+										if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif') {
+											toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
+											$('#imagemBanner').val('');
+										}
+										// lembrete de boleto
+										else if (widget.WID_inteligencia == 45 && img.width != 800 && img.height != 160) {
+											toastr['error']('As dimensões da imagem devem ser de exatamente 800px de largura por 160px de altura.');
+											$('#imagemBanner').val('');
+									 	} else {
 										 	$('.img-banner-small').attr('src', f.target.result);
-										// }
+										}
 										desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
 									}
 	
