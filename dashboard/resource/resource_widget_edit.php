@@ -167,8 +167,8 @@ function carregaInfoWidget($conCad, $id, $idCli)
 
 // CARREGA BLOCOS SMART RECOVERY
 function carregaSmartRecovery($conCad, $idCli) {
-    // 47 -> rec boleto
-    // 46 -> rec carrinho
+    // 44 -> rec carrinho
+    // 45 -> rec boleto
     $select = "SELECT * FROM widget WHERE WID_inteligencia = 47 OR WID_inteligencia = 46 AND WID_id_cli = $idCli";
     $query = mysqli_query($conCad, $select);
     $data = [];    
@@ -179,7 +179,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     if ($query) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 47) 
+            if ($result['WID_inteligencia'] == 45) 
                 $rec_boleto[] = $result;
             else
                 $rec_carrinho[] = $result;

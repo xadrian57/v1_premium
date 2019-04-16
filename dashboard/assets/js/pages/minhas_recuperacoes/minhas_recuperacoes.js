@@ -154,8 +154,8 @@ $(document).ready(function() {
 	
 	
 						var intels = {
-							41: "Recuperação de Carrinho On-site",
-							43: "Recuperação de Boleto"
+							44: "Recuperação de Carrinho On-site",
+							45: "Lembrete de Boleto"
 						};
 	
 						document.getElementById("spec-inteligencia-modal-edit").innerText = intels[widget.WID_inteligencia];
