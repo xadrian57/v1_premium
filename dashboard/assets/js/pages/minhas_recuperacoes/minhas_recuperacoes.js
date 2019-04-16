@@ -18,6 +18,8 @@ $(document).ready(function() {
 					widgets.toggleSwitches();
 
 					widgets.botoesEditar();
+					widgets.botoesSalvar();
+					
 				}
 			})
 		
