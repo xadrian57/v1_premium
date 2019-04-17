@@ -105,11 +105,11 @@ abstract class AbstractWidget {
                 $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
             }   
 
-            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
+            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj, $this->widInteligencia);
         }
         else
         {
-            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
+            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj, $this->widInteligencia);
         }
     }
     

@@ -64,7 +64,7 @@ class Util {
         return $pesquisa;
     }
     
-    public static function set_JSON_widget($JSON_widgets, $inject, $idWid, $html, $arrayWidgets, $obj)
+    public static function set_JSON_widget($JSON_widgets, $inject, $idWid, $html, $arrayWidgets, $obj, $inteligencia)
     {
         $injectName = $arrayWidgets['WID_div'];
         $position = $arrayWidgets['WID_placement'];
@@ -81,6 +81,7 @@ class Util {
         {
             $JSON_widgets .= '{
                 "widget_id":'.$idWid.',
+                "widget_inteligencia":'.$inteligencia.',
                 "inject":true,
                 "inject_name":"'.$injectName.'",
                 "inject_position":"'.$position.'",
