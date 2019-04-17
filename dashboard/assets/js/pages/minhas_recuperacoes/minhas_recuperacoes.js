@@ -317,6 +317,11 @@ $(document).ready(function() {
 											toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
 											$('#imagemBanner').val('');
 										}
+										// rec cart on site
+										else if (widget.WID_inteligencia == 44 && img.width != 700 && img.height != 160) {
+											toastr['error']('As dimensões da imagem devem ser de exatamente 700px de largura por 160px de altura.');
+											$('#imagemBanner').val('');
+										}
 										// lembrete de boleto
 										else if (widget.WID_inteligencia == 45 && img.width != 800 && img.height != 160) {
 											toastr['error']('As dimensões da imagem devem ser de exatamente 800px de largura por 160px de altura.');
