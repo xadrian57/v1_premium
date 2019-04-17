@@ -19,6 +19,8 @@ $(document).ready(function() {
 
 					widgets.botoesEditar();
 					widgets.botoesSalvar();
+
+					window['diasVencBoleto'] = data.diasVencBoleto;
 					
 				}
 			})
@@ -44,7 +46,7 @@ $(document).ready(function() {
 
 		loadRecCarrinho: function(wids) {
 			var $list = document.getElementById('widgetsCarrinho');
-			wids.innerHTML = "";
+			$list.innerHTML = "";
 			wids.forEach(function (wid) {
 				var ativo = (wid.WID_status === '1') ? 'checked' : '';
 
@@ -241,6 +243,21 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>' +
 								'</div>';
+
+								camposAdicionais.innerHTML +=
+								'<div class="col-md-6">'
+									'<div class="form-group">'
+										'<label>Vencimento do Boleto</label>'
+										'<div class="rh-input-icon-right">'
+											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1">'
+													'<abbr title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'
+															'<i class="icon-info"></i>'
+													'</abbr>'
+											'</div>'
+									'</div>'
+								'</div>';
+
+
 								break;
 						}
 	
