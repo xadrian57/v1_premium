@@ -186,10 +186,10 @@ function carregaSmartRecovery($conCad, $idCli) {
     if ($query) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 45) 
-                $rec_boleto[$i] = $result;
+            if ($result['WID_inteligencia'] == 45)
+                array_push($rec_boleto,$result);
             else
-                $rec_carrinho[$i] = $result;
+                array_push($rec_carrinho,$result);
             $i++;
         }
     }
