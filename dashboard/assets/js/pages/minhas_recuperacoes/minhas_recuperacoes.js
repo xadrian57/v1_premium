@@ -253,7 +253,7 @@ $(document).ready(function() {
 										'<label>Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
 											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+window['diasVencBoleto']+'>'+
-													'<abbr title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'+
+													'<abbr style="position: relative;right: -34px;" title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'+
 															'<i class="icon-info"></i>'+
 													'</abbr>'+
 											'</div>'+
