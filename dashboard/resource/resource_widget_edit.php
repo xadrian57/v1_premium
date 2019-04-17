@@ -173,25 +173,13 @@ function carregaSmartRecovery($conCad, $idCli) {
     $query = mysqli_query($conCad, $select);
     $data = [];    
 
-    $selectConfig = "SELECT CONF_dias_venc FROM config WHERE CONF_id_cli = $idCli";
-    $queryConfig = mysqli_query($conCad, $query);
-    $diasVenc = 1;
-    if ($queryConfig) {
-        $diasVenc = mysqli_fetch_assoc($queryConfig)['CONF_dias_venc'];
-    }
-
     $rec_boleto = [];
     $rec_carrinho = [];
 
     if ($query) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 45) {
-                $rec_boleto[$i] = $result;
-                $rec_boleto[$i]['CONF_dias_venc'] = $diasVenc;
-            }
-            else
-                $rec_carrinho[$i] = $result;
+            $rec_carrinho[$i] = $result;
             $i++;
         }
     }
