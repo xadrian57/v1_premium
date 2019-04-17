@@ -901,6 +901,9 @@ class Util {
             }
                        
 
+            if(strtoInt($viewsNow) < 2)
+                $viewsNow = 2;
+            
             $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
             $response = $html;
 
@@ -911,35 +914,6 @@ class Util {
             return '';
         }
     }
-
-    // Funções do HTML
-    public static function get_HTML_rco($obj, $arrayConfig, $arrayWidgets){
-        $template = $arrayConfig['CONF_template'];
-        $templateOverlay = $arrayConfig['CONF_template_overlay'];
-        $formato = $arrayWidgets['WID_formato'];
-        $idWid = $arrayWidgets['WID_id'];
-
-        
-        if($formato == 44){
-
-            $formato = self::getFormatName($formato);
-            $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
-
-            if(empty($html)){
-                $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
-            }
-                       
-   
-            $response = $html;
-
-            return $response;
-        }
-        else
-        {
-            return '';
-        }
-    }
-
 
     public static function get_HTML_cj_3($obj, $arrayConfig, $arrayWidgets)
     {
