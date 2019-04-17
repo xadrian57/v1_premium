@@ -247,10 +247,11 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>';
 
-								var optionList = '<option value="1">1 dia após a cobrança</option>';
+								var optionList = (widget.WID_dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
 
 								for (var i = 2; i < window['diasVencBoleto']; i++) {
-									optionList += '<option value="'+i+'">'+i+' dias após a cobrança</option>';
+									var selected = (widget.WID_dias == i) ? 'selected' : '';
+									optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
 								}
 								
 								camposAdicionais.innerHTML +=
