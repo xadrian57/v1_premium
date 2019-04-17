@@ -456,7 +456,7 @@ function atualizaWidget($conCad, $idWid, $post, $files)
             }
         }
 
-        if ($isset($camposBDCONFIGCLI[$key])) {
+        if (isset($camposBDCONFIGCLI[$key])) {
             $updateConfigCLI = $updateConfigCLI . $camposBDCONFIGCLI[$key] . ' = "' . $value . '", ';
         }
         $i++;

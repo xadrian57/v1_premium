@@ -492,6 +492,11 @@ $(document).ready(function() {
 					formData.append(key, val);
 				}
 
+				// dias venc
+				if ($('#diasBoletoVenc').length > 0) {
+					window['diasBoletoVenc'] = $('#diasBoletoVenc').val();
+				}
+
 				// tratamento widshow e widhide para salvar mais de 1 pagina
 				formData.delete('widShow');
 				formData.delete('widHide');
