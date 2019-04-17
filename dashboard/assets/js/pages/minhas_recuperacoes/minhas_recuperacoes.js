@@ -177,6 +177,7 @@ $(document).ready(function() {
 					
 						$('#tituloPromocionalLabel').html('Título Promocional');
 						$('#inputCupom').hide();
+						$('#container-configuracoes').show();
 						switch(widget.WID_inteligencia) {
 							case '44': // rec carrinho onsite
 								$('#inputCupom').show();
@@ -212,6 +213,8 @@ $(document).ready(function() {
 								'</div>';
 								break;
 							case '45': // lembrete boleto
+								$('#container-configuracoes').hide();
+
 								$('#tituloPromocionalLabel').html('Título do E-mail');
 								camposAdicionais.innerHTML +=
 								'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
@@ -245,16 +248,16 @@ $(document).ready(function() {
 								'</div>';
 
 								camposAdicionais.innerHTML +=
-								'<div class="col-md-6">'
-									'<div class="form-group">'
-										'<label>Vencimento do Boleto</label>'
-										'<div class="rh-input-icon-right">'
-											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+window['diasVencBoleto']+'>'
-													'<abbr title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'
-															'<i class="icon-info"></i>'
-													'</abbr>'
-											'</div>'
-									'</div>'
+								'<div class="col-md-6">'+
+									'<div class="form-group">'+
+										'<label>Vencimento do Boleto</label>'+
+										'<div class="rh-input-icon-right">'+
+											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+window['diasVencBoleto']+'>'+
+													'<abbr title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'+
+															'<i class="icon-info"></i>'+
+													'</abbr>'+
+											'</div>'+
+									'</div>'+
 								'</div>';
 
 
