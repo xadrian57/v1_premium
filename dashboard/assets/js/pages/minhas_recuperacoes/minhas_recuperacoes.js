@@ -247,10 +247,23 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>';
 
+								var optionList = '<option value="1">1 dia após a cobrança</option>';
+
+								for (var i = 2; i < window['diasVencBoleto']; i++) {
+									optionList += '<option value="'+i+'">'+i+' dias após a cobrança</option>';
+								}
+								
 								camposAdicionais.innerHTML +=
 								'<div class="col-md-6">'+
 									'<div class="form-group">'+
-										'<label>Vencimento do Boleto</label>'+
+										'<label>Dias para o Vencimento do Boleto</label>'+
+										'<div class="rh-input-icon-right">'+
+											'<select name="lembreteBoleto" class="form-control" value="'+i+'">'+
+												optionList+
+											'</select>'+
+									'</div>'+
+									'<div class="form-group">'+
+										'<label>Dias para o Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
 											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+window['diasVencBoleto']+'>'+
 													'<abbr style="position: relative;right: -34px;" title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'+

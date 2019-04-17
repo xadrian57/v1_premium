@@ -228,9 +228,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
         'imagemBanner' => 'WID_banner',
         'thumbnail' => 'WID_thumb',
         'linkBannerOverlay' => 'WID_link_banner',
-        'cupom' => 'WID_cupom'
+        'cupom' => 'WID_cupom',
+        'lembreteBoleto' => 'WID_dias'
         // 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
-    );
+    );    
 
     $camposBDWIDCONFIG = array( // campos configuracao widget
         'produtosCollection' => 'WC_collection',
@@ -254,6 +255,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
 
         'tx_rel1' => 'tx_tipo_pai',
         'tx_rel2' => 'tx_tipo_filho'
+    );
+
+    $camposBDCONFIGCLI = array (
+        'diasBoletoVenc' => 'CONF_dias_venc'
     );
 
     // gambiarra a pedido do paulo
@@ -370,16 +375,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
             $api->purgeArquivos($ident, $arquivos);
         }
     }
-    /*
-    foreach($compreJunto as $campo => $valor){
-        $valor = implode(",", $valor);
-        $valor = strtoupper($valor);
-        $valores .= ", '".$valor."'";
-        $campos .= ", ".$campo;
-    }  */
 
     $updateWid = '';
     $updateWidConfig = '';
+    $updateConfigCLI = '';
 
     //--tratamentos
     $compreJunto = ['p_chave_pai',
@@ -456,6 +455,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
                 $updateWidConfig = $updateWidConfig . $camposBDWIDCONFIG[$key] . ' = "' . $value . '", ';
             }
         }
+
+        if ($isset($camposBDCONFIGCLI[$key])) {
+            $updateConfigCLI = $updateConfigCLI . $camposBDCONFIGCLI[$key] . ' = "' . $value . '", ';
+        }
         $i++;
     }
 
@@ -470,6 +473,15 @@ function atualizaWidget($conCad, $idWid, $post, $files)
         $updateWid = substr($updateWid, 0, -2);
         $queryWidConfig = 'UPDATE widget_config SET ' . $updateWidConfig . ' WHERE WC_id_wid = "' . $idWid . '"';
         $executa = mysqli_query($conCad, $queryWidConfig);
+    }
+
+    if ($updateConfigCLI !== '') {
+        $updateConfigCLI = substr($updateConfigCLI, 0, -2); // Remove a última vírgula
+        $update = substr($updateWid, 0, -2);
+        $query = 'UPDATE widget_config SET ' . $updateWidConfig . ' WHERE WC_id_wid = "' . $idWid . '"';
+        $executa = mysqli_query($conCad, $query);
+
+        echo $query;
     }
 
     echo json_encode($info);
