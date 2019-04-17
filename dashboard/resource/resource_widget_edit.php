@@ -135,7 +135,7 @@ function carregaInfoWidget($conCad, $id, $idCli)
     }
 
     // pega id template
-    $selectTemplate = 'SELECT CONF_template_overlay from config WHERE CONF_id_cli =' . $idCli;
+    $selectTemplate = 'SELECT CONF_dias_venc, CONF_template_overlay from config WHERE CONF_id_cli =' . $idCli;
     $queryTemplate = mysqli_query($conCad, $selectTemplate);
     $resultTemplate = $queryTemplate->fetch_array(MYSQLI_ASSOC);
 
