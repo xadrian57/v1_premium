@@ -258,7 +258,7 @@ function atualizaWidget($conCad, $idWid, $post, $files)
     );
 
     $camposBDCONFIGCLI = array (
-        'diasBoletoVenc' => 'CONF_dias_venc'
+        'diasBoleto' => 'CONF_dias_venc'
     );
 
     // gambiarra a pedido do paulo

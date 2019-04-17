@@ -258,7 +258,7 @@ $(document).ready(function() {
 									'<div class="form-group">'+
 										'<label>Dias para o Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<select name="lembreteBoleto" class="form-control" value="'+i+'">'+
+											'<select name="lembreteBoleto" class="form-control" value="'+widget.WID_dias+'">'+
 												optionList+
 											'</select>'+
 									'</div>'+
