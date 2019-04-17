@@ -901,8 +901,8 @@ class Util {
             }
                        
 
-            if(strtoInt($viewsNow) < 2)
-                $viewsNow = 2;
+            if(intval($viewsNow) < 3)
+                $viewsNow = 3;
             
             $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
             $response = $html;
