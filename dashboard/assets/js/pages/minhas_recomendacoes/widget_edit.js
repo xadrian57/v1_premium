@@ -1350,7 +1350,6 @@ $(document).ready(function () {
 											}
 											desbloqueiaElemento($('#containerAlteraImagemForm')[0]);
 										}
-
 									}
 
 									reader.readAsDataURL(file);

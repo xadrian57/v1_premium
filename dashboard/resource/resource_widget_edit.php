@@ -102,7 +102,7 @@ function carregaWids($conCad)
 function carregaInfoWidget($conCad, $id, $idCli)
 {
     global $conDados;
-    $query = 'SELECT WID_banner, WID_link_banner, WID_thumb, WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id =' . $id . '';
+    $query = 'SELECT WID_cupom, WID_banner, WID_link_banner, WID_thumb, WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id =' . $id . '';
     $result = mysqli_query($conCad, $query);
     $result = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -173,16 +173,25 @@ function carregaSmartRecovery($conCad, $idCli) {
     $query = mysqli_query($conCad, $select);
     $data = [];    
 
+    $selectConfig = "SELECT CONF_dias_venc FROM config WHERE CONF_id_cli = $idCli";
+    $queryConfig = mysqli_query($conCad, $query);
+    $diasVenc = 1;
+    if ($queryConfig) {
+        $diasVenc = mysqli_fetch_assoc($queryConfig)['CONF_dias_venc'];
+    }
+
     $rec_boleto = [];
     $rec_carrinho = [];
 
     if ($query) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 45) 
-                $rec_boleto[] = $result;
+            if ($result['WID_inteligencia'] == 45) {
+                $rec_boleto[$i] = $result;
+                $rec_boleto[$i]['CONF_dias_venc'] = $diasVenc;
+            }
             else
-                $rec_carrinho[] = $result;
+                $rec_carrinho[$i] = $result;
             $i++;
         }
     }
@@ -219,7 +228,8 @@ function atualizaWidget($conCad, $idWid, $post, $files)
         'formatoWidget' => 'WID_formato',
         'imagemBanner' => 'WID_banner',
         'thumbnail' => 'WID_thumb',
-        'linkBannerOverlay' => 'WID_link_banner'
+        'linkBannerOverlay' => 'WID_link_banner',
+        'cupom' => 'WID_cupom'
         // 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
     );
 
