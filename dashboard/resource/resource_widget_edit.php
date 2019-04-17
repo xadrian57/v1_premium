@@ -102,7 +102,7 @@ function carregaWids($conCad)
 function carregaInfoWidget($conCad, $id, $idCli)
 {
     global $conDados;
-    $query = 'SELECT WID_cupom, WID_banner, WID_link_banner, WID_thumb, WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id =' . $id . '';
+    $query = 'SELECT WID_dias, WID_cupom, WID_banner, WID_link_banner, WID_thumb, WID_status, WID_formato, WID_inteligencia, WID_div_type, WID_hide, WID_show, WID_texto, WID_nome, WID_id, WID_utm, WID_div, WID_updown FROM widget WHERE WID_id =' . $id . '';
     $result = mysqli_query($conCad, $query);
     $result = $result->fetch_array(MYSQLI_ASSOC);
 
@@ -135,7 +135,7 @@ function carregaInfoWidget($conCad, $id, $idCli)
     }
 
     // pega id template
-    $selectTemplate = 'SELECT CONF_template_overlay from config WHERE CONF_id_cli =' . $idCli;
+    $selectTemplate = 'SELECT CONF_dias_venc, CONF_template_overlay from config WHERE CONF_id_cli =' . $idCli;
     $queryTemplate = mysqli_query($conCad, $selectTemplate);
     $resultTemplate = $queryTemplate->fetch_array(MYSQLI_ASSOC);
 
@@ -174,7 +174,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     $data = [];    
 
     $selectConfig = "SELECT CONF_dias_venc FROM config WHERE CONF_id_cli = $idCli";
-    $queryConfig = mysqli_query($conCad, $query);
+    $queryConfig = mysqli_query($conCad, $selectConfig);
     $diasVenc = 1;
     if ($queryConfig) {
         $diasVenc = mysqli_fetch_assoc($queryConfig)['CONF_dias_venc'];
@@ -186,19 +186,18 @@ function carregaSmartRecovery($conCad, $idCli) {
     if ($query) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 45) {
-                $rec_boleto[$i] = $result;
-                $rec_boleto[$i]['CONF_dias_venc'] = $diasVenc;
-            }
+            if ($result['WID_inteligencia'] == 45)
+                array_push($rec_boleto,$result);
             else
-                $rec_carrinho[$i] = $result;
+                array_push($rec_carrinho,$result);
             $i++;
         }
     }
 
     $data = array(
         'boleto' => $rec_boleto,
-        'carrinho' => $rec_carrinho
+        'carrinho' => $rec_carrinho,
+        'diasVencBoleto' => $diasVenc
     );
 
     echo json_encode($data);
@@ -229,9 +228,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
         'imagemBanner' => 'WID_banner',
         'thumbnail' => 'WID_thumb',
         'linkBannerOverlay' => 'WID_link_banner',
-        'cupom' => 'WID_cupom'
+        'cupom' => 'WID_cupom',
+        'lembreteBoleto' => 'WID_dias'
         // 'pagina'=>'WID_pagina' não vai ser possível alterar a página, por enquanto
-    );
+    );    
 
     $camposBDWIDCONFIG = array( // campos configuracao widget
         'produtosCollection' => 'WC_collection',
@@ -255,6 +255,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
 
         'tx_rel1' => 'tx_tipo_pai',
         'tx_rel2' => 'tx_tipo_filho'
+    );
+
+    $camposBDCONFIGCLI = array (
+        'diasBoleto' => 'CONF_dias_venc'
     );
 
     // gambiarra a pedido do paulo
@@ -371,16 +375,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
             $api->purgeArquivos($ident, $arquivos);
         }
     }
-    /*
-    foreach($compreJunto as $campo => $valor){
-        $valor = implode(",", $valor);
-        $valor = strtoupper($valor);
-        $valores .= ", '".$valor."'";
-        $campos .= ", ".$campo;
-    }  */
 
     $updateWid = '';
     $updateWidConfig = '';
+    $updateConfigCLI = '';
 
     //--tratamentos
     $compreJunto = ['p_chave_pai',
@@ -457,6 +455,10 @@ function atualizaWidget($conCad, $idWid, $post, $files)
                 $updateWidConfig = $updateWidConfig . $camposBDWIDCONFIG[$key] . ' = "' . $value . '", ';
             }
         }
+
+        if (isset($camposBDCONFIGCLI[$key])) {
+            $updateConfigCLI = $updateConfigCLI . $camposBDCONFIGCLI[$key] . ' = "' . $value . '", ';
+        }
         $i++;
     }
 
@@ -471,6 +473,15 @@ function atualizaWidget($conCad, $idWid, $post, $files)
         $updateWid = substr($updateWid, 0, -2);
         $queryWidConfig = 'UPDATE widget_config SET ' . $updateWidConfig . ' WHERE WC_id_wid = "' . $idWid . '"';
         $executa = mysqli_query($conCad, $queryWidConfig);
+    }
+
+    if ($updateConfigCLI !== '') {
+        $updateConfigCLI = substr($updateConfigCLI, 0, -2); // Remove a última vírgula
+        $update = substr($updateWid, 0, -2);
+        $query = 'UPDATE widget_config SET ' . $updateWidConfig . ' WHERE WC_id_wid = "' . $idWid . '"';
+        $executa = mysqli_query($conCad, $query);
+
+        echo $query;
     }
 
     echo json_encode($info);

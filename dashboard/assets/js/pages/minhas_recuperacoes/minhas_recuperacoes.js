@@ -19,6 +19,8 @@ $(document).ready(function() {
 
 					widgets.botoesEditar();
 					widgets.botoesSalvar();
+
+					window['diasVencBoleto'] = data.diasVencBoleto;
 					
 				}
 			})
@@ -44,7 +46,7 @@ $(document).ready(function() {
 
 		loadRecCarrinho: function(wids) {
 			var $list = document.getElementById('widgetsCarrinho');
-			wids.innerHTML = "";
+			$list.innerHTML = "";
 			wids.forEach(function (wid) {
 				var ativo = (wid.WID_status === '1') ? 'checked' : '';
 
@@ -173,74 +175,108 @@ $(document).ready(function() {
 						var camposAdicionais = document.getElementById('widedit-opcoes-adicionais');
 						camposAdicionais.innerHTML = '<h4>Configurações Específicas</h4>';
 					
+						$('#tituloPromocionalLabel').html('Título Promocional');
 						$('#inputCupom').hide();
+						$('#container-configuracoes').show();
 						switch(widget.WID_inteligencia) {
-								case '44': // rec carrinho onsite
-									$('#inputCupom').show();
-									camposAdicionais.innerHTML +=
-									'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
-									'<label>Imagem Atual:</label>' +
-									'<div class="form-control">' +
-									'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">' +
-									'<i class="icon-info"></i>' +
-									'</abbr>' +
-									'<div class="rh-input-icon-right">' +
-									'<div class="media">' +
-									'<div class="media-left">' +
-									'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
-									'</div>' +
-									'<div class="media-body">' +
-									'<div class="form-group">' +
-									'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
-									'</div>' +
-									'<div class="form-group">' +
-									'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'<div class="form-group">' +
-									'<div class="rh-input-icon-right">' +
-									'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'</div>';
-									break;
-								case '45': // lembrete boleto
-									$('#inputCupom').show();
-									camposAdicionais.innerHTML +=
-									'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
-									'<label>Imagem Atual:</label>' +
-									'<div class="form-control">' +
-									'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">' +
-									'<i class="icon-info"></i>' +
-									'</abbr>' +
-									'<div class="rh-input-icon-right">' +
-									'<div class="media">' +
-									'<div class="media-left">' +
-									'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
-									'</div>' +
-									'<div class="media-body">' +
-									'<div class="form-group">' +
-									'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
-									'</div>' +
-									'<div class="form-group">' +
-									'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'<div class="form-group">' +
-									'<div class="rh-input-icon-right">' +
-									'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>' +
-									'</div>' +
-									'</div>' +
-									'</div>' +
-									'</div>';
-									break;
+							case '44': // rec carrinho onsite
+								$('#inputCupom').show();
+								camposAdicionais.innerHTML +=
+								'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
+								'<label>Imagem Atual:</label>' +
+								'<div class="form-control">' +
+								'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">' +
+								'<i class="icon-info"></i>' +
+								'</abbr>' +
+								'<div class="rh-input-icon-right">' +
+								'<div class="media">' +
+								'<div class="media-left">' +
+								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
+								'</div>' +
+								'<div class="media-body">' +
+								'<div class="form-group">' +
+								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<div class="rh-input-icon-right">' +
+								'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>';
+								break;
+							case '45': // lembrete boleto
+								$('#container-configuracoes').hide();
+
+								$('#tituloPromocionalLabel').html('Título do E-mail');
+								camposAdicionais.innerHTML +=
+								'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
+								'<label>Imagem Atual:</label>' +
+								'<div class="form-control">' +
+								'<abbr title="Esta é a foto que vai aparecer no banner do overlay." class="info-abbr">' +
+								'<i class="icon-info"></i>' +
+								'</abbr>' +
+								'<div class="rh-input-icon-right">' +
+								'<div class="media">' +
+								'<div class="media-left">' +
+								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
+								'</div>' +
+								'<div class="media-body">' +
+								'<div class="form-group">' +
+								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'<div class="form-group">' +
+								'<div class="rh-input-icon-right">' +
+								'<input id="imagemBanner" name="imagemBanner" type="file" accept="image/x-png,image/gif,image/jpeg" hidden>' +
+								'</div>' +
+								'</div>' +
+								'</div>' +
+								'</div>';
+
+								var optionList = (widget.WID_dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
+
+								for (var i = 2; i < window['diasVencBoleto']; i++) {
+									var selected = (widget.WID_dias == i) ? 'selected' : '';
+									optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
+								}
+								
+								camposAdicionais.innerHTML +=
+								'<div class="col-md-6">'+
+									'<div class="form-group">'+
+										'<label>Dias para o Vencimento do Boleto</label>'+
+										'<div class="rh-input-icon-right">'+
+											'<select name="lembreteBoleto" class="form-control" value="'+widget.WID_dias+'">'+
+												optionList+
+											'</select>'+
+										'</div>'+
+									'</div>'+
+									'<div class="form-group">'+
+										'<label>Dias para o Vencimento do Boleto</label>'+
+										'<div class="rh-input-icon-right">'+
+											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+window['diasVencBoleto']+'>'+
+													'<abbr style="position: relative;right: -34px;" title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'+
+															'<i class="icon-info"></i>'+
+													'</abbr>'+
+											'</div>'+
+									'</div>'+
+								'</div>';
+
+
+								break;
 						}
 	
 						// ver imagem banner
@@ -279,6 +315,11 @@ $(document).ready(function() {
 									img.onload = function () {
 										if (file.type !== 'image/png' && file.type !== 'image/jpg' && file.type !== 'image/jpeg' && file.type !== 'image/gif') {
 											toastr['error']('O arquivo que você tentou enviar não é uma imagem.');
+											$('#imagemBanner').val('');
+										}
+										// rec cart on site
+										else if (widget.WID_inteligencia == 44 && img.width != 700 && img.height != 160) {
+											toastr['error']('As dimensões da imagem devem ser de exatamente 700px de largura por 160px de altura.');
 											$('#imagemBanner').val('');
 										}
 										// lembrete de boleto
@@ -456,6 +497,11 @@ $(document).ready(function() {
 					}
 
 					formData.append(key, val);
+				}
+
+				// dias venc
+				if ($('#diasBoletoVenc').length > 0) {
+					window['diasBoletoVenc'] = $('#diasBoletoVenc').val();
 				}
 
 				// tratamento widshow e widhide para salvar mais de 1 pagina
