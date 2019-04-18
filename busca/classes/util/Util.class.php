@@ -220,7 +220,7 @@ class Util
 		return array(
 					'id'=> strval($linha['XML_id']), 
 					'sku'=> $linha['XML_sku'], 
-					'title'=> urlencode($linha['XML_titulo']),
+					'title'=> $linha['XML_titulo'],
 					'in_stock'=> $linha['XML_availability'], 
     				'price'=> floatval($linha['XML_price']), 
     				'sale_price'=> floatval($linha['XML_sale_price']), 
