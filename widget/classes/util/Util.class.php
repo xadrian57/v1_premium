@@ -1206,10 +1206,10 @@ class Util {
             case 42:
                 $formato = 'autocomplete';
                 break;
-            case 43:
+            case 44:
                 $formato = 'scroll_checkout';
                 break;
-            case 44:
+            case 45:
                 $formato = 'rec_cart_onsite';
                 break;
         }
