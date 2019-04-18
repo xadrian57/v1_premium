@@ -743,6 +743,10 @@ rhSearchBar = function(cfg,idCli,idWid){
 
                 var result = JSON.parse( xhr.responseText );
 
+                if (result['search'][0]) {
+                 result = result['search'];   
+                }
+
                 console.log('resultado:');
                 console.log(result);
                 console.log('--------------------------');
