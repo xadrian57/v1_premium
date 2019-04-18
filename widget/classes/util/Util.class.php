@@ -892,7 +892,7 @@ class Util {
         $idWid = $arrayWidgets['WID_id'];
 
         
-        if($viewsNow != -1 && $formato == 43){
+        if($viewsNow != -1 && $formato == 44){
 
             $formato = self::getFormatName($formato);
             $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
