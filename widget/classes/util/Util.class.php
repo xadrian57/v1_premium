@@ -218,7 +218,7 @@ class Util {
             return $response;
         }
         
-        if(!empty($obj[0]['link']) || $formato == 44)
+        if(!empty($obj[0]['link']) || $formato == 45)
         {
             $sumValue = 0.00;
             $sumValueDe = 0.00;
@@ -240,7 +240,7 @@ class Util {
             }
 
             //NOVOS OVERLAYS PADRÃO
-            if($formato == 5 || $formato == 6 || $formato == 44)
+            if($formato == 5 || $formato == 6 || $formato == 45)
             {
                 $formato = self::getFormatName($formato);
                 $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
