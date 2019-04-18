@@ -141,7 +141,7 @@ abstract class AbstractWidget {
                 $result = "AND WID_pagina IN (0,7) ";
                 break;
             default:
-                $result = " ";
+                $result = "AND WID_pagina IN (0) ";
                 break;
         }
         
