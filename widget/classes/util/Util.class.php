@@ -901,11 +901,7 @@ class Util {
                 $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
             }
                        
-
-            /*if(intval($viewsNow) < 3)
-                $viewsNow = 3;
-            */
-            $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
+            $html = str_replace('{SC_PEOPLE}', $this->viewsNow, $html);
             $response = $html;
 
             return $response;
