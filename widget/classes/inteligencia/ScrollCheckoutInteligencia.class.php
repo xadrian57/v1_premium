@@ -27,6 +27,7 @@ class ScrollCheckoutInteligencia extends AbstractInteligencia {
         $views_hour = explode(",", $linha['XML_views_hour']);
         $viewsNow = $views_hour[date('H')];
 
+        echo $viewsNow;
         if(intval($viewsNow) < 3)
             $viewsNow = 3;
 
