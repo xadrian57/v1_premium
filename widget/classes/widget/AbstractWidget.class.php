@@ -100,7 +100,7 @@ abstract class AbstractWidget {
             if ($arrayWidgets['WID_formato'] == 41) {
                 $html = Util::get_HTML_Loja_Lateral($this,$arrayConfig,$arrayWidgets);
             }else if($arrayWidgets['WID_formato'] == 44){
-                $html = Util::get_HTML_sc($this->obj, $arrayConfig, $arrayWidgets, $this->getViewsNow());
+                $html = Util::get_HTML_sc($this->obj, $arrayConfig, $arrayWidgets, $this->viewsNow);
             }else{
                 $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
             }   
