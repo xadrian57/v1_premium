@@ -33,6 +33,8 @@ abstract class AbstractSearch
 		include '../bd/conexao_bd_dados.php';
 		$this->conDados = $conDados;
 
+        mysqli_set_charset($this->conDados, 'utf8');
+
 		//CONEXÃO BD CADASTRO
 		include '../bd/conexao_bd_cadastro.php';
 		$this->conCad = $conCad;

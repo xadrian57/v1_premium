@@ -64,7 +64,7 @@ class Util {
         return $pesquisa;
     }
     
-    public static function set_JSON_widget($JSON_widgets, $inject, $idWid, $html, $arrayWidgets, $obj)
+    public static function set_JSON_widget($JSON_widgets, $inject, $idWid, $html, $arrayWidgets, $obj, $inteligencia)
     {
         $injectName = $arrayWidgets['WID_div'];
         $position = $arrayWidgets['WID_placement'];
@@ -81,6 +81,7 @@ class Util {
         {
             $JSON_widgets .= '{
                 "widget_id":'.$idWid.',
+                "widget_inteligencia":'.$inteligencia.',
                 "inject":true,
                 "inject_name":"'.$injectName.'",
                 "inject_position":"'.$position.'",
@@ -217,7 +218,7 @@ class Util {
             return $response;
         }
         
-        if(!empty($obj[0]['link']) || $formato == 44)
+        if(!empty($obj[0]['link']) || $formato == 45)
         {
             $sumValue = 0.00;
             $sumValueDe = 0.00;
@@ -239,7 +240,7 @@ class Util {
             }
 
             //NOVOS OVERLAYS PADRÃO
-            if($formato == 5 || $formato == 6 || $formato == 44)
+            if($formato == 5 || $formato == 6 || $formato == 45)
             {
                 $formato = self::getFormatName($formato);
                 $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
@@ -891,7 +892,7 @@ class Util {
         $idWid = $arrayWidgets['WID_id'];
 
         
-        if($viewsNow != -1 && $formato == 43){
+        if($viewsNow != -1 && $formato == 44){
 
             $formato = self::getFormatName($formato);
             $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
@@ -1205,10 +1206,10 @@ class Util {
             case 42:
                 $formato = 'autocomplete';
                 break;
-            case 43:
+            case 44:
                 $formato = 'scroll_checkout';
                 break;
-            case 44:
+            case 45:
                 $formato = 'rec_cart_onsite';
                 break;
         }

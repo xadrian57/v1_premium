@@ -99,19 +99,17 @@ abstract class AbstractWidget {
             
             if ($arrayWidgets['WID_formato'] == 41) {
                 $html = Util::get_HTML_Loja_Lateral($this,$arrayConfig,$arrayWidgets);
-            }else if($arrayWidgets['WID_formato'] == 43){
-                $html = Util::get_HTML_sc($this->obj, $arrayConfig, $arrayWidgets, $this->getViewsNow());
             }else if($arrayWidgets['WID_formato'] == 44){
-                $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
+                $html = Util::get_HTML_sc($this->obj, $arrayConfig, $arrayWidgets, $this->getViewsNow());
             }else{
                 $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
             }   
 
-            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
+            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj, $this->widInteligencia);
         }
         else
         {
-            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
+            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj, $this->widInteligencia);
         }
     }
     
@@ -143,7 +141,7 @@ abstract class AbstractWidget {
                 $result = "AND WID_pagina IN (0,7) ";
                 break;
             default:
-                $result = " ";
+                $result = "AND WID_pagina IN (0) ";
                 break;
         }
         
