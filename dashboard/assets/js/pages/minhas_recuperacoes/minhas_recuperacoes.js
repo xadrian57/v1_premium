@@ -319,7 +319,7 @@ $(document).ready(function() {
 										}
 										// rec cart on site
 										else if (widget.WID_inteligencia == 44 && img.width != 700 && img.height != 150) {
-											toastr['error']('As dimensões da imagem devem ser de exatamente 700px de largura por 160px de altura.');
+											toastr['error']('As dimensões da imagem devem ser de exatamente 700px de largura por 150px de altura.');
 											$('#imagemBanner').val('');
 										}
 										// lembrete de boleto
