@@ -318,7 +318,7 @@ $(document).ready(function() {
 											$('#imagemBanner').val('');
 										}
 										// rec cart on site
-										else if (widget.WID_inteligencia == 44 && img.width != 700 && img.height != 160) {
+										else if (widget.WID_inteligencia == 44 && img.width != 700 && img.height != 150) {
 											toastr['error']('As dimensões da imagem devem ser de exatamente 700px de largura por 160px de altura.');
 											$('#imagemBanner').val('');
 										}
