@@ -901,7 +901,7 @@ class Util {
                 $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
             }
                        
-            $html = str_replace('{SC_PEOPLE}', $this->viewsNow, $html);
+            $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
             $response = $html;
 
             return $response;
