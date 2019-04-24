@@ -639,23 +639,20 @@ $(document).ready(function() {
 	}
 
 	// lembrete boleto
-	function geraOptionList(dias, diaVenc) {
+	window['geraOptionList'] = function(dias, diaVenc) {
 		var optionList = (dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
 		for (var i = 2; i < dias; i++) {
 			var selected = (dias == i) ? 'selected' : '';
 			optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
 		}
 
-		console.log(optionList);
-
 		return optionList;
 	}
 
 	// lembrete boleto
-	function atualizaOptList(dias) {
+	window['atualizaOptList'] = function(dias) {
 		var o = geraOptionList(dias);
 
-		console.log(o);
 		$('#lembreteBoleto').html(o);
 	}
 
