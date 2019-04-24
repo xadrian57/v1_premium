@@ -261,7 +261,27 @@ class Util {
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
-            $html = str_replace('{RCO_CUPOM}', $cupom, $html);
+
+            if($cupom != '' && $cupom != null && empty($cupom))
+            {
+                // REMOVE O FALSE
+                $arrayAux = explode ('<!-- RCO_CUPOM FALSE -->', $html);
+                if(count($arrayAux) > 0)
+                {
+                    $html = $arrayAux[0].''.$arrayAux[2];
+
+                    $html = str_replace('{RCO_CUPOM}', $cupom, $html);
+                }
+            }
+            else
+            {
+                // REMOVE O TRUE
+                $arrayAux = explode ('<!-- RCO_CUPOM TRUE -->', $html);
+                if(count($arrayAux) > 0)
+                {
+                    $html = $arrayAux[0].''.$arrayAux[2];
+                }
+            }
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 
