@@ -136,11 +136,16 @@ function carregaInfoWidget($conCad, $id, $idCli)
         // lembrete boleto
         if ($result['WID_inteligencia'] == 45) {
             // lembrete boleto - email
-            $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner, CMAIL_status FROM config_email WHERE CMAIL_CLI_id";
+            $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_CLI_id";
             $queryEmail = mysqli_query($conCad, $selectEmail);
-            $cfgMail = 0;
+            $cfgMail = [];
             if ($queryEmail) {
                 $cfgMail = mysqli_fetch_assoc($queryConfig);
+
+                $resultWidConfig['CMAIL_subject'] = $cfgMail['CMAIL_subject'];
+                $resultWidConfig['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
+                $resultWidConfig['CMAIL_send_date'] = $cfgMail['CMAIL_send_date'];
+                $resultWidConfig['CMAIL_banner'] = $cfgMail['CMAIL_banner'];
             }
         }
     }
