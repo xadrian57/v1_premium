@@ -597,9 +597,15 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files) {
     $queryWid = 'UPDATE widget SET ' . $updateWid . ' WHERE WID_id = "' . $idWid . '"';
     $executa = mysqli_query($conCad, $queryWid);
 
+    echo $queryWid;
+    echo '\n';
+
     $updateMail = substr($updateMail, 0, -2); // Remove a última vírgula
     $queryMail = 'UPDATE config_email SET ' . $updateMail . ' WHERE CMAIL_CLI_id = "' . $idWid . '"';
     $executa = mysqli_query($conCad, $queryMail);
+    echo $queryMail;
+    echo '\n';
+
 }
 
 // ATIVA/DESATIVA LEMBRETE DE BOLETO
