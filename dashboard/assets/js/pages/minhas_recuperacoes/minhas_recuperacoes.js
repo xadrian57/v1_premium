@@ -300,7 +300,7 @@ $(document).ready(function() {
 										'<label>Enviar o email</label>'+
 										'<div class="rh-input-icon-right">'+
 											'<select id="lembreteBoleto" name="lembreteBoleto" class="form-control" value="'+widget.CMAIL_due_date+'">'+
-												optionList+
+												opts+
 											'</select>'+
 										'</div>'+
 									'</div>'+
