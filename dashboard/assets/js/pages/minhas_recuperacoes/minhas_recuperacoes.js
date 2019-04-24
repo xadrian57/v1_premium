@@ -275,7 +275,7 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>';
 
-								var opts = geraOptionList(widget.WID_dias);								
+								var opts = geraOptionList(widget.WID_dias, widget.CMAIL_due_date);								
 								
 								camposAdicionais.innerHTML +=
 								'<div class="col-md-6">'+
@@ -291,7 +291,7 @@ $(document).ready(function() {
 										'<label>Dias para o Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
 											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+widget.CMAIL_due_date+
-											'" onchange="atualizaOptList(this.value)">'+
+											'" onchange="atualizaOptList(this.value, 1)">'+
 										'</div>'+
 									'</div>'+
 								'</div>';
@@ -639,12 +639,14 @@ $(document).ready(function() {
 	}
 
 	// lembrete boleto
-	function geraOptionList(dias) {
+	function geraOptionList(dias, diaVenc) {
 		var optionList = (dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
 		for (var i = 2; i < dias; i++) {
 			var selected = (dias == i) ? 'selected' : '';
 			optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
 		}
+
+		console.log(optionList);
 
 		return optionList;
 	}
@@ -653,6 +655,7 @@ $(document).ready(function() {
 	function atualizaOptList(dias) {
 		var o = geraOptionList(dias);
 
+		console.log(o);
 		$('#lembreteBoleto').html(o);
 	}
 
