@@ -127,7 +127,7 @@ if($_SESSION['idPlan'] == 42) {
 						</div>
 					</div>
 					<!-- BUSCA -->
-					<div class="col-lg-12 col-md-12">
+					<!--<div class="col-lg-12 col-md-12">
 						<div class="card">
 							<div class="card-header">
 								<h4 class="card-title">Busca</h4>
@@ -145,7 +145,7 @@ if($_SESSION['idPlan'] == 42) {
 								</div>
 							</div>
 						</div>
-					</div>
+					</div>-->
 					
 					<!-- OVERLAYSS -->
 					<div class="col-lg-12 col-md-12">
