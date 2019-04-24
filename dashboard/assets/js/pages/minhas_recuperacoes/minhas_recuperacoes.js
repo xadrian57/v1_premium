@@ -233,15 +233,13 @@ $(document).ready(function() {
 								camposAdicionais.innerHTML +=
 								'<style>#containerTituloPromocional{display: none !important;}</style>'+
 
-								'<div class="col-md-12">'+
-									'<div class="form-group">'+
-										'<label>Assunto do E-mail</label>'+
-										'<div class="rh-input-icon-right">'+
-											'<input id="assuntoEmail" name="assunto" class="form-control" type="text" value="'+assunto+'">'+
-											'<abbr title="Esse é o assunto do email que o cliente irá receber" class="info-abbr">'+
-												'<i class="icon-info"></i>'+
-											'</abbr>'+
-										'</div>'+
+								'<div class="form-group" id="assuntoEmailContainer">'+
+									'<label>Assunto do E-mail</label>'+
+									'<div class="rh-input-icon-right">'+
+										'<input id="assuntoEmail" name="assunto" class="form-control" type="text" value="'+assunto+'">'+
+										'<abbr title="Esse é o assunto do email que o cliente irá receber" class="info-abbr">'+
+											'<i class="icon-info"></i>'+
+										'</abbr>'+
 									'</div>'+
 								'</div>'+
 
