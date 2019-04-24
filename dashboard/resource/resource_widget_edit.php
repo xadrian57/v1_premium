@@ -141,7 +141,7 @@ function carregaInfoWidget($conCad, $id, $idCli)
         $queryEmail = mysqli_query($conCad, $selectEmail);
         $cfgMail = [];
         if ($queryEmail) {
-            $cfgMail = mysqli_fetch_assoc($queryConfig);
+            $cfgMail = mysqli_fetch_assoc($queryEmail);
 
             $result['CMAIL_subject'] = $cfgMail['CMAIL_subject'];
             $result['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
