@@ -275,23 +275,6 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>';
 
-								
-								function geraOptionList(dias) {
-									var optionList = (dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
-									for (var i = 2; i < widget.CMAIL_due_date; i++) {
-										var selected = (dias == i) ? 'selected' : '';
-										optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
-									}
-
-									return optionList;
-								}
-
-								function atualizaOptList(dias) {
-									var o = geraOptionList(dias);
-
-									$('#lembreteBoleto').html(o);
-								}
-
 								var opts = geraOptionList(widget.WID_dias);								
 								
 								camposAdicionais.innerHTML +=
@@ -653,6 +636,24 @@ $(document).ready(function() {
 
 	function removeForm(event) {
 		$(event.target).closest('.form-group').remove();
+	}
+
+	// lembrete boleto
+	function geraOptionList(dias) {
+		var optionList = (dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
+		for (var i = 2; i < dias; i++) {
+			var selected = (dias == i) ? 'selected' : '';
+			optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
+		}
+
+		return optionList;
+	}
+
+	// lembrete boleto
+	function atualizaOptList(dias) {
+		var o = geraOptionList(dias);
+
+		$('#lembreteBoleto').html(o);
 	}
 
 });
