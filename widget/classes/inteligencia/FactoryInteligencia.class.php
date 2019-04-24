@@ -44,7 +44,7 @@ class FactoryInteligencia {
     const AUTOCOMPLETE                                = 42;
     const SCROLL_CHECKOUT                             = 43;
     const REC_CART_ONSITE                             = 44;  
-
+    //const LEMBRETE_BOLETO                             = 45;
     
     /**
      * Construtor privado para que não seja criada intância dessa classe.

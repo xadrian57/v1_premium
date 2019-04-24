@@ -743,8 +743,10 @@ rhSearchBar = function(cfg,idCli,idWid){
 
                 var result = JSON.parse( xhr.responseText );
 
-                if (result['search'][0]) {
-                 result = result['search'];   
+                if (result['search']) {
+                    if (result['search'][0]) {
+                        result = result['search'];   
+                    }
                 }
 
                 console.log('resultado:');
@@ -794,10 +796,14 @@ rhSearchBar = function(cfg,idCli,idWid){
                             }
 
                             // DECODIFICANDO OS NOMES E OS LINKS
-                            result[x].title = decodeURIComponent(result[x].title.replace(/\+/g, ' '));
-                            result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utm='+utm;
-                            result[x].link_image = decodeURIComponent(result[x].link_image);
-                            result[x].type = decodeURIComponent(result[x].type).replace(/\+/g, ' ');
+                            try {
+                                result[x].title = decodeURIComponent(result[x].title.replace(/\+/g, ' '));
+                                result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utm='+utm;
+                                result[x].link_image = decodeURIComponent(result[x].link_image);
+                                result[x].type = decodeURIComponent(result[x].type).replace(/\+/g, ' ');
+                            } catch(e) {
+                                //
+                            }
                         // -------------------
 
                         var prod = result[x];
