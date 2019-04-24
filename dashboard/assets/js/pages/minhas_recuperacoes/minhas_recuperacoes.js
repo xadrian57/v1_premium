@@ -510,6 +510,7 @@ $(document).ready(function() {
 
 				var formData = new FormData();
 				formData.append('idWid', idWid);
+				formData.append('idCli', idCli);
 				
 				var op = 3;
 				if ($('#spec-inteligencia-modal-edit').html() == 'Lembrete de Boleto') {

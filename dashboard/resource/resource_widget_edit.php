@@ -516,7 +516,7 @@ function atualizaWidget($conCad, $idWid, $post, $files)
 }
 
 // ATUALIZA LEMBRETE BOLETO
-function atualizaLembreteBoleto($conCad, $idWid, $post, $files) {
+function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
     $info = array();
     $names = array_keys($post);
     foreach ($names as $name) {
@@ -803,8 +803,9 @@ switch ($operacao) {
         carregaSmartRecovery($conCad, $_POST['idCli']);
         break;
     case '11': // ATUALIZA INFORMAÇÕES LEMBRETE DE BOLETO
+        $idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
         $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
-        atualizaLembreteBoleto($conCad, $idWid, $_POST, $_FILES);
+        atualizaLembreteBoleto($conCad, $idWid, $_POST, $_FILES, $idCli);
         break;
     case '12': // ATIVA/DESATIVA WIDGET
         $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
