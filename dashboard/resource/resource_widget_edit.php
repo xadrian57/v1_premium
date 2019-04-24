@@ -798,7 +798,7 @@ switch ($operacao) {
         break;
     case '11': // ATUALIZA INFORMAÇÕES LEMBRETE DE BOLETO
         $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
-        atualizaWidget($conCad, $idWid, $_POST, $_FILES);
+        atualizaLembreteBoleto($conCad, $idWid, $_POST, $_FILES);
         break;
     case '12': // ATIVA/DESATIVA WIDGET
         $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
