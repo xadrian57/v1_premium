@@ -1,0 +1,91 @@
+<section class="rh-block-overlay rh-exit-overlay" data-rh-role="roi-hero-overlay">
+	<div class="rh-eo-container">
+		<span class="rh-eo-close rh-primary-color">&times;</span>
+
+		<aside class="rh-eo-image-container rh-primary-color">
+			<a href="{LINK_BANNER_BLOCK}" class="rh-eo-banner rh-secondary-background-color">
+				<img src="{BANNER_BLOCK}"/>
+			</a>
+		</aside>
+
+		<div class="rh-eo-slider rh-primary-color" data-rh-role="roi-hero-slider" 
+			data-view="2" 
+			data-speed="600"		
+			data-edge-padding="0"
+			data-responsive=
+			'{
+				"0": {
+					"items": 2,
+					"controls": true
+				}
+			}'
+		>
+			<div class="rh-title">
+				<span>{TITLE_BLOCK}</span>
+			</div>
+			<div class="rh-subtitle">
+				<span>{SUB_TITLE}</span>
+			</div>
+			<div class="rh-eo-shelf">
+				<ul class="rh-product-overlay-list rh-sl-content" data-rh-role="slider-slide">
+					<!-- REPEAT PRODUCTS -->
+					<li class="rh-product-overlay" alt="Blusa Preta Prá Usá No Fri">
+						<div class="rh-product-overlay-container">
+							<!-- DISCOUNT -->
+							<!-- DISCOUNT TRUE -->
+							<div class="rh-product-overlay-discount rh-secondary-background-color">{PRODUCT_DISCOUNT}% OFF</div>
+							<!-- DISCOUNT TRUE -->
+							<!-- DISCOUNT FALSE -->
+							<!-- DISCOUNT FALSE -->
+							<!-- DISCOUNT -->
+							<div class="rh-product-overlay-image-container">
+								<a class="rh-product-overlay-link" href="{PRODUCT_URL}">
+									<img class="rh-product-overlay-image" src="{PRODUCT_IMG}">
+								</a>
+							</div>
+							<div class="rh-product-overlay-info">
+								<a class="rh-product-overlay-link" href="{PRODUCT_URL}">
+									<span class="rh-product-overlay-name">{PRODUCT_NAME}</span>
+								</a>
+								<div class="rh-product-overlay-pricing">
+									<!-- preço normal -->
+									<div class="rh-product-overlay-old-price">
+										<!-- PRICE TRUE -->
+										<span class="rh-line-through">{VALUE_DE}</span>
+										<!-- PRICE TRUE -->
+										<!-- PRICE FALSE -->
+										<span class="rh-line-through"></span>
+										<!-- PRICE FALSE -->
+									</div>
+									<!-- preço promocional -->
+									<div class="rh-product-overlay-new-price">
+										<strong>{VALUE}</strong>
+									</div>
+									<!-- parcelamento -->
+									<!-- AMOUNT TRUE -->
+									<div class="rh-product-overlay-installment">
+										até <strong>{AMOUNT_PLOTS}x</strong> de <strong>{VALUE_PLOTS}</strong>
+									</div>
+									<!-- AMOUNT TRUE -->
+									<!-- AMOUNT FALSE -->
+									<div class="rh-product-overlay-installment">
+										<strong></strong><strong></strong>
+									</div>
+									<!-- AMOUNT FALSE -->
+								</div>
+								<!-- botão comprar -->
+								<div class="rh-buy-button-overlay">
+									<a class="rh-product-overlay-link rh-secondary-background-color" href="{PRODUCT_URL}">COMPRAR</a>	
+								</div>
+							</div>
+						</div>
+					</li>
+					<!-- REPEAT PRODUCTS -->
+				</ul>
+			</div>	
+		</div>
+
+		<!-- powered by ROI hero -->
+		<a class="rh-powered-by" href="https://www.roihero.com.br" target="_blank"></a>
+	</div>
+</section>

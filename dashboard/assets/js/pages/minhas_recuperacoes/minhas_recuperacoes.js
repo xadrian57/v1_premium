@@ -33,12 +33,20 @@ $(document).ready(function() {
 			wids.forEach(function (wid) {
 				var ativo = (wid.WID_status === '1') ? 'checked' : '';
 
+				var sw = '<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>'
+
+				// lembrete de boleto
+				if (wid.WID_inteligencia == 45) {
+					ativo = (wid.CONF_lembrete_boleto == 1) ? 'checked' : '';
+					sw = (wid.WID_inteligencia == 45) ? '<input type="checkbox" class="switch pull-right lembrete-boleto" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>';
+				}
+
 				$list.innerHTML = $list.innerHTML +
 					'<li class="list-group-item" wid-id="' + wid.WID_id + '"><span>' + wid.WID_nome + '</span>' +
 					'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
 					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.WID_id + '><i class="ft-x"></i> Deletar</button> -->' +
 					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
-					'<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>' +
+					sw +
 					'</div>' +
 					'</li>';
 			});
@@ -121,12 +129,18 @@ $(document).ready(function() {
 			}
 
 			$('.switch').change(function () {
+				var op = 0;
+				if (this.classList.contains('lembrete-boleto')) {
+					op = 12; // desativa lembrete de boleto
+				} else {
+					op = 4;
+				}
 				var idWid = this.parentElement.parentElement.getAttribute('wid-id');
 				var val = this.checked;
 				$.ajax({
 					type: 'POST',
 					url: 'resource/resource_widget_edit.php',
-					data: { 'idWid': idWid, 'val': val, 'op': 4 },
+					data: { 'idWid': idWid, 'val': val, 'op': op },
 					success: function (result) {
 					}
 				});
@@ -226,11 +240,11 @@ $(document).ready(function() {
 								'<div class="rh-input-icon-right">' +
 								'<div class="media">' +
 								'<div class="media-left">' +
-								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
+								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.CMAIL_banner + '">' +
 								'</div>' +
 								'<div class="media-body">' +
 								'<div class="form-group">' +
-								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.CMAIL_banner + '">Visualizar <i class="ft-eye"></i></button>' +
 								'</div>' +
 								'<div class="form-group">' +
 								'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
