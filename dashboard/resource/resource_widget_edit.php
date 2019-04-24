@@ -526,7 +526,7 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
     $camposBDEMAIL = array(
         'assunto' => 'CMAIL_subject',
         'lembreteBoleto' => 'CMAIL_send_date',
-        'diasBoletoVenc' => 'CMAIL_due_date',
+        'diasBoleto' => 'CMAIL_due_date',
         'imagemBanner' => 'CMAIL_banner'
     );
 
