@@ -24,6 +24,7 @@ window['rhSearchBarSendReq'] = function(idCli,idWid){
         };
     } else {
         css.onload = function () {
+            console.log('carregou');
             window['rh_sb_css_ready'] = true;
         };
     };
@@ -78,8 +79,8 @@ window['rhSearchBarSendReq'] = function(idCli,idWid){
                     rh_lite_termos[1].termo = decodeURIComponent(rh_lite_termos[1].termo);
                     rh_lite_termos[1].titulo = decodeURIComponent(rh_lite_termos[1].titulo);
 
-                    // console.log('Termos/conteudo:');
-                    // console.log(rh_lite_termos);
+                    console.log('Termos/conteudo:');
+                    console.log(rh_lite_termos);
 
                     // CHECK DE SEGURANÇA
                     // CASO N TENHA NENHUM RANK DE PRODUTOS MAIS BUSCADOS AINDA NO BANCO, RECEBE VAZIO
@@ -288,8 +289,8 @@ rhSearchBar = function(cfg,idCli,idWid){
                 }
 
 
-                console.log('Produtos carregados no browser.');
-                // console.log(rh_lite_obj);
+                console.log('Produtos:');
+                console.log(rh_lite_obj);
             }
         }
         req2.send(formData);
@@ -742,6 +743,12 @@ rhSearchBar = function(cfg,idCli,idWid){
 
                 var result = JSON.parse( xhr.responseText );
 
+                if (result['search']) {
+                    if (result['search'][0]) {
+                        result = result['search'];   
+                    }
+                }
+
                 console.log('resultado:');
                 console.log(result);
                 console.log('--------------------------');
@@ -789,10 +796,14 @@ rhSearchBar = function(cfg,idCli,idWid){
                             }
 
                             // DECODIFICANDO OS NOMES E OS LINKS
-                            result[x].title = decodeURIComponent(result[x].title.replace(/\+/g, ' '));
-                            result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utmi_medium=roihero&utmi_content=roihero&rh_int=search';
-                            result[x].link_image = decodeURIComponent(result[x].link_image);
-                            result[x].type = decodeURIComponent(result[x].type).replace(/\+/g, ' ');
+                            try {
+                                result[x].title = decodeURIComponent(result[x].title.replace(/\+/g, ' '));
+                                result[x].link = decodeURIComponent(result[x].link)+'?idwid='+idWid+'&utm='+utm;
+                                result[x].link_image = decodeURIComponent(result[x].link_image);
+                                result[x].type = decodeURIComponent(result[x].type).replace(/\+/g, ' ');
+                            } catch(e) {
+                                //
+                            }
                         // -------------------
 
                         var prod = result[x];
@@ -853,7 +864,7 @@ rhSearchBar = function(cfg,idCli,idWid){
                                                 '</div>'+
                                             '</a>';
                         } else {
-                            resultadoString+='<a href="'+prod.link+'">'+
+                            resultadoString+='<a href="'+prod.link+'" class="rh-out-of-stock">'+
                                                 '<figure class="rh_lite_searchbar_results_figure">'+
                                                     '<img src="'+prod.link_image+'">'+
                                                     tag+
@@ -897,7 +908,7 @@ rhSearchBar = function(cfg,idCli,idWid){
                     console.log('Nenhum resultado encontrado');
                     cfg.searchbarResults.classList.add('active'); // MOSTRANDO OS RESULTADOS
                     cfg.searchbarResults.classList.remove('loading'); 
-                    resultado.innerHTML = '<b class="rh-no-results-found" style="margin:10px;">Nenhum resultado encontrado.</b>'
+                    resultado.innerHTML = '<b class="rh-no-results-found" style="margin:10px;">Nehum resultado encontrado.</b>'
                 }
 
 
