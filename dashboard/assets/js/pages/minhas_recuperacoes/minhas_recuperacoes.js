@@ -228,7 +228,7 @@ $(document).ready(function() {
 							case '45': // lembrete boleto
 								$('#container-configuracoes').hide();
 
-								var assunto = wid.CMAIL_subject.replace(/{CLIENT_NAME}, /g,'');
+								var assunto = widget.CMAIL_subject.replace(/{CLIENT_NAME}, /g,'');
 
 								camposAdicionais.innerHTML +=
 								'<style>#containerTituloPromocional{display: none !important;}</style>'+
@@ -237,7 +237,7 @@ $(document).ready(function() {
 									'<div class="form-group">'+
 										'<label>Assunto do E-mail</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<input id="assuntoEmail" name="assunto" class="form-control" type="text" value="'+wid.assunto+'">'+
+											'<input id="assuntoEmail" name="assunto" class="form-control" type="text" value="'+assunto+'">'+
 											'<abbr title="Esse é o assunto do email que o cliente irá receber" class="info-abbr">'+
 												'<i class="icon-info"></i>'+
 											'</abbr>'+
