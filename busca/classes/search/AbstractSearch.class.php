@@ -154,7 +154,7 @@ abstract class AbstractSearch
 		{
 			return " OR id = '". $busca ."' ";
 		}
-		else if($this->idcli == 116 || $this->idcli == 1880)
+		else if($this->idcli == 116 || $this->idcli == 1880 || $this->idcli == 2005)
 		{
 			return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) OR id = '". $busca ."' ";
 		}

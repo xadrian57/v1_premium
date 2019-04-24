@@ -34,11 +34,14 @@ $( document ).ready( function ()
         document.querySelector( '#cardBusca' ).remove() // é AUTOCOMPLETE esconde o outro
       }
 
-      var $widId = document.querySelector( '.wid_id' )
+      var $widId = document.querySelectorAll( '.wid_id' )
 
       var wid = __busca[ 0 ]
 
-      $widId.innerHTML = wid.id
+      $widId.forEach( ( $wId ) =>
+      {
+        $wId.innerHTML = wid.id
+      } )
     },
 
     saveFormat: function ()
