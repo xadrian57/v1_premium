@@ -173,11 +173,19 @@ function carregaSmartRecovery($conCad, $idCli) {
     $query = mysqli_query($conCad, $select);
     $data = [];    
 
-    $selectConfig = "SELECT CONF_dias_venc FROM config WHERE CONF_id_cli = $idCli";
+    $selectConfig = "SELECT CONF_lembrete_boleto, CONF_dias_venc FROM config WHERE CONF_id_cli = $idCli";
     $queryConfig = mysqli_query($conCad, $selectConfig);
     $diasVenc = 1;
     if ($queryConfig) {
         $diasVenc = mysqli_fetch_assoc($queryConfig)['CONF_dias_venc'];
+    }
+
+    // lembrete boleto - email
+    $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner, CMAIL_status FROM config_email WHERE CMAIL_id_cli";
+    $queryEmail = mysqli_query($conCad, $selectEmail);
+    $cfgMail = 0;
+    if ($queryEmail) {
+        $cfgMail = mysqli_fetch_assoc($queryConfig)['CMAIL_status'];
     }
 
     $rec_boleto = [];
@@ -186,8 +194,11 @@ function carregaSmartRecovery($conCad, $idCli) {
     if ($query) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 45)
+            if ($result['WID_inteligencia'] == 45) { // lembrete boleto
+                $result['CMAIL_status'] = $cfgMail;
+                $result['CONF_dias_venc'] = $diasVenc;
                 array_push($rec_boleto,$result);
+            }
             else
                 array_push($rec_carrinho,$result);
             $i++;
@@ -487,6 +498,25 @@ function atualizaWidget($conCad, $idWid, $post, $files)
     echo json_encode($info);
 }
 
+// ATUALIZA LEMBRETE BOLETO
+function atualizaLembreteBoleto($conCad, $idWid, $post, $files) {
+
+}
+
+// ATIVA/DESATIVA LEMBRETE DE BOLETO
+function toggleLembreteBoleto($conCad, $id, $t)
+{
+    if ($t == 'true' || $t == 'on') {
+        $queryCfgEmail = 'UPDATE config_email SET CMAIL_status = 1 WHERE WID_id = "' . $id . '"';
+        $queryCfg = 'UPDATE config SET CONF_lembrete_boleto = 1 WHERE WID_id = "' . $id . '"';
+    } else {
+        $queryCfgEmail = 'UPDATE config_email SET CMAIL_status = 0 WHERE WID_id = "' . $id . '"';
+        $queryCfg = 'UPDATE config SET CONF_lembrete_boleto = 0 WHERE WID_id = "' . $id . '"';
+    }
+    mysqli_query($conCad, $queryCfgEmail);
+    mysqli_query($conCad, $queryCfg);
+}
+
 // CARREGA INFORMACOES WIDGET DE BUSCA
 function carregaInfoBusca($conCad, $id, $idCli)
 {
@@ -667,6 +697,14 @@ switch ($operacao) {
         $idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
         carregaSmartRecovery($conCad, $_POST['idCli']);
         break;
+    case '11': // ATUALIZA INFORMAÇÕES LEMBRETE DE BOLETO
+        $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
+        atualizaWidget($conCad, $idWid, $_POST, $_FILES);
+        break;
+    case '12': // ATIVA/DESATIVA WIDGET
+        $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
+        $toggle = mysqli_real_escape_string($conCad, $_POST['val']);
+        toggleLembreteBoleto($conCad, $idWid, $toggle);        
     default:
         break;
 }
