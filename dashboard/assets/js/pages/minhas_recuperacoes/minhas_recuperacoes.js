@@ -318,8 +318,8 @@ $(document).ready(function() {
 											$('#imagemBanner').val('');
 										}
 										// rec cart on site
-										else if (widget.WID_inteligencia == 44 && img.width != 700 && img.height != 150) {
-											toastr['error']('As dimensões da imagem devem ser de exatamente 700px de largura por 150px de altura.');
+										else if (widget.WID_inteligencia == 44 && img.width != 680 && img.height != 150) {
+											toastr['error']('As dimensões da imagem devem ser de exatamente 680px de largura por 150px de altura.');
 											$('#imagemBanner').val('');
 										}
 										// lembrete de boleto
