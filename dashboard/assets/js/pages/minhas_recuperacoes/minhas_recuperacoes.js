@@ -236,7 +236,8 @@ $(document).ready(function() {
 								'<div class="form-group">'+
 									'<label>Assunto do E-mail</label>'+
 									'<div class="rh-input-icon-right" id="assuntoEmailContainer">'+
-										'<input id="assuntoEmail" name="assunto" class="form-control" type="text" value="'+assunto+'">'+
+									'<input class="form-control" type="text" value="'+assunto+'" onchange="$(\'#assuntoEmail\').val(\'{CLIENT_NAME}, \'+ this.value)">'+
+									'<input id="assuntoEmail" name="assunto" class="form-control" type="hidden" value="'+widget.CMAIL_subject+'">'+
 										'<abbr title="Esse é o assunto do email que o cliente irá receber" class="info-abbr">'+
 											'<i class="icon-info"></i>'+
 										'</abbr>'+
