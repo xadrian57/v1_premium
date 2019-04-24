@@ -233,9 +233,9 @@ $(document).ready(function() {
 								camposAdicionais.innerHTML +=
 								'<style>#containerTituloPromocional{display: none !important;}</style>'+
 
-								'<div class="form-group" id="assuntoEmailContainer">'+
+								'<div class="form-group">'+
 									'<label>Assunto do E-mail</label>'+
-									'<div class="rh-input-icon-right">'+
+									'<div class="rh-input-icon-right" id="assuntoEmailContainer">'+
 										'<input id="assuntoEmail" name="assunto" class="form-control" type="text" value="'+assunto+'">'+
 										'<abbr title="Esse é o assunto do email que o cliente irá receber" class="info-abbr">'+
 											'<i class="icon-info"></i>'+
@@ -284,9 +284,9 @@ $(document).ready(function() {
 								camposAdicionais.innerHTML +=
 								'<div class="col-md-6">'+
 									'<div class="form-group">'+
-										'<label>Dias para o Vencimento do Boleto</label>'+
+										'<label>Enviar o email</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<select name="lembreteBoleto" class="form-control" value="'+widget.WID_dias+'">'+
+											'<select name="lembreteBoleto" class="form-control" value="'+widget.CMAIL_due_date+'">'+
 												optionList+
 											'</select>'+
 										'</div>'+
@@ -294,11 +294,8 @@ $(document).ready(function() {
 									'<div class="form-group">'+
 										'<label>Dias para o Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+window['diasVencBoleto']+'>'+
-													'<abbr style="position: relative;right: -34px;" title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'+
-															'<i class="icon-info"></i>'+
-													'</abbr>'+
-											'</div>'+
+											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+widget.CMAIL_due_date+'>'+
+										'</div>'+
 									'</div>'+
 								'</div>';
 
