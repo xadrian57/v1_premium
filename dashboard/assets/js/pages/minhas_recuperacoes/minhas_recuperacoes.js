@@ -275,19 +275,31 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>';
 
-								var optionList = (widget.WID_dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
+								
+								function geraOptionList(dias) {
+									var optionList = (dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
+									for (var i = 2; i < widget.CMAIL_due_date; i++) {
+										var selected = (dias == i) ? 'selected' : '';
+										optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
+									}
 
-								for (var i = 2; i < window['diasVencBoleto']; i++) {
-									var selected = (widget.WID_dias == i) ? 'selected' : '';
-									optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
+									return optionList;
 								}
+
+								function atualizaOptList(dias) {
+									var o = geraOptionList(dias);
+
+									$('#lembreteBoleto').html(o);
+								}
+
+								var opts = geraOptionList(widget.WID_dias);								
 								
 								camposAdicionais.innerHTML +=
 								'<div class="col-md-6">'+
 									'<div class="form-group">'+
 										'<label>Enviar o email</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<select name="lembreteBoleto" class="form-control" value="'+widget.CMAIL_due_date+'">'+
+											'<select id="lembreteBoleto" name="lembreteBoleto" class="form-control" value="'+widget.CMAIL_due_date+'">'+
 												optionList+
 											'</select>'+
 										'</div>'+
@@ -295,7 +307,8 @@ $(document).ready(function() {
 									'<div class="form-group">'+
 										'<label>Dias para o Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+widget.CMAIL_due_date+'>'+
+											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+widget.CMAIL_due_date+
+											'onchange="atualizaOptList(this.value)">'+
 										'</div>'+
 									'</div>'+
 								'</div>';
