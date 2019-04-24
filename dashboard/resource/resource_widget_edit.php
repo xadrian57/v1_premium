@@ -132,21 +132,21 @@ function carregaInfoWidget($conCad, $id, $idCli)
 
         $resultWidConfig['tx_negativa_pai'] = explode(",", $resultWidConfig['tx_negativa_pai']);
         $resultWidConfig['tx_negativa_filho'] = explode(",", $resultWidConfig['tx_negativa_filho']);
+    }
 
-        // lembrete boleto
-        if ($result['WID_inteligencia'] == 45) {
-            // lembrete boleto - email
-            $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_CLI_id";
-            $queryEmail = mysqli_query($conCad, $selectEmail);
-            $cfgMail = [];
-            if ($queryEmail) {
-                $cfgMail = mysqli_fetch_assoc($queryConfig);
+     // lembrete boleto
+     if ($result['WID_inteligencia'] == 45) {
+        // lembrete boleto - email
+        $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_CLI_id = $idCli";
+        $queryEmail = mysqli_query($conCad, $selectEmail);
+        $cfgMail = [];
+        if ($queryEmail) {
+            $cfgMail = mysqli_fetch_assoc($queryConfig);
 
-                $resultWidConfig['CMAIL_subject'] = $cfgMail['CMAIL_subject'];
-                $resultWidConfig['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
-                $resultWidConfig['CMAIL_send_date'] = $cfgMail['CMAIL_send_date'];
-                $resultWidConfig['CMAIL_banner'] = $cfgMail['CMAIL_banner'];
-            }
+            $result['CMAIL_subject'] = $cfgMail['CMAIL_subject'];
+            $result['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
+            $result['CMAIL_send_date'] = $cfgMail['CMAIL_send_date'];
+            $result['CMAIL_banner'] = $cfgMail['CMAIL_banner'];
         }
     }
 
