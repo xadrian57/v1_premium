@@ -516,7 +516,7 @@ $(document).ready(function() {
 					op = 11;
 				}
 
-				formData.append('op', 3);
+				formData.append('op', op);
 
 				// PEGA O VALOR DE TODOS OS INPUTS
 				for (var i = 0; i < inputs.length; i++) {
