@@ -601,7 +601,7 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files) {
     echo '\n';
 
     $updateMail = substr($updateMail, 0, -2); // Remove a última vírgula
-    $queryMail = 'UPDATE config_email SET ' . $updateMail . ' WHERE CMAIL_CLI_id = "' . $idWid . '"';
+    $queryMail = 'UPDATE config_email SET ' . $updateMail . ' WHERE CMAIL_CLI_id = "' . $idCli . '"';
     $executa = mysqli_query($conCad, $queryMail);
     echo $queryMail;
     echo '\n';
