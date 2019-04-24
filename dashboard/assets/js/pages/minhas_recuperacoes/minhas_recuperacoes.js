@@ -639,10 +639,10 @@ $(document).ready(function() {
 	}
 
 	// lembrete boleto
-	window['geraOptionList'] = function(dias, diaVenc) {
+	window['geraOptionList'] = function(dias, diaEvio) {
 		var optionList = (dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
 		for (var i = 2; i < dias; i++) {
-			var selected = (dias == i) ? 'selected' : '';
+			var selected = (dias == diaEvio) ? 'selected' : '';
 			optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
 		}
 
