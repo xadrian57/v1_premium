@@ -66,7 +66,9 @@ class Widget extends AbstractWidget {
                                              WID_dias,
                                              WID_num_prod,
                                              WID_link_banner,
-                                             WID_banner
+                                             WID_banner,
+                                             WID_thumb,
+                                             WID_cupom
                                       FROM widget WHERE WID_id_cli = '$this->idcli' AND WID_inteligencia != 22 AND WID_status = 1 " . $this->queryPage();
                 } else {
                     // Select realizado no fluxo do tagflag
@@ -88,7 +90,9 @@ class Widget extends AbstractWidget {
                                              WID_dias,
                                              WID_num_prod,
                                              WID_link_banner,
-                                             WID_banner
+                                             WID_banner,
+                                             WID_thumb,
+                                             WID_cupom
                                       FROM widget WHERE WID_id = " . $this->widgetId;
                 }
                 

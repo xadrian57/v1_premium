@@ -38,6 +38,9 @@ abstract class AbstractWidget {
     // Só fornecido no fluxo do tagflag
     protected $tokenTagflag;
     protected $widgetId;
+
+    //Scroll Checkout
+    protected $viewsNow;
     
     /**
      * Seta todos os parâmetros usados no processamento
@@ -94,12 +97,19 @@ abstract class AbstractWidget {
             
             $arrayConfig = mysqli_fetch_array($resultConfig);
             
-            $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
-            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
+            if ($arrayWidgets['WID_formato'] == 41) {
+                $html = Util::get_HTML_Loja_Lateral($this,$arrayConfig,$arrayWidgets);
+            }else if($arrayWidgets['WID_formato'] == 44){
+                $html = Util::get_HTML_sc($this->obj, $arrayConfig, $arrayWidgets, $this->viewsNow);
+            }else{
+                $html = Util::get_HTML($this->obj, $arrayConfig, $arrayWidgets);
+            }   
+
+            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj, $this->widInteligencia);
         }
         else
         {
-            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj);
+            $this->JSON_widgets = Util::set_JSON_widget($this->JSON_widgets, $inject, $this->idWid, $html, $arrayWidgets, $this->obj, $this->widInteligencia);
         }
     }
     
@@ -131,7 +141,7 @@ abstract class AbstractWidget {
                 $result = "AND WID_pagina IN (0,7) ";
                 break;
             default:
-                $result = " ";
+                $result = "AND WID_pagina IN (0) ";
                 break;
         }
         
@@ -305,6 +315,13 @@ abstract class AbstractWidget {
     public function getWidgetId() {
         return $this->widgetId;
     }
+
+    public function setViewsNow($views_now) {
+        $this->viewsNow = $views_now;
+    }
     
+    public function getViewsNow() {
+        return $this->viewsNow;
+    }
 }
 ?>
