@@ -37,7 +37,7 @@ $(document).ready(function() {
 
 				// lembrete de boleto
 				if (wid.WID_inteligencia == 45) {
-					ativo = (wid.CONF_lembrete_boleto == 1) ? 'checked' : '';
+					ativo = (wid.CONF_lembrete_boleto == 1 && wid.CMAIL_status == 1) ? 'checked' : '';
 					sw = '<input type="checkbox" class="switch pull-right lembrete-boleto" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>';
 				}
 

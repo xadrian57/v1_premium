@@ -132,6 +132,17 @@ function carregaInfoWidget($conCad, $id, $idCli)
 
         $resultWidConfig['tx_negativa_pai'] = explode(",", $resultWidConfig['tx_negativa_pai']);
         $resultWidConfig['tx_negativa_filho'] = explode(",", $resultWidConfig['tx_negativa_filho']);
+
+        // lembrete boleto
+        if ($result['WID_inteligencia'] == 45) {
+            // lembrete boleto - email
+            $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner, CMAIL_status FROM config_email WHERE CMAIL_CLI_id";
+            $queryEmail = mysqli_query($conCad, $selectEmail);
+            $cfgMail = 0;
+            if ($queryEmail) {
+                $cfgMail = mysqli_fetch_assoc($queryConfig);
+            }
+        }
     }
 
     // pega id template
@@ -173,19 +184,19 @@ function carregaSmartRecovery($conCad, $idCli) {
     $query = mysqli_query($conCad, $select);
     $data = [];    
 
-    $selectConfig = "SELECT CONF_lembrete_boleto, CONF_dias_venc FROM config WHERE CONF_id_cli = $idCli";
+    $selectConfig = "SELECT CONF_lembrete_boleto FROM config WHERE CONF_id_cli = $idCli";
     $queryConfig = mysqli_query($conCad, $selectConfig);
     $diasVenc = 1;
     if ($queryConfig) {
-        $diasVenc = mysqli_fetch_assoc($queryConfig)['CONF_dias_venc'];
+        $lembreteBoleto = mysqli_fetch_assoc($queryConfig);
     }
 
     // lembrete boleto - email
-    $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner, CMAIL_status FROM config_email WHERE CMAIL_id_cli";
+    $selectEmail = "SELECT CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_CLI_id";
     $queryEmail = mysqli_query($conCad, $selectEmail);
     $cfgMail = 0;
     if ($queryEmail) {
-        $cfgMail = mysqli_fetch_assoc($queryConfig)['CMAIL_status'];
+        $cfgMail = mysqli_fetch_assoc($queryConfig);
     }
 
     $rec_boleto = [];
@@ -195,8 +206,9 @@ function carregaSmartRecovery($conCad, $idCli) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($query)) {
             if ($result['WID_inteligencia'] == 45) { // lembrete boleto
-                $result['CMAIL_status'] = $cfgMail;
-                $result['CONF_dias_venc'] = $diasVenc;
+                $result['CMAIL_status'] = $cfgMail['CMAIL_status'];
+                $result['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
+                $result['CONF_lembrete_boleto'] = $lembreteBoleto['CONF_lembrete_boleto'];
                 array_push($rec_boleto,$result);
             }
             else
@@ -208,7 +220,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     $data = array(
         'boleto' => $rec_boleto,
         'carrinho' => $rec_carrinho,
-        'diasVencBoleto' => $diasVenc
+        'diasVencBoleto' => $$cfgMail['CMAIL_due_date']
     );
 
     echo json_encode($data);
