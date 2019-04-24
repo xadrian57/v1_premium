@@ -189,7 +189,6 @@ $(document).ready(function() {
 						var camposAdicionais = document.getElementById('widedit-opcoes-adicionais');
 						camposAdicionais.innerHTML = '<h4>Configurações Específicas</h4>';
 					
-						$('#tituloPromocionalLabel').html('Título Promocional');
 						$('#inputCupom').hide();
 						$('#container-configuracoes').show();
 						switch(widget.WID_inteligencia) {
@@ -229,8 +228,24 @@ $(document).ready(function() {
 							case '45': // lembrete boleto
 								$('#container-configuracoes').hide();
 
-								$('#tituloPromocionalLabel').html('Título do E-mail');
+								var assunto = wid.CMAIL_subject.replace(/{CLIENT_NAME}, /g,'');
+
 								camposAdicionais.innerHTML +=
+								'<style>#containerTituloPromocional{display: none !important;}</style>'+
+
+								'<div class="col-md-12">'+
+									'<div class="form-group">'+
+										'<label>Assunto do E-mail</label>'+
+										'<div class="rh-input-icon-right">'+
+											'<input id="assuntoEmail" name="assunto" class="form-control" type="text" value="'+wid.assunto+'">'+
+											'<abbr title="Esse é o assunto do email que o cliente irá receber" class="info-abbr">'+
+												'<i class="icon-info"></i>'+
+											'</abbr>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+
+
 								'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
 								'<label>Imagem Atual:</label>' +
 								'<div class="form-control">' +
