@@ -308,7 +308,7 @@ $(document).ready(function() {
 										'<label>Dias para o Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
 											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+widget.CMAIL_due_date+
-											'onchange="atualizaOptList(this.value)">'+
+											'" onchange="atualizaOptList(this.value)">'+
 										'</div>'+
 									'</div>'+
 								'</div>';
