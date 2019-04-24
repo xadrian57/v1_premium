@@ -517,7 +517,89 @@ function atualizaWidget($conCad, $idWid, $post, $files)
 
 // ATUALIZA LEMBRETE BOLETO
 function atualizaLembreteBoleto($conCad, $idWid, $post, $files) {
+    $info = array();
+    $names = array_keys($post);
+    foreach ($names as $name) {
+        $info[$name] = $post[$name];
+    }
 
+    $camposBDEMAIL = array(
+        'assunto' => 'CMAIL_subject',
+        'lembreteBoleto' => 'CMAIL_send_date',
+        'diasBoletoVenc' => 'CMAIL_due_date',
+        'imagemBanner' => 'CMAIL_banner'
+    );
+
+    $camposBDWID = array( // campos do widget
+        'utm' => 'WID_utm'
+    ); 
+
+    // verifica o tipo do arquivo
+    if (isset($files["imagemBanner"])) {
+        $extension = str_ireplace('image/', '', $files['imagemBanner']['type']);
+    }
+
+    try {
+        // imagem banner overlay
+        if (isset($files["imagemBanner"])) {
+
+            $banner = "banner_overlay_" . $idWid . '.' . $extension;
+
+            // deleta o arquivo de banner atual
+            foreach (['png', 'jpg', 'gif', 'jpeg', 'bmp'] as $ext) {
+                if (file_exists("../../widget/images/overlay/banner_overlay_$idWid.$ext")) {
+                    if (!unlink("../../widget/images/overlay/banner_overlay_$idWid.$ext"))
+                        throw new \Exception("não foi possível deletar imagem ../../widget/images/overlay/banner_overlay_$idWid.$ext");
+                }
+            }
+
+            try {
+                $sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
+                $targetPath = "../../widget/images/overlay/" . $banner; // Target path where file is to be stored
+                if (!move_uploaded_file($sourcePath, $targetPath))
+                    throw new \Exception('Não foi possível fazer o upload de imagemBanner');
+            } catch (\Exception $ex) {
+                die($ex->getMessage());
+            }
+
+            $info['imagemBanner'] = $banner;
+
+            $arquivos = [
+                'https://roihero.com.br/widget/images/overlay/' . $banner
+            ];
+
+            $api->purgeArquivos($ident, $arquivos);
+            
+        } 
+        // caso n tenha o arquivo de upload, remove dos campos q serao armazenados no BD
+        else {
+            unset($camposBDEMAIL['imagemBanner']);
+        }
+    } catch (\Exception $ex) {
+        die($ex->getMessage());
+    }
+
+    $updateMail = '';
+    $updateWid = '';
+
+    $i = 0;
+    foreach ($info as $key => $value) {
+        if (isset($camposBDEMAIL[$key])) {
+            $updateMail = $updateMail . $camposBDEMAIL[$key] . ' = "' . $value . '", ';
+        } 
+        elseif (isset($camposBDWID[$key])) {
+            $updateWid = $camposBDWID . $camposBDWID[$key] . ' = "' . $value . '", ';
+        }
+        $i++;
+    }
+
+    $updateWid = substr($updateWid, 0, -2); // Remove a última vírgula
+    $queryWid = 'UPDATE widget SET ' . $updateWid . ' WHERE WID_id = "' . $idWid . '"';
+    $executa = mysqli_query($conCad, $queryWid);
+
+    $updateMail = substr($updateMail, 0, -2); // Remove a última vírgula
+    $queryMail = 'UPDATE widget SET ' . $updateMail . ' WHERE CMAIL_CLI_id = "' . $idWid . '"';
+    $executa = mysqli_query($conCad, $queryMail);
 }
 
 // ATIVA/DESATIVA LEMBRETE DE BOLETO
