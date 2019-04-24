@@ -423,6 +423,8 @@ function createXML($id, $conDados)
             XML_venda_7 int(16) DEFAULT 0,
             XML_venda_3 int(16) DEFAULT 0,
             XML_venda_1 int(16) DEFAULT 0,
+            XML_views_hour VARCHAR(255) NOT NULL DEFAULT '0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0',
+            XML_views_hour_insert INT(11) NULL DEFAULT NULL,
             FULLTEXT(XML_link,XML_type,XML_titulo,XML_sku),
             INDEX(XML_titulo_upper, XML_type_upper, XML_click_7, XML_click_3, XML_click_1, XML_availability, XML_venda_7, XML_venda_3, XML_venda_1, XML_time_insert),
             PRIMARY KEY (XML_id)
