@@ -262,7 +262,7 @@ class Util {
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
 
-            if($cupom != '' && $cupom != null && empty($cupom))
+            if($cupom != '' && $cupom != null && !empty($cupom))
             {
                 // REMOVE O FALSE
                 $arrayAux = explode ('<!-- RCO_CUPOM FALSE -->', $html);
