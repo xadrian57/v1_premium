@@ -275,14 +275,14 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>';
 
-								var opts = geraOptionList(widget.WID_dias, widget.CMAIL_due_date);								
+								var opts = geraOptionList(widget.CMAIL_due_date, widget.CMAIL_send_date);								
 								
 								camposAdicionais.innerHTML +=
 								'<div class="col-md-6">'+
 									'<div class="form-group">'+
 										'<label>Enviar o email</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<select id="lembreteBoleto" name="lembreteBoleto" class="form-control" value="'+widget.CMAIL_due_date+'">'+
+											'<select id="lembreteBoleto" name="lembreteBoleto" class="form-control" value="'+widget.CMAIL_send_date+'">'+
 												opts+
 											'</select>'+
 										'</div>'+
