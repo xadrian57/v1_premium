@@ -88,28 +88,32 @@
 							<div class="form-group">
 								<h4 class="card-title">TEMPLATE DOS OVERLAYS</h4>
 								<h6 class="card-subtitle text-muted">Temos opções de templates para você alterar o layout dos overlays que estão funcionando em sua loja.</h6>
-								<div class="row mt-2">									
+								<div class="row mt-2">
 									<div class="col-xl-12 col-md-12 col-sm-12 mt-2">
 										<label>Selecione</label>
 										<select id="changeTemplateOverlay" class="form-control">
 											<option value="1">Rounded</option>
 											<option value="2">Squared</option>
+											<option value="3">SmartSales</option>
 										</select>
 										<br>
 										<p class="mt-2">
 											Você pode visualizar como os overlays ficarão nas cores que você selecionou clicando no botão abaixo.
-										</p>										
-										</div>							
+										</p>
+										<p class="mt-2">
+											<i>Ao alterar o template, você deverá atualizar a resolução dos banners!</i>
+										</p>
+										</div>
 								</div>
 								<div class="form-actions text-xs-right">
-									<button id="modalViewOverlay" class="btn btn-info" data-toggle="modal" data-target="#modalTemplate">Visualizar <i class="ft-eye"></i></button>	
+									<button id="modalViewOverlay" class="btn btn-info" data-toggle="modal" data-target="#modalTemplate">Visualizar <i class="ft-eye"></i></button>
 									<button id="btnAtualizaTemplate" type="submit" class="btn btn-success">Salvar <i class="fa fa-save"></i></button>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>				
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-12">
@@ -169,7 +173,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-primary" data-dismiss="modal" onclick="
-					document.getElementById('inputPixel').select(); 
+					document.getElementById('inputPixel').select();
 					document.execCommand('copy');
 					toastr['success']('Copiado com sucesso para a área de transferência!');
 					">
@@ -206,7 +210,7 @@
 		line-height: 2.5rem;
 		text-align: center;
 		left: 4px !important;
-	}	
+	}
 
 	#modalTemplate iframe{
 		width: 100%;

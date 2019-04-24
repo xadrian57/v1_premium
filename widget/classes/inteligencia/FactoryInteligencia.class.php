@@ -39,8 +39,12 @@ class FactoryInteligencia {
     const COMPRE_JUNTO_COMPLEMENTAR                   = 37;
     const MAIS_VENDIDOS_MARCA_MANUAL                  = 38;
     const SIMILAR_POR_PARAMETROS                      = 39; 
-    const NOVIDADE_MARCA_MANUAL                       = 40;  
-
+    const NOVIDADE_MARCA_MANUAL                       = 40;
+    const LOJA_LATERAL                                = 41;
+    const AUTOCOMPLETE                                = 42;
+    const SCROLL_CHECKOUT                             = 43;
+    const REC_CART_ONSITE                             = 44;  
+    //const LEMBRETE_BOLETO                             = 45;
     
     /**
      * Construtor privado para que não seja criada intância dessa classe.
@@ -186,7 +190,28 @@ class FactoryInteligencia {
             case self::NOVIDADE_MARCA_MANUAL:
                 
                 $inteligencia = new NovidadeMarcaManualInteligencia();
-                break;              
+                break;      
+
+            case self::LOJA_LATERAL:
+                
+                $inteligencia = new LojaLateralInteligencia();
+                break;
+
+            case self::AUTOCOMPLETE:
+                
+                //$inteligencia = new LojaLateralInteligencia();
+                break;
+
+            case self::SCROLL_CHECKOUT:
+                
+                $inteligencia = new ScrollCheckoutInteligencia();
+                break;
+
+            case self::REC_CART_ONSITE:
+                
+                $inteligencia = new RecCartOnSiteInteligencia();
+                break;
+                     
         }
         
         // Se populada corretamente, então seta os valores

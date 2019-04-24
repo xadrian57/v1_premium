@@ -1,0 +1,189 @@
+<div class="app-content content container-fluid">
+    <div class="content-wrapper">
+        <div class="content-header row">
+            <div class="content-header-left col-md-8 col-xs-12 mb-2">
+                <div class="row breadcrumbs-top">
+                    <div class="breadcrumb-wrapper col-xs-12">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="overview">Home</a></li>
+                            <li class="breadcrumb-item"><a href="minha_busca">Minhas Buscas</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <h3 class="content-header-title mb-0">Minhas Buscas</h3>
+            </div>
+        </div>
+
+        <div class="row match-height" id="buscaContent" style="display: none;">
+            <div class="col-sm-12">
+                <div id="cardBusca" class="card">
+                    <div class="card-header">BARRA DE BUSCA
+                        <div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">
+                            <span class="white btn btn-info pull-right mr-1 ml-1">ID: <span class="wid_id"></span></span>
+                            <a class="white btn btn-info pull-right mr-1 ml-1"
+                               href="/dashboard/php/get_relatorio_busca.php/?id="><i
+                                    class="fa fa-table mr-1"></i>Baixar relatório</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <ul class="list-group" id="widgetsBusca">
+
+                                <li class="list-group-item">
+                                    <span>Sinônimos</span>
+                                    <div
+                                            style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">
+                                        <button class="white btn btn-info pull-right mr-1 ml-1 btn-configura-busca">
+                                            <i class="fa fa-cog mr-1"></i>Configurar
+                                        </button>
+                                    </div>
+                                </li><!--
+								<li class="list-group-item">
+									<span>Termos</span>
+									<div
+										style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">
+										<button class="white btn btn-info pull-right mr-1 ml-1 btn-configura-termos">
+											<i class="fa fa-cog mr-1"></i>Configurar</button>
+									</div>
+								</li>-->
+
+                            </ul>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="cardAutocomplete" class="card">
+                    <div class="card-header">
+                        AUTOCOMPLETE
+                        <div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">
+                            <span class=" white btn btn-info pull-right mr-1 ml-1">ID: <span class="wid_id"></span></span>
+                            <a class="white btn btn-info pull-right mr-1 ml-1"
+                               href="/dashboard/php/get_relatorio_busca.php/?id="><i
+                                    class="fa fa-table mr-1"></i>Baixar relatório</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-block">
+                            <ul class="list-group" id="widgetsAutocomplete">
+                                <li class="list-group-item">
+                                    <span>Formato</span>
+                                    <div class="form-inline"
+                                            style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">
+
+                                        <select id="autocompleteFormato" class="form-control">
+                                            <option value="1">Simples</option>
+                                            <option value="2">Inteligente</option>
+                                        </select>
+                                        <button class="white btn btn-info pull-right mr-1 ml-1 btn-configura-autocomplete">
+                                            <i class="fa fa-floppy-o mr-1"></i>Salvar
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- MODAL BUSCA -->
+<div id="modalConfiguraBusca" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title adic" id="titulo-modal-edit"><i class="ft ft-edit"></i>&nbsp;&nbsp;Configurar
+                    barra de busca</h4>
+                <span class="primary page-info" id="spec-inteligencia-modal-edit"></span>
+            </div>
+
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="searchbarCfgMsgs"></div>
+                        <h4 class="card-title">Sinônimos</h4>
+                        <div class="row">
+                            <div class="col-md-4 col-sm-12">
+                                <label>Palavra</label>
+                                <div class="form-group">
+                                    <input id="cfgSbWord" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-9">
+                                <label>Sinônimo</label>
+                                <div class="form-group">
+                                    <input id="cfgSbSyn" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-3">
+                                <label class="hidden-sm" style="visibility: hidden;opacity: 0;">space</label>
+                                <div class="form-group container-btn-add-synounm">
+                                    <button id="btnAddSyn" class="btn btn-info" disabled><i class="fa fa-plus"></i>
+                                        Adicionar
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="tableSyn" class="col-md-12 col-sm-12">
+                                <table class="table table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Palavra</th>
+                                        <th>Sinônimo</th>
+                                        <th class="text-xs-center">Editar</th>
+                                        <th class="text-xs-center">Excluir</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <span class="rh-id-wid primary pull-left">ID: <span id="rhIdWidBusca"></span></span>
+                <button type="button" class="btn btn-outline-warning" data-dismiss="modal"><i class="fa fa-times"></i>
+                    Cancelar
+                </button>
+                <button id="btn-salva-busca" type="button" class="btn btn-outline-primary"><i class="fa fa-check"></i>
+                    Salvar Alterações
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+    .form-control-position.drop {
+        position: absolute;
+        top: calc(50% - 17.5px);
+        top: webkit-calc(50% -17.5px);
+        z-index: 2;
+        display: block;
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        text-align: center;
+        left: 4px !important;
+    }
+
+    #modalTemplate iframe {
+        width: 100%;
+        min-height: 700px;
+    }
+</style>
+
+<script type="text/javascript" src="assets/js/pages/smart_search/minha_busca.js"></script>
+<!-- COLORPICKER -->
+<script type="text/javascript" src="assets/js/jscolor.js"></script>

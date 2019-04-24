@@ -9,6 +9,7 @@
  * - Na classe FactoryInteligencia, adicione uma nova constant para representar sua nova inteligencia
  * - Ainda na classe Factory, insira a criação da sua inteligência no método getInteligencia
  * - Implementar o método processar() na nova classe de inteligência.
+ * - Adicionar a UTM no arquivo 'AbstractInteligencia.class.php'
  * E TESTE EXAUSTIVAMENTE
  * 
  * Mais sobre as inteligências e widgets no arquivo

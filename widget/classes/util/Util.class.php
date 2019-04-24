@@ -64,7 +64,7 @@ class Util {
         return $pesquisa;
     }
     
-    public static function set_JSON_widget($JSON_widgets, $inject, $idWid, $html, $arrayWidgets, $obj)
+    public static function set_JSON_widget($JSON_widgets, $inject, $idWid, $html, $arrayWidgets, $obj, $inteligencia)
     {
         $injectName = $arrayWidgets['WID_div'];
         $position = $arrayWidgets['WID_placement'];
@@ -81,6 +81,7 @@ class Util {
         {
             $JSON_widgets .= '{
                 "widget_id":'.$idWid.',
+                "widget_inteligencia":'.$inteligencia.',
                 "inject":true,
                 "inject_name":"'.$injectName.'",
                 "inject_position":"'.$position.'",
@@ -208,6 +209,7 @@ class Util {
         $subTitulo = $arrayWidgets['WID_sub_titulo'];
         $numProd = $arrayWidgets['WID_num_prod'];
         $idWid = $arrayWidgets['WID_id'];
+        $cupom = $arrayWidgets['WID_cupom'];
 
         // caso seja um compre junto 3, chama a função especifica
         if($formato == 12)
@@ -216,7 +218,7 @@ class Util {
             return $response;
         }
         
-        if(!empty($obj[0]['link']))
+        if(!empty($obj[0]['link']) || $formato == 45)
         {
             $sumValue = 0.00;
             $sumValueDe = 0.00;
@@ -238,7 +240,7 @@ class Util {
             }
 
             //NOVOS OVERLAYS PADRÃO
-            if($formato == 5 || $formato == 6)
+            if($formato == 5 || $formato == 6 || $formato == 45)
             {
                 $formato = self::getFormatName($formato);
                 $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
@@ -259,6 +261,7 @@ class Util {
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
+            $html = str_replace('{RCO_CUPOM}', $cupom, $html);
 
             $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
 
@@ -707,6 +710,208 @@ class Util {
         }
     }
 
+    // Funções do HTML
+    public static function get_HTML_Loja_Lateral($fullObj, $arrayConfig, $arrayWidgets)
+    {
+        $obj = $fullObj->getObj();
+        $template = $arrayConfig['CONF_template'];
+        $titulo = $arrayWidgets['WID_texto'];
+        $subtitulo = $arrayWidgets['WID_sub_titulo'];
+        $idWid = $arrayWidgets['WID_id'];
+        $templateOverlay = $arrayConfig['CONF_template_overlay'];
+        $template = $arrayConfig['CONF_template'];
+        $thumb_link = $arrayWidgets['WID_thumb'];
+        $banner_link = $arrayWidgets['WID_banner'];
+        
+        if(!empty($obj[0]['link']))
+        {
+            $sumValue = 0.00;
+            $sumValueDe = 0.00;
+                    
+            
+            $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/loja_lateral.html");
+
+            if(empty($html))
+            {
+                $html = file_get_contents("templates/kit_".$template."/loja_lateral.html");
+            }
+            
+            $html = str_replace('{TITLE_BLOCK}', $titulo, $html);
+            $html = str_replace('{SUBTITLE_BLOCK}', $subtitulo, $html);
+            $html = str_replace('{ID_WIDGET}', $idWid, $html);
+            $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/' . $banner_link, $html);
+            $html = str_replace('{THUMB_BLOCK}', 'https://roihero.com.br/widget/images/overlay/' . $thumb_link, $html);
+            
+            $htmlArray = explode("<!-- REPEAT PRODUCTS -->", $html);
+            
+            if(count($htmlArray) > 2)
+            {
+                // Detalhando as partes do html a ser trabalhado
+                $head = $htmlArray[0];
+                $body = '';
+                $htmlsEntreElementosDeRepeticao = array($htmlArray[2], $htmlArray[4]);
+                $elementsRepeat = array($htmlArray[1], $htmlArray[3], $htmlArray[5]);
+                $footer = $htmlArray[6];
+                
+                // Cravando 24, pois o array já será definido
+                for($i = 0; $i < 24; $i++)
+                {
+                    if($i < 8) {
+                        $aux = $elementsRepeat[0];
+                    } else if($i < 16) {
+                        $aux = $elementsRepeat[1];
+                    } else {
+                        $aux = $elementsRepeat[2];
+                    }
+                    
+                    if(!empty($obj[$i]['link']))
+                    {
+                        
+                        $aux = str_replace('{PRODUCT_ID}', $obj[$i]['id'], $aux);
+                        $aux = str_replace('{PRODUCT_SKU}', $obj[$i]['sku'], $aux);
+                        $aux = str_replace('{PRODUCT_URL}', $obj[$i]['link'], $aux);
+                        $aux = str_replace('{PRODUCT_NAME}', $obj[$i]['name'], $aux);
+                        $aux = str_replace('{PRODUCT_IMG}', $obj[$i]['link_image'], $aux);
+                        $aux = str_replace('{PRODUCT_IMG_2}', $obj[$i]['link_image_2'], $aux);
+                        $aux = str_replace('{PRODUCT_DESCRIPTION}', $obj[$i]['description'], $aux);
+                        
+                        // VERIFICAR SE É 0 PARA EXIBIR UM SÓ
+                        // estudar a melhor forma, talvez utilizar comentarios ao redor
+                        if(($obj[$i]['sale_price'] != '0,00') && ($obj[$i]['sale_price'] != $obj[$i]['price']))
+                        {
+                            // REMOVE O FALSE
+                            $arrayAux = explode ('<!-- PRICE FALSE -->', $aux);
+                            $aux = $arrayAux[0].''.$arrayAux[2];
+                            
+                            $aux = str_replace('{VALUE_DE}', 'R$ '.$obj[$i]['price'], $aux);
+                            $aux = str_replace('{VALUE}', 'R$ '.$obj[$i]['sale_price'], $aux);
+                            
+                            $auxValue = '';
+                            
+                            $auxValue = str_replace('.','',$obj[$i]['sale_price']);
+                            $auxValue = str_replace(',','.',$auxValue);
+                            
+                            $sumValue += number_format(floatval($auxValue), 2, '.', '');
+                            
+                            $auxValue = '';
+                            
+                            $auxValue = str_replace('.','',$obj[$i]['price']);
+                            $auxValue = str_replace(',','.',$auxValue);
+                            
+                            $sumValueDe += number_format(floatval($auxValue), 2, '.', '');
+                        }
+                        else
+                        {
+                            // REMOVE O TRUE
+                            $arrayAux = explode ('<!-- PRICE TRUE -->', $aux);
+                            $aux = $arrayAux[0].''.$arrayAux[2];
+                            
+                            $aux = str_replace('{VALUE}', 'R$ '.$obj[$i]['price'], $aux);
+                            
+                            $auxValue = '';
+                            
+                            $auxValue = str_replace('.','',$obj[$i]['price']);
+                            $auxValue = str_replace(',','.',$auxValue);
+                            
+                            $sumValue += number_format(floatval($auxValue), 2, '.', '');
+                            $sumValueDe += number_format(floatval($auxValue), 2, '.', '');
+                        }
+                        
+                        
+                        // VERIFICAR SE É 0 PARA NÃO EXIBIR
+                        // estudar a melhor forma, talvez utilizar comentarios ao redor
+                        if($obj[$i]['mount'] != 0)
+                        {
+                            // REMOVE O FALSE
+                            $arrayAux = explode ('<!-- AMOUNT FALSE -->', $aux);
+                            $aux = $arrayAux[0].''.$arrayAux[2];
+                            
+                            $aux = str_replace('{AMOUNT_PLOTS}', $obj[$i]['mount'], $aux);
+                            $aux = str_replace('{VALUE_PLOTS}', 'R$ '.$obj[$i]['amount'], $aux);
+                        }
+                        else
+                        {
+                            // REMOVE O TRUE
+                            $arrayAux = explode ('<!-- AMOUNT TRUE -->', $aux);
+                            $aux = $arrayAux[0].''.$arrayAux[2];
+                        }
+                        
+                        $arrayDiscount = explode ('<!-- DISCOUNT -->', $aux);
+                        if(count($arrayDiscount) > 2)
+                        {
+                            if($obj[$i]['discount'] != 0 && $obj[$i]['discount'] != 100)
+                            {
+                                // REMOVE O FALSE
+                                $arrayAux = explode ('<!-- DISCOUNT FALSE -->', $aux);
+                                $aux = $arrayAux[0].''.$arrayAux[2];
+                                
+                                $aux = str_replace('{PRODUCT_DISCOUNT}', $obj[$i]['discount'], $aux);
+                            }
+                            else
+                            {
+                                // REMOVE O TRUE
+                                $arrayAux = explode ('<!-- DISCOUNT TRUE -->', $aux);
+                                $aux = $arrayAux[0].''.$arrayAux[2];
+                            }
+                        }
+                        
+                        if($i == 8) {
+                            $body .= $htmlsEntreElementosDeRepeticao[0] . $aux;
+                        } else if($i == 16) {
+                            $body .= $htmlsEntreElementosDeRepeticao[1] . $aux;
+                        } else {
+                            $body .= $aux;
+                        }
+                    }
+                }
+                
+                $response = $head."".$body."".$footer;
+            }
+            else
+            {
+                // Arquivo sem <!-- REPEAT PRODUCTS -->
+                return '';
+            }
+            
+            $response = str_replace('{VALUE_SUM}', 'R$ '.number_format($sumValue, 2, ',', '.'), $response);
+            $response = str_replace('{VALUE_SUM_DE}', 'R$ '.number_format($sumValueDe, 2, ',', '.'), $response);
+            
+            return $response;
+        }
+        else
+        {
+            return '';
+        }
+    }
+
+    // Funções do HTML
+    public static function get_HTML_sc($obj, $arrayConfig, $arrayWidgets, $viewsNow){
+        $template = $arrayConfig['CONF_template'];
+        $templateOverlay = $arrayConfig['CONF_template_overlay'];
+        $formato = $arrayWidgets['WID_formato'];
+        $idWid = $arrayWidgets['WID_id'];
+
+        
+        if($viewsNow != -1 && $formato == 44){
+
+            $formato = self::getFormatName($formato);
+            $html = @file_get_contents("templates/overlay/kit_".$templateOverlay."/".$formato.".html");
+
+            if(empty($html)){
+                $html = file_get_contents("templates/kit_".$template."/".$formato.".html");
+            }
+                       
+            $html = str_replace('{SC_PEOPLE}', $viewsNow, $html);
+            $response = $html;
+
+            return $response;
+        }
+        else
+        {
+            return '';
+        }
+    }
+
     public static function get_HTML_cj_3($obj, $arrayConfig, $arrayWidgets)
     {
         $template = $arrayConfig['CONF_template'];
@@ -990,6 +1195,18 @@ class Util {
                 break;
             case 16:
                 $formato = 'compre_junto_dinamico';
+                break;
+            case 41:
+                $formato = 'loja_lateral';
+                break;
+            case 42:
+                $formato = 'autocomplete';
+                break;
+            case 44:
+                $formato = 'scroll_checkout';
+                break;
+            case 45:
+                $formato = 'rec_cart_onsite';
                 break;
         }
         
