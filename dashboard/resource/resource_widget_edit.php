@@ -568,6 +568,12 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
                 'https://roihero.com.br/widget/images/lembrete_boleto/' . $banner
             ];
 
+
+            //inclui o objeto de comunicação com a api cloudflare
+            include_once 'api_cloudflare.class.php';
+            //da purge no cache com a cloudflare
+            $api = new cloudflare_api('moises.dourado@roihero.com.br', '1404cc5e783d0287897bfb2ebf7faa9e87eb5');
+            $ident = $api->identificador('roihero.com.br');
             $api->purgeArquivos($ident, $arquivos);
             
         } 
