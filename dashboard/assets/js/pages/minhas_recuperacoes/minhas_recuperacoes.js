@@ -204,11 +204,11 @@ $(document).ready(function() {
 								'<div class="rh-input-icon-right">' +
 								'<div class="media">' +
 								'<div class="media-left">' +
-								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
+								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/lembrete_boleto\/' + widget.WID_banner + '">' +
 								'</div>' +
 								'<div class="media-body">' +
 								'<div class="form-group">' +
-								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/lembrete_boleto\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
 								'</div>' +
 								'<div class="form-group">' +
 								'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +

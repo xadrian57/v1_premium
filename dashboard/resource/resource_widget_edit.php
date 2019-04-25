@@ -543,19 +543,19 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
         // imagem banner overlay
         if (isset($files["imagemBanner"])) {
 
-            $banner = "banner_overlay_" . $idWid . '.' . $extension;
+            $banner = sha1($idCli).".".$extension;
 
-            // deleta o arquivo de banner atual
+            // deleta o arquivo de banner atual ttp://roihero.com.br/widget/images/lembrete_boleto/04e8696e6424c21d717e46008780505d598eb59a.png
             foreach (['png', 'jpg', 'gif', 'jpeg', 'bmp'] as $ext) {
-                if (file_exists("../../widget/images/overlay/banner_overlay_$idWid.$ext")) {
-                    if (!unlink("../../widget/images/overlay/banner_overlay_$idWid.$ext"))
-                        throw new \Exception("não foi possível deletar imagem ../../widget/images/overlay/banner_overlay_$idWid.$ext");
+                if (file_exists("../../widget/images/lembrete_boleto/".sha1($idCli).".$ext")) {
+                    if (!unlink("../../widget/images/lembrete_boleto/".sha1($idCli).".$ext"))
+                        throw new \Exception("não foi possível deletar imagem ../../widget/images/lembrete_boleto/".sha1($idCli).".$ext");
                 }
             }
 
             try {
                 $sourcePath = $files['imagemBanner']['tmp_name']; // Storing source path of the file in a variable
-                $targetPath = "../../widget/images/overlay/" . $banner; // Target path where file is to be stored
+                $targetPath = "../../widget/images/lembrete_boleto/" . $banner; // Target path where file is to be stored
                 if (!move_uploaded_file($sourcePath, $targetPath))
                     throw new \Exception('Não foi possível fazer o upload de imagemBanner');
             } catch (\Exception $ex) {
@@ -565,7 +565,7 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
             $info['imagemBanner'] = $banner;
 
             $arquivos = [
-                'https://roihero.com.br/widget/images/overlay/' . $banner
+                'https://roihero.com.br/widget/images/lembrete_boleto/' . $banner
             ];
 
             $api->purgeArquivos($ident, $arquivos);
