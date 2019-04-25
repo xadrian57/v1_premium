@@ -80,7 +80,7 @@
 
             <div class="modal-body">
                 <div id="campos-wid-edit" class="row">
-                	<div class="col-md-12">
+                	<div class="col-md-12" id="containerTituloPromocional">
 	                    <div class="form-group">
 	                    	<label id="tituloPromocionalLabel">Título Promocional</label>
 	                    	<div class="rh-input-icon-right">
@@ -159,6 +159,26 @@
 
 
 <style>
+
+#assuntoEmailContainer::before {
+    content: "Fulano de tal, ";;
+    display: flex;
+    position: absolute;
+    left: 0;
+    padding-left: 10px;
+    padding-right: 5px;
+    height: 100%;
+    align-items: center;
+    background: #00B5B8;
+    color: #fff;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+}
+
+#assuntoEmailContainer input {
+    padding-left: 105px;
+}
+
 .config-group {
 	border: 1px solid lightgrey;
     padding: 15px;
