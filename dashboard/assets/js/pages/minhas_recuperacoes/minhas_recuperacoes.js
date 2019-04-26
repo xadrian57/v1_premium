@@ -44,8 +44,7 @@ $(document).ready(function() {
 				$list.innerHTML = $list.innerHTML +
 					'<li class="list-group-item" wid-id="' + wid.WID_id + '"><span>' + wid.WID_nome + '</span>' +
 					'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
-					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.WID_id + '><i class="ft-x"></i> Deletar</button> -->' +
-					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
+					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid" data-inteligencia="'+wid.WID_inteligencia+'"><i class="icon-pencil"></i> Editar</button>' +
 					sw +
 					'</div>' +
 					'</li>';
