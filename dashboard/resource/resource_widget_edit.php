@@ -196,7 +196,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     }
 
     // lembrete boleto - email
-    $selectEmail = "SELECT CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_inteligencia = 45 CMAIL_CLI_id = $idCli";
+    $selectEmail = "SELECT CMAIL_inteligencia, CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_inteligencia = 45 CMAIL_CLI_id = $idCli";
     $queryEmail = mysqli_query($conCad, $selectEmail);
     $cfgMail = [];
     if ($queryEmail) {
