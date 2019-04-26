@@ -102,7 +102,7 @@ function carregaWids($conCad)
 // carrega inteligencias email
 function carregaInfoEmail($conCad, $id, $idCli){
     // lembrete boleto - email
-    $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_CLI_id = $idCli";
+    $selectEmail = "SELECT CMAIL_inteligencia, CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_ind = $id and CMAIL_CLI_id = $idCli";
     $queryEmail = mysqli_query($conCad, $selectEmail);
     $cfgMail = [];
     $data = [];
@@ -113,6 +113,7 @@ function carregaInfoEmail($conCad, $id, $idCli){
         $data['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
         $data['CMAIL_send_date'] = $cfgMail['CMAIL_send_date'];
         $data['CMAIL_banner'] = $cfgMail['CMAIL_banner'];
+        $data['WID_inteligencia'] = $cfgMail['CMAIL_inteligencia'];
     }
     
     echo json_encode($data);
@@ -199,7 +200,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     }
 
     // lembrete boleto - email
-    $selectEmail = "SELECT CMAIL_inteligencia, CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_inteligencia = 45 and CMAIL_CLI_id = $idCli";
+    $selectEmail = "SELECT CMAIL_id, CMAIL_inteligencia, CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_inteligencia = 45 and CMAIL_CLI_id = $idCli";
     $queryEmail = mysqli_query($conCad, $selectEmail);
 
     $rec_boleto = [];
@@ -219,6 +220,7 @@ function carregaSmartRecovery($conCad, $idCli) {
             if ($result['CMAIL_inteligencia'] == 45) { // lembrete boleto
                 $result['WID_inteligencia'] = 45;
                 $result['WID_nome'] = 'Lembrete de Boleto';
+                $result['WID_id'] = $result['CMAIL_id'];                
                 array_push($rec_boleto,$result);
             }
             $i++;
