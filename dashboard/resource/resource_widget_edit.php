@@ -215,9 +215,9 @@ function carregaSmartRecovery($conCad, $idCli) {
     }
 
     if ($queryEmail) {
+        print_r(mysqli_fetch_assoc($queryEmail));
         $i = 0;
         while ($result = mysqli_fetch_assoc($queryEmail)) {
-            print_r($result);
             if ($result['CMAIL_inteligencia'] == 45) { // lembrete boleto
                 array_push($rec_boleto,$result);
             }
@@ -229,8 +229,7 @@ function carregaSmartRecovery($conCad, $idCli) {
 
     $data = array(
         'boleto' => $rec_boleto,
-        'carrinho' => $rec_carrinho,
-        'diasVencBoleto' => $$cfgMail['CMAIL_due_date']
+        'carrinho' => $rec_carrinho
     );
 
     echo json_encode($data);
