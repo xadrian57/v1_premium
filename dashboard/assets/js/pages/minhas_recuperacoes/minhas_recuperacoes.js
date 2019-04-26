@@ -232,7 +232,8 @@ $(document).ready(function() {
 								$('#container-configuracoes').hide();
 
 								var assunto = widget.CMAIL_subject.replace(/{CLIENT_NAME}, /g,'');
-
+								
+								camposAdicionais.innerHTML = '';
 								camposAdicionais.innerHTML +=
 								'<style>'+
 									'#containerTituloPromocional{display: none !important;}'+
