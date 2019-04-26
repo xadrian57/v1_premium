@@ -214,6 +214,8 @@ function carregaSmartRecovery($conCad, $idCli) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($queryEmail)) {
             if ($result['CMAIL_inteligencia'] == 45) { // lembrete boleto
+                $result['WID_inteligencia'] = 45;
+                $result['WID_nome'] = 'Lembrete de Boleto';
                 array_push($rec_boleto,$result);
             }
             $i++;
