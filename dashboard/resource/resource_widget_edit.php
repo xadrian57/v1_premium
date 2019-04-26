@@ -198,7 +198,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     // lembrete boleto - email
     $selectEmail = "SELECT CMAIL_inteligencia, CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_inteligencia = 45 and CMAIL_CLI_id = $idCli";
     $queryEmail = mysqli_query($conCad, $selectEmail);
-    
+
     $rec_boleto = [];
     $rec_carrinho = [];
 
@@ -211,7 +211,6 @@ function carregaSmartRecovery($conCad, $idCli) {
     }
 
     if ($queryEmail) {
-        print_r(mysqli_fetch_assoc($queryEmail));
         $i = 0;
         while ($result = mysqli_fetch_assoc($queryEmail)) {
             if ($result['CMAIL_inteligencia'] == 45) { // lembrete boleto
@@ -219,8 +218,6 @@ function carregaSmartRecovery($conCad, $idCli) {
             }
             $i++;
         }
-    } else {
-        echo $selectEmail;
     }
 
     $data = array(
