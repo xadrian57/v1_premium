@@ -44,8 +44,7 @@ $(document).ready(function() {
 				$list.innerHTML = $list.innerHTML +
 					'<li class="list-group-item" wid-id="' + wid.WID_id + '"><span>' + wid.WID_nome + '</span>' +
 					'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
-					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.WID_id + '><i class="ft-x"></i> Deletar</button> -->' +
-					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
+					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid" data-inteligencia="'+wid.WID_inteligencia+'"><i class="icon-pencil"></i> Editar</button>' +
 					sw +
 					'</div>' +
 					'</li>';
@@ -61,8 +60,7 @@ $(document).ready(function() {
 				$list.innerHTML = $list.innerHTML +
 					'<li class="list-group-item" wid-id="' + wid.WID_id + '"><span>' + wid.WID_nome + '</span>' +
 					'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
-					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.WID_id + '><i class="ft-x"></i> Deletar</button> -->' +
-					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
+					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid" data-inteligencia="'+wid.WID_inteligencia+'"><i class="icon-pencil"></i> Editar</button>' +
 					'<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>' +
 					'</div>' +
 					'</li>';
@@ -155,11 +153,16 @@ $(document).ready(function() {
 				var id = this.parentElement.parentElement.getAttribute('wid-id');
 				var form = document.getElementById('campos-wid-edit');
 				form.setAttribute('id-wid', id);
-	
+				
+				var op = 2;
+				if (this.dataset.inteligencia == 45) {
+					op = 13;
+				}
+
 				$.ajax({
 					type: 'POST',
 					url: 'resource/resource_widget_edit.php',
-					data: { 'idCli': idCli, 'op': 2, idWid: id },
+					data: { 'idCli': idCli, 'op': op, idWid: id },
 					success: function (result) {
 						$('#modalEditarWidget').modal('show');
 						var widget = JSON.parse(result);
@@ -229,9 +232,13 @@ $(document).ready(function() {
 								$('#container-configuracoes').hide();
 
 								var assunto = widget.CMAIL_subject.replace(/{CLIENT_NAME}, /g,'');
-
+								
+								camposAdicionais.innerHTML = '';
 								camposAdicionais.innerHTML +=
-								'<style>#containerTituloPromocional{display: none !important;}</style>'+
+								'<style>'+
+									'#containerTituloPromocional{display: none !important;}'+
+									'#containerEditUtm{display: none !important;}'+
+								'</style>'+
 
 								'<div class="form-group">'+
 									'<label>Assunto do E-mail</label>'+
@@ -254,11 +261,11 @@ $(document).ready(function() {
 								'<div class="rh-input-icon-right">' +
 								'<div class="media">' +
 								'<div class="media-left">' +
-								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.CMAIL_banner + '">' +
+								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/lembrete_boleto\/' + widget.CMAIL_banner + '">' +
 								'</div>' +
 								'<div class="media-body">' +
 								'<div class="form-group">' +
-								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.CMAIL_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/lembrete_boleto\/' + widget.CMAIL_banner + '">Visualizar <i class="ft-eye"></i></button>' +
 								'</div>' +
 								'<div class="form-group">' +
 								'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
