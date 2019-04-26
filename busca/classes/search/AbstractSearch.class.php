@@ -154,10 +154,14 @@ abstract class AbstractSearch
 		{
 			return " OR id = '". $busca ."' ";
 		}
-		else if($this->idcli == 116 || $this->idcli == 1880 || $this->idcli == 2005 || $this->idcli == 2012)
+		else if($this->idcli == 116 || $this->idcli == 1880 || $this->idcli == 2005)
 		{
 			return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) OR id = '". $busca ."' ";
 		}
+        else if($this->idcli == 2012)
+        {
+            return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) OR MATCH(custom_1) AGAINST(\"+ 00" . $busca . "*\" IN BOOLEAN MODE) OR id = '". $busca ."' ";
+        }
 		else
 		{
 			return " OR custom_1 = '" . $busca . "' OR custom_2 = '" . $busca . "' OR id = '". $busca ."' ";
