@@ -234,7 +234,10 @@ $(document).ready(function() {
 								var assunto = widget.CMAIL_subject.replace(/{CLIENT_NAME}, /g,'');
 
 								camposAdicionais.innerHTML +=
-								'<style>#containerTituloPromocional{display: none !important;}</style>'+
+								'<style>'+
+									'#containerTituloPromocional{display: none !important;}'+
+									'#containerEditUtm{display: none !important;}'+
+								'</style>';
 
 								'<div class="form-group">'+
 									'<label>Assunto do E-mail</label>'+
