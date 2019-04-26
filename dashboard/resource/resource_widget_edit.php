@@ -529,10 +529,6 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
         'imagemBanner' => 'CMAIL_banner'
     );
 
-    $camposBDWID = array( // campos do widget
-        'utm' => 'WID_utm'
-    ); 
-
     // verifica o tipo do arquivo
     if (isset($files["imagemBanner"])) {
         $extension = str_ireplace('image/', '', $files['imagemBanner']['type']);
@@ -585,23 +581,14 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
     }
 
     $updateMail = '';
-    $updateWid = '';
 
     $i = 0;
     foreach ($info as $key => $value) {
         if (isset($camposBDEMAIL[$key])) {
             $updateMail = $updateMail . $camposBDEMAIL[$key] . ' = "' . $value . '", ';
         } 
-        elseif (isset($camposBDWID[$key])) {
-            $updateWid = $updateWid . $camposBDWID[$key] . ' = "' . $value . '", ';
-        }
         $i++;
     }
-
-    $updateWid = substr($updateWid, 0, -2); // Remove a última vírgula
-    $queryWid = 'UPDATE widget SET ' . $updateWid . ' WHERE WID_id = "' . $idWid . '"';
-    $executa = mysqli_query($conCad, $queryWid);
-
 
     $updateMail = substr($updateMail, 0, -2); // Remove a última vírgula
     $queryMail = 'UPDATE config_email SET ' . $updateMail . ' WHERE CMAIL_CLI_id = "' . $idCli . '"';
