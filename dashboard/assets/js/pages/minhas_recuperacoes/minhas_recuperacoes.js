@@ -237,7 +237,7 @@ $(document).ready(function() {
 								'<style>'+
 									'#containerTituloPromocional{display: none !important;}'+
 									'#containerEditUtm{display: none !important;}'+
-								'</style>';
+								'</style>'+
 
 								'<div class="form-group">'+
 									'<label>Assunto do E-mail</label>'+
