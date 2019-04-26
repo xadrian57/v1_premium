@@ -102,7 +102,7 @@ function carregaWids($conCad)
 // carrega inteligencias email
 function carregaInfoEmail($conCad, $id, $idCli){
     // lembrete boleto - email
-    $selectEmail = "SELECT CMAIL_inteligencia, CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_ind = $id and CMAIL_CLI_id = $idCli";
+    $selectEmail = "SELECT CMAIL_inteligencia, CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_id = $id and CMAIL_CLI_id = $idCli";
     $queryEmail = mysqli_query($conCad, $selectEmail);
     $cfgMail = [];
     $data = [];
