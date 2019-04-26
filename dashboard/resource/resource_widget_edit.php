@@ -183,11 +183,10 @@ function carregaInfoWidget($conCad, $id, $idCli)
 
 // CARREGA BLOCOS SMART RECOVERY
 function carregaSmartRecovery($conCad, $idCli) {
-    // 44 -> rec carrinho
-    // 45 -> rec boleto
-    $select = "SELECT * FROM widget WHERE WID_inteligencia = 45 OR WID_inteligencia = 44 AND WID_id_cli = $idCli";
-    $query = mysqli_query($conCad, $select);
-    $data = [];    
+    // 44 -> rec cart onsite
+    $select = "SELECT * FROM widget WHERE WID_inteligencia = 44 AND WID_id_cli = $idCli";
+    $queryWid = mysqli_query($conCad, $select);
+    $data = [];
 
     $selectConfig = "SELECT CONF_lembrete_boleto FROM config WHERE CONF_id_cli = $idCli";
     $queryConfig = mysqli_query($conCad, $selectConfig);
@@ -197,7 +196,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     }
 
     // lembrete boleto - email
-    $selectEmail = "SELECT CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_CLI_id = $idCli";
+    $selectEmail = "SELECT CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_inteligencia = 45 CMAIL_CLI_id = $idCli";
     $queryEmail = mysqli_query($conCad, $selectEmail);
     $cfgMail = [];
     if ($queryEmail) {
@@ -207,17 +206,20 @@ function carregaSmartRecovery($conCad, $idCli) {
     $rec_boleto = [];
     $rec_carrinho = [];
 
-    if ($query) {
+    if ($queryWid) {
         $i = 0;
-        while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 45) { // lembrete boleto
-                $result['CMAIL_status'] = $cfgMail['CMAIL_status'];
-                $result['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
-                $result['CONF_lembrete_boleto'] = $lembreteBoleto['CONF_lembrete_boleto'];
+        while ($result = mysqli_fetch_assoc($queryWid)) {
+                array_push($rec_carrinho,$result);
+            $i++;
+        }
+    }
+
+    if ($queryEmail) {
+        $i = 0;
+        while ($result = mysqli_fetch_assoc($queryEmail)) {
+            if ($result['CMAIL_inteligencia'] == 45) { // lembrete boleto
                 array_push($rec_boleto,$result);
             }
-            else
-                array_push($rec_carrinho,$result);
             $i++;
         }
     }
