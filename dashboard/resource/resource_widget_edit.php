@@ -209,7 +209,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     if ($queryWid) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($queryWid)) {
-                array_push($rec_carrinho,$result);
+            array_push($rec_carrinho,$result);
             $i++;
         }
     }
@@ -217,6 +217,7 @@ function carregaSmartRecovery($conCad, $idCli) {
     if ($queryEmail) {
         $i = 0;
         while ($result = mysqli_fetch_assoc($queryEmail)) {
+            print_r($result);
             if ($result['CMAIL_inteligencia'] == 45) { // lembrete boleto
                 array_push($rec_boleto,$result);
             }
