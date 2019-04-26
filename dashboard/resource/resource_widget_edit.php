@@ -222,6 +222,8 @@ function carregaSmartRecovery($conCad, $idCli) {
             }
             $i++;
         }
+    } else {
+        echo $selectEmail;
     }
 
     $data = array(
