@@ -99,6 +99,26 @@ function carregaWids($conCad)
     echo json_encode($widgets);
 }
 
+// carrega inteligencias email
+function carregaInfoEmail($conCad, $id, $idCli){
+    // lembrete boleto - email
+    $selectEmail = "SELECT CMAIL_inteligencia, CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_id = $id and CMAIL_CLI_id = $idCli";
+    $queryEmail = mysqli_query($conCad, $selectEmail);
+    $cfgMail = [];
+    $data = [];
+    if ($queryEmail) {
+        $cfgMail = mysqli_fetch_assoc($queryEmail);
+
+        $data['CMAIL_subject'] = $cfgMail['CMAIL_subject'];
+        $data['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
+        $data['CMAIL_send_date'] = $cfgMail['CMAIL_send_date'];
+        $data['CMAIL_banner'] = $cfgMail['CMAIL_banner'];
+        $data['WID_inteligencia'] = $cfgMail['CMAIL_inteligencia'];
+    }
+    
+    echo json_encode($data);
+}
+
 function carregaInfoWidget($conCad, $id, $idCli)
 {
     global $conDados;
@@ -134,22 +154,6 @@ function carregaInfoWidget($conCad, $id, $idCli)
         $resultWidConfig['tx_negativa_filho'] = explode(",", $resultWidConfig['tx_negativa_filho']);
     }
 
-     // lembrete boleto
-     if ($result['WID_inteligencia'] == 45) {
-        // lembrete boleto - email
-        $selectEmail = "SELECT CMAIL_subject, CMAIL_due_date, CMAIL_send_date, CMAIL_banner FROM config_email WHERE CMAIL_CLI_id = $idCli";
-        $queryEmail = mysqli_query($conCad, $selectEmail);
-        $cfgMail = [];
-        if ($queryEmail) {
-            $cfgMail = mysqli_fetch_assoc($queryEmail);
-
-            $result['CMAIL_subject'] = $cfgMail['CMAIL_subject'];
-            $result['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
-            $result['CMAIL_send_date'] = $cfgMail['CMAIL_send_date'];
-            $result['CMAIL_banner'] = $cfgMail['CMAIL_banner'];
-        }
-    }
-
     // pega id template
     $selectTemplate = 'SELECT CONF_dias_venc, CONF_template_overlay from config WHERE CONF_id_cli =' . $idCli;
     $queryTemplate = mysqli_query($conCad, $selectTemplate);
@@ -183,11 +187,10 @@ function carregaInfoWidget($conCad, $id, $idCli)
 
 // CARREGA BLOCOS SMART RECOVERY
 function carregaSmartRecovery($conCad, $idCli) {
-    // 44 -> rec carrinho
-    // 45 -> rec boleto
-    $select = "SELECT * FROM widget WHERE WID_inteligencia = 45 OR WID_inteligencia = 44 AND WID_id_cli = $idCli";
-    $query = mysqli_query($conCad, $select);
-    $data = [];    
+    // 44 -> rec cart onsite
+    $select = "SELECT * FROM widget WHERE WID_inteligencia = 44 AND WID_id_cli = $idCli";
+    $queryWid = mysqli_query($conCad, $select);
+    $data = [];
 
     $selectConfig = "SELECT CONF_lembrete_boleto FROM config WHERE CONF_id_cli = $idCli";
     $queryConfig = mysqli_query($conCad, $selectConfig);
@@ -197,35 +200,36 @@ function carregaSmartRecovery($conCad, $idCli) {
     }
 
     // lembrete boleto - email
-    $selectEmail = "SELECT CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_CLI_id = $idCli";
+    $selectEmail = "SELECT CMAIL_id, CMAIL_inteligencia, CMAIL_due_date, CMAIL_status FROM config_email WHERE CMAIL_inteligencia = 45 and CMAIL_CLI_id = $idCli";
     $queryEmail = mysqli_query($conCad, $selectEmail);
-    $cfgMail = [];
-    if ($queryEmail) {
-        $cfgMail = mysqli_fetch_assoc($queryEmail);
-    }
 
     $rec_boleto = [];
     $rec_carrinho = [];
 
-    if ($query) {
+    if ($queryWid) {
         $i = 0;
-        while ($result = mysqli_fetch_assoc($query)) {
-            if ($result['WID_inteligencia'] == 45) { // lembrete boleto
-                $result['CMAIL_status'] = $cfgMail['CMAIL_status'];
-                $result['CMAIL_due_date'] = $cfgMail['CMAIL_due_date'];
-                $result['CONF_lembrete_boleto'] = $lembreteBoleto['CONF_lembrete_boleto'];
+        while ($result = mysqli_fetch_assoc($queryWid)) {
+            array_push($rec_carrinho,$result);
+            $i++;
+        }
+    }
+
+    if ($queryEmail) {
+        $i = 0;
+        while ($result = mysqli_fetch_assoc($queryEmail)) {
+            if ($result['CMAIL_inteligencia'] == 45) { // lembrete boleto
+                $result['WID_inteligencia'] = 45;
+                $result['WID_nome'] = 'Lembrete de Boleto';
+                $result['WID_id'] = $result['CMAIL_id'];                
                 array_push($rec_boleto,$result);
             }
-            else
-                array_push($rec_carrinho,$result);
             $i++;
         }
     }
 
     $data = array(
         'boleto' => $rec_boleto,
-        'carrinho' => $rec_carrinho,
-        'diasVencBoleto' => $$cfgMail['CMAIL_due_date']
+        'carrinho' => $rec_carrinho
     );
 
     echo json_encode($data);
@@ -530,10 +534,6 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
         'imagemBanner' => 'CMAIL_banner'
     );
 
-    $camposBDWID = array( // campos do widget
-        'utm' => 'WID_utm'
-    ); 
-
     // verifica o tipo do arquivo
     if (isset($files["imagemBanner"])) {
         $extension = str_ireplace('image/', '', $files['imagemBanner']['type']);
@@ -586,23 +586,14 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
     }
 
     $updateMail = '';
-    $updateWid = '';
 
     $i = 0;
     foreach ($info as $key => $value) {
         if (isset($camposBDEMAIL[$key])) {
             $updateMail = $updateMail . $camposBDEMAIL[$key] . ' = "' . $value . '", ';
         } 
-        elseif (isset($camposBDWID[$key])) {
-            $updateWid = $updateWid . $camposBDWID[$key] . ' = "' . $value . '", ';
-        }
         $i++;
     }
-
-    $updateWid = substr($updateWid, 0, -2); // Remove a última vírgula
-    $queryWid = 'UPDATE widget SET ' . $updateWid . ' WHERE WID_id = "' . $idWid . '"';
-    $executa = mysqli_query($conCad, $queryWid);
-
 
     $updateMail = substr($updateMail, 0, -2); // Remove a última vírgula
     $queryMail = 'UPDATE config_email SET ' . $updateMail . ' WHERE CMAIL_CLI_id = "' . $idCli . '"';
@@ -812,7 +803,13 @@ switch ($operacao) {
     case '12': // ATIVA/DESATIVA WIDGET
         $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
         $toggle = mysqli_real_escape_string($conCad, $_POST['val']);
-        toggleLembreteBoleto($conCad, $idWid, $toggle);        
+        toggleLembreteBoleto($conCad, $idWid, $toggle);
+        break;
+    case '13': // ATIVA/DESATIVA WIDGET
+        $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
+        $idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
+        carregaInfoEmail($conCad, $idWid, $idCli);
+        break;  
     default:
         break;
 }
