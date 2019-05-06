@@ -33,12 +33,19 @@ $(document).ready(function() {
 			wids.forEach(function (wid) {
 				var ativo = (wid.WID_status === '1') ? 'checked' : '';
 
+				var sw = '<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>'
+
+				// lembrete de boleto
+				if (wid.WID_inteligencia == 45) {
+					ativo = (wid.CONF_lembrete_boleto == 1 && wid.CMAIL_status == 1) ? 'checked' : '';
+					sw = '<input type="checkbox" class="switch pull-right lembrete-boleto" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>';
+				}
+
 				$list.innerHTML = $list.innerHTML +
 					'<li class="list-group-item" wid-id="' + wid.WID_id + '"><span>' + wid.WID_nome + '</span>' +
 					'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
-					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.WID_id + '><i class="ft-x"></i> Deletar</button> -->' +
-					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
-					'<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>' +
+					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid" data-inteligencia="'+wid.WID_inteligencia+'"><i class="icon-pencil"></i> Editar</button>' +
+					sw +
 					'</div>' +
 					'</li>';
 			});
@@ -53,8 +60,7 @@ $(document).ready(function() {
 				$list.innerHTML = $list.innerHTML +
 					'<li class="list-group-item" wid-id="' + wid.WID_id + '"><span>' + wid.WID_nome + '</span>' +
 					'<div style="width: auto;display: inline-block;position:relative;bottom: 7px;float:right;">' +
-					'<!-- <button class="btn btn-danger pull-right" data-delete-wid=' + wid.WID_id + '><i class="ft-x"></i> Deletar</button> -->' +
-					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid"><i class="icon-pencil"></i> Editar</button>' +
+					'<button class="btn btn-info pull-right mr-1 ml-1 btn-edita-wid" data-inteligencia="'+wid.WID_inteligencia+'"><i class="icon-pencil"></i> Editar</button>' +
 					'<input type="checkbox" class="switch pull-right" data-off-label="desativar" data-on-label="ativar" data-switch-always ' + ativo + '/>' +
 					'</div>' +
 					'</li>';
@@ -121,12 +127,18 @@ $(document).ready(function() {
 			}
 
 			$('.switch').change(function () {
+				var op = 0;
+				if (this.classList.contains('lembrete-boleto')) {
+					op = 12; // desativa lembrete de boleto
+				} else {
+					op = 4;
+				}
 				var idWid = this.parentElement.parentElement.getAttribute('wid-id');
 				var val = this.checked;
 				$.ajax({
 					type: 'POST',
 					url: 'resource/resource_widget_edit.php',
-					data: { 'idWid': idWid, 'val': val, 'op': 4 },
+					data: { 'idWid': idWid, 'val': val, 'op': op },
 					success: function (result) {
 					}
 				});
@@ -141,11 +153,16 @@ $(document).ready(function() {
 				var id = this.parentElement.parentElement.getAttribute('wid-id');
 				var form = document.getElementById('campos-wid-edit');
 				form.setAttribute('id-wid', id);
-	
+				
+				var op = 2;
+				if (this.dataset.inteligencia == 45) {
+					op = 13;
+				}
+
 				$.ajax({
 					type: 'POST',
 					url: 'resource/resource_widget_edit.php',
-					data: { 'idCli': idCli, 'op': 2, idWid: id },
+					data: { 'idCli': idCli, 'op': op, idWid: id },
 					success: function (result) {
 						$('#modalEditarWidget').modal('show');
 						var widget = JSON.parse(result);
@@ -175,7 +192,6 @@ $(document).ready(function() {
 						var camposAdicionais = document.getElementById('widedit-opcoes-adicionais');
 						camposAdicionais.innerHTML = '<h4>Configurações Específicas</h4>';
 					
-						$('#tituloPromocionalLabel').html('Título Promocional');
 						$('#inputCupom').hide();
 						$('#container-configuracoes').show();
 						switch(widget.WID_inteligencia) {
@@ -215,8 +231,27 @@ $(document).ready(function() {
 							case '45': // lembrete boleto
 								$('#container-configuracoes').hide();
 
-								$('#tituloPromocionalLabel').html('Título do E-mail');
+								var assunto = widget.CMAIL_subject.replace(/{CLIENT_NAME}, /g,'');
+								
+								camposAdicionais.innerHTML = '';
 								camposAdicionais.innerHTML +=
+								'<style>'+
+									'#containerTituloPromocional{display: none !important;}'+
+									'#containerEditUtm{display: none !important;}'+
+								'</style>'+
+
+								'<div class="form-group">'+
+									'<label>Assunto do E-mail</label>'+
+									'<div class="rh-input-icon-right" id="assuntoEmailContainer">'+
+									'<input class="form-control" type="text" value="'+assunto+'" onchange="$(\'#assuntoEmail\').val(\'{CLIENT_NAME}, \'+ this.value)">'+
+									'<input id="assuntoEmail" name="assunto" class="form-control" type="hidden" value="'+widget.CMAIL_subject+'">'+
+										'<abbr title="Esse é o assunto do email que o cliente irá receber" class="info-abbr">'+
+											'<i class="icon-info"></i>'+
+										'</abbr>'+
+									'</div>'+
+								'</div>'+
+
+
 								'<div id="containerAlteraImagemForm" class="col-md-6 pd-l-0">' +
 								'<label>Imagem Atual:</label>' +
 								'<div class="form-control">' +
@@ -226,11 +261,11 @@ $(document).ready(function() {
 								'<div class="rh-input-icon-right">' +
 								'<div class="media">' +
 								'<div class="media-left">' +
-								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/overlay\/' + widget.WID_banner + '">' +
+								'<img class="img-banner-small" width="100px" src="..\/widget\/images\/lembrete_boleto\/' + widget.CMAIL_banner + '">' +
 								'</div>' +
 								'<div class="media-body">' +
 								'<div class="form-group">' +
-								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/overlay\/' + widget.WID_banner + '">Visualizar <i class="ft-eye"></i></button>' +
+								'<button class="btn btn-info" id="btnViewBanner" data-target="..\/widget\/images\/lembrete_boleto\/' + widget.CMAIL_banner + '">Visualizar <i class="ft-eye"></i></button>' +
 								'</div>' +
 								'<div class="form-group">' +
 								'<button class="btn btn-primary" id="btnEditBanner">Alterar <i class="ft-upload"></i></button>' +
@@ -247,31 +282,24 @@ $(document).ready(function() {
 								'</div>' +
 								'</div>';
 
-								var optionList = (widget.WID_dias == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
-
-								for (var i = 2; i < window['diasVencBoleto']; i++) {
-									var selected = (widget.WID_dias == i) ? 'selected' : '';
-									optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
-								}
+								var opts = geraOptionList(widget.CMAIL_due_date, widget.CMAIL_send_date);								
 								
 								camposAdicionais.innerHTML +=
 								'<div class="col-md-6">'+
 									'<div class="form-group">'+
-										'<label>Dias para o Vencimento do Boleto</label>'+
+										'<label>Enviar o email</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<select name="lembreteBoleto" class="form-control" value="'+widget.WID_dias+'">'+
-												optionList+
+											'<select id="lembreteBoleto" name="lembreteBoleto" class="form-control" value="'+widget.CMAIL_send_date+'">'+
+												opts+
 											'</select>'+
 										'</div>'+
 									'</div>'+
 									'<div class="form-group">'+
 										'<label>Dias para o Vencimento do Boleto</label>'+
 										'<div class="rh-input-icon-right">'+
-											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value='+window['diasVencBoleto']+'>'+
-													'<abbr style="position: relative;right: -34px;" title="Essa é quantidade de dias até o boleto vencer na sua loja" class="info-abbr">'+
-															'<i class="icon-info"></i>'+
-													'</abbr>'+
-											'</div>'+
+											'<input id="diasBoletoVenc" name="diasBoleto" class="form-control" type="number" min="1" value="'+widget.CMAIL_due_date+'"'+
+											'onchange="atualizaOptList(this.value, 1)">'+
+										'</div>'+
 									'</div>'+
 								'</div>';
 
@@ -485,7 +513,14 @@ $(document).ready(function() {
 
 				var formData = new FormData();
 				formData.append('idWid', idWid);
-				formData.append('op', 3);
+				formData.append('idCli', idCli);
+				
+				var op = 3;
+				if ($('#spec-inteligencia-modal-edit').html() == 'Lembrete de Boleto') {
+					op = 11;
+				}
+
+				formData.append('op', op);
 
 				// PEGA O VALOR DE TODOS OS INPUTS
 				for (var i = 0; i < inputs.length; i++) {
@@ -497,11 +532,6 @@ $(document).ready(function() {
 					}
 
 					formData.append(key, val);
-				}
-
-				// dias venc
-				if ($('#diasBoletoVenc').length > 0) {
-					window['diasBoletoVenc'] = $('#diasBoletoVenc').val();
 				}
 
 				// tratamento widshow e widhide para salvar mais de 1 pagina
@@ -561,6 +591,7 @@ $(document).ready(function() {
 				if (!formData.get('thumbnail'))
 					formData.delete('thumbnail')
 
+
 				$.ajax({
 					type: 'POST',
 					url: 'resource/resource_widget_edit.php',
@@ -612,6 +643,24 @@ $(document).ready(function() {
 
 	function removeForm(event) {
 		$(event.target).closest('.form-group').remove();
+	}
+
+	// lembrete boleto
+	window['geraOptionList'] = function(dias, diaEvio) {
+		var optionList = (diaEvio == 1) ? '<option value="1" selected>1 dia após a cobrança</option>':'<option value="1">1 dia após a cobrança</option>';
+		for (var i = 2; i < dias; i++) {
+			var selected = (i == diaEvio) ? 'selected' : '';
+			optionList += '<option value="'+i+'" '+selected+'>'+i+' dias após a cobrança</option>';
+		}
+
+		return optionList;
+	}
+
+	// lembrete boleto
+	window['atualizaOptList'] = function(dias) {
+		var o = geraOptionList(dias);
+
+		$('#lembreteBoleto').html(o);
 	}
 
 });

@@ -56,17 +56,17 @@ abstract class AbstractInteligencia implements IInteligencia
         
         $obj[$index]['id'] = $array['XML_id'];
         $obj[$index]['sku'] = $array['XML_sku'];
-        $obj[$index]['name'] = urlencode($array['XML_titulo']);
+        $obj[$index]['name'] = $array['XML_titulo'];
         $obj[$index]['price'] = $array['XML_price'];
         $obj[$index]['sale_price'] = $array['XML_sale_price'];
-        $obj[$index]['link_image'] = urlencode($array['XML_image_link']);
-        $obj[$index]['link_image_2'] = urlencode($array['XML_image_link2']);
+        $obj[$index]['link_image'] = $array['XML_image_link'];
+        $obj[$index]['link_image_2'] = $array['XML_image_link2'];
         $obj[$index]['link'] = $array['XML_link']."?".$utm;
-        $obj[$index]['description'] = urlencode($array['XML_descricao']);
+        $obj[$index]['description'] = $array['XML_descricao'];
         $obj[$index]['mount'] = $array['XML_nparcelas'];
         $obj[$index]['amount'] = $array['XML_vparcela'];
         $obj[$index]['discount'] = $array['XML_desconto'];
-        $obj[$index]['brand'] = urlencode($array['XML_brand']);
+        $obj[$index]['brand'] = $array['XML_brand'];
         $obj[$index]['custom1'] = $array['XML_custom1'];
         $obj[$index]['custom2'] = $array['XML_custom2'];
         $obj[$index]['custom3'] = $array['XML_custom3'];
