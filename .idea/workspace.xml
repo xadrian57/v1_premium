@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ebc6e84-d578-4f27-a1f9-0bc4dba12ae9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dashboard/assets/js/pages/minhas_recomendacoes/widget_edit.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/assets/js/pages/minhas_recomendacoes/widget_edit.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/content/content_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/content/content_layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dashboard/content/content_meus_widgets.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/content/content_meus_widgets.inc.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../adm-api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../adm-api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveModel.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveModel.class.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/v1_premium.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/v1_premium.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,7 +17,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -24,10 +27,23 @@
       <find>widgetsBusc</find>
       <find>carregaBusca</find>
       <find>widget</find>
+      <find>criar</find>
+      <find>VTEX</find>
+      <find>rh-required</find>
+      <find>getSqlInsertCliente</find>
+      <find>executeClientSave</find>
+      <find>AbstractController</find>
+      <find>br\com\roihero\controller</find>
+      <find>Ocorreu um err</find>
+      <find>handleServer</find>
+      <find>execute(</find>
+      <find>entrou no m</find>
+      <find>execute</find>
+      <find>setBo</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../adm-api" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -38,16 +54,14 @@
         <option value="$PROJECT_DIR$/dashboard/content/content_layout.html" />
         <option value="$PROJECT_DIR$/dashboard/content/content_meus_widgets.inc.php" />
         <option value="$PROJECT_DIR$/dashboard/assets/js/pages/minhas_recomendacoes/widget_edit.js" />
-      </list>
-    </option>
-  </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/v1_premium.iml" />
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-        <option value="$PROJECT_DIR$/.idea/modules.xml" />
-        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/dashboard/content/content_header.html" />
+        <option value="$PROJECT_DIR$/../adm-web/web/dashboard/new-client/components/new-client.inc.php" />
+        <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveController.class.php" />
+        <option value="$PROJECT_DIR$/../adm-comum/v1/call-controller-execute.inc.php" />
+        <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveBO.class.php" />
+        <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/index-client-save.inc.php" />
+        <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveDao.class.php" />
+        <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveModel.class.php" />
       </list>
     </option>
   </component>
@@ -57,6 +71,7 @@
     <option name="width" value="1600" />
     <option name="height" value="902" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -70,6 +85,11 @@
               <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
               <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -79,7 +99,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../leadcall-node-api" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -108,16 +128,23 @@
       <updated>1554836350642</updated>
       <workItem from="1554836351881" duration="5044000" />
       <workItem from="1556107393949" duration="1023000" />
+      <workItem from="1556117709304" duration="3230000" />
+      <workItem from="1556547884636" duration="1199000" />
+      <workItem from="1556629413598" duration="405000" />
+      <workItem from="1556633765576" duration="585000" />
+      <workItem from="1557150348257" duration="14861000" />
+      <workItem from="1557229481290" duration="85000" />
+      <workItem from="1557323630994" duration="1215000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6067000" />
+    <option name="totallyTimeSpent" value="27647000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1440" y="-2" width="1600" height="902" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25289574" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27799228" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -130,7 +157,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32988358" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -185,16 +212,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/minhas_recomendacoes/widget_edit.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="133" column="35" selection-start-line="133" selection-start-column="35" selection-end-line="133" selection-end-column="35" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/content/content_meus_widgets.inc.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -204,6 +221,204 @@
             <element signature="n#style#0;n#p#0;n#h3#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#h3#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#2;n#h3#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/minhas_recomendacoes/widget_edit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="132" column="38" lean-forward="true" selection-start-line="132" selection-start-column="38" selection-end-line="132" selection-end-column="38" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#abbr#0;n#a#0;n#h5#0;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#div#2;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#abbr#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/content/content_header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="330" column="20" lean-forward="true" selection-start-line="330" selection-start-column="20" selection-end-line="330" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-web/web/dashboard/assets/js/validation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="288" column="30" selection-start-line="288" selection-start-column="30" selection-end-line="288" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-web/web/dashboard/new-client/components/new-client.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="428">
+          <caret line="221" column="88" lean-forward="true" selection-start-line="221" selection-start-column="88" selection-end-line="221" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-comum/v1/classes/dao/audit/AuditDao.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-comum/v1/classes/factory/LogFactory.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="41" lean-forward="true" selection-start-line="12" selection-start-column="41" selection-end-line="12" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-comum/v1/classes/features/ModulesAdm.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-comum/v1/validateTokenInput.inc.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-comum/v1/validateRequestType.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-web/web/dashboard/assets/js/ajax.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="261" column="9" selection-start-line="261" selection-start-column="9" selection-end-line="261" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-web/web/dashboard/new-client/js/new-client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="25" column="47" lean-forward="true" selection-start-line="25" selection-start-column="47" selection-end-line="25" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-arquitetura/library/core/dao/IDao.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-comum/v1/classes/to/ServiceConfigTO.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="14" lean-forward="true" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-comum/v1/call-controller-execute.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#7#36#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          <folding>
+            <element signature="e#52#94#0#PHP" expanded="true" />
+            <element signature="e#241#369#0#PHP" />
+            <element signature="e#431#542#0#PHP" />
+            <element signature="e#547#852#0#PHP" />
+            <element signature="e#594#671#0#PHP" />
+            <element signature="e#718#845#0#PHP" />
+            <element signature="e#858#1038#0#PHP" />
+            <element signature="e#1043#1174#0#PHP" />
+            <element signature="e#1097#1167#0#PHP" />
+            <element signature="e#1180#1263#0#PHP" />
+            <element signature="e#1268#1346#0#PHP" />
+            <element signature="e#1352#1436#0#PHP" />
+            <element signature="e#1441#1517#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-arquitetura/library/core/bo/AbstractBO.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="86" column="26" selection-start-line="86" selection-start-column="26" selection-end-line="86" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-arquitetura/library/core/controller/AbstractController.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="82" column="25" selection-start-line="82" selection-start-column="25" selection-end-line="82" selection-end-column="25" />
+          <folding>
+            <element signature="e#45#72#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveBO.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-210">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveBuilder.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="4" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+          <folding>
+            <element signature="e#7#60#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveModel.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="522" column="5" lean-forward="true" selection-start-line="522" selection-start-column="5" selection-end-line="522" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveDao.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="389" column="39" selection-start-line="389" selection-start-column="39" selection-end-line="389" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/index-client-save.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="72" column="6" selection-start-line="72" selection-start-column="6" selection-end-line="72" selection-end-column="6" />
+          <folding>
+            <element signature="e#60#98#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
