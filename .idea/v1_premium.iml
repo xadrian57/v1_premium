@@ -4,5 +4,9 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="adm-web" />
+    <orderEntry type="module" module-name="adm-api" />
+    <orderEntry type="module" module-name="adm-comum" />
+    <orderEntry type="module" module-name="adm-arquitetura" />
   </component>
 </module>

@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../adm-api/.idea/adm-api.iml" filepath="$PROJECT_DIR$/../adm-api/.idea/adm-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../adm-arquitetura/.idea/adm-arquitetura.iml" filepath="$PROJECT_DIR$/../adm-arquitetura/.idea/adm-arquitetura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../adm-comum/.idea/adm-comum.iml" filepath="$PROJECT_DIR$/../adm-comum/.idea/adm-comum.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../adm-web/.idea/adm-web.iml" filepath="$PROJECT_DIR$/../adm-web/.idea/adm-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/v1_premium.iml" filepath="$PROJECT_DIR$/.idea/v1_premium.iml" />
     </modules>
   </component>
