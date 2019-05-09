@@ -44,8 +44,9 @@ class Search extends AbstractSearch {
                     {
                         $select = "SELECT id, titulo_fonetico, click, titulo
                                FROM BUSCA_". $this->idcli ."
-                               WHERE ". $this->consulta() ."
-                               ". $this->usarCustom();
+                               WHERE disponibilidade IS NOT NULL AND ". $this->consulta() ."
+                               ". $this->usarCustom() ."
+                               ORDER BY disponibilidade DESC";
                     
                         $result = mysqli_query($this->conBusca, $select);                        
                 
