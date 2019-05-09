@@ -198,7 +198,8 @@ abstract class AbstractSearch
 		$select = "SELECT ". $this->campos() ."
            FROM XML_".$this->idcli."
            WHERE (XML_availability = 1 OR XML_availability = 0)
-           AND XML_id IN ('". $ids ."')";	
+           AND XML_id IN ('". $ids ."')
+           ORDER BY XML_availability DESC";	
     
     	$result = mysqli_query($this->conDados, $select);
 
