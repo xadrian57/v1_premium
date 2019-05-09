@@ -61,16 +61,17 @@ class Util
 		return implode(' ', $arrayPalavras);
 	}
 
-	public static function array_multi_sort($array,$on1,$on2,$order=SORT_DESC) 
+	public static function array_multi_sort($array,$on1,$on2,$on3,$order=SORT_DESC) 
 	{
         if(count($array) > 0)
         {
     	    for($i = 0; $i < count($array); $i++){
+    	    	$two_way_fares[$i] = $array[$i][$on3];
     	        $one_way_fares[$i] = $array[$i][$on2];
     	        $return_fares[$i] = $array[$i][$on1];
     	    }
     
-    	    array_multisort($return_fares,$order,$one_way_fares,$order,$array);
+    	    array_multisort($return_fares,$order,$one_way_fares,$order,$two_way_fares,$order,$array);
         }
 
 	    return $array;
@@ -132,7 +133,7 @@ class Util
 
 		//usort($result,'ordenaPorScore');
 
-		$result = self::array_multi_sort($result,'score','venda'); 
+		$result = self::array_multi_sort($result,'score','venda','disponibilidade'); 
 
 		return $result;
 	}
@@ -194,7 +195,7 @@ class Util
 
 		//usort($result,'ordenaPorScore');
 
-		$result = self::array_multi_sort($result,'score','venda'); 
+		$result = self::array_multi_sort($result,'score','venda','disponibilidade'); 
 
 		return $result;
 	}
@@ -206,6 +207,7 @@ class Util
 				'fonetic_title'=>$linha['titulo_fonetico'],
 				'title'=>$linha['titulo'],
 				'venda' => intval($linha['click']),
+				'disponibilidade' => $linha['disponibilidade'],
 				'score' => 0
 			);		
 	}

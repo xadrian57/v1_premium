@@ -42,7 +42,7 @@ class Search extends AbstractSearch {
 
                     if(!empty($busca))
                     {
-                        $select = "SELECT id, titulo_fonetico, click, titulo
+                        $select = "SELECT id, titulo_fonetico, click, titulo, disponibilidade
                                FROM BUSCA_". $this->idcli ."
                                WHERE disponibilidade IS NOT NULL AND ". $this->consulta() ."
                                ". $this->usarCustom() ."
