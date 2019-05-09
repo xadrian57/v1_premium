@@ -71,7 +71,7 @@ class Util
     	        $return_fares[$i] = $array[$i][$on1];
     	    }
     
-    	    array_multisort($return_fares,$order,$one_way_fares,$two_way_fares,$order,$array);
+    	    array_multisort($return_fares,$order,$one_way_fares,$order,$two_way_fares,$order,$array);
         }
 
 	    return $array;
