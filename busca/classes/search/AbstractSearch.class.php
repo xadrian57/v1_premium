@@ -221,7 +221,7 @@ abstract class AbstractSearch
             }
         }
 
-     	$posts = Util::array_multi_sort($posts,'score','venda'); 
+     	$posts = Util::array_multi_sort($posts,'score','venda','disponibilidade'); 
 
         return $posts;
 	}
