@@ -15,7 +15,7 @@ RewriteRule ^timeline$ php/timeline.php [QSA,L,NC]
 
 
 RewriteRule ^dados$ php/dados.php [QSA,L,NC]
-RewriteRule ^plano$ php/plano.php [QSA,L,NC]
+RewriteRule ^billing$ php/billing.php [QSA,L,NC]
 RewriteRule ^faturas$ php/faturas.php [QSA,L,NC]
 
 
