@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ebc6e84-d578-4f27-a1f9-0bc4dba12ae9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../adm-api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../adm-api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveModel.class.php" beforeDir="false" afterPath="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveModel.class.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/v1_premium.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/v1_premium.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dashboard/content/content_minha_busca.html" beforeDir="false" afterPath="$PROJECT_DIR$/dashboard/content/content_minha_busca.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +12,45 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
+  </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dashboard/php/minha_busca.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dashboard/content/content_minha_busca.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+              <folding>
+                <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="391">
+              <caret line="38" column="110" selection-start-line="38" selection-start-column="110" selection-end-line="38" selection-end-column="110" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -43,33 +76,33 @@
     </findStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../adm-api" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/dashboard/content/content_minha_busca.html" />
         <option value="$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php" />
-        <option value="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" />
         <option value="$PROJECT_DIR$/dashboard/content/content_layout.html" />
         <option value="$PROJECT_DIR$/dashboard/content/content_meus_widgets.inc.php" />
         <option value="$PROJECT_DIR$/dashboard/assets/js/pages/minhas_recomendacoes/widget_edit.js" />
         <option value="$PROJECT_DIR$/dashboard/content/content_header.html" />
-        <option value="$PROJECT_DIR$/../adm-web/web/dashboard/new-client/components/new-client.inc.php" />
         <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveController.class.php" />
         <option value="$PROJECT_DIR$/../adm-comum/v1/call-controller-execute.inc.php" />
         <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveBO.class.php" />
         <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/index-client-save.inc.php" />
         <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveDao.class.php" />
         <option value="$PROJECT_DIR$/../adm-api/srv/admin/client/v1/save/classes/ClientSaveModel.class.php" />
+        <option value="$PROJECT_DIR$/../adm-web/web/dashboard/new-client/components/new-client.inc.php" />
+        <option value="$PROJECT_DIR$/dashboard/content/content_minha_busca.html" />
+        <option value="$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1440" />
-    <option name="y" value="-2" />
-    <option name="width" value="1600" />
-    <option name="height" value="902" />
+    <option name="x" value="200" />
+    <option name="y" value="107" />
+    <option name="width" value="1200" />
+    <option name="height" value="646" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -89,6 +122,42 @@
               <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
               <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
               <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="smart_search" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="v1_premium" type="b2602c69:ProjectViewProjectNode" />
+              <item name="v1_premium" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="php" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -135,16 +204,20 @@
       <workItem from="1557150348257" duration="14861000" />
       <workItem from="1557229481290" duration="85000" />
       <workItem from="1557323630994" duration="1215000" />
+      <workItem from="1557494060414" duration="2604000" />
+      <workItem from="1557516223949" duration="137000" />
+      <workItem from="1557769545244" duration="363000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27647000" />
+    <option name="totallyTimeSpent" value="30751000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1440" y="-2" width="1600" height="902" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.27799228" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28920308" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -169,19 +242,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/dashboard/content/content_minha_busca.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
-          <folding>
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dashboard/resource/resource_widget_edit.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="455">
@@ -195,13 +255,6 @@
             <element signature="n#toggleWidget#0;n#!!top" />
             <element signature="n#deleteWidget#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -259,13 +312,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="288" column="30" selection-start-line="288" selection-start-column="30" selection-end-line="288" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../adm-web/web/dashboard/new-client/components/new-client.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="221" column="88" lean-forward="true" selection-start-line="221" selection-start-column="88" selection-end-line="221" selection-end-column="88" />
         </state>
       </provider>
     </entry>
@@ -420,6 +466,38 @@
           <folding>
             <element signature="e#60#98#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../adm-web/web/dashboard/new-client/components/new-client.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="226" column="56" selection-start-line="226" selection-start-column="56" selection-end-line="226" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/php/minha_busca.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="45" lean-forward="true" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/content/content_minha_busca.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="23" column="49" selection-start-line="23" selection-start-column="49" selection-end-line="23" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dashboard/assets/js/pages/smart_search/minha_busca.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="38" column="110" selection-start-line="38" selection-start-column="110" selection-end-line="38" selection-end-column="110" />
         </state>
       </provider>
     </entry>
