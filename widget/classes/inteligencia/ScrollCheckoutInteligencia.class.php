@@ -28,12 +28,10 @@ class ScrollCheckoutInteligencia extends AbstractInteligencia {
 
 
         if(intval($viewsNow) < 3)
-            $viewsNow = 3;
+            $viewsNow = rand(2,8);
 
         $this->widget->setViewsNow($viewsNow);
 	}
 
 }
-
-    
 ?>
