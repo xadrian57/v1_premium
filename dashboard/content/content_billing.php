@@ -60,6 +60,7 @@
 							<h4 class="card-title">PLANO ATUAL</h4>
 						</div>
 						<div class="card-block pt-0">
+							<h4><strong>Plano Enterprise: <?= $info['valor_plano'] ?></strong></h4>
 							<table class="table" style="display:<?= $display ?>">
 								<thead>
 									<tr>
