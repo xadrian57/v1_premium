@@ -316,6 +316,7 @@ class LojaLateralInteligencia extends AbstractInteligencia {
         
         $select = "SELECT ".$this->XML_select." FROM XML_".$this->widget->getIdCli()."
                    WHERE XML_id IN (" . $this->widget->getCookieProd() . ")
+                   AND XML_availability > 0
                    ORDER BY XML_click_7 DESC
                    LIMIT " . $maxProd;
         
