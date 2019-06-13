@@ -29,7 +29,7 @@
 
 	//---------------------------------------------
 	// SELECIONA PRODUTOS DA TABELA XML------------
-	$select = 'SELECT XML_titulo, XML_id, XML_sku, XML_price, XML_sale_price, XML_type,XML_image_link,XML_link,XML_availability  FROM XML_'.$idCLI;
+	$select = 'SELECT XML_titulo, XML_id, XML_sku, XML_price, XML_sale_price, XML_type,XML_image_link,XML_link,XML_availability  FROM XML_'.$idCLI.' WHERE XML_availability != 2';
 	$queryProdutos = mysqli_query($conDados, $select);
 	// caso exista a tabela do XML criada
 	if ($queryProdutos){
