@@ -36,7 +36,7 @@ $(document).ready(function () {
 
             var $downloadReport = document.getElementById('downloadReport')
 
-            if ($downloadReport) $downloadReport.href = '/dashboard/php/get_relatorio_busca.php/?id=' + wid.id
+            if ($downloadReport) $downloadReport.href = '/dashboard/php/get_relatorio_busca.php/?id=' + idCli
 
             $widId.forEach(($wId) => {
                 $wId.innerHTML = wid.id
