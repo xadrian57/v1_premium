@@ -210,6 +210,7 @@ class Util {
         $numProd = $arrayWidgets['WID_num_prod'];
         $idWid = $arrayWidgets['WID_id'];
         $cupom = $arrayWidgets['WID_cupom'];
+        $idInteligencia = $arrayWidgets['WID_inteligencia'];
 
         // caso seja um compre junto 3, chama a função especifica
         if($formato == 12)
@@ -261,6 +262,7 @@ class Util {
             $html = str_replace('{ID_WIDGET}', $idWid, $html);
             $html = str_replace('{LINK_BANNER_BLOCK}', $linkBanner, $html);
             $html = str_replace('{BANNER_BLOCK}', 'https://roihero.com.br/widget/images/overlay/'.$banner, $html);
+            $html = str_replace('{BLOCK_INTEL}', $idInteligencia, $html);
 
             if($cupom != '' && $cupom != null && !empty($cupom))
             {
