@@ -213,6 +213,17 @@ class Util {
         $cupom = $arrayWidgets['WID_cupom'];
         $idInteligencia = $arrayWidgets['WID_inteligencia'];
 
+        if($moeda == '$')
+        {
+            $parmFormatOne = '.';
+            $parmFormatTwo = ',';
+        }
+        else
+        {
+            $parmFormatOne = ',';
+            $parmFormatTwo = '.';
+        }
+
         // caso seja um compre junto 3, chama a função especifica
         if($formato == 12)
         {
@@ -434,7 +445,10 @@ class Util {
                                 $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
                                 $aux = $arrayAux[0].''.$arrayAux[2];
 
-                                $aux = str_replace('{PRODUCT_VALUE_IN_CASH_0}', $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100)), $aux);
+                                $valueDiscountInCash = $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100);
+                                $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
+
+                                $aux = str_replace('{PRODUCT_VALUE_IN_CASH_0}', $moeda.' '.$valueDiscountInCash), $aux);
                             }
                             else
                             {
@@ -581,7 +595,10 @@ class Util {
                             $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
                             $aux = $arrayAux[0].''.$arrayAux[2];
 
-                            $aux = str_replace('{PRODUCT_VALUE_IN_CASH}', $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100)), $aux);
+                            $valueDiscountInCash = $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100);
+                            $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
+
+                            $aux = str_replace('{PRODUCT_VALUE_IN_CASH}', $moeda.' '.$valueDiscountInCash), $aux);
                         }
                         else
                         {
@@ -735,7 +752,10 @@ class Util {
                         $arrayAux = explode ('<!-- VALUE IN CASH FALSE '.$i.' -->', $aux);
                         $aux = $arrayAux[0].''.$arrayAux[2];
 
-                        $aux = str_replace('{PRODUCT_VALUE_IN_CASH_'.$i.'}', $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100)), $aux);
+                        $valueDiscountInCash = $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100);
+                        $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
+
+                        $aux = str_replace('{PRODUCT_VALUE_IN_CASH_'.$i.'}', $moeda.' '.$valueDiscountInCash), $aux);
                     }
                     else
                     {
@@ -756,17 +776,6 @@ class Util {
             else
             {
                 $response = str_replace('{DISCOUNT_SUM}', '' , $response);
-            }
-            
-            if($moeda == '$')
-            {
-                $parmFormatOne = '.';
-                $parmFormatTwo = ',';
-            }
-            else
-            {
-                $parmFormatOne = ',';
-                $parmFormatTwo = '.';
             }
 
             $response = str_replace('{VALUE_SUM}', $moeda.' '.number_format($sumValue, 2, $parmFormatOne, $parmFormatTwo), $response);
