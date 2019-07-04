@@ -201,6 +201,7 @@ class Util {
         $template = $arrayConfig['CONF_template'];
         $templateOverlay = $arrayConfig['CONF_template_overlay'];
         $moeda = $arrayConfig['CONF_moeda'];
+        $descontoBoleto = $arrayConfig['CONF_desc_boleto'];
         $linkBanner = $arrayWidgets['WID_link_banner'];
         $banner = $arrayWidgets['WID_banner'];
         $idCli = $arrayWidgets['WID_id_cli'];
@@ -424,7 +425,23 @@ class Util {
                                     $arrayAux = explode ('<!-- DISCOUNT TRUE -->', $aux);
                                     $aux = $arrayAux[0].''.$arrayAux[2];
                                 }
-                            }       
+                            } 
+
+                            // DESCONTO DE BOLETO FIXO          
+                            if($descontoBoleto > 0)
+                            {
+                                // REMOVE O FALSE
+                                $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
+                                $aux = $arrayAux[0].''.$arrayAux[2];
+
+                                $aux = str_replace('{PRODUCT_VALUE_IN_CASH_0}', $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100)), $aux);
+                            }
+                            else
+                            {
+                                // REMOVE O TRUE
+                                $arrayAux = explode ('<!-- VALUE IN CASH TRUE -->', $aux);
+                                $aux = $arrayAux[0].''.$arrayAux[2];
+                            }
 
                             $head = $aux;
                         }
@@ -555,6 +572,22 @@ class Util {
                                 $arrayAux = explode ('<!-- DISCOUNT TRUE -->', $aux);
                                 $aux = $arrayAux[0].''.$arrayAux[2];
                             }
+                        }
+
+                        // DESCONTO DE BOLETO FIXO          
+                        if($descontoBoleto > 0)
+                        {
+                            // REMOVE O FALSE
+                            $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
+                            $aux = $arrayAux[0].''.$arrayAux[2];
+
+                            $aux = str_replace('{PRODUCT_VALUE_IN_CASH}', $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100)), $aux);
+                        }
+                        else
+                        {
+                            // REMOVE O TRUE
+                            $arrayAux = explode ('<!-- VALUE IN CASH TRUE -->', $aux);
+                            $aux = $arrayAux[0].''.$arrayAux[2];
                         }               
 
                         $body .= $aux;
@@ -693,7 +726,23 @@ class Util {
                             $arrayAux = explode ('<!-- DISCOUNT TRUE '.$i.' -->', $aux);
                             $aux = $arrayAux[0].''.$arrayAux[2];
                         }
-                    }   
+                    } 
+
+                    // DESCONTO DE BOLETO FIXO          
+                    if($descontoBoleto > 0)
+                    {
+                        // REMOVE O FALSE
+                        $arrayAux = explode ('<!-- VALUE IN CASH FALSE '.$i.' -->', $aux);
+                        $aux = $arrayAux[0].''.$arrayAux[2];
+
+                        $aux = str_replace('{PRODUCT_VALUE_IN_CASH_'.$i.'}', $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100)), $aux);
+                    }
+                    else
+                    {
+                        // REMOVE O TRUE
+                        $arrayAux = explode ('<!-- VALUE IN CASH TRUE '.$i.' -->', $aux);
+                        $aux = $arrayAux[0].''.$arrayAux[2];
+                    }  
 
                 }
 
