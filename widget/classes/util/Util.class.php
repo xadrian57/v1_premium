@@ -445,7 +445,9 @@ class Util {
                                 $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
                                 $aux = $arrayAux[0].''.$arrayAux[2];
 
-                                $valueDiscountInCash = $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100));
+                                $auxSalePrice = $obj[$i]['sale_price'];
+
+                                $valueDiscountInCash = $auxSalePrice - ($auxSalePrice * ($descontoBoleto / 100));
                                 $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
 
                                 $aux = str_replace('{PRODUCT_VALUE_IN_CASH_0}', $moeda.' '.$valueDiscountInCash, $aux);
@@ -595,7 +597,9 @@ class Util {
                             $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
                             $aux = $arrayAux[0].''.$arrayAux[2];
 
-                            $valueDiscountInCash = $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100));
+                            $auxSalePrice = $obj[$i]['sale_price'];
+
+                            $valueDiscountInCash = $auxSalePrice - ($auxSalePrice * ($descontoBoleto / 100));
                             $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
 
                             $aux = str_replace('{PRODUCT_VALUE_IN_CASH}', $moeda.' '.$valueDiscountInCash, $aux);
@@ -752,7 +756,9 @@ class Util {
                         $arrayAux = explode ('<!-- VALUE IN CASH FALSE '.$i.' -->', $aux);
                         $aux = $arrayAux[0].''.$arrayAux[2];
 
-                        $valueDiscountInCash = $obj[$i]['sale_price'] - ($obj[$i]['sale_price'] * ($descontoBoleto / 100));
+                        $auxSalePrice = $obj[$i]['sale_price'];
+
+                        $valueDiscountInCash = $auxSalePrice - ($auxSalePrice * ($descontoBoleto / 100));
                         $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
 
                         $aux = str_replace('{PRODUCT_VALUE_IN_CASH_'.$i.'}', $moeda.' '.$valueDiscountInCash, $aux);
