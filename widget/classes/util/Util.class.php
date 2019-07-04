@@ -445,7 +445,7 @@ class Util {
                                 $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
                                 $aux = $arrayAux[0].''.$arrayAux[2];
 
-                                $auxSalePrice = $obj[$i]['price'];
+                                $auxSalePrice = $obj[$i]['sale_price'];
 
                                 $valueDiscountInCash = $auxSalePrice - ($auxSalePrice * ($descontoBoleto / 100));
                                 $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
@@ -597,7 +597,7 @@ class Util {
                             $arrayAux = explode ('<!-- VALUE IN CASH FALSE -->', $aux);
                             $aux = $arrayAux[0].''.$arrayAux[2];
 
-                            $auxSalePrice = $obj[$i]['price'];
+                            $auxSalePrice = $obj[$i]['sale_price'];
 
                             $valueDiscountInCash = $auxSalePrice - ($auxSalePrice * ($descontoBoleto / 100));
                             $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
@@ -756,7 +756,7 @@ class Util {
                         $arrayAux = explode ('<!-- VALUE IN CASH FALSE '.$i.' -->', $aux);
                         $aux = $arrayAux[0].''.$arrayAux[2];
 
-                        $auxSalePrice = $obj[$i]['price'];
+                        $auxSalePrice = $obj[$i]['sale_price'];
 
                         $valueDiscountInCash = $auxSalePrice - ($auxSalePrice * ($descontoBoleto / 100));
                         $valueDiscountInCash = number_format($valueDiscountInCash, 2, $parmFormatOne, $parmFormatTwo);
