@@ -92,7 +92,7 @@ abstract class AbstractWidget {
         if($inject)
         {
             // SELECT TEMPLATE
-            $selectConfig = "SELECT CONF_template, CONF_template_overlay, CONF_moeda FROM config WHERE CONF_id_cli = '$this->idcli'";
+            $selectConfig = "SELECT CONF_template, CONF_template_overlay, CONF_moeda, CONF_desc_boleto FROM config WHERE CONF_id_cli = '$this->idcli'";
             $resultConfig = mysqli_query($this->conCad, $selectConfig);
             
             $arrayConfig = mysqli_fetch_array($resultConfig);
