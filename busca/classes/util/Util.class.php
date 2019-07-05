@@ -217,6 +217,7 @@ class Util
 		if($descBoleto != '0' && !empty($descBoleto))
         {
             $linha['XML_sale_price'] = $linha['XML_sale_price'] - ($linha['XML_sale_price'] * ($descBoleto / 100));
+            $linha['XML_desconto'] += $descBoleto;
         }
 
 		return array(
