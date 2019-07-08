@@ -164,7 +164,7 @@ abstract class AbstractSearch
         }
 		else
 		{
-			return " OR custom_1 = '" . $busca . "' OR custom_2 = '" . $busca . "' OR id = '". $busca ."' ";
+			return " OR custom_1 = '" . $busca . "' OR custom_2 = '" . $busca . "' OR custom_3 = '" . $busca . "' OR id = '". $busca ."' ";
 		}
 	}
 
