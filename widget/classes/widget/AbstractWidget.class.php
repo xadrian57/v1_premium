@@ -234,7 +234,7 @@ abstract class AbstractWidget {
 
     public function getParametroXML($parm) {        
         
-        if(!empty($this->prodId))
+        if(!empty($this->prodId) && !empty($parm))
         {
             $sql = "SELECT XML_". $parm ." FROM XML_".$this->idcli." WHERE XML_id = '$this->prodId' LIMIT 1";
             $result = mysqli_query($this->conDados, $sql);
