@@ -293,7 +293,7 @@ if(!empty($id))
 
                                 if($buscaBackEnd)
                                 {  
-                                    $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
+                                    $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_3, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom3', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
                                     $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
                                 }
                             }
@@ -301,12 +301,12 @@ if(!empty($id))
                             {
                                 if($buscaBackEnd)
                                 {  
-                                    $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '". implode(',', $arrayCustom[$idprod]) ."', custom_2 = '$custom4' WHERE id = '$idprod'";
+                                    $updateBusca ="UPDATE BUSCA_".$id." SET titulo = UPPER('" .  $titulo . "'), titulo_fonetico = '$fonetizado', custom_1 = '". implode(',', $arrayCustom[$idprod]) ."', custom_2 = '$custom4', custom_3 = '$custom3' WHERE id = '$idprod'";
                                     $resultadoBusca = mysqli_query($conBusca, $updateBusca);
 
                                     if(mysqli_affected_rows($conBusca) < 1)
                                     {
-                                        $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
+                                        $insereBusca=("INSERT INTO BUSCA_".$id." (titulo, titulo_fonetico, id, custom_3, custom_2, custom_1) VALUES (UPPER('" .  $titulo . "'), '$fonetizado', '$idprod', '$custom3', '$custom4', '". implode(',', $arrayCustom[$idprod]) ."')");
                                         $resultadoInsereBusca = mysqli_query($conBusca, $insereBusca);
                                     }
                                 }
