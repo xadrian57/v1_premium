@@ -35,16 +35,16 @@ class SimilarPorParametrosInteligencia extends AbstractInteligencia {
       $paramFilho = $this->widget->getParametroXML($linha['tx_param_filho']);
 
       $paramPai = strtoupper($paramPai);
-      $paramPai = str_replace(' ', ' *', $paramPai);
+      $paramPai = str_replace(' ', ' +', $paramPai);
 
       $paramFilho = strtoupper($paramFilho);
-      $paramFilho = str_replace(' ', ' *', $paramFilho);
+      $paramFilho = str_replace(' ', ' +', $paramFilho);
       
       $select = "SELECT ".$this->XML_select."
                  FROM XML_". $this->widget->getIdCli() ."
                  WHERE XML_id != '" . $this->widget->getProdId() . "'
                  AND XML_availability = 1
-                 AND MATCH(XML_". $linha['tx_param_pai'] .") AGAINST(\"+ " . $paramPai . " *\" IN BOOLEAN MODE)
+                 AND MATCH(XML_". $linha['tx_param_pai'] .") AGAINST(\"+" . $paramPai . "\" IN BOOLEAN MODE)
                  ". $this->checkFilho($linha['tx_param_filho'], $paramFilho) ."
                  GROUP BY XML_link
                  ORDER BY ". $paramOrder ." DESC 
@@ -76,7 +76,7 @@ class SimilarPorParametrosInteligencia extends AbstractInteligencia {
 
       if(!empty($paramFilho) && $paramFilho != '')
       {
-        return "AND MATCH(XML_". $filho .") AGAINST(\"+ " . $paramFilho . " *\" IN BOOLEAN MODE)";
+        return "AND MATCH(XML_". $filho .") AGAINST(\"+" . $paramFilho . "\" IN BOOLEAN MODE)";
       }
       else
       {
