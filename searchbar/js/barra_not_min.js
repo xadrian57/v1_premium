@@ -549,7 +549,7 @@ rhSearchBar = function(cfg,idCli,idWid){
                         }                        
                     };
 
-                    
+
                     var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
 
                     if (btnVerTodosOsResultados) {
@@ -1967,6 +1967,23 @@ rhSearchBar = function(cfg,idCli,idWid){
         var
         barraOverlay = document.getElementById('rh_lite_overlay_searchbar'),
         btnPesquisarOverlay = document.getElementById('rh_lite_searchbutton_overlay');
+
+
+
+        var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+        if (btnVerTodosOsResultados) {
+            btnVerTodosOsResultados.addEventListener('click', function () {
+                var input = document.querySelector('#rh_lite_searchbar')
+                var termo = input.value.trim()
+                var inputCfg = document.querySelector('#rh-searchbar-config')
+                var resultsPage = inputCfg.dataset.resultsPage
+
+                if (termo !== '') {
+                    window.location.href = resultsPage + termo
+                }
+            })
+        }
 
 
         // barra principal
