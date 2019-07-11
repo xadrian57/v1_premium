@@ -548,6 +548,14 @@ rhSearchBar = function(cfg,idCli,idWid){
                             }                            
                         }                        
                     };
+
+                    
+                    var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+                    if (btnVerTodosOsResultados) {
+                        btnVerTodosOsResultados.classList.remove('rh-active')
+                    }
+
                 }
                 else {
                     document.getElementById('rh_lite_table_result').innerHTML+= '<h2 class="rh_lite_h2_sb">Os Mais Procurados</h2>';
@@ -645,66 +653,49 @@ rhSearchBar = function(cfg,idCli,idWid){
         resultado.innerHTML = ''; // RESETANDO OS RESULTADOS
         resultadoString ='';      // ADICIONANDO O RESULTADO DA PESQUISA
         if (resultados_busca !== ''){
-            for(var x=0; x<resultados_busca.length;x++){                
-                // staples
-                var tag = '';
-                if (rhClientIdSb === '85f1002bf139bebdb7f0d07b31fa14155aea9dfc') {
-                    // selo papel
-                    var productName = prod[x].nome.toLowerCase();
-                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a0') != -1 ) {
-                        tag='<span class="x-image__highlight x-image__highlight--a0">A0</span>';
-                    }
-                    
-                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a1') != -1 ) {
-                        tag='<span class="x-image__highlight x-image__highlight--a1">A1</span>';
-                    }
-                    
-                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a2') != -1 ) {
-                        tag='<span class="x-image__highlight x-image__highlight--a2">A2</span>';
-                    }
-                    
-                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a3') != -1 ) {
-                        tag='<span class="x-image__highlight x-image__highlight--a3">A3</span>';
-                    }
-                    
-                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a4') != -1 ) {
-                        tag='<span class="x-image__highlight x-image__highlight--a4">A4</span>';
-                    }
-                    
-                    if ( productName.indexOf('papel') != -1 && productName.indexOf('a5') != -1 ) {
-                        tag='<span class="x-image__highlight x-image__highlight--a5">A5</span>';
-                    }
-                    
-                    if ( productName.indexOf('papel') != -1 && productName.indexOf('carta') != -1 ) {
-                        tag='<span class="x-image__highlight x-image__highlight--carta">Carta</span>';
-                    }
-                }
+            for(var x=0; x<resultados_busca.length;x++){
 
                 var prod = resultados_busca[x];
                 resultadoString+='<a href="'+prod.link+'">'+
-                                    '<figure class="rh_lite_searchbar_results_figure">'+
-                                        '<img src="'+prod.link_image+'">'+
-                                    '</figure>'+
-                                    '<div class="rh_lite_searchbar_results_infoprod">'+
-                                        '<span class="rh_lite_searchbar_results_nomeprod">'+
-                                            prod.title+
-                                        '</span>'+
-                                        '<span class="rh_lite_searchbar_results_precon">'+
-                                            prod.price+
-                                        '</span>'+
-                                        '<span class="rh_lite_searchbar_results_precop">'+
-                                            prod.sale_price+
-                                        '</span>'+
-                                        '<span class="rh_lite_searchbar_results_parcelamento">'+
-                                            prod.months+
-                                        '</span>'+
-                                    '</div>'+
-                               '</a>';
+                                        '<figure class="rh_lite_searchbar_results_figure">'+
+                                            '<img src="'+prod.link_image+'">'+
+                                        '</figure>'+
+                                        '<div class="rh_lite_searchbar_results_infoprod">'+
+                                            '<span class="rh_lite_searchbar_results_nomeprod">'+
+                                                prod.title+
+                                            '</span>'+
+                                            '<span class="rh_lite_searchbar_results_precon">'+
+                                                prod.price+
+                                            '</span>'+
+                                            '<span class="rh_lite_searchbar_results_precop">'+
+                                                prod.sale_price+
+                                            '</span>'+
+                                            '<span class="rh_lite_searchbar_results_parcelamento">'+
+                                                prod.months+
+                                            '</span>'+
+                                        '</div>'+
+                                   '</a>';
                 if (x === 14){
                     break;
                 }
             }
+
+            // ver mais resultados
+            resultadoString += '<span style="display: none;" id="rh_lite_searchbar_goto_results"> ver todos os resultados </span>'
             resultado.innerHTML = resultadoString;
+
+            console.log(resultadoString)
+
+            document.querySelector('#rh_lite_searchbar_goto_results').addEventListener('click', function () {
+                var input = document.querySelector('#rh_lite_searchbar')
+                var termo = input.value.trim()
+                var inputCfg = document.querySelector('#rh-searchbar-config')
+                var resultsPage = inputCfg.dataset.resultsPage
+
+                if (termo !== '') {
+                    window.location.href = resultsPage + termo
+                }
+            })
         }
 
         if (resultados_busca.length <= 0){ // CASO ENCONTRAR RESULTADO, MOSTRAR
@@ -807,46 +798,11 @@ rhSearchBar = function(cfg,idCli,idWid){
                         // -------------------
 
                         var prod = result[x];
-                        
-                        // staples
-                        var tag = '';
-                        if (rhClientIdSb === '85f1002bf139bebdb7f0d07b31fa14155aea9dfc') {
-                            // selo papel
-                            var productName = prod.title.toLowerCase();
-                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a0') != -1 ) {
-                                tag='<span class="x-image__highlight x-image__highlight--a0">A0</span>';
-                            }
-                            
-                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a1') != -1 ) {
-                                tag='<span class="x-image__highlight x-image__highlight--a1">A1</span>';
-                            }
-                            
-                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a2') != -1 ) {
-                                tag='<span class="x-image__highlight x-image__highlight--a2">A2</span>';
-                            }
-                            
-                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a3') != -1 ) {
-                                tag='<span class="x-image__highlight x-image__highlight--a3">A3</span>';
-                            }
-                            
-                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a4') != -1 ) {
-                                tag='<span class="x-image__highlight x-image__highlight--a4">A4</span>';
-                            }
-                            
-                            if ( productName.indexOf('papel') != -1 && productName.indexOf('a5') != -1 ) {
-                                tag='<span class="x-image__highlight x-image__highlight--a5">A5</span>';
-                            }
-                            
-                            if ( productName.indexOf('papel') != -1 && productName.indexOf('carta') != -1 ) {
-                                tag='<span class="x-image__highlight x-image__highlight--carta">Carta</span>';
-                            }
-                        }
 
                         if (prod.in_stock < 1) {
                             resultadoString+='<a href="'+prod.link+'" class="rh-out-of-stock">'+
                                                 '<figure class="rh_lite_searchbar_results_figure">'+
                                                     '<img src="'+prod.link_image+'">'+
-                                                    tag+
                                                 '</figure>'+
                                                 '<div class="rh_lite_searchbar_results_infoprod">'+
                                                     '<span class="rh_lite_searchbar_results_nomeprod">'+
@@ -867,7 +823,6 @@ rhSearchBar = function(cfg,idCli,idWid){
                             resultadoString+='<a href="'+prod.link+'" class="rh-out-of-stock">'+
                                                 '<figure class="rh_lite_searchbar_results_figure">'+
                                                     '<img src="'+prod.link_image+'">'+
-                                                    tag+
                                                 '</figure>'+
                                                 '<div class="rh_lite_searchbar_results_infoprod">'+
                                                     '<span class="rh_lite_searchbar_results_nomeprod">'+
@@ -889,7 +844,16 @@ rhSearchBar = function(cfg,idCli,idWid){
                         
                         
                     }
+
+                    console.log(resultadoString)
+
                     resultado.innerHTML = resultadoString;
+
+                    var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+                    if (btnVerTodosOsResultados) {
+                        btnVerTodosOsResultados.classList.add('rh-active')
+                    }
 
                     setTimeout(function(){
                         if (!cfg.overlay.classList.contains('active')){
@@ -2008,14 +1972,35 @@ rhSearchBar = function(cfg,idCli,idWid){
         // barra principal
             // binda listenners barra de busca
             cfg.searchbar.addEventListener('keyup', function(){
+                var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+                if (btnVerTodosOsResultados) {
+                    btnVerTodosOsResultados.classList.remove('rh-active')
+                }
+
                 rhIntervaloBusca();
             });
 
             cfg.searchbar.addEventListener('blur', function(){
+
+                var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+                if (btnVerTodosOsResultados) {
+                    btnVerTodosOsResultados.classList.remove('rh-active')
+                }
+
                 rhHideResults();
             });
 
             cfg.searchbar.addEventListener('click',function(){
+
+                var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+                if (btnVerTodosOsResultados) {
+                    btnVerTodosOsResultados.classList.remove('rh-active')
+                }
+
+
                 if (this.value.trim() === '') {
                     if (window.hasOwnProperty('rh_lite_obj') && window.hasOwnProperty('rh_lite_termos_personalizados')) {
                         rhTyping(this);
@@ -2034,6 +2019,14 @@ rhSearchBar = function(cfg,idCli,idWid){
             });
 
             cfg.searchbar.addEventListener('keypress',function(e){
+
+                var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+                if (btnVerTodosOsResultados) {
+                    btnVerTodosOsResultados.classList.remove('rh-active')
+                }
+
+
                 rh_lite_whichKey(e,this);
             });
 
@@ -2066,6 +2059,12 @@ rhSearchBar = function(cfg,idCli,idWid){
                 rhIntervaloBusca();
             });
             barraOverlay.addEventListener('blur', function(){
+                var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
+
+                if (btnVerTodosOsResultados) {
+                    btnVerTodosOsResultados.classList.remove('rh-active')
+                }
+
                 rhHideResultsOverlay();
             });
 
