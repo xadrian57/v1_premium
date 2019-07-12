@@ -1978,11 +1978,12 @@ rhSearchBar = function(cfg,idCli,idWid){
                 var termo = input.value.trim()
                 var inputCfg = document.querySelector('#rh-searchbar-config')
                 var resultsPage = inputCfg.dataset.resultsPage
-
                 if (termo !== '') {
                     window.location.href = resultsPage + termo
                 }
             })
+        } else {
+            console.log(btnVerTodosOsResultados)
         }
 
 
@@ -1999,13 +2000,6 @@ rhSearchBar = function(cfg,idCli,idWid){
             });
 
             cfg.searchbar.addEventListener('blur', function(){
-
-                var btnVerTodosOsResultados = document.querySelector('#rh_lite_searchbar_goto_results')
-
-                if (btnVerTodosOsResultados) {
-                    btnVerTodosOsResultados.classList.remove('rh-active')
-                }
-
                 rhHideResults();
             });
 
