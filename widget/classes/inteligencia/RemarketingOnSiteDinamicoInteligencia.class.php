@@ -15,7 +15,7 @@ class RemarketingOnSiteDinamicoInteligencia extends AbstractInteligencia {
         if($pesquisaProdUnico[0] != "undefined")
         {
             $select = "SELECT ".$this->XML_select." FROM XML_". $this->widget->getIdCli() ." 
-            			WHERE XML_id = '".$pesquisaProdUnico[0]."'";
+            			WHERE XML_availability = 1 AND XML_id = '".$pesquisaProdUnico[0]."'";
 
             $this->executeSelect($select);
         }       
