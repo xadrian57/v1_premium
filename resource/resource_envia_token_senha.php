@@ -1,4 +1,5 @@
 <?php
+    include "../../dev/apps/HeroEmail/sendEmail.php";
     include '../bd/conexao_bd_cadastro.php';
 
     $email = mysqli_real_escape_string($conCad,$_POST['email']);
@@ -223,7 +224,8 @@
            </body>
         </html>';
 
-        $ret = mail($email , "Recuperação de Senha", $msg, $headers);
+        //$ret = mail($email , "Recuperação de Senha", $msg, $headers);
+        $ret = sendEmail('no-reply@roihero.com.br', $email, 'Recuperação de Senha', $msg, 'ROI HERO');
         return $ret;
     }
 
