@@ -225,7 +225,7 @@
         </html>';
 
         //$ret = mail($email , "Recuperação de Senha", $msg, $headers);
-        $ret = sendEmail('no-reply@roihero.com.br', $email, 'Recuperação de Senha', $msg, 'ROI HERO');
+        $ret = sendEmail('no-reply@roihero.com.br', $email, utf8_decode('Recuperação de Senha'), $msg, 'ROI HERO');
         return $ret;
     }
 
