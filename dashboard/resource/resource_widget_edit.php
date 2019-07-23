@@ -604,7 +604,7 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
 // ATIVA/DESATIVA LEMBRETE DE BOLETO
 function toggleLembreteBoleto($conCad, $idWid, $idCli, $toggle)
 {
-    if ($t == 'true' || $t == 'on') {
+    if ($toggle == 'true' || $toggle == 'on') {
         $queryCfgEmail = 'UPDATE config_email SET CMAIL_status = 1 WHERE CMAIL_id = "' . $idWid . '"';
         $queryCfg = 'UPDATE config SET CONF_lembrete_boleto = 1 WHERE CONF_id_cli = "' . $idCli . '"';
     } else {
