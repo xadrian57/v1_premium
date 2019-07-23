@@ -138,7 +138,7 @@ $(document).ready(function() {
 				$.ajax({
 					type: 'POST',
 					url: 'resource/resource_widget_edit.php',
-					data: { 'idWid': idWid, 'val': val, 'op': op },
+					data: { 'idWid': idWid, 'idCli': idCli, 'val': val, 'op': op },
 					success: function (result) {
 					}
 				});
