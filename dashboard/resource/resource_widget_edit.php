@@ -602,14 +602,14 @@ function atualizaLembreteBoleto($conCad, $idWid, $post, $files, $idCli) {
 }
 
 // ATIVA/DESATIVA LEMBRETE DE BOLETO
-function toggleLembreteBoleto($conCad, $id, $t)
+function toggleLembreteBoleto($conCad, $idWid, $idCli, $toggle)
 {
     if ($t == 'true' || $t == 'on') {
-        $queryCfgEmail = 'UPDATE config_email SET CMAIL_status = 1 WHERE WID_id = "' . $id . '"';
-        $queryCfg = 'UPDATE config SET CONF_lembrete_boleto = 1 WHERE WID_id = "' . $id . '"';
+        $queryCfgEmail = 'UPDATE config_email SET CMAIL_status = 1 WHERE CMAIL_id = "' . $idWid . '"';
+        $queryCfg = 'UPDATE config SET CONF_lembrete_boleto = 1 WHERE CONF_id_cli = "' . $idCli . '"';
     } else {
-        $queryCfgEmail = 'UPDATE config_email SET CMAIL_status = 0 WHERE WID_id = "' . $id . '"';
-        $queryCfg = 'UPDATE config SET CONF_lembrete_boleto = 0 WHERE WID_id = "' . $id . '"';
+        $queryCfgEmail = 'UPDATE config_email SET CMAIL_status = 0 WHERE CMAIL_id = "' . $idWid . '"';
+        $queryCfg = 'UPDATE config SET CONF_lembrete_boleto = 0 WHERE CONF_id_cli = "' . $idCli . '"';
     }
     mysqli_query($conCad, $queryCfgEmail);
     mysqli_query($conCad, $queryCfg);
@@ -802,8 +802,9 @@ switch ($operacao) {
         break;
     case '12': // ATIVA/DESATIVA WIDGET
         $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
+        $idCli = mysqli_real_escape_string($conCad, $_POST['idCli']);
         $toggle = mysqli_real_escape_string($conCad, $_POST['val']);
-        toggleLembreteBoleto($conCad, $idWid, $toggle);
+        toggleLembreteBoleto($conCad, $idWid, $idCli, $toggle);
         break;
     case '13': // ATIVA/DESATIVA WIDGET
         $idWid = mysqli_real_escape_string($conCad, $_POST['idWid']);
