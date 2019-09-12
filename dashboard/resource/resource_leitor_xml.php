@@ -529,6 +529,7 @@ function customXML($custom, $item)
 function limpaTitulo($titulo)
 {
     $titulo = str_replace('\'',' ',$titulo);
+    $titulo = str_replace('"',' ',$titulo);
 
     return $titulo;
 }
