@@ -146,7 +146,7 @@ abstract class AbstractSearch
 	{
 		$busca = str_replace(' ', '* ', $this->termoSemFone);
 
-		if($this->idcli == 292 || $this->idcli == 1210)
+		if($this->idcli == 292 || $this->idcli == 1210  || $this->idcli == 2066)
 		{
 			return " OR MATCH(custom_1) AGAINST(\"+ " . $busca . "*\" IN BOOLEAN MODE) ";
 		}
