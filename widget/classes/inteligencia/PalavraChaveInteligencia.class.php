@@ -24,7 +24,8 @@ class PalavraChaveInteligencia extends AbstractInteligencia {
         
         $select = "SELECT ".$this->XML_select."
                    FROM XML_". $this->widget->getIdCli() ."
-                   WHERE XML_availability = 1
+                   WHERE XML_availability = 1" . 
+                   $this->getRangePrice() . "
                    AND MATCH(XML_titulo) AGAINST(\"".  strtoupper($linha['WC_collection']) ."\" IN BOOLEAN MODE)
                    GROUP BY XML_link
                    ORDER BY XML_venda_". $this->widgetProps['WID_dias'] ."

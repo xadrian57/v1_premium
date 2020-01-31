@@ -12,7 +12,8 @@ class LiquidacaoInteligencia extends AbstractInteligencia {
     public function processar() {
         
         $select = "SELECT ".$this->XML_select." FROM XML_". $this->widget->getIdCli() ." 
-					WHERE XML_id != '". $this->widget->getProdId() ."' AND XML_availability = 1 AND XML_desconto != 100 
+					WHERE XML_id != '". $this->widget->getProdId() ."' AND XML_availability = 1 ". $this->getRangePrice() ."
+                    AND XML_desconto != 100 
 					GROUP BY XML_link
                    ORDER BY XML_desconto DESC
                    LIMIT " . $this->numMaxProdutos;

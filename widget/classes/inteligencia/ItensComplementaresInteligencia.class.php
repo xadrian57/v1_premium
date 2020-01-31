@@ -27,7 +27,7 @@ class ItensComplementaresInteligencia extends AbstractInteligencia {
         $select = "SELECT " . $this->XML_select .  "
                    FROM XML_".$this->widget->getIdCli()."
                    WHERE XML_id IN (" . $arrayProd . ')
-                   AND XML_availability = 1';
+                   AND XML_availability = 1'. $this->getRangePrice();
         
         $this->executeSelect($select);
     }
