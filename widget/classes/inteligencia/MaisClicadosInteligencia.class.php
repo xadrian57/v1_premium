@@ -21,7 +21,8 @@ class MaisClicadosInteligencia extends AbstractInteligencia {
         }
 
         $select = "SELECT ".$this->XML_select." FROM XML_" . $this->widget->getIdCli() . "
-                   WHERE XML_availability = 1 AND XML_id != '" . $this->widget->getProdId() . "'
+                   WHERE XML_availability = 1 AND XML_id != '" . $this->widget->getProdId() . 
+                   $this->widget->getRangePrice() . "'
                    GROUP BY XML_link ORDER BY " . $paramOrder . " DESC
                    LIMIT " . $this->numMaxProdutos;
         

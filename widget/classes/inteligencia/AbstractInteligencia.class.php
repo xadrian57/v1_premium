@@ -43,6 +43,14 @@ abstract class AbstractInteligencia implements IInteligencia {
     public function setWidgetConfig($widgetConfig) {
         $this->widgetConfig = $widgetConfig;
     }
+
+    protected function getRangePrice() {
+        if($this->widgetProps['WID_price_range']) {
+            $priceRange = explode(',', $this->widgetProps['WID_price_range'])
+            return ' AND XML_price BETWEEN '.$priceRange[0].' AND '.$priceRange[1].' ';
+        }
+        return '';
+    }
     
     protected function setOBJ($idWid, $array, $utm, $index=null)
     {
