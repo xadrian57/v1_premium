@@ -36,7 +36,8 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
                     $select = "SELECT " . $this->XML_select . "
                                FROM XML_".$this->widget->getIdCli()."
                                WHERE XML_link != '" . $this->widget->getUrl() . "'
-                               AND XML_availability = '1'
+                               AND XML_availability = '1'".
+                               $this->getRangePrice() ."
                                AND MATCH(XML_type_upper) AGAINST(\"+ " . $this->arrayFilho[$index] ."\" IN BOOLEAN MODE) 
                                GROUP BY XML_link
                                ORDER BY XML_click_" . $this->widgetProps['WID_dias'] . " DESC
@@ -49,7 +50,8 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
                     $select = "SELECT " . $this->XML_select . "
                                FROM XML_".$this->widget->getIdCli()."
                                WHERE XML_link != '" . $this->widget->getUrl() . "'
-                               AND XML_availability = '1'
+                               AND XML_availability = '1'".
+                               $this->getRangePrice() ."
                                AND MATCH(XML_titulo_upper) AGAINST(\"+ " . $this->arrayFilho[$index] ."\" IN BOOLEAN MODE) 
                                GROUP BY XML_link
                                ORDER BY XML_click_" . $this->widgetProps['WID_dias'] . " DESC

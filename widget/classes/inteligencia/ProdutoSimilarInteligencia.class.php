@@ -29,7 +29,8 @@ class ProdutoSimilarInteligencia extends AbstractInteligencia {
                     $select = "SELECT ".$this->XML_select."
                                FROM XML_".$this->widget->getIdCli()."
                                WHERE XML_id != '" . $this->widget->getProdId() . "'
-                               AND XML_availability = 1
+                               AND XML_availability = 1".
+                               $this->getRangePrice() ."
                                AND MATCH(XML_titulo) AGAINST(\"+" . $prodNome . "\" IN BOOLEAN MODE)
                                GROUP BY XML_link
                                LIMIT " . $this->numMaxProdutos;

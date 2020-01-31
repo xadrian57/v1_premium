@@ -11,7 +11,9 @@ class NovidadesLojaInteligencia extends AbstractInteligencia {
     public function processar() {
         
         $select = "SELECT ".$this->XML_select." FROM XML_" . $this->widget->getIdCli() . "
-                   WHERE XML_availability = 1 AND XML_id != '" . $this->widget->getProdId() . "'
+                   WHERE XML_availability = 1 " . 
+                   $this->getRangePrice() . "
+                   AND XML_id != '" . $this->widget->getProdId() . "'
                    GROUP BY XML_link ORDER BY XML_time_insert DESC
                    LIMIT " . $this->numMaxProdutos;
         

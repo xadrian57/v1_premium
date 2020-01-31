@@ -12,7 +12,7 @@ class BaixouDePrecoInteligencia extends AbstractInteligencia {
         
         $select = "SELECT " . $this->XML_select .  "
                    FROM XML_".$this->widget->getIdCli()."
-                   WHERE XML_availability = 1
+                   WHERE XML_availability = 1" . $this->getRangePrice() . "
                    ORDER BY XML_time_insert DESC
                    LIMIT " . $this->numMaxProdutos;
         $this->executeSelect($select);        

@@ -8,7 +8,7 @@ namespace roihero\widget\inteligencia;
  */
 class FactoryInteligencia {
     
-    const MAIS_CLICADOS                               = 1; //
+    const MAIS_CLICADOS                               = 1;
     const MAIS_VENDIDOS                               = 2; //
     const MAIS_VENDIDOS_CATEGORIA                     = 3;
     const REMARKETING_ON_SITE                         = 4;
