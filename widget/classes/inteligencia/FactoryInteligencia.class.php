@@ -8,21 +8,21 @@ namespace roihero\widget\inteligencia;
  */
 class FactoryInteligencia {
     
-    const MAIS_CLICADOS                               = 1;
-    const MAIS_VENDIDOS                               = 2;
+    const MAIS_CLICADOS                               = 1; //
+    const MAIS_VENDIDOS                               = 2; //
     const MAIS_VENDIDOS_CATEGORIA                     = 3;
     const REMARKETING_ON_SITE                         = 4;
-    const PRODUTO_SIMILAR                             = 5;
-    const LIQUIDACAO                                  = 6;
+    const PRODUTO_SIMILAR                             = 5; //
+    const LIQUIDACAO                                  = 6; //
     const COLECAO                                     = 7;
     const COMPRE_JUNTO                                = 8;
     const OFERTA_LIMITADA_MANUAL                      = 9;
-    const REMARKETING_ON_SITE_DINAMICO                = 10;
-    const CARRINHO_COMPLEMENTAR                       = 11;
-    const ITENS_COMPLEMENTAR                          = 12;
+    const REMARKETING_ON_SITE_DINAMICO                = 10; 
+    const CARRINHO_COMPLEMENTAR                       = 11; //
+    const ITENS_COMPLEMENTAR                          = 12; //
     const OVERLAY_DE_SAIDA                            = 13;
-    const BAIXOU_DE_PRECO                             = 14;
-    const NOVIDADES_DA_LOJA                           = 15;
+    const BAIXOU_DE_PRECO                             = 14; //
+    const NOVIDADES_DA_LOJA                           = 15; //
     const GEO_LOCALIZACAO                             = 16;
     const TOP_TRENDS_GOOGLE_FACEBOOK                  = 17;
     const MELHORES_AVALIADOS_E_SIMILARES_PRODUTO      = 18;
@@ -31,9 +31,9 @@ class FactoryInteligencia {
     const RECEM_AVALIADOS                             = 21;
     const REMARKETING_COMPLEMENTAR                    = 23;
     const MAIS_VENDIDOS_CATEGORIA_MANUAL              = 24;
-    const PALAVRA_CHAVE                               = 25;
+    const PALAVRA_CHAVE                               = 25; //
     // 22 é a busca, ainda não sabemos se será uma inteligência
-    const PRODUTOS_RELACIONADOS                       = 34;
+    const PRODUTOS_RELACIONADOS                       = 34; //
     const REMARKETING_NAVEGACAO                       = 35;    
     const SMART_HOME                                  = 36;
     const COMPRE_JUNTO_COMPLEMENTAR                   = 37;
