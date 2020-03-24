@@ -50,7 +50,7 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
                 else
                 {
                     if($this->arrayParamFilho[$index] != '') {
-                        $paramFilhoQuery = "AND MATCH(XML_titulo_upper) AGAINST(\"+ " . $this->arrayFilho[$index] ."\" IN BOOLEAN MODE)";
+                        $paramFilhoQuery = "AND MATCH(XML_titulo_upper) AGAINST(\"+ " . $this->arrayParamFilho[$index] ."\" IN BOOLEAN MODE)";
                     } else {
                         $paramFilhoQuery = '';
                     }
