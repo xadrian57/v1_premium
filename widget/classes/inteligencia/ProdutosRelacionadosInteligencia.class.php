@@ -8,6 +8,8 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
     private $arrayFilho = [];
     private $arrayTipoPai = [];
     private $arrayTipoFilho = [];
+    private $arrayParamPai = [];
+    private $arrayParamFilho = [];
     private $prodDados;
 
     /**
@@ -47,12 +49,19 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
                 }
                 else
                 {
+                    if($this->arrayParamFilho[$index] != '') {
+                        $paramFilhoQuery = "AND MATCH(XML_titulo_upper) AGAINST(\"+ " . $this->arrayFilho[$index] ."\" IN BOOLEAN MODE)";
+                    } else {
+                        $paramFilhoQuery = '';
+                    }
+
                     $select = "SELECT " . $this->XML_select . "
                                FROM XML_".$this->widget->getIdCli()."
                                WHERE XML_link != '" . $this->widget->getUrl() . "'
                                AND XML_availability = '1'".
                                $this->getRangePrice() ."
                                AND MATCH(XML_titulo_upper) AGAINST(\"+ " . $this->arrayFilho[$index] ."\" IN BOOLEAN MODE) 
+                               ".$paramFilhoQuery."
                                GROUP BY XML_link
                                ORDER BY XML_click_" . $this->widgetProps['WID_dias'] . " DESC
                                LIMIT " . $this->numMaxProdutos;
@@ -75,7 +84,9 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
                                WC_cj_f,
                                WC_cj_p,
                                tx_tipo_pai,
-                               tx_tipo_filho
+                               tx_tipo_filho,
+                               tx_param_pai,
+                               tx_param_filho
                                FROM widget_config WHERE WC_id_wid = ". $this->widget->getIdWid();
         
         $result = mysqli_query($this->widget->getConCad(), $selectWidgetConfig);
@@ -86,6 +97,8 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
         $this->arrayFilho = explode(',', $linha['WC_cj_f']);
         $this->arrayTipoPai = explode(',', $linha['tx_tipo_pai']);
         $this->arrayTipoFilho = explode(',', $linha['tx_tipo_filho']);
+        $this->arrayParamPai = explode(',', $linha['tx_param_pai']);
+        $this->arrayParamFilho = explode(',', $linha['tx_param_filho']);
     }
     
     /**
@@ -105,7 +118,9 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
                             $this->arrayPai,
                             $this->arrayFilho,
                             $this->arrayTipoPai,
-                            $this->arrayTipoFilho );
+                            $this->arrayTipoFilho,
+                            $this->arrayParamPai,
+                            $this->arrayParamFilho);
         }
     }
     
@@ -127,10 +142,18 @@ class ProdutosRelacionadosInteligencia extends AbstractInteligencia {
             }
             else
             {
-                $pos = strripos($this->prodDados['XML_titulo'], $this->arrayPai[$key]);
+                $pos = strripos($this->prodDados['XML_titulo_upper'], $this->arrayPai[$key]);
                 if($pos !== false)
-                {                    
-                    return $key;
+                {
+                    if($this->arrayParamPai[$key] != '') {                    
+                        $pos2 = strripos($this->prodDados['XML_titulo_upper'], $this->arrayParamPai[$key]);
+                        if($pos2 !== false)
+                        {                    
+                            return $key;
+                        }
+                    } else {
+                        return $key;
+                    }
                 }
             }
         }
