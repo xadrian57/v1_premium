@@ -150,6 +150,10 @@ if(!empty($id))
             {
                 $stringPage = "&pag=";
             }
+            else if($arrayPlat['CLI_id_plataforma'] == 2)
+            {
+                $stringPage = "?pagina=";
+            }
             else
             {
                 $stringPage = "?page=";
